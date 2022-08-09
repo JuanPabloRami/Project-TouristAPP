@@ -14,7 +14,7 @@ nav{
 /*Clases del componente formulario de registro*/
 
 .form-register{
-  width: 400px;
+  width: 450px;
   background-color: #24303c;
   padding: 30px;
   margin: auto;
@@ -23,6 +23,16 @@ nav{
   font-family: 'calibri', sans-serif;
   color: #fff;
   box-shadow: 1px 13px 37px #000;
+}
+
+.login-Container{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.login-Container label{
+margin: 11px 0px;
 }
 
 .form-register h4{
@@ -172,7 +182,7 @@ nav{
 .vertical-menu{
   position: absolute;
 	background: #133886;
-	width: 120%;
+	width: 112%;
 	visibility: hidden;
 	opacity: 0;
 	transition: opacity .8s;
@@ -191,7 +201,6 @@ nav{
   display: block;
 	padding: 15px;
 	color: #fff;
-	font-family: 'Open sans';
 	text-decoration: none;
 }
 /* -- terminación del menu desplegable -- */

@@ -24,7 +24,7 @@ export const Registro = () => {
             <input className="controls" type="password" name="confirContraseña" id="confirContraseña" placeholder="Confirmar Contraseña"></input>
             <label className='linkBox'>
               <input className="check" name='toAcept' type="checkbox"/>
-              <p>Estoy de acuerdo<a href='#'>Terminos y Condiciones</a></p>
+              <p>Estoy de acuerdo<a href='#'> Terminos y Condiciones</a></p>
             </label>
             <input className="botons" type="submit" value="Enviar"/>
         </section> 
