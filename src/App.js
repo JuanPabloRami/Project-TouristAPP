@@ -16,10 +16,8 @@ function App() {
         <Route path='/register' element={<Registro/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='*' element={<NotFound/>} />
-        <Route path='/footer' element={<Footer/>} />
-        
       </Routes>
-      
+      <Footer/>
     </div>
   );
 }
