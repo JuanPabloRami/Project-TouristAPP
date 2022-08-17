@@ -1,11 +1,10 @@
-/* eslint-disable jsx-a11y/anchor-has-content */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-// import { FaUserAlt } from "react-icons/fa";
 
 
 
-export const Registro = () => {
+
+export const Register = () => {
   return (
     <div>
         <h1>Inscribirse</h1>
