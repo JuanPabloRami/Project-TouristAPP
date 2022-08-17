@@ -5,14 +5,40 @@
   font-family:  Helvetica;
 }
 nav{
+  position: fixed;
+  top: 0;
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 30%;
 }
+/* -- Clases del componente Incio -- */
+.home{
+  background-image: url('./components/images/paisaje.jpeg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.background-img{
+  width: 100%;
+  height: 900px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.vacio{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 1700px;
+  background-color: #fff;
+}
+
+
+
 
 /*Clases del componente formulario de registro*/
-
 .form-register{
   width: 450px;
   background-color: #24303c;
@@ -92,13 +118,22 @@ margin: 11px 0px;
 
 
 /* -- Clases del navbar -- */
-.first{
+.first.abajo{
   background-color: #fff;
+  padding: 0px 0px 0 30px;
+}
+.second.abajo{
+  display: block;
+}
+.third.abajo{
+  display: flex;
+}
+.first{
+  transition: all .7s;
+  background-color: transparent;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid black;
-  padding: 0px 30px;
+  padding: 26px 0px 10px 30px;
 }
 .icon{
   display: flex;
@@ -106,61 +141,72 @@ margin: 11px 0px;
   align-items: center;
   width: 5%;
 }
-.accounts{
-  color: #fff;
-  font-size: 1rem;
-  padding: 10px 15px;
-  border-radius: 5px;
-  background-color: #133886;
-}
 .logo{
   width: 70px;
 }
+
 .search-places{
   display: flex;
   justify-content: center;
+  position: relative;
 }
 .input-search{
-  width: 25rem;
-  padding: 0px 10px;
+  width: 40rem;
+  padding: 15px;
+  margin-left: 50px;
+  border-radius: 50px;
+  border: 1px solid black;
+  outline: 0;
+  padding-left: 40px ;
+  font-size: 1rem;
+
 }
 .input-search::placeholder{
-  color: #000;
+  color: #0000009c;
 }
-.btn-search{
-  border: none;
-  width: 40px;
-  margin-left: 5px;
-}
-.img-btn-search{
-  width: 100%;
-  margin: auto;
-}
-.img-btn-search:hover{
-  background-color: rgb(160, 160, 160);
+.icon-search{
+  position: absolute;
+  font-size: 1.8rem;
+  left: 57px;
+  bottom: 2px;
 }
 .second{
-  background-color: #fff;
+  display: none;
+  align-items: center;
+  justify-content: space-around;
+  width: 70%;
+  transition: 0.7s;
+  /* background: linear-gradient(31deg,transparent 9%, #3bb0e2 13%, #3bb0e2 90%); */
+}
+.search-accounts{
   display: flex;
-  justify-content: flex-end;
-  border-bottom: 1px solid black;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 10px 0 40px;
+}
+.location{
+  display: flex;
+  justify-content: flex-star;
+  flex-wrap: wrap;
   align-items: center;
   padding: 5px 0px;
 }
-.second img{
+.location-img{
   width: 32px;
+  font-size: 1.5rem;
+  color: red;
 }
-.second h3{
+.location h3{
   margin: 5px 10px 5px 5px;
+  color: #292929;
 }
 .third{
-  display: flex;
+  display: none;
   justify-content: flex-start;
   background-color: transparent;
 }
 .third p{
   background-color: #cecece;
-  
   clip-path:  polygon(0% 0%, 85% 0%, 100% 100%, 15% 100%);
   padding: 2px 25px;
 }
@@ -177,23 +223,43 @@ margin: 11px 0px;
 	display: inline-block;
 }
 .dropdown-menu  li:hover{
-	background-color: red;
+  border-radius: 0;
+  box-shadow: none;
+}
+.accounts{
+  color: #fff;
+  font-size: 1rem;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background-color: #2180a8;
+  box-shadow: 0px 0px 10px #2f8ab1;
+  margin-right: 40px;
+  
+}
+.accounts:hover{
+  border-radius: 0;
 }
 .vertical-menu{
   position: absolute;
-	background: #133886;
-	width: 112%;
+	background: #2180a8;
+	width: 97%;
 	visibility: hidden;
 	opacity: 0;
 	transition: opacity .8s;
 }
+.vertical-menu:hover::before .accounts {
+  border-radius: 0;
+}
 .dropdown-menu li:hover .vertical-menu{
+  position: absolute;
 	visibility: visible;
 	opacity: 1;
+  
 }
 .vertical-menu li:hover{
-	background-color: #0a1d44;
+	background-color: #2f8ab1;
   width: 100%;
+  
 }
 
 .vertical-menu li a{
@@ -233,7 +299,6 @@ margin: 11px 0px;
 
 }
 
-
 .contentButtons{
   display: flex;
   justify-content: space-around;
@@ -267,7 +332,6 @@ margin: 11px 0px;
   color: #fff;
   height: 75px;
 }
-
 /* -- terminacion del Footer -- */
 
 
@@ -279,17 +343,16 @@ margin: 11px 0px;
     background-image: url(components/images/AboutAs01.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover;
+    background-size: 100%;
     width: 100%;
-    height: 40rem;
-    margin-top: 30px;
+    height: 60rem;
 }
 
 .containerAbout{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 600px;
+  height: 1000px;
 }
 
 .containerAbout h1{

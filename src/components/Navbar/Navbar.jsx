@@ -2,10 +2,30 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import Logo from '../images/logo.webp'
-import Lupa from '../images/lupa.png'
-import Ubicacion from '../images/ubicacion.png'
+import { AiOutlineSearch } from "react-icons/ai";
+import { BsGeoAlt } from "react-icons/bs";
  
  export const Navbar = () => {
+
+ 
+  window.addEventListener("scroll", function(){
+    const nav = document.querySelector(".first");
+    const componentSecond = document.querySelector(".second");
+    const componentThird = this.document.querySelector(".third");
+    nav.classList.toggle("abajo",window.scrollY>0);
+    componentSecond.classList.toggle("abajo",window.scrollY>0);
+    componentThird.classList.toggle("abajo",window.scrollY>0);
+    // if (window.scrollY>0) {
+    //   componentThird.style.display = "flex"
+    //   componentSecond.style.display = "block"
+    // } else {
+    //   componentThird.style.display = "none"
+    //   componentSecond.style.display = "none"
+    // }
+  })
+
+ 
+
    return (
      <nav>
       <div className="first">
@@ -13,24 +33,29 @@ import Ubicacion from '../images/ubicacion.png'
           <img className="logo" src={Logo} />
           <h1>TouristApp</h1>
         </div>
-        <div className="search-places">
-          <input className='input-search' type='text' placeholder='¿Que deseas buscar?' />
-          <button className='btn-search' type='submit'><img className='img-btn-search' src={Lupa}/></button>
+        <div className="second">
+          <div className="search-accounts">
+            <div className="search-places">
+              <span className="icon-search"><AiOutlineSearch/></span>
+              <input className='input-search' type='text' placeholder='¿Que deseas buscar?' />
+          </div>
+          <div className="location">
+            <span className='location-img'><BsGeoAlt/></span>
+            <h3>Ubicación: Armenia - Quindío</h3>
+          </div>
+          <ul className='dropdown-menu'>
+            <li>
+              <p className='accounts'>¿Ya tienes cuenta?</p>
+              <ul className='vertical-menu'>
+                <li><Link to='/login'>Inicia sesión</Link></li>
+                <li><Link to='/register'>Registrate</Link></li> 
+              </ul>
+            </li>
+          </ul>
+          </div>
         </div>
-        <ul className='dropdown-menu'>
-          <li>
-            <p className='accounts'>¿Ya tienes cuenta?</p>
-            <ul className='vertical-menu'>
-              <li><Link to='/login'>Inicia sesión</Link></li> 
-              <li><Link to='/register'>Registrate</Link></li> 
-            </ul>
-          </li>
-        </ul>
       </div>
-      <div className="second">
-        <img src={Ubicacion}/>
-        <h3>Ubicación: Armenia - Quindío</h3>
-      </div>
+        
       <div className="third">
         <p>Acerca de</p>
         <p>Ayuda</p>
