@@ -301,10 +301,38 @@ margin: 11px 0px;
 
 .contentButtons{
   display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  width: 70%;
+}
+
+.contentOptions{
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+
+.contentInfoRed{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+}
+
+.contentInfoRed hr{
+  width: 60%;
+}
+
+/* .contentButtons{
+  display: flex;
   justify-content: space-around;
   width: 70%;
   background-color: #e8e8e8;
-}
+} */
 
 .customerService,.aboutUss{
   display: flex;
@@ -332,6 +360,38 @@ margin: 11px 0px;
   color: #fff;
   height: 75px;
 }
+
+.contentIcons{
+  width: 80%;
+}
+
+.icons{
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  height: 20px;
+}
+
+.contentIcons{
+  width: 40%;
+  display: flex;
+  justify-content: center;
+}
+
+.iconBtn{
+  border-style: none;
+  width: 32px;
+  font-size: 1.7rem;
+  background-color: #fff;
+  color: #000;
+  padding: 10px;
+}
+
+.nameDevelopers{
+  padding: 10px;
+  width: 60%;
+}
+
 /* -- terminacion del Footer -- */
 
 
