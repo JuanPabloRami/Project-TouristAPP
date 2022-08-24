@@ -1,37 +1,29 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import './Navbar.css'
 import Logo from '../images/logo.webp'
 import { AiOutlineSearch } from "react-icons/ai";
 import { BsGeoAlt } from "react-icons/bs";
  
  export const Navbar = () => {
 
- 
-  window.addEventListener("scroll", function(){
+  window.addEventListener("scroll", () => {
+    const componentIcon = document.querySelector(".logo");
     const nav = document.querySelector(".first");
     const componentSecond = document.querySelector(".second");
-    const componentThird = this.document.querySelector(".third");
+    const componentThird = document.querySelector(".third");
     nav.classList.toggle("abajo",window.scrollY>0);
     componentSecond.classList.toggle("abajo",window.scrollY>0);
     componentThird.classList.toggle("abajo",window.scrollY>0);
-    // if (window.scrollY>0) {
-    //   componentThird.style.display = "flex"
-    //   componentSecond.style.display = "block"
-    // } else {
-    //   componentThird.style.display = "none"
-    //   componentSecond.style.display = "none"
-    // }
-  })
-
- 
+    componentIcon.classList.toggle("abajo",window.scrollY>0);
+  });
 
    return (
      <nav>
       <div className="first">
         <div className="icon">
           <img className="logo" src={Logo} />
-          <h1>TouristApp</h1>
+            <h1>TouristApp</h1>
         </div>
         <div className="second">
           <div className="search-accounts">
@@ -41,7 +33,7 @@ import { BsGeoAlt } from "react-icons/bs";
           </div>
           <div className="location">
             <span className='location-img'><BsGeoAlt/></span>
-            <h3>Ubicación: Armenia - Quindío</h3>
+            <h3>Armenia - Quindío</h3>
           </div>
           <ul className='dropdown-menu'>
             <li>
@@ -57,8 +49,8 @@ import { BsGeoAlt } from "react-icons/bs";
       </div>
         
       <div className="third">
-        <p>Acerca de</p>
-        <p>Ayuda</p>
+        <span className='location-img'><BsGeoAlt/></span>
+        <h3>Armenia - Quindío</h3>
       </div>
      </nav>
    )
