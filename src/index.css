@@ -49,17 +49,16 @@ nav{
   font-family: 'calibri', sans-serif;
   color: #fff;
   box-shadow: 1px 13px 37px #000;
+  
 }
 
-.login-Container{
-  display: flex;
-  flex-direction: column;
+
+
+
+.form-register label{
+  margin: 11px 0px;
   text-align: left;
-}
-
-.login-Container label{
-margin: 11px 0px;
-}
+  }
 
 .form-register h4{
   font-size:22px;
@@ -115,6 +114,20 @@ margin: 11px 0px;
   width: 20px;
 }
 /* --- Terminacion de Registro -- */
+
+/* login */
+.login-Container{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+
+.login-Container label{
+margin: 11px 0px;
+
+}
+/* fin login */
 
 
 /* -- Clases del navbar -- */
