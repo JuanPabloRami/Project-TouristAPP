@@ -1,0 +1,102 @@
+/* 404 not found */
+
+
+
+.notFoundcontainer{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height:100vh;
+  background-image: url(../images/NotFound/gato404.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0% 27%;
+  justify-content: center;
+}
+
+.notFoundcontainer img{
+  width:100%;
+}
+
+.textContainer{
+  color: white;
+  display: flex;
+  flex-direction: column;
+  width:50%;
+  right: 0;
+  left: -22%;
+  top: 0;
+  bottom: 0;
+}
+
+.textContainer h1{
+  font-size: 5.5em;
+  text-shadow: 0px 10px 13px black;
+}
+
+.textContainer h2{
+  text-shadow: 0px 5px 6px black;
+  padding:20px;
+}
+
+.textContainer button{
+  border: none;
+  color: white;
+  background-color:rgb(23, 94, 156);
+  padding:12px;
+  font-size:18px;
+  border-radius: 20px;
+  cursor:pointer;
+}
+
+@media (max-width: 1300px){
+  .notFoundcontainer{
+    background-position: 49% 27%;
+  }
+
+}
+
+@media (max-width: 1050px){
+  .notFoundcontainer{
+    background-position: 75% 27%;
+  }
+
+  .textContainer{
+    background-color:rgba(77, 77, 77, 0.676);
+    width:100%;
+    height:21rem;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+  }
+}
+
+@media (max-width: 610px){
+  .notFoundcontainer{
+    background-position:72% 27%;
+  }
+}
+
+@media (max-width: 610px){
+  .textContainer h1{
+    font-size: 5.5em;
+  }
+  
+  .textContainer h2{
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 485px){
+  .textContainer h1{
+    font-size: 3.5em;
+  }
+  
+  .textContainer h2{
+    font-size: 17px;
+  }
+}
+
+
+
+

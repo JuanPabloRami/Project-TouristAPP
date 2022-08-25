@@ -4,8 +4,8 @@ import './Navbar.css'
 import Logo from '../images/logo.webp'
 import { AiOutlineSearch } from "react-icons/ai";
 import { BsGeoAlt } from "react-icons/bs";
- 
- export const Navbar = () => {
+
+export const Navbar = () => {
 
   window.addEventListener("scroll", () => {
     const componentIcon = document.querySelector(".logo");
@@ -18,13 +18,17 @@ import { BsGeoAlt } from "react-icons/bs";
     componentIcon.classList.toggle("abajo",window.scrollY>0);
   });
 
-   return (
-     <nav>
+    return (
+      <nav>
       <div className="first">
+      
         <div className="icon">
-          <img className="logo" src={Logo} />
-            <h1>TouristApp</h1>
+          <Link to='/'>
+            <img className="logo" src={Logo} />
+          </Link>
+          <h1>TouristApp</h1>
         </div>
+      
         <div className="second">
           <div className="search-accounts">
             <div className="search-places">
