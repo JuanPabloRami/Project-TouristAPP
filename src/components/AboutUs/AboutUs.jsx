@@ -1,22 +1,24 @@
 import React from 'react'
-import AcercaDe from '../images/AcercaDe.jpg'
+import AcercaDe from '../images/AboutUs/AcercaDe.jpg'
 import { BsFillTagsFill,BsPeopleFill } from 'react-icons/bs'
 import { FaThList } from 'react-icons/fa'
 import { AiTwotoneEyeInvisible, AiOutlinePlus } from 'react-icons/ai'
+import styleAboutUs from './AboutUs.module.css'
+
 
 export const AboutUs = () => {
   return (
-    <div className="containerPadre">
-        <section className='about'>
-            <div className="containerAbout">
+    <div className={styleAboutUs.containerPadre}>
+        <section className={styleAboutUs.about}>
+            <div className={styleAboutUs.containerAbout}>
                 <h1>SOBRE NOSOTROS</h1>
             </div>
         </section>
-        <div className="containerParrafo">
-            <div className='containerImg'>
-                <img className="imgAcerca" src={AcercaDe}></img>
+        <div className={styleAboutUs.containerParrafo}>
+            <div className={styleAboutUs.containerImg}>
+                <img className={styleAboutUs.imgAcerca} src={AcercaDe}></img>
             </div>
-            <div className="containerImg">
+            <div className={styleAboutUs.containerImg}>
                 <h3>A cerca de nosotros</h3>
                 <p>Negocios a la vista nació con el único propósito de ofrecer
                    a los emprendedores; grandes y pequeños una plataforma para 
@@ -35,25 +37,25 @@ export const AboutUs = () => {
                 </p>
             </div>
         </div>
-        <div className="containerEstadistica">
-            <div className="containerIcons">
-                <p><BsFillTagsFill id='iconTags' /></p>
-                <p id='num'>40 <AiOutlinePlus id='iconSum' /></p>
+        <div className={styleAboutUs.containerEstadistica}>
+            <div className={styleAboutUs.containerIcons}>
+                <p><BsFillTagsFill id={styleAboutUs.iconTags} /></p>
+                <p id={styleAboutUs.num}>40 <AiOutlinePlus id={styleAboutUs.iconSum} /></p>
                 <h3>Categorias</h3>
             </div>
-            <div className="containerIcons">
-                <p><FaThList id='iconTags' /></p>
-                <p id='num'>250 <AiOutlinePlus id='iconSum' /></p>
+            <div className={styleAboutUs.containerIcons}>
+                <p><FaThList id={styleAboutUs.iconTags} /></p>
+                <p id={styleAboutUs.num}>250 <AiOutlinePlus id={styleAboutUs.iconSum} /></p>
                 <h3>Listados</h3>
             </div>
-            <div className="containerIcons">
-                <p><BsPeopleFill id='iconTags' /></p>
-                <p id='num'>1M <AiOutlinePlus id='iconSum' /></p>
+            <div className={styleAboutUs.containerIcons}>
+                <p><BsPeopleFill id={styleAboutUs.iconTags} /></p>
+                <p id={styleAboutUs.num}>1M <AiOutlinePlus id={styleAboutUs.iconSum} /></p>
                 <h3>Miembros</h3>
             </div>
-            <div className="containerIcons">
-                <p><AiTwotoneEyeInvisible id='iconTags' /></p>
-                <p id='num'>571</p>
+            <div className={styleAboutUs.containerIcons}>
+                <p><AiTwotoneEyeInvisible id={styleAboutUs.iconTags} /></p>
+                <p id={styleAboutUs.num}>571</p>
                 <h3>Visitantes</h3>
             </div>
         </div>

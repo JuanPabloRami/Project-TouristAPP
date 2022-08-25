@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './Navbar.css'
-import Logo from '../images/logo.webp'
+import Logo from '../images/Navbar/logo.webp'
 import { AiOutlineSearch } from "react-icons/ai";
 import { BsGeoAlt } from "react-icons/bs";
+
 
 export const Navbar = () => {
 
