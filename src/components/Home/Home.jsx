@@ -1,26 +1,33 @@
 import React from 'react'
 import './Home.css';
+import { useState } from 'react';
+import {Navbar} from '../Navbar/Navbar'
 
 export const ModalOpen = ({Open, CloseModal}) =>{
+  const [inputDepartment,setInputDepartment] = useState("");
+  const [inputCity,setInputCity] = useState("");
 
-  const locationChange = () => {
-  
-
-  }
 
   const locationCity = (event) =>{
     const city = event.target.value;
-    console.log(city);
-    return city
+    return setInputCity(city);
   }
 
   const locationDepartment = (event) =>{
     const department = event.target.value;
-    console.log(department);
-    return department
+    return setInputDepartment(department);
   }
 
+  const locationChange = () => {
+   const location = inputCity+" - "+inputDepartment;
+   console.log(location);
+   <Navbar location={location}/>
+   return location;
+  }
+
+  
   return( 
+    
   <div className={`modal ${Open && 'modal-open'}`}>
     <div className="filter-modal">
       <button onClick={CloseModal} className='btn-close'>X</button>
@@ -28,7 +35,7 @@ export const ModalOpen = ({Open, CloseModal}) =>{
       <div className="filter-select">
         <select onClick={locationDepartment}>
         <option value="" selected disabled hidden>Departamentos...</option>
-          <option>Quindio</option>
+          <option>Quindío</option>
         </select >
         <select onChange={locationCity}>
         <option value="" selected disabled hidden>Municipios...</option>

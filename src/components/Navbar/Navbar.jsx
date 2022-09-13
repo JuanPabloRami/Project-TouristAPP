@@ -8,15 +8,19 @@ import { useState } from 'react';
 import { ModalOpen } from '../Home/Home';
 
 
-export const Navbar = () => {
+export const Navbar = ({location}) => {
   const [openModal,setOpenModal] = useState(false);
+  const body = document.querySelector("body");
 
   const IsOpenModal = () => {
     setOpenModal(true);
+    body.style = "  overflow-y:hidden;"
   }
 
   const CloseModal = () => {
     setOpenModal(false);
+    body.style = "  overflow-y:scroll;"
+    console.log(location);
   }
 
   window.addEventListener("scroll", () => {
@@ -49,7 +53,7 @@ return (
           </div>
           <div className="location">
             <span className='location-img'><BsGeoAlt/></span>
-            <h3 onClick={IsOpenModal}>Armenia - Quindío</h3>
+            <h3 onClick={IsOpenModal}>Ubicación...{location}</h3>
           </div>
           <ul className='dropdown-menu'>
             <li>
