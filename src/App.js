@@ -6,7 +6,7 @@ import { NotFound } from './components/NotFound/NotFound.jsx'
 import { Footer } from './components/Footer/Footer.jsx'
 import {Register} from './components/Register/Register.jsx'
 import { AboutUs } from './components/AboutUs/AboutUs';
-import { Inicio } from './components/Inicio/Inicio';
+import { Home } from './components/Home/Home';
 import { CrearNegocio } from './components/CrearNegocio/CrearNegocio';
 import { CrearItem } from './components/CrearItem/CrearItem';
 
@@ -19,7 +19,7 @@ function App() {
     <div className="App">
       <Navbar/>
       <Routes>
-        <Route path='/' element={<Inicio/>} />
+        <Route path='/' element={<Home/>} />
         <Route path='/register' element={<Register/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/crear-negocio' element={<CrearNegocio/>} />

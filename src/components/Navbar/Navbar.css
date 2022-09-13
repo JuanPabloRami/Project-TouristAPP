@@ -93,6 +93,7 @@ nav{
 .location h3{
   font-size: 1rem;
   color: #292929;
+  cursor: pointer;
 }
 .third{
   visibility: hidden;
