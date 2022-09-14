@@ -4,6 +4,7 @@ nav{
   display: flex;
   flex-direction: column;
   width: 100%;
+  z-index: 10000;
 }
 /* -- Clases del navbar -- */
 .first.abajo{
