@@ -1,32 +1,202 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import {AiFillEye} from 'react-icons/ai'
+import axios from 'axios'
 
 
 
 
 export const Register = () => {
+
+    //objeto el cual incluye todas las expresiones regulares para validar los campos.
+    const regularExpressions = {
+      name:/^[a-z ,.'-]+$/i,
+      username:/^[a-zA-Z0-9\_\-]{4,16}$/,
+      email:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+      password:/^.{4,12}$/,
+    }
+    
+  
+    // informacion capturada de los inputs
+    const [name,setName] = useState("")
+    const [username,setUsername] = useState("")
+    const [pw,setPW] = useState("")
+    const [pwConfirm,setPWConfirm] = useState("")
+  
+    //los mensajes que se mostrarán al usuario en la validacion de los campos
+    const [nameMsg,setNameMsg] = useState("");
+    const [userMsg,setUserMsg] = useState("");
+    const [pwMsg,setPwMsg] = useState("");
+    const [pwConfirmMsg,setPwConfirmMsg] = useState("");
+    const [pwStatus,setPwStatus] = useState("password")
+  
+    // estas son las variables que determinan si cada campo esta o no validado
+    const [nameValidation,setNameVal] = useState(false)
+    const [usernameVal,setUserVal] = useState(false)
+    const [pwVal,setPwVal]= useState(false)
+    const [pwConfVal,setPwConfVal] = useState(false)
+  
+    //la funcion que hace la contraseña visible o no visible con el boton reveal password
+    function changePWStatus(){
+      console.log("baaa");
+      pwStatus == "password" ? setPwStatus("text") :setPwStatus("password")
+    }
+  
+    
+  
+    //estos useEffect son las validaciones con las expresiones regulares usando el useEffect cambiando el estado de los campos.
+  
+    // validacion de nombre
+    useEffect(()=>{
+      if (name === ""){
+        setNameMsg("")
+        setNameVal(false)
+      }
+      else{
+        if (regularExpressions.name.test(name)){
+          setNameMsg("")
+          setNameVal(true)
+        }
+        else{
+          setNameMsg("nombre no valido!")
+          setNameVal(false)
+        }
+      }
+    },[name])
+  
+    // validacion de username
+    useEffect(()=>{
+      if (username == "") {
+        setUserMsg("") 
+        setUserVal(false)
+      }
+      else{
+        if (regularExpressions.username.test(username)){
+          setUserMsg("")
+          setUserVal(true)
+        }
+        else{
+          setUserMsg("username no valido!")
+          setUserVal(false)
+        }
+      }
+    },[username])
+  
+    // validacion de password
+    useEffect(()=>{
+      if (pw == ""){
+        setPwMsg("")
+        setPwVal(false)
+      }
+      else{
+        if (regularExpressions.password.test(pw)){
+          setPwMsg("")
+          setPwVal(true)
+        }
+        else{
+          setPwMsg("contraseña no valida!")
+          setPwVal(false)
+        }
+      }
+    },[pw])
+  
+    // validacion de confirmacion de password
+    useEffect(()=>{
+      if (pwConfirm == ""){
+        setPwConfirmMsg("")
+        setPwConfVal(false)
+      }
+      else{
+        if (pwConfirm === pw ){
+          setPwConfirmMsg("Las contraseñas coinciden!")
+          setPwConfVal(true)
+        }
+        else{
+          setPwConfirmMsg("Las contraseñas NO coinciden!")
+          setPwConfVal(false)
+        }
+      }
+      
+    },[pwConfirm])
+  
+    //aca se imprimira si el post fue exitoso o no.
+    const [resultMsg,setResMsg] = useState("")
+  
+    //aca se ejecuta el post solo si todos los campos son llenados de manera valida
+  
+    const validateForm = (e)=>{
+      e.preventDefault()
+      console.log(nameValidation);
+      console.log(usernameVal);
+      console.log(pwVal);
+      console.log(pwConfVal);
+      if (nameValidation == true & usernameVal == true & pwVal == true & pwConfVal == true){
+        createUser()
+      }
+    }
+    
+      
+  
+    // POST para crear el usuario
+    const  createUser = ()=>{
+      axios.post('https://backend-edw.herokuapp.com/usuario',{
+      username:username,
+      password:pw,
+      name:name
+      })
+      .then((res)=>{
+        console.log(res.data.Message);
+        setResMsg(res.data.Message)
+      })
+      .catch((err)=>{
+        console.log(err)
+        setResMsg(err)
+      })
+      
+    }
+
+
   return (
-    <div>
-        <h1>Inscribirse</h1>
-        <section className="form-register">
-            <h4>Formulario de Registro</h4>
-            <input className="controls" type="text"  name="nombres" id="nombre" placeholder="Ingresa su nombre"/>            <input className="controls" type="email"  name="correo" id="correo" placeholder="Ingresa su correo"></input>
-            <input className="controls" type="text"  name="numero" id="numero" placeholder="Ingresa su numero"></input>
+    <div className="MainContainer">
+        <div className="CardContainer">
+          <h2>Registrate</h2>
+          <form action="" method="POST" onSubmit={validateForm}>
+            <label for="name">Nombre completo</label>
+            <input onChange={(e)=>setName(e.target.value)} type="text" name="name" placeholder="ejemplo: juan pedro" />
+            <p>{nameMsg}</p>
+            
+            <label for="username">Nombre de usuario</label>
+            <input onChange={(e)=>setUsername(e.target.value)} type="username" name="username" placeholder="No debe contener espacios" maxLength="16"  />
+            <p>{userMsg}</p>
+            
+
+            <label for="ciudades">Ciudad de residencia</label>
             <select className="controls" type="text" name="ciudades" id="ciudades" placeholder="Ciudad">
                 <option >Ciudad</option>
                 <option value="value1">Armenia</option>
                 <option value="value2">Pasto</option>
                 <option value="value3">Cali</option>
             </select>
-            <textarea className="controls" type="text" name="direccion" placeholder="Su direccion"></textarea>
-            <input className="controls" type="password" name="contraseña" id="contraseña" placeholder="Contraseña"></input>
-            <input className="controls" type="password" name="confirContraseña" id="confirContraseña" placeholder="Confirmar Contraseña"></input>
-            <label className='linkBox'>
-              <input className="check" name='toAcept' type="checkbox"/>
-              <p>Estoy de acuerdo<a href='#'> Terminos y Condiciones</a></p>
-            </label>
-            <input className="botons" type="submit" value="Enviar"/>
-        </section> 
-    </div>
+
+            <label for="direccion">Direccion</label>
+            <textarea className="controls" type="text" name="direccion" placeholder=""></textarea>
+            
+            <label for="pw">Contraseña</label>
+            <input onChange={(e)=>setPW(e.target.value)} type={pwStatus} name="pw" placeholder="Ingresa una contraseña segura"  />
+            <p>{pwMsg}</p>
+            
+            <label for="pwConfirm">Confirmar Contraseña</label>
+            <input onChange={(e)=>setPWConfirm(e.target.value)} type={pwStatus} placeholder="Las contraseñas deben coincidir"/>
+            <p>{pwConfirmMsg}</p>
+            <a type="button"onClick={changePWStatus}><AiFillEye/></a>
+            
+            <div className="buttonArea">
+              <button type='submit'>Registrarse</button>
+            </div>
+          </form>
+          <p>{resultMsg}</p>
+        </div>
+        
+      </div>
   )
 }
