@@ -46,7 +46,7 @@ useEffect(()=>{
       setUserVal(true)
     }
     else{
-      setEmailMsg("username no valido!")
+      setEmailMsg("Correo no valido!")
       setUserVal(false)
     }
   }
@@ -79,7 +79,7 @@ const validateForm = (e)=>{
   console.log(usernameVal);
   console.log(pwVal);
   if (usernameVal === true & pwVal === true ){
-    createUser()
+    logUser(email,pw)
     console.log("se va a loguear el usuario");
   }
 }
@@ -88,10 +88,10 @@ const validateForm = (e)=>{
 const [resultMsg,setResMsg] = useState("")
 
 // POST para crear el usuario
-const  createUser = ()=>{
-  axios.post('https://backend-edw.herokuapp.com/login',{
+const  logUser = (email,password)=>{
+  axios.post('link del login backend aqui',{
   email:email,
-  password:pw
+  password:password
   })
   .then((res)=>{
     console.log(res);
@@ -105,28 +105,35 @@ const  createUser = ()=>{
 }
 
 return(
-  <div className="MainContainer">
+  <div className="LoginMainContainer">
       <div className="CardContainer">
+        {/* <div className="closeSection">
+          <button>X</button>
+        </div> */}
+        
           <h2>Inicia Sesion</h2>
           <form action="" method="POST" onSubmit={validateForm}>
+
             <label htmlFor="email">Correo Electronico</label>
             <input onChange={(e)=>setEmail(e.target.value)} type="email" name="email" placeholder="Ejemplo: Personita123@dominio.com" maxLength="16"  />
             <p>{emailMsg}</p>
+
             <label htmlFor="pw">Contraseña</label>
             <div className="pwContainer">
               <input onChange={(e)=>setPW(e.target.value)} type={pwStatus} name="pw" placeholder="Ingresa una contraseña segura"  />
-              <a type="button"onClick={changePWStatus}><AiFillEye/></a>
+              <a className= "revealPwBtn" type="button" onClick={changePWStatus}><AiFillEye/></a>
             </div>
             
             <p>{pwMsg}</p>
             
             <div className="buttonArea">
-              <button type='submit'>Iniciar Sesion</button>
+              <button  type='submit' className = "submitButton" >Iniciar Sesion</button>
             </div>
+
           </form>
       </div>
 
-    </div>
+  </div>
 )
 
 }

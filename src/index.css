@@ -8,9 +8,16 @@
 /* Clases Para login y registro */
 
 
-.MainContainer{
+.LoginMainContainer{
   display:flex;
   justify-content: center;
+  height:65.3vh;
+}
+
+.RegisterMainContainer{
+  display:flex;
+  justify-content: center;
+  height:93.3vh;
 }
 
 .CardContainer{
@@ -21,7 +28,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid;
+  border: 1px solid #80808091;
+
+}
+
+.closeSection{
+  display: flex;
+  width: 100%;
+  justify-content: right;
 }
 
 .CardContainer h2{
@@ -43,11 +57,8 @@
 
 .CardContainer input{
   height:2rem;
-  border:1px gray solid;
-  
-  border-top: none;
-  border-right: none;
-  border-left: none;
+  border: 1px #808080b4 solid;
+  width:100%;
 }
 
 
@@ -57,20 +68,51 @@
 }
 
 .CardContainer textarea{
-  height:2rem;
-  border:1px gray solid;
+  height:4rem;
+  border:1px #8080809f solid;
   margin-bottom: 1rem;
+  
 }
 
 .CardContainer textarea:focus{
   outline:none;
   background-color:rgb(238, 238, 238);
+  
+}
+
+.CardContainer select{
+  height:2rem;
+  border: 1px #808080b4 solid;
+}
+
+.pwContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 
 
+.revealPwBtn{
+  position: absolute;
+  /* right: 0;
+  left: -4%;
+  top: 5px;
+  bottom: 0; */
+  cursor: pointer;
+  right: 8px;
+}
 
-.CardContainer button{
+.buttonArea{
+  display:flex;
+  width:100%;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+
+.submitButton{
   transition: opacity .8s;
   width:6rem;
   height:30px;
@@ -78,8 +120,9 @@
   color:white;
   border: none;
   border-radius: 2rem;
+  cursor: pointer;
 }
-.CardContainer button:hover{
+.submitButton:hover{
   transition: opacity .8s;
   background-color: #175e9c;
   box-shadow: 2px 1px 16px 3px #004ebb;
@@ -87,10 +130,8 @@
 
 
 
-.buttonArea{
-  display:flex;
-  width:100%;
-  justify-content: center;
-}
+
+
+
 /* fin login y registro */
 

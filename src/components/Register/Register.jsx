@@ -28,7 +28,10 @@ export const Register = () => {
     const [userMsg,setUserMsg] = useState("");
     const [pwMsg,setPwMsg] = useState("");
     const [pwConfirmMsg,setPwConfirmMsg] = useState("");
+
+    // determina si la password se muestra o no
     const [pwStatus,setPwStatus] = useState("password")
+    const [pwCStatus,setPwCStatus] = useState("password")
   
     // estas son las variables que determinan si cada campo esta o no validado
     const [nameValidation,setNameVal] = useState(false)
@@ -41,8 +44,11 @@ export const Register = () => {
       console.log("baaa");
       pwStatus == "password" ? setPwStatus("text") :setPwStatus("password")
     }
-  
-    
+    // lo mismo pero con confirmar contraseña
+    function changePWCStatus(){
+      console.log("baaa");
+      pwCStatus == "password" ? setPwCStatus("text") :setPwCStatus("password")
+    }
   
     //estos useEffect son las validaciones con las expresiones regulares usando el useEffect cambiando el estado de los campos.
   
@@ -139,7 +145,8 @@ export const Register = () => {
   
     // POST para crear el usuario
     const  createUser = ()=>{
-      axios.post('https://backend-edw.herokuapp.com/usuario',{
+      // link del registro, y el objeto que se va a enviar por metodo post.
+      axios.post('link del registro api backend aqui',{
       username:username,
       password:pw,
       name:name
@@ -157,7 +164,7 @@ export const Register = () => {
 
 
   return (
-    <div className="MainContainer">
+    <div className="RegisterMainContainer">
         <div className="CardContainer">
           <h2>Registrate</h2>
           <form action="" method="POST" onSubmit={validateForm}>
@@ -172,26 +179,39 @@ export const Register = () => {
 
             <label for="ciudades">Ciudad de residencia</label>
             <select className="controls" type="text" name="ciudades" id="ciudades" placeholder="Ciudad">
-                <option >Ciudad</option>
-                <option value="value1">Armenia</option>
-                <option value="value2">Pasto</option>
-                <option value="value3">Cali</option>
+              <option>Armenia</option>
+              <option>Circasia</option>
+              <option>Calarcá</option>
+              <option>Montenegro</option>
+              <option>Quimbaya</option>
+              <option>Salento</option>
+              <option>Pijao</option>
+              <option>Córdoba</option>
+              <option>Tebaida</option>
+              <option>Filandia</option>
+              <option>Génova</option>
+              <option>Buenavista</option>
             </select>
 
             <label for="direccion">Direccion</label>
             <textarea className="controls" type="text" name="direccion" placeholder=""></textarea>
             
             <label for="pw">Contraseña</label>
-            <input onChange={(e)=>setPW(e.target.value)} type={pwStatus} name="pw" placeholder="Ingresa una contraseña segura"  />
+            <div className="pwContainer">
+              <input onChange={(e)=>setPW(e.target.value)} type={pwStatus} name="pw" placeholder="Ingresa una contraseña segura"  />
+              <a className= "revealPwBtn" type="button" onClick={changePWStatus}><AiFillEye/></a>
+            </div>
             <p>{pwMsg}</p>
             
             <label for="pwConfirm">Confirmar Contraseña</label>
-            <input onChange={(e)=>setPWConfirm(e.target.value)} type={pwStatus} placeholder="Las contraseñas deben coincidir"/>
+            <div className="pwContainer">
+              <input onChange={(e)=>setPWConfirm(e.target.value)} type={pwCStatus} placeholder="Las contraseñas deben coincidir"/>
+              <a className= "revealPwBtn" type="button" onClick={changePWCStatus}><AiFillEye/></a>
+            </div>
             <p>{pwConfirmMsg}</p>
-            <a type="button"onClick={changePWStatus}><AiFillEye/></a>
             
             <div className="buttonArea">
-              <button type='submit'>Registrarse</button>
+              <button type='submit' className = "submitButton">Registrarse</button>
             </div>
           </form>
           <p>{resultMsg}</p>
