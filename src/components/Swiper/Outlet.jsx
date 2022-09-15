@@ -7,7 +7,7 @@ import Cafe from '../images/Swiper/cafe.jpg'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from "swiper";
 
-export const Slide = () => {
+export const Outlet = () => {
   return (
     <div className='swipper'>
       <Swiper

@@ -1,0 +1,62 @@
+.swiper-wrapper{
+  background-color: transparent;
+}
+.swiper-slide{
+  background: transparent !important
+}
+.cardBusiness {
+  width: 90%;
+  height: 600PX;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*https://codepen.io/hakankoesekadam/pen/NVpjQZ*/
+.card{
+  position: relative;
+  width: 300px;
+  height: 450px;
+  border-radius: 15px;
+  background-color: aqua;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15px;
+}
+.img-card{
+  position: absolute;
+  width: 100%;
+  left: 0;
+  transition: all 1s ;
+}
+.img-card:hover {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  top: -50px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.card h1{
+  position: absolute;
+}
+.img-card:hover > .card h1{
+  display: none;
+}
+.card h2{
+  margin: 10px 0;
+}
+.card hr{
+  border: none;
+  width: 10%;
+}
+.card p{
+  margin: 15px 0px;
+}
+.card img{
+  border-radius: 15px;
+}
+

@@ -5,7 +5,7 @@ import Logo from '../images/Navbar/logo.webp'
 import { AiOutlineSearch } from "react-icons/ai";
 import { BsGeoAlt } from "react-icons/bs";
 import { useState } from 'react';
-import { ModalOpen } from '../Home/Home';
+import { Modal } from '../Modal/Modal';
 
 
 export const Navbar = ({location}) => {
@@ -73,7 +73,7 @@ return (
     </div>
     </nav>
     
-    <ModalOpen Open={openModal} CloseModal={CloseModal} />
+    <Modal Open={openModal} CloseModal={CloseModal} />
   </>
    )
  }
