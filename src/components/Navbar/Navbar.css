@@ -7,15 +7,15 @@ nav{
   z-index: 10000;
 }
 /* -- Clases del navbar -- */
-.first.abajo{
+.first.down{
   background-color: #fff;
   padding: 5px;
   box-shadow: 0px 0px 5px #2180a8;
 }
-.second.abajo{
+.second.down{
   display: block;
 }
-.third.abajo{
+.third.down{
   display: flex;
 }
 .first{

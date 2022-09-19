@@ -28,10 +28,10 @@ export const Navbar = ({location}) => {
     const nav = document.querySelector(".first");
     const componentSecond = document.querySelector(".second");
     const componentThird = document.querySelector(".third");
-    nav.classList.toggle("abajo",window.scrollY>0);
-    componentSecond.classList.toggle("abajo",window.scrollY>0);
-    componentThird.classList.toggle("abajo",window.scrollY>0);
-    componentIcon.classList.toggle("abajo",window.scrollY>0);
+    nav.classList.toggle("down",window.scrollY>0);
+    componentSecond.classList.toggle("down",window.scrollY>0);
+    componentThird.classList.toggle("down",window.scrollY>0);
+    componentIcon.classList.toggle("down",window.scrollY>0);
   });
 
 
