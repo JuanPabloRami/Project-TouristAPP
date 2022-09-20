@@ -3,7 +3,7 @@
 /*img fija*/
 
 .about{
-    background-image: url(../images/AboutUs/AboutAs01.jpg);
+    background-image: url('../../images/AboutUs/AboutAs01.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100%;
@@ -29,7 +29,7 @@
   display: flex;
   justify-content: space-evenly;
   width: 100%;
-  background-image: url(../images/AboutUs/fondoParrafo.jpg);
+  background-image: url('../../images/AboutUs/fondoParrafo.jpg');
   background-size: cover;
   
   
@@ -61,7 +61,7 @@
 .containerEstadistica{
   display: flex;
   justify-content: space-evenly;
-  background-image: url(../images/AboutUs/aboutEstadistica.jpg);
+  background-image: url('../../images/AboutUs/aboutEstadistica.jpg');
   background-size: cover;
   margin-top: 30px;
   width: 100%;

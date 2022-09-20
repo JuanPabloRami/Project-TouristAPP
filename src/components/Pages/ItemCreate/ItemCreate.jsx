@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const CrearItem = () => {
+export const ItemCreate = () => {
   return (
     <section className="form-register">
             <h4>Crea Tu Item</h4>

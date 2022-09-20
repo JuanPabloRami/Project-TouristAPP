@@ -26,7 +26,6 @@ export const Modal = ({ Open, CloseModal }) => {
   }
 
   return (
-
     <div className={`modal ${Open && 'modal-open'}`}>
       <div className="filter-modal">
         <button onClick={CloseModal} className='btn-close'>X</button>

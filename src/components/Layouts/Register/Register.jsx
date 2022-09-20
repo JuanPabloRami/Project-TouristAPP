@@ -140,9 +140,7 @@ export const Register = () => {
         createUser()
       }
     }
-    
-      
-  
+
     // POST para crear el usuario
     const  createUser = ()=>{
       // link del registro, y el objeto que se va a enviar por metodo post.

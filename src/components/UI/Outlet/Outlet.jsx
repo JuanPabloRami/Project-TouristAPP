@@ -1,7 +1,7 @@
 import React from 'react'
-import './swiper.css'
-import Food from '../images/Swiper/comida.jpg'
-import Cafe from '../images/Swiper/cafe.jpg'
+import './outlet.css'
+import Food from '../../images/Outlet/comida.jpg'
+import Cafe from '../../images/Outlet/cafe.jpg'
 
 //import swiper react components
 import { Swiper, SwiperSlide } from 'swiper/react';

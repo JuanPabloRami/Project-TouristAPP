@@ -1,6 +1,6 @@
 /* -- Clases del componente Incio -- */
 .home{
-    background-image: url('../images/Inicio/paisaje.jpeg');
+    background-image: url('../../images/Inicio/paisaje.jpeg');
     background-size: 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;

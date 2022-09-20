@@ -1,5 +1,5 @@
 import React from 'react'
-import AcercaDe from '../images/AboutUs/AcercaDe.jpg'
+import AcercaDe from '../../images/AboutUs/AcercaDe.jpg'
 import { BsFillTagsFill,BsPeopleFill } from 'react-icons/bs'
 import { FaThList } from 'react-icons/fa'
 import { AiTwotoneEyeInvisible, AiOutlinePlus } from 'react-icons/ai'

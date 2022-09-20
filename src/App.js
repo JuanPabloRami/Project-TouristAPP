@@ -1,18 +1,17 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import { Navbar} from '../src/components/Navbar/Navbar'
-import {Login} from '../src/components/Login/Login'
-import { NotFound } from './components/NotFound/NotFound.jsx'
-import { Footer } from './components/Footer/Footer.jsx'
-import {Register} from './components/Register/Register.jsx'
-import { AboutUs } from './components/AboutUs/AboutUs';
-import { Home } from './components/Home/Home';
-import { CrearNegocio } from './components/CrearNegocio/CrearNegocio';
-import { CrearItem } from './components/CrearItem/CrearItem';
 
-
-
-
+//Componentes react-router
+import {Home} from './components/Pages/Home/Home';
+import {Register} from './components/Layouts/Register/Register';
+import {Login} from './components/Layouts/Login/Login';
+import {BussinesCreate} from './components/Pages/BussinesCreate/BussinesCreate';
+import {ItemCreate} from './components/Pages/ItemCreate/ItemCreate';
+import {AboutUs} from './components/Pages/AboutUs/AboutUs';
+import {NotFound} from './components/Pages/NotFound/NotFound'
+//componentes
+import {Navbar} from './components/Layouts/Navbar/Navbar';
+import {Footer} from './components/Layouts/Footer/Footer';
 
 function App() {
   return (
@@ -22,8 +21,8 @@ function App() {
         <Route path='/' element={<Home/>} />
         <Route path='/register' element={<Register/>} />
         <Route path='/login' element={<Login/>} />
-        <Route path='/crear-negocio' element={<CrearNegocio/>} />
-        <Route path='/crear-item' element={<CrearItem/>} />
+        <Route path='/crear-negocio' element={<BussinesCreate/>} />
+        <Route path='/crear-item' element={<ItemCreate/>} />
         <Route path='/about-us' element={<AboutUs/>}/>
         <Route path='*' element={<NotFound/>} />
       </Routes>
