@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import Logo from "../../images/Navbar/logo.webp";
+
+import Logo from "../../images/Logos TouristApp/logo6.png";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BsGeoAlt } from "react-icons/bs";
 import { useState } from "react";
@@ -41,7 +42,7 @@ export const Navbar = ({ location }) => {
             <Link to="/">
               <img className="logo" src={Logo} />
             </Link>
-            <h1>TouristApp</h1>
+            
           </div>
           <div className="second">
             <div className="search-accounts">

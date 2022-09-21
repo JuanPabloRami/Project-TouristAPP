@@ -11,7 +11,7 @@ import {AboutUs} from './components/Pages/AboutUs/AboutUs';
 import {NotFound} from './components/Pages/NotFound/NotFound'
 //componentes
 import {Navbar} from './components/Layouts/Navbar/Navbar';
-import {Footer} from './components/Layouts/Footer/Footer';
+import {Footer} from './components/Layouts/Footer/Footer'
 
 function App() {
   return (
@@ -23,10 +23,10 @@ function App() {
         <Route path='/login' element={<Login/>} />
         <Route path='/crear-negocio' element={<BussinesCreate/>} />
         <Route path='/crear-item' element={<ItemCreate/>} />
-        <Route path='/about-us' element={<AboutUs/>}/>
+        <Route path='/aboutUs' element={<AboutUs/>}/>
         <Route path='*' element={<NotFound/>} />
       </Routes>
-      <Footer/>
+      <Footer/>    
     </div>
   );
 }

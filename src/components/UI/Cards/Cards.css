@@ -1,0 +1,121 @@
+.card{
+  position: relative;
+  font-family: calibri;
+  width: 300px;
+  height: 450px;
+  border-radius: 15px;
+  background: linear-gradient(#fff,#ffffff);
+  box-shadow: -2px -5px 10px #a8a7a7;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15px;
+  transition: all 1s;
+}
+.card h2{
+  color: #236581;
+}
+.card:hover{
+  box-shadow: 2px 5px 25px #cecece;
+  transition: all .5s ease-in-out;
+}
+
+.card:hover .img-card{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  top: -50px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transition: all .8s;
+}
+.img-card{
+  margin: auto;
+  border-radius: 15px;
+  position: absolute;
+  width: 100%;
+  right: 0;
+  left: 0;
+  top: 0;
+  transition: all 1s ;
+  z-index: 1;
+}
+.card-description{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.titles{
+  gap: 20px;
+  margin: 50px 0 20px 0;
+}
+.cetegory{
+  color: #3da6d3;
+}
+.description-bussines{
+  text-align: justify;
+  margin: 0 10px 30px 10px;
+}
+.card-description button{
+  position: absolute;
+  margin: auto;
+  width: 200px;
+  height: 45px;
+  font-size: .9rem;
+  border-radius: 10px 10px 0 0;
+  border: none;
+  background-color: #2180a8;
+  color: #fff;
+  cursor: pointer;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: .5s;
+}
+.card-description button:hover{
+  transition: .5s;
+  background-color: transparent;
+  color: #000;
+  transition: .5s;
+  font-weight: bold;
+}
+.card-description button:hover .card{
+  background-color: #000;
+}
+.title-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 30px;
+  position:absolute;
+  background-color: #0000009f;
+  padding: 10px;
+  width: 100%;
+  height: 21%;
+  border-radius: 0 0 15px 15px ;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  transition: all 1s ease;
+}
+.card:hover .title-card{
+  display: none;
+  transition: all 1s ease-in-out;
+}
+.img-card .title-card{
+  transition: all 1s;
+}
+hr{
+  width: 60px;
+}
+.t-stroke {
+ color: #fff;
+}
+.t-shadow {
+  text-shadow: -5px 3px #0e2d3a;
+  }
+  

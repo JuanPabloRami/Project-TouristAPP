@@ -33,14 +33,18 @@ nav{
   padding-left: 20px;
 }
 
-.logo.abajo{
-  width: 50px;
+.logo.down{
+  transition: all .7s;
+  width: 160px;
 }
 .logo{
-  width: 60px;
+  transition: all .7s;
+  width: 220px;
 }
 .icon h1{
-  font-size: 1.2rem;
+  font-size: 1.4rem;
+  color: #2180a8;
+  text-shadow: -2px 0px 2px rgb(18, 82, 109);
 }
 
 .search-places{

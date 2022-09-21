@@ -1,51 +1,61 @@
 import React from 'react'
-import { FaBeer } from 'react-icons/fa';
-import { FaFacebook as IconFacebook, FaYoutube as IconYoutube} from 'react-icons/fa';
-import {BsTwitter as IconTwitter, BsGithub as IconGithub, BsGithub} from 'react-icons/bs';
-import EstiloFoter from './Footer.module.css'
+import { Link } from 'react-router-dom';
+import './Footer.css'
 
+//Imagenes
+import Logo from '../../images/Logos TouristApp/logo5.png'
+
+//Iconos
+import {
+  FaFacebook as IconFacebook,
+  FaYoutube as IconYoutube,
+  FaHandsHelping as Help
+} from "react-icons/fa";
+import {
+  HiUserGroup as AboutUs,
+  HiClipboardList as Terms
+} from 'react-icons/hi'
+import {
+  IoDocumentLock as Privacy
+} from 'react-icons/io5'
+import {
+  BsTwitter as IconTwitter,
+  BsGithub as IconGithub,
+} from "react-icons/bs";
 
 
 export const Footer = () => {
-    return(
-        <footer className={EstiloFoter.footer}>
-            <div className={EstiloFoter.containerInfo}>
-                <div className={EstiloFoter.infoApp}>
-                    <h3>Tourist App</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore temporibus beatae aut voluptates dolor iure, quam ad voluptas? Magni nostrum quam voluptatum id aliquam vitae eos assumenda necessitatibus perspiciatis aspernatur!</p>
-                </div>
-                <div className={EstiloFoter.contentButtons}>
-                    <div className={EstiloFoter.contentOptions}>
-                        <div className={EstiloFoter.aboutUss}>
-                            <h3>Sobre Nosotros</h3>
-                            <p><a href="/">Sobre Nosotros</a></p>
-                            <p><a href="/">Terminos y Condiciones</a></p>
-                            <p><a href="/">Politica de privacidad</a></p>
-                        </div>
-                        <div className={EstiloFoter.customerService}>
-                            <h3>Servicio al cliente</h3>
-                            <p><a href="/">Centro de ayuda</a></p>
-                            <p><a href="/">Terminos y Condiciones</a></p>
-                            <p><a href="/">Politica de privacidad</a></p>
-                        </div>
-                    </div>
-                    <div className={EstiloFoter.contentInfoRed}>
-                        <hr />
-                        <div className={EstiloFoter.icons}>
-                            <a href='/' className={EstiloFoter.iconBtn}><IconFacebook /></a>
-                            <a href='/' className={EstiloFoter.iconBtn}><IconTwitter/></a>
-                            <a href='/' className={EstiloFoter.iconBtn}><IconYoutube/></a>
-                            <a href='/' className={EstiloFoter.iconBtn}><BsGithub/></a>
-                        </div>
-                    </div>
-                </div>
-                
-                
-
-            </div>
-            <div className={EstiloFoter.subFooter}>
-                <h4>© Tourist App, 2022. <br />Dev Group, Armenia - Quindio - Teléfono: (57) 3012117531</h4>
-            </div>
-        </footer>
-    )
+  return (
+    <footer>
+      <div className="services">
+        <div className="logoFooter">
+          <img src={Logo} alt="Logo" />
+          <h2>Tourist<span>App</span></h2>
+        </div>
+            <Link to='/AboutUs'>
+              <p> <AboutUs size='10%'/> Sobre Nosotros</p>
+            </Link >
+            <Link  to='/'>
+              <p> <Terms size='10%'/>Terminos y condiciones</p>
+            </Link>
+            <Link  to='/'>
+              <p> <Privacy size='10%'/>Politica de privacidad</p>
+            </Link>
+            <Link  to='/'>
+              <p> <Help size='10%'/>Centro de ayuda</p>
+            </Link>
+      </div>
+      <hr></hr>
+      <div className="follow">
+        <div className="icons">
+          <a className='img-icon' href="#"><IconFacebook size='70%'/></a>
+          <a className='img-icon' href="#"><IconGithub size='70%'/></a>
+          <a className='img-icon' href="#"><IconTwitter size='70%'/></a>
+          <a className='img-icon' href="#"><IconYoutube size='70%'/></a>
+        </div>
+        <p>© Tourist App, 2022.<br></br>
+        Dev Group, Armenia - Quindio - Teléfono: (57) 3012117531</p>
+      </div>
+    </footer>
+  )
 }
