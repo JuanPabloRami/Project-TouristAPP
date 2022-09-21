@@ -32,7 +32,7 @@ export const CardBusiness = () => {
             waitForTransition: true,
             disableOnInteraction: false,
           }}
-          modules={[FreeMode, Pagination, Autoplay ]}
+          modules={[FreeMode, Pagination ]}
           className="mySwiper"
         >
           <SwiperSlide>

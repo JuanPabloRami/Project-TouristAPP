@@ -10,7 +10,7 @@ export const Register = () => {
 
     //objeto el cual incluye todas las expresiones regulares para validar los campos.
     const regularExpressions = {
-      name:/^[a-z ,.'-]+$/i,
+      name:/¿^[a-z ,.'-]+$/i,
       username:/^[a-zA-Z0-9\_\-]{4,16}$/,
       email:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
       password:/^.{4,12}$/,
@@ -42,12 +42,12 @@ export const Register = () => {
     //la funcion que hace la contraseña visible o no visible con el boton reveal password
     function changePWStatus(){
       console.log("baaa");
-      pwStatus == "password" ? setPwStatus("text") :setPwStatus("password")
+      pwStatus === "password" ? setPwStatus("text") :setPwStatus("password")
     }
     // lo mismo pero con confirmar contraseña
     function changePWCStatus(){
       console.log("baaa");
-      pwCStatus == "password" ? setPwCStatus("text") :setPwCStatus("password")
+      pwCStatus === "password" ? setPwCStatus("text") :setPwCStatus("password")
     }
   
     //estos useEffect son las validaciones con las expresiones regulares usando el useEffect cambiando el estado de los campos.
@@ -72,7 +72,7 @@ export const Register = () => {
   
     // validacion de username
     useEffect(()=>{
-      if (username == "") {
+      if (username === "") {
         setUserMsg("") 
         setUserVal(false)
       }
@@ -90,7 +90,7 @@ export const Register = () => {
   
     // validacion de password
     useEffect(()=>{
-      if (pw == ""){
+      if (pw === ""){
         setPwMsg("")
         setPwVal(false)
       }
@@ -108,7 +108,7 @@ export const Register = () => {
   
     // validacion de confirmacion de password
     useEffect(()=>{
-      if (pwConfirm == ""){
+      if (pwConfirm === ""){
         setPwConfirmMsg("")
         setPwConfVal(false)
       }
@@ -136,7 +136,7 @@ export const Register = () => {
       console.log(usernameVal);
       console.log(pwVal);
       console.log(pwConfVal);
-      if (nameValidation == true & usernameVal == true & pwVal == true & pwConfVal == true){
+      if (nameValidation === true & usernameVal === true & pwVal === true & pwConfVal === true){
         createUser()
       }
     }
@@ -176,19 +176,19 @@ export const Register = () => {
             
 
             <label for="ciudades">Ciudad de residencia</label>
-            <select className="controls" type="text" name="ciudades" id="ciudades" placeholder="Ciudad">
-              <option>Armenia</option>
-              <option>Circasia</option>
-              <option>Calarcá</option>
-              <option>Montenegro</option>
-              <option>Quimbaya</option>
-              <option>Salento</option>
-              <option>Pijao</option>
-              <option>Córdoba</option>
-              <option>Tebaida</option>
-              <option>Filandia</option>
-              <option>Génova</option>
-              <option>Buenavista</option>
+            <select value="Municipios" className="controls" type="text" name="ciudades" id="ciudades" placeholder="Ciudad">
+              <option value="Armenia">Armenia</option>
+              <option value="Circasia">Circasia</option>
+              <option value="Calarcá">Calarcá</option>
+              <option value="Montenegro">Montenegro</option>
+              <option value="Quimbaya">Quimbaya</option>
+              <option value="Salento">Salento</option>
+              <option value="Pijao">Pijao</option>
+              <option value="Córdoba">Córdoba</option>
+              <option value="Tebaida">Tebaida</option>
+              <option value="Filandia">Filandia</option>
+              <option value="Génova">Génova</option>
+              <option value="Buenavista">Buenavista</option>
             </select>
 
             <label for="direccion">Direccion</label>

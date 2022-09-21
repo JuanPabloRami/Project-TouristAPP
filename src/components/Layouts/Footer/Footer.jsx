@@ -32,18 +32,18 @@ export const Footer = () => {
           <img src={Logo} alt="Logo" />
           <h2>Tourist<span>App</span></h2>
         </div>
-            <Link to='/AboutUs'>
+            <a href='/AboutUs'>
               <p> <AboutUs size='10%'/> Sobre Nosotros</p>
-            </Link >
-            <Link  to='/'>
+            </a >
+            <a  href='/'>
               <p> <Terms size='10%'/>Terminos y condiciones</p>
-            </Link>
-            <Link  to='/'>
+            </a>
+            <a  href='/'>
               <p> <Privacy size='10%'/>Politica de privacidad</p>
-            </Link>
-            <Link  to='/'>
+            </a>
+            <a  href='/'>
               <p> <Help size='10%'/>Centro de ayuda</p>
-            </Link>
+            </a>
       </div>
       <hr></hr>
       <div className="follow">

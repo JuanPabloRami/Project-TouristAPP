@@ -1,27 +1,23 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import {ModalContext} from '../../context/Modal/ModalContext'
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
+//Imagenes
 import Logo from "../../images/Logos TouristApp/logo6.png";
-import { AiOutlineSearch } from "react-icons/ai";
-import { BsGeoAlt } from "react-icons/bs";
-import { useState } from "react";
-import { Modal } from "../Modal/Modal";
 
-export const Navbar = ({ location }) => {
-  const [openModal, setOpenModal] = useState(false);
-  const body = document.querySelector("body");
+//Iconos
+import { AiOutlineSearch as Lupa } from "react-icons/ai";
+import { BsGeoAlt as Location } from "react-icons/bs";
 
-  const IsOpenModal = () => {
-    setOpenModal(true);
-    body.style = "overflow-y:hidden;";
-  };
+//Componentes
+import {Modal} from '../../Layouts/Modal/Modal'
 
-  const CloseModal = () => {
-    setOpenModal(false);
-    body.style = "overflow-y:scroll;";
-    console.log(location);
-  };
+export const Navbar = () => {
+
+  const { OpenModal,locationState} = useContext(ModalContext);
+
+  
 
   window.addEventListener("scroll", () => {
     const componentIcon = document.querySelector(".logo");
@@ -39,16 +35,15 @@ export const Navbar = ({ location }) => {
       <nav>
         <div className="first">
           <div className="icon">
-            <Link to="/">
-              <img className="logo" src={Logo} />
-            </Link>
-            
+            <a href="/">
+              <img className="logo" src={Logo} alt='Logotipo TouristApp'/>
+            </a>
           </div>
           <div className="second">
             <div className="search-accounts">
               <div className="search-places">
                 <span className="icon-search">
-                  <AiOutlineSearch />
+                  <Lupa />
                 </span>
                 <input
                   className="input-search"
@@ -58,9 +53,9 @@ export const Navbar = ({ location }) => {
               </div>
               <div className="location">
                 <span className="location-img">
-                  <BsGeoAlt />
+                  <Location />
                 </span>
-                <h3 onClick={IsOpenModal}>Ubicación...{location}</h3>
+                <h3 onClick={OpenModal}>{`${ locationState ?  locationState:'Ubicacion..'}`}</h3>
               </div>
               <ul className="dropdown-menu">
                 <li>
@@ -80,13 +75,12 @@ export const Navbar = ({ location }) => {
         </div>
         <div className="third">
           <span className="location-img">
-            <BsGeoAlt />
+            <Location />
           </span>
           <h3>Armenia - Quindío</h3>
         </div>
       </nav>
-
-      <Modal Open={openModal} CloseModal={CloseModal} />
+      <Modal/>
     </>
   );
 };

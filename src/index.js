@@ -8,11 +8,18 @@ import { BrowserRouter } from 'react-router-dom';
 import "swiper/css/bundle";
 import "./swiper.css";
 
+//Contextos
+import {ModalContextProvider} from './components/context/Modal/ModalContext'
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter><App /></BrowserRouter>
+    <ModalContextProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ModalContextProvider>
   </React.StrictMode>
 );
 

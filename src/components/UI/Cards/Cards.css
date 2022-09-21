@@ -100,11 +100,11 @@
   left: 0;
   right: 0;
   z-index: 2;
-  transition: all 1s ease;
+  transition: all 1s;
 }
 .card:hover .title-card{
   display: none;
-  transition: all 1s ease-in-out;
+  transition: all 1s;
 }
 .img-card .title-card{
   transition: all 1s;

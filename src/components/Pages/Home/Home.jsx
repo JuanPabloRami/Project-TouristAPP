@@ -7,13 +7,12 @@ import { CardBusiness } from "../../UI/BussinesCard/CardBusiness";
 import {OurTeam} from '../../Layouts/OurTeam/OurTeam'
 //imagenes
 import WelcomeImg from '../../images/Home/welcome.jpg'
-import Logotipo from '../../images/Navbar/logo.webp'
 
 export const Home = () => {
   return (
     <>
      <div className="welcome">
-      <img className="img-welcome" src={WelcomeImg} alt="photo welcome" />
+      <img className="img-welcome" src={WelcomeImg} alt="welcome" />
       <div className="description-aplication">
         <h1>¡Bienvenidos!</h1>
         <p>
