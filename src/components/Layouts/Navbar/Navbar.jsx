@@ -18,7 +18,8 @@ import {Register} from '../Register/Register'
 export const Navbar = () => {
   const [menu,setMenu] = useState("close")
 
-  const { OpenModal,locationState} = useContext(ModalContext);
+  //Uso de contexto
+  const { OpenModal,locationState, openLogin,openRegister} = useContext(ModalContext);
 
   window.addEventListener("scroll", () => {
     const icon = document.querySelector(".logo-touristapp");
@@ -63,8 +64,8 @@ export const Navbar = () => {
           </div>
           <div className="links ">
             <ul>
-              <li><span onClick={OpenModal}>Registraté</span></li>
-              <li><span onClick={OpenModal}>Inicia sesión</span></li>
+              <li><span onClick={openRegister}>Registraté</span></li>
+              <li><span onClick={openLogin}>Inicia sesión</span></li>
             </ul>
           </div>
         </div>
@@ -83,14 +84,14 @@ export const Navbar = () => {
             <li className="list">Inicio</li>
             <li className="list">Buscar</li>
             <li className="list">Servicios</li>
-            <li><span onClick={OpenModal}>Registro</span></li>
-            <li><span onClick={OpenModal}>Iniciar sesión</span></li>
+            <li><span onClick={openRegister}>Registro</span></li>
+            <li><span onClick={openLogin}>Iniciar sesión</span></li>
           </ul>
         </div>
       </nav>
       <Modal/>
-      {/*<Login/>
-      <Register/>*/}
+      <Login/>
+      <Register/>
     </>
   );
 };

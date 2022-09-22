@@ -14,7 +14,6 @@
   height: 100%;
   transition: all .6s ease-in-out;
   z-index:100000;
-
 }
 .filter-modal{
   border-radius: 10px;

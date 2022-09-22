@@ -1,0 +1,34 @@
+.form-register{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 10px;
+  width: 400px;
+  height: 700px;
+}
+.form-register h2{
+  margin: 0px 15px 35px 15px;
+}
+.form-register input:focus{
+  border: none;
+ }
+.form-register input:focus + label .text-name{
+  transform: translateY(-165%);
+  font-size: .9rem;
+  color: #000000;
+  transition: all .5s;
+}
+.containerLocation{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+.containerLocation select{
+  border-radius: 5px;
+  margin-bottom: 30px;
+  width: 70%;
+  padding: 10px;
+}

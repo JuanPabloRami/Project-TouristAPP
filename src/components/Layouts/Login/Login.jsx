@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import {AiFillEye} from 'react-icons/ai'
+import React, { useEffect, useState,useContext } from 'react'
+import './Login.css'
 import axios from 'axios'
-import { useContext } from 'react'
 
+//iconos
+import {AiFillEye} from 'react-icons/ai'
+//componentes
 import {ModalContext} from '../../context/Modal/ModalContext'
 
 
@@ -107,30 +109,32 @@ const  logUser = (email,password)=>{
   
 }
 
-const {openModal} = useContext(ModalContext)
+const {loginUser,closeLogin} = useContext(ModalContext);
+
 
 return(
-  <div className={`modal ${openModal ? 'modalLogin-open-':'modal-close'}`}>
-    <div className="LoginMainContainer">
-      <div className="CardContainer">
-          <h2>Inicia Sesion</h2>
-          <form action="" method="POST" onSubmit={validateForm}>
-            <label htmlFor="email">Correo Electronico</label>
-            <input onChange={(e)=>setEmail(e.target.value)} type="email" name="email" placeholder="Ejemplo: Personita123@dominio.com" maxLength="16"  />
+  <div className={`modal-login${loginUser ? ' open':' close'}`}>
+    <div className="form">
+      <button className='btn-close' onClick={closeLogin}>X</button>
+      <form>
+          <h2>Iniciar sesión</h2>
+          <div className="ContainerInput">
+            <input onChange={(e)=>setEmail(e.target.value)} type="email" name="email"/>
+            <label htmlFor="email">
+              <span className='text-name'>Correo Electronico</span>
+            </label>
             <p>{emailMsg}</p>
-            <label htmlFor="pw">Contraseña</label>
-            <div className="pwContainer">
-              <input onChange={(e)=>setPW(e.target.value)} type={pwStatus} name="pw" placeholder="Ingresa una contraseña segura"  />
-              <a className= "revealPwBtn" type="button" onClick={changePWStatus}><AiFillEye/></a>
-            </div>
-            <p>{pwMsg}</p>
-            <div className="buttonArea">
-              <button  type='submit' className = "submitButton" >Iniciar Sesion</button>
-            </div>
-          </form>
-      </div>
+          </div>
+        <div className="ContainerInput">
+          <input onChange={(e)=>setPW(e.target.value)} type={pwStatus} name="pw"/>
+          <label htmlFor="pw">
+            <span className='text-name'>Contraseña</span>
+          </label>
+          <a className= "iconShow" type="button" onClick={changePWStatus}><AiFillEye/></a>
+          <p>{pwMsg}</p>
+        </div>
+        <button className='btn-login'>Ingresar</button>
+      </form>
     </div>
   </div>
-)
-
-}
+)}

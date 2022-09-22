@@ -1,0 +1,99 @@
+.modal-login{
+  display: none;
+  background-color: #0e0e0e7e;
+  transition: all .3s ease-in-out;
+  z-index: 100000;
+}
+.open{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position:fixed;
+  width: 100%;
+  height: 100%;
+  transition: all .6s ease-in-out;
+  z-index:100000;
+}
+.form{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 10px;
+  width: 400px;
+  height: 300px;
+}
+.form h2{
+  margin: 0px 15px 35px 15px;
+}
+form{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.text-name{
+  position: absolute;
+  left: 70px;
+  top: 11px;
+  transition: all .5s;
+  z-index: 9;
+}
+form input{
+  width: 70%;
+  padding: 10px;
+  margin-bottom: 45px;
+  z-index: 10;
+  background-color: transparent;
+  border: none;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.ContainerInput p{
+  position: absolute;
+  bottom: 22px;
+  left: 65px;
+  color: #d30505;
+}
+.form input:focus{
+  border: none;
+ }
+.form input:focus + label .text-name{
+  transform: translateY(-165%);
+  font-size: .9rem;
+  color: #000000;
+  transition: all .5s;
+}
+
+.ContainerInput{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+.iconShow{
+  position: absolute;
+  top: 12px;
+  right: 70px;
+  z-index: 100;
+}
+.btn-login{
+  cursor: pointer;
+  border: none;
+  padding: 8px 25px;
+  color: #000;
+  background-color: #fff;
+  box-shadow: 0px 1px 2px #2f8ab1;
+  border-radius: 5px;
+  font-size: .9rem;
+  transition: all .3s;
+}
+.btn-login:hover{
+  transition: all .5s;
+  background-color: #2f8ab1;
+  color: #fff;
+}

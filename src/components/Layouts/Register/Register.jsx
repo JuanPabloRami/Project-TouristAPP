@@ -1,13 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {AiFillEye} from 'react-icons/ai'
 import axios from 'axios'
+import './Register.css'
 
+import {ModalContext} from '../../context/Modal/ModalContext'
 
+import {Select} from '../../UI/SelectLocation/Select'
 
 
 export const Register = () => {
-
     //objeto el cual incluye todas las expresiones regulares para validar los campos.
     const regularExpressions = {
       name:/¿^[a-z ,.'-]+$/i,
@@ -160,61 +162,64 @@ export const Register = () => {
       
     }
 
+  const {registerUser,closeRegister} = useContext(ModalContext)
 
   return (
-    <div className="RegisterMainContainer">
-        <div className="CardContainer">
-          <h2>Registrate</h2>
-          <form action="" method="POST" onSubmit={validateForm}>
-            <label for="name">Nombre completo</label>
-            <input onChange={(e)=>setName(e.target.value)} type="text" name="name" placeholder="ejemplo: juan pedro" />
-            <p>{nameMsg}</p>
-            
-            <label for="username">Nombre de usuario</label>
-            <input onChange={(e)=>setUsername(e.target.value)} type="username" name="username" placeholder="No debe contener espacios" maxLength="16"  />
-            <p>{userMsg}</p>
-            
-
-            <label for="ciudades">Ciudad de residencia</label>
-            <select value="Municipios" className="controls" type="text" name="ciudades" id="ciudades" placeholder="Ciudad">
-              <option value="Armenia">Armenia</option>
-              <option value="Circasia">Circasia</option>
-              <option value="Calarcá">Calarcá</option>
-              <option value="Montenegro">Montenegro</option>
-              <option value="Quimbaya">Quimbaya</option>
-              <option value="Salento">Salento</option>
-              <option value="Pijao">Pijao</option>
-              <option value="Córdoba">Córdoba</option>
-              <option value="Tebaida">Tebaida</option>
-              <option value="Filandia">Filandia</option>
-              <option value="Génova">Génova</option>
-              <option value="Buenavista">Buenavista</option>
-            </select>
-
-            <label for="direccion">Direccion</label>
-            <textarea className="controls" type="text" name="direccion" placeholder=""></textarea>
-            
-            <label for="pw">Contraseña</label>
-            <div className="pwContainer">
-              <input onChange={(e)=>setPW(e.target.value)} type={pwStatus} name="pw" placeholder="Ingresa una contraseña segura"  />
-              <a className= "revealPwBtn" type="button" onClick={changePWStatus}><AiFillEye/></a>
-            </div>
-            <p>{pwMsg}</p>
-            
-            <label for="pwConfirm">Confirmar Contraseña</label>
-            <div className="pwContainer">
-              <input onChange={(e)=>setPWConfirm(e.target.value)} type={pwCStatus} placeholder="Las contraseñas deben coincidir"/>
-              <a className= "revealPwBtn" type="button" onClick={changePWCStatus}><AiFillEye/></a>
-            </div>
-            <p>{pwConfirmMsg}</p>
-            
-            <div className="buttonArea">
-              <button type='submit' className = "submitButton">Registrarse</button>
-            </div>
-          </form>
-          <p>{resultMsg}</p>
-        </div>
-        
+    <div className={`modal-login${registerUser ? ' open':' close'}`}>
+       <div className="form-register">
+      <button className='btn-close' onClick={closeRegister}>X</button>
+      <form>
+        <h2>Registro</h2>
+      <div className="ContainerInput">
+        <input onChange={(e)=>setName(e.target.value)} type="text" name="name"/>
+        <label for="name">
+          <span className='text-name'>Nombre completo</span>
+        </label>
+        <p>{nameMsg}</p>
       </div>
+      <div className="ContainerInput">
+        <input onChange={(e)=>setUsername(e.target.value)} type="username" name="username"/>
+        <label for="username">
+          <span className='text-name'>Nombre de usuario</span>
+        </label>
+        <p>{userMsg}</p>
+      </div>
+
+        <div className="containerLocation">
+          <label for="ciudades">Ciudad de residencia</label>
+            <div className="select">
+              <Select/>
+            </div>
+        </div>
+
+      <div className="ContainerInput">
+        <input className="controls" type="text" name="direccion"/>
+        <label for="direccion">
+          <span className='text-name'>Direccion</span>
+        </label>
+      </div>
+
+      <div className="ContainerInput">
+        <input onChange={(e)=>setPW(e.target.value)} type={pwStatus} name="pw"/>
+        <label for="pw">
+          <span className='text-name'>Contraseña</span>
+        </label>
+        <a className= "iconShow" type="button" onClick={changePWStatus}><AiFillEye/></a>
+        <p>{pwMsg}</p>
+      </div>
+
+
+      <div className="ContainerInput">
+          <input onChange={(e)=>setPWConfirm(e.target.value)} type={pwCStatus}/>
+          <label for="pwConfirm">
+            <span className='text-name'>Confirmar Contraseña</span>
+          </label>
+          <a className= "iconShow" type="button" onClick={changePWCStatus}><AiFillEye/></a>
+        <p>{pwConfirmMsg}</p>
+      </div>
+      <button className='btn-login'>Registrarse</button>
+      </form>
+    </div>
+    </div>
   )
 }
