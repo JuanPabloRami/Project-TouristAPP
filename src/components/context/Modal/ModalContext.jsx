@@ -33,7 +33,6 @@ export const ModalContextProvider = (props) => {
   const locationChange = () => {
     const location = inputCity + " - " + inputDepartment;
     CloseModal();
-    console.log(location);
     setLocationState(location)
     return location;
   }

@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import {AiFillEye} from 'react-icons/ai'
 import axios from 'axios'
+import { useContext } from 'react'
+
+import {ModalContext} from '../../context/Modal/ModalContext'
 
 
 export const Login = () => {
@@ -104,35 +107,29 @@ const  logUser = (email,password)=>{
   
 }
 
+const {openModal} = useContext(ModalContext)
+
 return(
-  <div className="LoginMainContainer">
+  <div className={`modal ${openModal ? 'modalLogin-open-':'modal-close'}`}>
+    <div className="LoginMainContainer">
       <div className="CardContainer">
-        {/* <div className="closeSection">
-          <button>X</button>
-        </div> */}
-        
           <h2>Inicia Sesion</h2>
           <form action="" method="POST" onSubmit={validateForm}>
-
             <label htmlFor="email">Correo Electronico</label>
             <input onChange={(e)=>setEmail(e.target.value)} type="email" name="email" placeholder="Ejemplo: Personita123@dominio.com" maxLength="16"  />
             <p>{emailMsg}</p>
-
             <label htmlFor="pw">Contraseña</label>
             <div className="pwContainer">
               <input onChange={(e)=>setPW(e.target.value)} type={pwStatus} name="pw" placeholder="Ingresa una contraseña segura"  />
               <a className= "revealPwBtn" type="button" onClick={changePWStatus}><AiFillEye/></a>
             </div>
-            
             <p>{pwMsg}</p>
-            
             <div className="buttonArea">
               <button  type='submit' className = "submitButton" >Iniciar Sesion</button>
             </div>
-
           </form>
       </div>
-
+    </div>
   </div>
 )
 

@@ -6,10 +6,11 @@
   margin-bottom: 80px;
 }
 .our-team h1{
-  color: #000;
+  color: white;
   margin-top: 10px;
   text-transform: uppercase;
   font-size: 3rem;
+  text-shadow: 0px 1px 2px black;
 }
 .about-us{
   width: 100%;

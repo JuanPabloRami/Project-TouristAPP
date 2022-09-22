@@ -1,302 +1,239 @@
-nav{
-  position: fixed;
-  top: 0;
-  display: flex;
-  flex-direction: column;
+#services{
+  display: none;
+}
+.nav{
   width: 100%;
-  z-index: 10000;
-}
-/* -- Clases del navbar -- */
-.first.down{
-  background-color: #fff;
-  padding: 5px;
-  box-shadow: 0px 0px 5px #2180a8;
-}
-.second.down{
-  display: block;
-}
-.third.down{
-  display: flex;
-}
-.first{
+  height: 100px;
+  position: fixed;
   transition: all .7s;
   background-color: transparent;
   display: flex;
   justify-content: space-between;
   padding: 26px 0px 10px 30px;
-}
-.icon{
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: 38%;
-  padding-left: 20px;
-}
-
-.logo.down{
+  z-index: 10000;
   transition: all .7s;
-  width: 160px;
 }
-.logo{
-  transition: all .7s;
-  width: 220px;
-}
-.icon h1{
-  font-size: 1.4rem;
-  color: #2180a8;
-  text-shadow: -2px 0px 2px rgb(18, 82, 109);
-}
-
-.search-places{
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
-.input-search{
-  width: 30rem;
-  margin: 5px;
-  border-radius: 50px;
-  border: none;
-  box-shadow: 0px 0px 3px #000000;
-  outline: 0;
-  padding: 8px 30px 8px 35px ;
-  font-size: .9rem;
-
-}
-.input-search::placeholder{
-  color: #0000009c;
-}
-.icon-search{
-  position: absolute;
-  font-size: 1.4rem;
-  left: 12px;
-  bottom: 3px;
-}
-.second{
-  display: none;
-  align-items: center;
-  justify-content: space-around;
-  width: 70%;
-  transition: 0.7s;
-  /* background: linear-gradient(31deg,transparent 9%, #3bb0e2 13%, #3bb0e2 90%); */
-}
-.search-accounts{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin: 2px;
-}
-.location{
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-}
-.location-img{
-  font-size: 1.1rem;
-  color: red;
-}
-.location h3{
-  font-size: 1rem;
-  color: #292929;
-  cursor: pointer;
-}
-.third{
-  visibility: hidden;
-  display: none;
-  justify-content: flex-start;
-  background-color: transparent;
-}
-.third p{
-  background-color: #cecece;
-  clip-path:  polygon(0% 0%, 85% 0%, 100% 100%, 15% 100%);
-  padding: 2px 25px;
-}
-
-
-/* -- menu desplegable -- */
-.dropdown-menu{
-  display: flex;
-  justify-content: space-around;
-  list-style: none;
-}
-.dropdown-menu li{
-  position: relative;
-	display: inline-block;
-}
-.dropdown-menu  li:hover{
-  border-radius: 0;
-  box-shadow: none;
-}
-.accounts{
-  color: #fff;
-  font-size: 1rem;
-  padding: 8px 12px;
-  background-color: #2180a8;
-  box-shadow: 0px 0px 10px #2f8ab1;
-  margin-right: 20px;
-  
-}
-.accounts:hover{
-  border-radius: 0;
-}
-.vertical-menu{
-  position: absolute;
-	background: #2180a8;
-	width: 97%;
-	visibility: hidden;
-	opacity: 0;
-	transition: opacity .8s;
-}
-.vertical-menu:hover::before .accounts {
-  border-radius: 0;
-}
-.dropdown-menu li:hover .vertical-menu{
-  position: absolute;
-	visibility: visible;
-	opacity: 1;
-  
-}
-.vertical-menu li:hover{
-	background-color: #2f8ab1;
+nav.down{
   width: 100%;
-  
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  background-color: white;
+  box-shadow: 0px -1px 10px #215e79;
+  padding: 0;
 }
-
-.vertical-menu li a{
+.logo-touristapp-burger{
+  width: 170px;
+  margin: 0 10px;
+}
+.logo-touristapp.down{
+  transition: all .7s;
+  position: relative;
+  width: 170px;
+  margin: 0 10px;
+}
+.menu{
+  width: 100px;
+  font-size: 40px;
   cursor: pointer;
-  display: block;
-	padding: 15px;
-	color: #fff;
-	text-decoration: none;
 }
-/* -- terminación del menu desplegable -- */
-
-@media (max-width: 1500px){
-  .icon{
-    width: 10%;
-  }
+.menu-active{
+  position: absolute;
+  background-color: white;
+  width: 200px;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  transition: unset .5s ease-in;
 }
-@media (max-width: 1380px){
-  .input-search{
-    width: 22rem;
-  }
-  .location h3{
-    font-size: .86rem;
-  }
-  .accounts{
-    padding: 8px 13px;
-    font-size: .9rem;
-  }
+.menu-close{
+  display: none;
+  -webkit-transition: width .5s;
+  transition: width .5s;
 }
-@media (max-width: 1100px){
-  .second.abajo{
-    width: 100%;
-  }
-  .icon{
-    width: 30%;
-  }
-  .input-search{
-    width: 17rem;
-  }
-  .location h3{
-    font-size: .8rem;
-  }
-  
-  .accounts{
-    padding: 6px 10px;
-    font-size: .8rem;
-  }
+.opacity{
+  transition: all .5s ease;
 }
-@media (max-width: 950px){
-  .second.abajo{
-    width: 100%;
-  }
-  .icon{
-    width: 25%;
-  }
-  .input-search{
-    width: 20rem;
-  }
-  .location h3{
-    font-size: .8rem;
-  }
-  .accounts{
-    padding: 6px 10px;
-    font-size: .8rem;
-  }
+.services-menu{
+  width: 100%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
-@media (max-width: 900px){
-  .second.abajo{
-    width: 100%;
-  }
-  .icon{
-    width: 20%;
-    padding-left: 5px;
-  }
-  .input-search{
-    width: 20rem;
-  }
-  .location h3{
-    font-size: .8rem;
-  }
-  .accounts{
-    padding: 6px 10px;
-    font-size: .8rem;
-  }
+.services-menu img{
+  margin-top: 10px;
+  margin-left: -1px;
 }
-@media (max-width: 880px){
-  .logo.abajo{
-    width: 30px;
-  }
-  .icon h1{
-    font-size: 1rem;
-  }
-  .search-accounts{
-    justify-content: space-around;
-    width: 100%;
-  }
-  .location{
-    margin: 0px 20px;
-  }
-  .second.abajo{
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-  }
-
+li{
+  position: relative;
+  text-decoration: none;
+  list-style: none;
+  width: 100%;
+  font-size: 1rem;
+  padding: 5px 0px;
+  cursor: pointer;
 }
-@media (max-width: 876px){
-  .input-search{
-    width: 16rem;
+.list::after{
+  content: "";
+  width: 0%;
+  height: 2px;
+  left: 50%;
+  bottom: 0;
+  transform:translateX(-50%);
+  background: #2f8ab1;
+  position: absolute;
+  transition: all .5s;
+  margin-top: 5px;
+}
+.list:hover::after{
+  width: 50%;
+}
+li span{
+  width: 100%;
+  background-color:#2f8ab1;
+  border-radius: 5px;
+  padding: 8px 14px;
+  color: #fff;
+  transition: all .3s;
+}
+li span:hover{
+  transition: all .3s;
+  background-color: #215e79;
+  font-size: 1.1rem;
+}
+.location-burger p{
+  text-transform: uppercase;
+}
+.location-burger p:hover .logo-location{
+  transform: translateY(0px);
+  animation: none;
+  transition: all .5s;
+}
+.logo-location{
+  animation: logoUbicacion .9s ease infinite;
+}
+@keyframes logoUbicacion {
+  0%{
+    transform: translateY(-5px);
+    transition: all .10s;
   }
-  .search-accounts{
-    justify-content: space-around;
-    width: 100%;
+  25%{
+    transform: translateY(-10px);
+    transition: all .10s;
   }
-  .location{
-    margin: auto;
+  50%{
+    transform: translateY(-5px);
+    transition: all .10s;
   }
-  .location-img{
-    font-size: .9rem;
+  75%{
+    transform: translateY(0px);
+    transition: all .10s;
   }
-  .location h3{
-    font-size: .8rem;
+  100%{
+    transform: translateY(-5px);
+    transition: all .10s;
   }
 }
-@media (max-width: 690px){
-  .input-search{
-    width: 13rem;
+@media (min-width: 1000px) {
+  .logo-touristapp{
+    transition: all .7s;
+    margin: 0px 0px;
+    width: 200px;
+    position: fixed;
   }
-}
-@media (max-width: 636px){
-  
-  .location{
+  #services{
     display: none;
   }
-  .third.abajo{
-    transition: all .7s ease-in-outs;
-    background-color: #fff;
-    visibility: visible;
+  .location-burger{
+    display: none;
+  }
+  #services.down{
     display: flex;
+    justify-content: space-between;
+    width: 70%;
+    height: 100%;
+  }
+  .links{
+    width: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .links ul{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .links ul li{
+    width: 100%;
+    gap: none;
+  }
+  .links span{
+    width: 100%;
+  }
+
+  .list:hover::after{
+    width: 80%;
+  }
+  .location{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: none;
+  }
+  .location p{
+    padding: 8px 8px;
+    border-radius: 10px;
+    color: #000;
+    transition: all .6s;
+  }
+  .location p:hover .logo-location{
+    transform: translateY(0px);
+    animation: none;
+    transition: all .5s;
+  }
+  .logo-location{
+    animation: logoUbicacion .9s ease infinite;
+  }
+  @keyframes logoUbicacion {
+    0%{
+      transform: translateY(-5px);
+      transition: all .10s;
+    }
+    25%{
+      transform: translateY(-10px);
+      transition: all .10s;
+    }
+    50%{
+      transform: translateY(-5px);
+      transition: all .10s;
+    }
+    75%{
+      transform: translateY(0px);
+      transition: all .10s;
+    }
+    100%{
+      transform: translateY(-5px);
+      transition: all .10s;
+    }
+  }
+  .menu{
+    display: none;
+  }
+  .menu-active{
+    display: none;
+  }
+  .services-menu{
+    display: none;
   }
 }

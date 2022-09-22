@@ -1,86 +1,96 @@
 import React, { useContext, useState } from "react";
 import {ModalContext} from '../../context/Modal/ModalContext'
-import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 //Imagenes
 import Logo from "../../images/Logos TouristApp/logo6.png";
 
 //Iconos
-import { AiOutlineSearch as Lupa } from "react-icons/ai";
+import { AiOutlineClose as Close } from "react-icons/ai";
 import { BsGeoAlt as Location } from "react-icons/bs";
+import {GiHamburgerMenu as Menu }from 'react-icons/gi'
 
 //Componentes
-import {Modal} from '../../Layouts/Modal/Modal'
+import {Modal} from '../Modal/Modal'
+import {Login} from '../Login/Login'
+import {Register} from '../Register/Register'
 
 export const Navbar = () => {
+  const [menu,setMenu] = useState("close")
 
   const { OpenModal,locationState} = useContext(ModalContext);
 
-  
-
   window.addEventListener("scroll", () => {
-    const componentIcon = document.querySelector(".logo");
-    const nav = document.querySelector(".first");
-    const componentSecond = document.querySelector(".second");
-    const componentThird = document.querySelector(".third");
+    const icon = document.querySelector(".logo-touristapp");
+    const nav = document.querySelector("nav");
+    const services = document.querySelector("#services");
+    const menu = document.querySelector(".menu");
     nav.classList.toggle("down", window.scrollY > 0);
-    componentSecond.classList.toggle("down", window.scrollY > 0);
-    componentThird.classList.toggle("down", window.scrollY > 0);
-    componentIcon.classList.toggle("down", window.scrollY > 0);
+    services.classList.toggle("down", window.scrollY > 0);
+    menu.classList.toggle("down", window.scrollY > 0);
+    icon.classList.toggle("down", window.scrollY > 0);
   });
+
+
+  const burgerMenu = () => {
+    const menuActive = menu === 'close'
+    ? setMenu("active")
+    : setMenu("close");
+    return menuActive
+  }
+
+  const iconMenu = () => {
+    const menuIcon = menu === 'close'
+    ? <Menu/>
+    :<Close/>
+    return menuIcon
+  }
 
   return (
     <>
-      <nav>
-        <div className="first">
-          <div className="icon">
-            <a href="/">
-              <img className="logo" src={Logo} alt='Logotipo TouristApp'/>
-            </a>
+      <nav className="nav">
+        <img className="logo-touristapp" src={Logo} alt="touristApp" />
+        <div id="services">
+          <div className="links">
+            <ul>
+              <li className="list">Inicio</li>
+              <li className="list">Buscar</li>
+              <li className="list">Servicios</li>
+            </ul>
           </div>
-          <div className="second">
-            <div className="search-accounts">
-              <div className="search-places">
-                <span className="icon-search">
-                  <Lupa />
-                </span>
-                <input
-                  className="input-search"
-                  type="text"
-                  placeholder="¿Que deseas buscar?"
-                />
-              </div>
-              <div className="location">
-                <span className="location-img">
-                  <Location />
-                </span>
-                <h3 onClick={OpenModal}>{`${ locationState ?  locationState:'Ubicacion..'}`}</h3>
-              </div>
-              <ul className="dropdown-menu">
-                <li>
-                  <p className="accounts">¿Ya tienes cuenta?</p>
-                  <ul className="vertical-menu">
-                    <li>
-                      <Link to="/login">Inicia sesión</Link>
-                    </li>
-                    <li>
-                      <Link to="/register">Registrate</Link>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
+          <div className="location">
+            <p onClick={OpenModal}><Location color="red" className="logo-location"/>{`${ locationState ?  locationState:'Seleccione ubicación'}`}</p>
+          </div>
+          <div className="links ">
+            <ul>
+              <li><span onClick={OpenModal}>Registraté</span></li>
+              <li><span onClick={OpenModal}>Inicia sesión</span></li>
+            </ul>
           </div>
         </div>
-        <div className="third">
-          <span className="location-img">
-            <Location />
-          </span>
-          <h3>Armenia - Quindío</h3>
+        
+        {/*Menu hamburguesa*/}
+        <div className="location-burger">
+            <p onClick={OpenModal}><Location color="red" className="logo-location"/>{`${ locationState ?  locationState:'Seleccione ubicación'}`}</p>
+          </div>
+
+        <div onClick={burgerMenu} className="menu">
+          {iconMenu()}
+        </div>
+        <div className={`menu-${menu}`} id="menu-active" >
+          <ul className="services-menu">
+            <img className="logo-touristapp-burger" src={Logo} alt="" />
+            <li className="list">Inicio</li>
+            <li className="list">Buscar</li>
+            <li className="list">Servicios</li>
+            <li><span onClick={OpenModal}>Registro</span></li>
+            <li><span onClick={OpenModal}>Iniciar sesión</span></li>
+          </ul>
         </div>
       </nav>
       <Modal/>
+      {/*<Login/>
+      <Register/>*/}
     </>
   );
 };
