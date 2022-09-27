@@ -1,4 +1,3 @@
-import './App.css';
 import { Route, Routes } from 'react-router-dom';
 
 //Componentes react-router
@@ -8,6 +7,7 @@ import {Login} from './components/Layouts/Login/Login';
 import {BussinesCreate} from './components/Pages/BussinesCreate/BussinesCreate';
 import {ItemCreate} from './components/Pages/ItemCreate/ItemCreate';
 import {AboutUs} from './components/Pages/AboutUs/AboutUs';
+import {Profile} from './components/Pages/Profile/Profile'
 import {NotFound} from './components/Pages/NotFound/NotFound'
 //componentes
 import {Navbar} from './components/Layouts/Navbar/Navbar';
@@ -24,6 +24,7 @@ function App() {
         <Route path='/crear-negocio' element={<BussinesCreate/>} />
         <Route path='/crear-item' element={<ItemCreate/>} />
         <Route path='/aboutUs' element={<AboutUs/>}/>
+        <Route path='/perfil' element={<Profile/>}/>
         <Route path='*' element={<NotFound/>} />
       </Routes>
       <Footer/>    

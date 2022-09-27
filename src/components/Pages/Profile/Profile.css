@@ -1,0 +1,117 @@
+ .images-profile{    /*Contenedor de la portada y la foto de perfil */
+  position: relative; 
+
+}
+.img-front-page{
+  width: 100%;
+  height: 50vh;
+}
+.img-front-page img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.description-profile{
+  display: flex;  
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 120px;
+  position: absolute;
+  bottom: 0;
+  background-color: #000000a9;
+}
+.name-business{
+  position: absolute;
+  color: #fff;
+  left: 175px;
+  top: 30px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: -1px 1px 1px #0d4a6e;
+}
+.views{
+  display: flex;
+  align-items: center;
+  font-size: .9rem;
+  position: absolute;
+  color: #fff;
+  top: 20px;
+  right: 10px;
+}
+
+.logo-views{
+  color:red;
+  font-size: 1.3rem;
+}
+.logo-views path{
+  stroke: #ff0000e3;
+}
+.likes{
+  display: flex;
+  align-items: center;
+  font-size: .9rem;
+  position: absolute;
+  color: #fff;
+  bottom: 20px;
+  right: 10px;
+}
+.logo-likes{
+  margin-right: 3px;
+}
+.img-profile{
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  margin: 0px 0px 10px 10px ;
+  object-fit: cover;
+  bottom: 0;
+  border-radius: 10px;
+}
+.category{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 170px;
+  bottom: 15px;
+  color: #fff;
+  font-size: .9rem;
+}
+.category img{
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  object-fit: cover;
+  margin-right: 5px;
+}
+
+/*Descripcion del negocio*/
+.description-business{
+  display: flex;
+  flex-direction: column;
+}
+.content-letters h1{
+  margin: 10px;
+  color: #fff;
+  text-shadow: 1px 1px 4px black;
+}
+.content-letters p{
+  font-size: 1.2rem;
+  margin: 10px;
+}
+
+/*Card del dueño del negocio*/
+.business-owner-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #dadadad8;
+  height: 500px;
+}
+.img-owner{
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 100%;
+}

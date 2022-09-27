@@ -1,0 +1,14 @@
+/* -- Swiper -- */
+.swipper{
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  height: 300px;
+}
+.swiper-slide img{
+  object-fit:cover;
+  height: 80%;
+  width: 100%;
+}

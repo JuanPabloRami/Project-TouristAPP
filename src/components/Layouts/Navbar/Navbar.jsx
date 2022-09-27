@@ -14,6 +14,7 @@ import {GiHamburgerMenu as Menu }from 'react-icons/gi'
 import {Modal} from '../Modal/Modal'
 import {Login} from '../Login/Login'
 import {Register} from '../Register/Register'
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   const [menu,setMenu] = useState("close")
@@ -26,10 +27,13 @@ export const Navbar = () => {
     const nav = document.querySelector("nav");
     const services = document.querySelector("#services");
     const menu = document.querySelector(".menu");
+    const locationBurger = document.querySelector(".location-burger")
     nav.classList.toggle("down", window.scrollY > 0);
     services.classList.toggle("down", window.scrollY > 0);
     menu.classList.toggle("down", window.scrollY > 0);
     icon.classList.toggle("down", window.scrollY > 0);
+    locationBurger.classList.toggle("down", window.scrollY > 0);
+    
   });
 
 
@@ -50,11 +54,13 @@ export const Navbar = () => {
   return (
     <>
       <nav className="nav">
-        <img className="logo-touristapp" src={Logo} alt="touristApp" />
+        <a href='/'>
+          <img className="logo-touristapp" src={Logo} alt="touristApp" />
+        </a>
         <div id="services">
           <div className="links">
             <ul>
-              <li className="list">Inicio</li>
+              <li className="list"><a href='/'>Inicio</a></li>
               <li className="list">Buscar</li>
               <li className="list">Servicios</li>
             </ul>
@@ -80,8 +86,10 @@ export const Navbar = () => {
         </div>
         <div className={`menu-${menu}`} id="menu-active" >
           <ul className="services-menu">
+          <a href='/'>
             <img className="logo-touristapp-burger" src={Logo} alt="" />
-            <li className="list">Inicio</li>
+          </a>
+            <li className="list">  <a href='/'>Inicio</a></li>
             <li className="list">Buscar</li>
             <li className="list">Servicios</li>
             <li><span onClick={openRegister}>Registro</span></li>
