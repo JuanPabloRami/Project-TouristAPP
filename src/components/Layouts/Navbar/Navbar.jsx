@@ -1,9 +1,8 @@
-import React, { useContext, useState } from "react";
-import {ModalContext} from '../../context/Modal/ModalContext'
+import React, { useContext, useState ,useEffect} from "react";
 import "./Navbar.css";
 
 //Imagenes
-import Logo from "../../images/Logos TouristApp/logo6.png";
+import Logo from "../../images/Logos TouristApp/logo7.png";
 
 //Iconos
 import { AiOutlineClose as Close } from "react-icons/ai";
@@ -14,7 +13,9 @@ import {GiHamburgerMenu as Menu }from 'react-icons/gi'
 import {Modal} from '../Modal/Modal'
 import {Login} from '../Login/Login'
 import {Register} from '../Register/Register'
-import { Link } from "react-router-dom";
+
+//Contextos
+import {ModalContext} from '../../context/Modal/ModalContext'
 
 export const Navbar = () => {
   const [menu,setMenu] = useState("close")
@@ -36,6 +37,21 @@ export const Navbar = () => {
     
   });
 
+  //Efecto para esconder la navbar con el scroll
+  useEffect(() =>{
+    let principal = window.scrollY
+    const navbar = document.getElementById("navbar");
+    window.addEventListener("scroll", () => {
+      let actual = window.scrollY
+      if (principal >= actual){
+        navbar.style.top = "0px"
+      }else{
+        navbar.style.top = "-90px"
+      }
+      principal = actual
+    });
+  },[]);
+
 
   const burgerMenu = () => {
     const menuActive = menu === 'close'
@@ -53,24 +69,24 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className="nav">
+      <nav className="nav" id="navbar">
         <a href='/'>
           <img className="logo-touristapp" src={Logo} alt="touristApp" />
         </a>
         <div id="services">
           <div className="links">
             <ul>
-              <li className="list"><a href='/'>Inicio</a></li>
-              <li className="list">Buscar</li>
-              <li className="list">Servicios</li>
+              <a href='/'><li className="list">Inicio</li></a>
+              <a href='/'><li className="list">Buscar</li></a>
+              <a href='/'><li className="list">Servicios</li></a>
             </ul>
           </div>
           <div className="location">
             <p onClick={OpenModal}><Location color="red" className="logo-location"/>{`${ locationState ?  locationState:'Seleccione ubicación'}`}</p>
           </div>
-          <div className="links ">
+          <div className="links">
             <ul>
-              <li><span onClick={openRegister}>Registraté</span></li>
+              <li><span onClick={openRegister}>Registrate</span></li>
               <li><span onClick={openLogin}>Inicia sesión</span></li>
             </ul>
           </div>

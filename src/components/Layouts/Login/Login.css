@@ -1,6 +1,6 @@
 .modal-login{
   display: none;
-  background-color: #0e0e0e7e;
+  background-color: #0e0e0ebe;
   transition: all .3s ease-in-out;
   z-index: 100000;
 }
@@ -11,21 +11,29 @@
   position:fixed;
   width: 100%;
   height: 100%;
-  transition: all .6s ease-in-out;
+  transition: all .6s;
   z-index:100000;
 }
 .form{
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   background-color: #fff;
   border-radius: 10px;
-  width: 400px;
-  height: 300px;
+  width: 70%;
+  height: 70%;
+}
+.img-account{
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px 0px 0px 10px;
 }
 .form h2{
   margin: 0px 15px 35px 15px;
+  -webkit-text-stroke: 1px #000;
+  color: transparent;
 }
 form{
   width: 100%;
@@ -36,10 +44,12 @@ form{
 }
 .text-name{
   position: absolute;
-  left: 70px;
-  top: 11px;
+  left: 92px;
+  top: 10px;
   transition: all .5s;
   z-index: 9;
+  pointer-events: none;
+  color: #00000091;
 }
 form input{
   width: 70%;
@@ -48,25 +58,24 @@ form input{
   z-index: 10;
   background-color: transparent;
   border: none;
-  border: 1px solid black;
-  border-radius: 5px;
+  border-bottom: 1px solid black;
 }
 .ContainerInput p{
   position: absolute;
   bottom: 22px;
-  left: 65px;
+  left: 85px;
   color: #d30505;
 }
 .form input:focus{
   border: none;
  }
-.form input:focus + label .text-name{
+.form input:focus + label .text-name,
+.form input:valid + label .text-name{
   transform: translateY(-165%);
   font-size: .9rem;
   color: #000000;
   transition: all .5s;
 }
-
 .ContainerInput{
   display: flex;
   flex-direction: column;
@@ -77,23 +86,25 @@ form input{
 }
 .iconShow{
   position: absolute;
-  top: 12px;
-  right: 70px;
+  font-size: 1.2rem;
+  top: 10px;
+  right: 90px;
   z-index: 100;
 }
 .btn-login{
   cursor: pointer;
   border: none;
   padding: 8px 25px;
-  color: #000;
-  background-color: #fff;
-  box-shadow: 0px 1px 2px #2f8ab1;
+  background-color:transparent;
+  border: 3px double #000d13;
   border-radius: 5px;
+  color: #000;
   font-size: .9rem;
   transition: all .3s;
 }
 .btn-login:hover{
-  transition: all .5s;
-  background-color: #2f8ab1;
+  transition: all .3s;
+  background-color: #000d13;
   color: #fff;
+
 }

@@ -6,7 +6,6 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 
 import "swiper/css/bundle";
-import "./swiper.css";
 
 //Contextos
 import {ModalContextProvider} from './components/context/Modal/ModalContext'
@@ -14,16 +13,10 @@ import {ModalContextProvider} from './components/context/Modal/ModalContext'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
     <ModalContextProvider>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </ModalContextProvider>
-  </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

@@ -13,6 +13,7 @@ import {NotFound} from './components/Pages/NotFound/NotFound'
 import {Navbar} from './components/Layouts/Navbar/Navbar';
 import {Footer} from './components/Layouts/Footer/Footer'
 
+
 function App() {
   return (
     <div className="App">

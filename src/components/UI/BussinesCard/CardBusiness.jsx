@@ -23,6 +23,8 @@ export const CardBusiness = () => {
           slidesPerView={4}
           spaceBetween={30}
           freeMode={true}
+          loop={true}
+          loopFillGroupWithBlank={true}
           pagination={{
             clickable: true,
           }}

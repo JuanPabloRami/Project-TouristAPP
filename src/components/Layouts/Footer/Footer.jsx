@@ -30,7 +30,7 @@ export const Footer = () => {
       <div className="services">
         <div className="logoFooter">
           <img src={Logo} alt="Logo" />
-          <h2>Tourist<span>App</span></h2>
+          <h2>Tourist<span className='app'>App</span></h2>
         </div>
             <a href='/AboutUs'>
               <p> <AboutUs size='10%'/> Sobre Nosotros</p>

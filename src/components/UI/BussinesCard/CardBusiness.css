@@ -1,14 +1,15 @@
-.swiper-wrapper{
+wiper-wrapper{
   background-color: transparent;
 }
 .swiper-slide{
   background: transparent !important
 }
 .cardBusiness {
-  
-  width: 100%;
-  height: 600px;
   margin: auto;
+  width: 95%;
+  height: 50%;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
   display: flex;
   justify-content: center;
   align-items: center;

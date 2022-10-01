@@ -30,15 +30,15 @@
   position: absolute;
   right: 8px;
   top: 5px;
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   border-radius: 100%;
   border: none;
-  background-color: transparent;
+  background-color: #ff4242;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #000;
+  color: #fff;
 }
 .filter-select{
   width: auto;

@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import {AiFillEye} from 'react-icons/ai'
 import axios from 'axios'
 import './Register.css'
-
+import Image from '../../images/Home/bussines.jpg'
 import {ModalContext} from '../../context/Modal/ModalContext'
 
 import {Select} from '../../UI/SelectLocation/Select'
@@ -13,8 +13,7 @@ export const Register = () => {
     //objeto el cual incluye todas las expresiones regulares para validar los campos.
     const regularExpressions = {
       name:/¿^[a-z ,.'-]+$/i,
-      username:/^[a-zA-Z0-9\_\-]{4,16}$/,
-      email:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+      username:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
       password:/^.{4,12}$/,
     }
     
@@ -84,7 +83,7 @@ export const Register = () => {
           setUserVal(true)
         }
         else{
-          setUserMsg("username no valido!")
+          setUserMsg("correo incorrecto!")
           setUserVal(false)
         }
       }
@@ -168,39 +167,26 @@ export const Register = () => {
     <div className={`modal-login${registerUser ? ' open':' close'}`}>
        <div className="form-register">
       <button className='btn-close' onClick={closeRegister}>X</button>
+      <img className='img-account' src={Image} alt="Login"/>
       <form>
-        <h2>Registro</h2>
+        <h2>REGISTRO</h2>
       <div className="ContainerInput">
-        <input onChange={(e)=>setName(e.target.value)} type="text" name="name"/>
+        <input onChange={(e)=>setName(e.target.value)} type="text" name="name" required/>
         <label for="name">
           <span className='text-name'>Nombre completo</span>
         </label>
         <p>{nameMsg}</p>
       </div>
       <div className="ContainerInput">
-        <input onChange={(e)=>setUsername(e.target.value)} type="username" name="username"/>
+        <input onChange={(e)=>setUsername(e.target.value)} type="username" name="username" required/>
         <label for="username">
-          <span className='text-name'>Nombre de usuario</span>
+          <span className='text-name'>Email</span>
         </label>
         <p>{userMsg}</p>
       </div>
 
-        <div className="containerLocation">
-          <label for="ciudades">Ciudad de residencia</label>
-            <div className="select">
-              <Select/>
-            </div>
-        </div>
-
       <div className="ContainerInput">
-        <input className="controls" type="text" name="direccion"/>
-        <label for="direccion">
-          <span className='text-name'>Direccion</span>
-        </label>
-      </div>
-
-      <div className="ContainerInput">
-        <input onChange={(e)=>setPW(e.target.value)} type={pwStatus} name="pw"/>
+        <input onChange={(e)=>setPW(e.target.value)} type={pwStatus} name="pw" required/>
         <label for="pw">
           <span className='text-name'>Contraseña</span>
         </label>
@@ -210,7 +196,7 @@ export const Register = () => {
 
 
       <div className="ContainerInput">
-          <input onChange={(e)=>setPWConfirm(e.target.value)} type={pwCStatus}/>
+          <input onChange={(e)=>setPWConfirm(e.target.value)} type={pwCStatus} required/>
           <label for="pwConfirm">
             <span className='text-name'>Confirmar Contraseña</span>
           </label>

@@ -6,6 +6,8 @@ import axios from 'axios'
 import {AiFillEye} from 'react-icons/ai'
 //componentes
 import {ModalContext} from '../../context/Modal/ModalContext'
+//imagenes
+import Image from '../../images/Home/bussines.jpg'
 
 
 export const Login = () => {
@@ -116,17 +118,18 @@ return(
   <div className={`modal-login${loginUser ? ' open':' close'}`}>
     <div className="form">
       <button className='btn-close' onClick={closeLogin}>X</button>
+      <img className='img-account' src={Image} alt="Login"/>
       <form>
-          <h2>Iniciar sesión</h2>
-          <div className="ContainerInput">
-            <input onChange={(e)=>setEmail(e.target.value)} type="email" name="email"/>
-            <label htmlFor="email">
-              <span className='text-name'>Correo Electronico</span>
-            </label>
-            <p>{emailMsg}</p>
-          </div>
+        <h2>INICIAR SESIÓN</h2>
         <div className="ContainerInput">
-          <input onChange={(e)=>setPW(e.target.value)} type={pwStatus} name="pw"/>
+          <input onChange={(e)=>setEmail(e.target.value)} type="text" name="email" required/>
+          <label htmlFor="email">
+            <span className='text-name'>Correo Electronico</span>
+          </label>
+          <p>{emailMsg}</p>
+        </div>
+        <div className="ContainerInput">
+          <input onChange={(e)=>setPW(e.target.value)} type={pwStatus} name="pw" required/>
           <label htmlFor="pw">
             <span className='text-name'>Contraseña</span>
           </label>
