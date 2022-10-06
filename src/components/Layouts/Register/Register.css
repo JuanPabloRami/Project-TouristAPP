@@ -1,11 +1,15 @@
 .form-register{
   position: relative;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   background-color: #fff;
   border-radius: 10px;
   width: 70%;
   height: 70%;
+}
+.form-register form{
+  width: 50%;
 }
 .form-register h2{
   margin: 0px 15px 35px 15px;
@@ -38,4 +42,30 @@
   margin-bottom: 30px;
   width: 70%;
   padding: 10px;
+}
+.content__login{
+  width: 50%;
+  height: 100%;
+  background-color: #f04545;
+  border-radius: 10px 0px 0px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  padding: 20px;
+}
+.content__login h1{
+  font-size: 3rem;
+}
+.content__login p{
+  text-align: justify;
+  font-size: 1.3rem;
+  margin: 20px 0;
+}
+.content__login button{
+  padding: 10px 30px;
+  border: none;
+  font-size: 1.2rem;
+  border-radius: 5px;
 }
