@@ -13,6 +13,7 @@ import {GiHamburgerMenu as Menu }from 'react-icons/gi'
 import {Modal} from '../Modal/Modal'
 import {Login} from '../Login/Login'
 import {Register} from '../Register/Register'
+import {Button} from '../../UI/Button/Button'
 
 //Contextos
 import {ModalContext} from '../../context/Modal/ModalContext'
@@ -86,8 +87,8 @@ export const Navbar = () => {
           </div>
           <div className="links">
             <ul>
-              <li><span onClick={openRegister}>Registrate</span></li>
-              <li><span onClick={openLogin}>Inicia sesión</span></li>
+              <li><span onClick={openRegister}><Button text="Registrate"/></span></li>
+              <li><span onClick={openLogin}><Button text="Iniciar sesión"/></span></li>
             </ul>
           </div>
         </div>

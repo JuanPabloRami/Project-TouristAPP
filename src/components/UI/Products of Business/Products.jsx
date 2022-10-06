@@ -31,9 +31,8 @@ export const Products = () => {
         }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
       >
-        <SwiperSlide>
+        <SwiperSlide id='card_promotions'>
           <img class='swiper-img' src={Comida} alt='Imagen1'/>
         </SwiperSlide>
         <SwiperSlide>

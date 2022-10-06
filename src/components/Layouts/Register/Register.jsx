@@ -6,7 +6,8 @@ import './Register.css'
 import Image from '../../images/Home/bussines.jpg'
 import {ModalContext} from '../../context/Modal/ModalContext'
 
-import {Select} from '../../UI/SelectLocation/Select'
+//componentes
+import {Button} from '../../UI/Button/Button'
 
 
 export const Register = () => {
@@ -173,7 +174,14 @@ export const Register = () => {
       <div className="ContainerInput">
         <input onChange={(e)=>setName(e.target.value)} type="text" name="name" required/>
         <label for="name">
-          <span className='text-name'>Nombre completo</span>
+          <span className='text-name'>Nombres</span>
+        </label>
+        <p>{nameMsg}</p>
+      </div>
+      <div className="ContainerInput">
+        <input onChange={(e)=>setName(e.target.value)} type="text" name="name" required/>
+        <label for="name">
+          <span className='text-name'>Apellidos</span>
         </label>
         <p>{nameMsg}</p>
       </div>
@@ -203,7 +211,7 @@ export const Register = () => {
           <a className= "iconShow" type="button" onClick={changePWCStatus}><AiFillEye/></a>
         <p>{pwConfirmMsg}</p>
       </div>
-      <button className='btn-login'>Registrarse</button>
+        <Button text="Registrarse"/>
       </form>
     </div>
     </div>

@@ -103,7 +103,6 @@ li{
   bottom: 0;
   transform:translateX(-50%);
   background: #ffffff;
-  box-shadow: -1px 1px 3px #000;
   position: absolute;
   transition: all .5s;
   margin-top: 5px;
@@ -111,20 +110,7 @@ li{
 .list:hover::after{
   width: 50%;
 }
-li span{
-  width: 100%;
-  background-color:transparent;
-  border: 3px double #fff;
-  border-radius: 5px;
-  padding: 8px 14px;
-  color: #fff;
-  transition: all .3s;
-}
-li span:hover{
-  transition: all .3s;
-  background-color: white;
-  color: #000;
-}
+
 .location-burger{
   display: none;
 }

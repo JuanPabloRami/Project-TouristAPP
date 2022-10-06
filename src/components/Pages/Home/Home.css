@@ -1,19 +1,24 @@
-section{
-  background-color: #fff;
-}
-section h1{
-  margin: 20px 40px;
-  font-size: 2.5rem;
-  text-align: center;
+/*Styles of Shapedivider.app*/
+.custom-shape-divider-bottom-1664733204 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
 }
 
-.bg{
-  position: absolute;
-  width: 100%;
-  bottom: 0px;
-  background-color: transparent;
+.custom-shape-divider-bottom-1664733204 svg {
+  position: relative;
+  display: block;
+  width: calc(188% + 1.3px);
+  height: 251px;
+  transform: rotateY(180deg);
 }
-.bg-1{
+
+.custom-shape-divider-bottom-1664733204 .shape-fill {
+  fill: #FFFFFF;
   animation: bg-ocean 4s ease-in-out infinite;
 }
 @keyframes bg-ocean {
@@ -37,7 +42,7 @@ section h1{
   z-index: -1;
 }
 .welcome{
-  background: linear-gradient(  #0e2d3a 93%,  #fff 10%);
+  background: linear-gradient(  #0d4a6e 98%,  #fff 5%);
   position: relative;
   width: 100%;
   height: 100vh;

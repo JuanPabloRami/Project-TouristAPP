@@ -1,8 +1,8 @@
 /* -- Swiper -- */
 .promotions{
-  width: 100%;
+  padding-bottom: 100px; 
 }
-.swiper {
+.promotions .swiper{
   margin: auto;
   display: flex;
   justify-content: center;
@@ -10,8 +10,9 @@
   width: 95%;
   height: 500px;
 }
+
 .swiper-slide {
-  margin: 10px 0px;
+  margin: 20px 0px;
   text-align: center;
   font-size: 18px;
   background: #fff;
@@ -31,8 +32,9 @@
   align-items: center;
 }
 
-.swiper-slide img{
+.promotions .swiper-slide img{
   object-fit: cover;
   height: 100%;
   width: 100%;
+ 
 }

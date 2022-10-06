@@ -91,20 +91,3 @@ form input{
   right: 90px;
   z-index: 100;
 }
-.btn-login{
-  cursor: pointer;
-  border: none;
-  padding: 8px 25px;
-  background-color:transparent;
-  border: 3px double #000d13;
-  border-radius: 5px;
-  color: #000;
-  font-size: .9rem;
-  transition: all .3s;
-}
-.btn-login:hover{
-  transition: all .3s;
-  background-color: #000d13;
-  color: #fff;
-
-}

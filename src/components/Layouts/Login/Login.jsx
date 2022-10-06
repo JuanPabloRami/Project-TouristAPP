@@ -6,6 +6,7 @@ import axios from 'axios'
 import {AiFillEye} from 'react-icons/ai'
 //componentes
 import {ModalContext} from '../../context/Modal/ModalContext'
+import {Button} from '../../UI/Button/Button'
 //imagenes
 import Image from '../../images/Home/bussines.jpg'
 
@@ -136,7 +137,7 @@ return(
           <a className= "iconShow" type="button" onClick={changePWStatus}><AiFillEye/></a>
           <p>{pwMsg}</p>
         </div>
-        <button className='btn-login'>Ingresar</button>
+        <Button text="Ingresar"/>
       </form>
     </div>
   </div>
