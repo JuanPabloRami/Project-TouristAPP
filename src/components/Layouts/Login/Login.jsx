@@ -127,7 +127,9 @@ return(
           <label htmlFor="email">
             <span className='text-name'>Correo Electronico</span>
           </label>
+          <div className="errorMsg">
           <p>{emailMsg}</p>
+          </div>
         </div>
         <div className="ContainerInput">
           <input onChange={(e)=>setPW(e.target.value)} type={pwStatus} name="pw" required/>
@@ -135,7 +137,9 @@ return(
             <span className='text-name'>Contraseña</span>
           </label>
           <a className= "iconShow" type="button" onClick={changePWStatus}><AiFillEye/></a>
+          <div className="errorMsg">
           <p>{pwMsg}</p>
+          </div>
         </div>
         <Button text="Ingresar"/>
       </form>

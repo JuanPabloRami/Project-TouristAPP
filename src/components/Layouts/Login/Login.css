@@ -31,7 +31,7 @@
   border-radius: 10px 0px 0px 10px;
 }
 .form h2{
-  margin: 0px 15px 35px 15px;
+  margin: 15px 0px;
   -webkit-text-stroke: 1px #000;
   color: transparent;
 }
@@ -44,27 +44,36 @@ form{
 }
 .text-name{
   position: absolute;
-  left: 92px;
-  top: 10px;
+  left: 25px;
+  top: 12px;
   transition: all .5s;
   z-index: 9;
   pointer-events: none;
   color: #00000091;
 }
-form input{
-  width: 70%;
-  padding: 10px;
-  margin-bottom: 45px;
+.ContainerInput{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  padding: 0px 20px;
+}
+.ContainerInput input{
+  width: 100%;
   z-index: 10;
   background-color: transparent;
-  border: none;
-  border-bottom: 1px solid black;
+  border: 1px solid #000000a1;
+  border-radius: 5px;
+  padding: 12px 0px;
 }
 .ContainerInput p{
-  position: absolute;
-  bottom: 22px;
-  left: 85px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   color: #d30505;
+  font-size: .75rem;
 }
 .form input:focus{
   border: none;
@@ -75,14 +84,6 @@ form input{
   font-size: .9rem;
   color: #000000;
   transition: all .5s;
-}
-.ContainerInput{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 100%;
 }
 .iconShow{
   position: absolute;
