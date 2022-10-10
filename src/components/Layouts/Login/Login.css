@@ -14,15 +14,25 @@
   transition: all .6s;
   z-index:100000;
 }
+.form-login{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 10px;
+  width: 70%;
+  height: 70%;
+}
 .form{
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   background-color: #fff;
   border-radius: 10px;
-  width: 70%;
-  height: 70%;
+  width: 50%;
 }
 .img-account{
   width: 50%;
@@ -34,13 +44,6 @@
   margin: 15px 0px;
   -webkit-text-stroke: 1px #000;
   color: transparent;
-}
-form{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 .text-name{
   position: absolute;
@@ -91,4 +94,7 @@ form{
   top: 10px;
   right: 90px;
   z-index: 100;
+}
+.Gmail{
+  padding: 10px 40px;
 }

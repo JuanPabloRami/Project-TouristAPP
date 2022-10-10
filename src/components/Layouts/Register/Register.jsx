@@ -27,6 +27,7 @@ export const Register = () => {
 
   //Contexto para registro de usuario
   //const {first_name,last_name,email,usernamee,password,userRegister} = useContext(RegisterContext);
+  
   //Cambia de modal de registro a iniciar sesion
   const loginRegister = () => {
     closeRegister();
@@ -79,14 +80,14 @@ export const Register = () => {
            if(!values.password){
             errors.password = 'Por favor ingresa una contraseña'
           }else if(!regularExpressions.password.test(values.password)){
-            errors.password = 'La constraseña tiene que ser de 4 a 12 digitos'
+            errors.password = 'La constraseña tiene que ser de 8 a 12 digitos'
           }
 
            //validacion para el confirmPassword
            if(!values.confirmPassword){
             errors.confirmPassword = 'Por favor ingresa una contraseña'
           }else if(!regularExpressions.password.test(values.confirmPassword)){
-            errors.confirmPassword = 'La constraseña tiene que ser de 4 a 12 digitos'
+            errors.confirmPassword = 'La constraseña tiene que ser de 8 a 12 digitos'
           }
 
           return errors;

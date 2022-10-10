@@ -39,6 +39,7 @@
   justify-content: center;
   align-items: center;
   color: #fff;
+  z-index: 10;
 }
 .filter-select{
   width: auto;
