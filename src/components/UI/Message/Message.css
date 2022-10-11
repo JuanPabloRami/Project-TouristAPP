@@ -1,0 +1,29 @@
+.message__response{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 40px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: #0f151cf5;
+  height: 60px;
+  width: 300px;
+}
+.window_close{
+  transform: translate(100%);
+  transition: transform .5s;
+}
+.window_open{
+  transform: translate(0%);
+  transition: transform .5s;
+}
+.message__response .icon__message{
+  font-size: 1.2rem;
+  color: #1bb822;
+}
+.message__response p{
+  font-size: 1.3rem;
+  color: #fff;
+}

@@ -79,7 +79,7 @@ export const Navbar = () => {
             <ul>
               <a href='/'><li className="list">Inicio</li></a>
               <a href='/'><li className="list">Buscar</li></a>
-              <a href='/'><li className="list">Servicios</li></a>
+              <a href='/'><li className="list">Categorias</li></a>
             </ul>
           </div>
           <div className="location">

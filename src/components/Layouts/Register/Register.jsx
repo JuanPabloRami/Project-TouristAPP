@@ -1,25 +1,39 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./Register.css";
 import axios from "axios";
-
+//Icons
+import {GiConfirmed as Confirmed} from 'react-icons/gi'
+import {VscError as Error} from 'react-icons/vsc'
 //Formik
 import { Formik, Form,Field,ErrorMessage} from "formik";
-
 //Contexto
 import { ModalContext } from "../../context/Modal/ModalContext";
-
 //componentes
 import { Button } from "../../UI/Button/Button";
+import {Message} from '../../UI/Message/Message'
+//imagenes
+import Login from '../../images/Home/login.jpeg'
 
 
 export const Register = () => {
+  let [confirm,setConfirm] = useState("confirmed");
+
+  const messageResponse = () =>{
+    if(confirm === "confirmed"){
+      return <Message text="Registro exitoso" icon={<Confirmed className="icon__message"/>} message="open"/>
+
+    }else if (confirm === "error"){
+      return <Message text="Campos incorrectos" icon={<Error className="icon__message"/>} message="open"/>
+    }
+  }
+
   //objeto el cual incluye todas las expresiones regulares para validar los campos.
   const regularExpressions = {
     name: /^[a-z ,.'-]+$/i,
     username:/^[a-zA-Z0-9]{4,16}$/,
     email:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-    password: /^.{4,12}$/,
+    password: /^.{8,12}$/,
   };
 
   //Uso de contexto para llamar las modales
@@ -93,7 +107,7 @@ export const Register = () => {
           return errors;
         }}
         onSubmit={({name,last_name,email,username,password}) => {
-          axios.post('http://localhost:8000/auth/signup/',{
+            axios.post('http://localhost:8000/auth/signup/',{
             first_name: name,
             last_name: last_name,
             email:  email,
@@ -102,19 +116,23 @@ export const Register = () => {
           })
           .then(function (response){
             console.log(response);
+            setConfirm("confirmed")
           })
           .catch(function (error){
+            setConfirm("error")
             console.log(error);
           });
         }}
       >
         {({errors}) => (
           <div className={`modal-login${registerUser ? " open" : " close"}`}>
+            {messageResponse()}
             <div className="form-register">
               <button className="btn-close" onClick={closeRegister}>
                 X
               </button>
               <div className="content__login">
+                
                 <h1>¡Bienvenido!</h1>
                 <p>
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.

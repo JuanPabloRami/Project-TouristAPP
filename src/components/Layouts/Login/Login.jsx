@@ -1,17 +1,13 @@
 import React, { useContext } from "react";
 import "./Login.css";
 
-//Componente para el registro con Google
-import GoogleLogin from 'react-google-login';
-
 import axios from "axios";
 //Formik
 import { Formik, Form, Field, ErrorMessage } from "formik";
 //componentes
 import { ModalContext } from "../../context/Modal/ModalContext";
 import { Button } from "../../UI/Button/Button";
-//imagenes
-import Image from "../../images/Home/bussines.jpg";
+
 
 export const Login = () => {
   const regularExpressions = {
@@ -26,11 +22,6 @@ export const Login = () => {
     closeLogin();
     return openRegister();
   };
-
-  //funcion para saber si el inicio de sesion fue exito con Google
-  const responseGoogle = (response) =>{
-    console.log(response);
-  }
 
   return (
     <>
@@ -85,14 +76,6 @@ export const Login = () => {
                   nobis accusantium eos voluptates, atque repellat non? Omnis,
                   laborum. Consequatur delectus fuga distinctio commodi.
                 </p>
-                <GoogleLogin 
-                  clientId="292344600652-ltur9ubhpcekk1gsabcmddsc4m6ip7nl.apps.googleusercontent.com"
-                  buttonText="iniciar sesión"
-                  onSuccess={responseGoogle}
-                  onFailure={responseGoogle}
-                  cookiePolicy={'single_host_origin'}
-                />
-
                 <button onClick={loginRegister}>Registrarse</button>
               </div>
               <Form method="GET" className="form">
