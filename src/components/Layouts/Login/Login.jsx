@@ -7,6 +7,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 //componentes
 import { ModalContext } from "../../context/Modal/ModalContext";
 import { Button } from "../../UI/Button/Button";
+import {SociaLogin} from '../../UI/SociaLogin/SociaLogin'
 
 
 export const Login = () => {
@@ -77,6 +78,7 @@ export const Login = () => {
                   laborum. Consequatur delectus fuga distinctio commodi.
                 </p>
                 <button onClick={loginRegister}>Registrarse</button>
+                <SociaLogin/>
               </div>
               <Form method="GET" className="form">
                 <h2>INICIAR SESIÓN</h2>
@@ -84,7 +86,7 @@ export const Login = () => {
                 <div className="ContainerInput">
                   <Field
                    type="text"
-                    id="email"
+                    id="mail"
                     name="email"
                     required
                   />
@@ -99,7 +101,7 @@ export const Login = () => {
                 <div className="ContainerInput">
                   <Field
                     type="password"
-                    id="password"
+                    id="pass"
                     name="password"
                     required
                   />

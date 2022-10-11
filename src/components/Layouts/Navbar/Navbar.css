@@ -107,6 +107,9 @@ li{
   transition: all .5s;
   margin-top: 5px;
 }
+.list{
+  color: white;
+}
 .list:hover::after{
   width: 50%;
 }
@@ -178,6 +181,7 @@ li{
     height: 100%;
   }
   .links{
+    position: relative;
     width: 35%;
     display: flex;
     justify-content: center;

@@ -1,5 +1,6 @@
 import React, { useContext, useState ,useEffect} from "react";
 import "./Navbar.css";
+import axios from "axios";
 
 //Imagenes
 import Logo from "../../images/Logos TouristApp/logo7.png";
@@ -17,6 +18,7 @@ import {Button} from '../../UI/Button/Button'
 
 //Contextos
 import {ModalContext} from '../../context/Modal/ModalContext'
+import { Dropdown } from "../../UI/Dropdown/Dropdown";
 
 export const Navbar = () => {
   const [menu,setMenu] = useState("close")
@@ -67,7 +69,15 @@ export const Navbar = () => {
     :<Close/>
     return menuIcon
   }
+  const openCategory = () =>{
+    const dropdown = document.querySelector(".drop__down")
+    dropdown.style = "display:flex"
 
+  }
+  const closeCategory = () =>{
+    const dropdown = document.querySelector(".drop__down")
+    dropdown.style = "display:none"
+  }
   return (
     <>
       <nav className="nav" id="navbar">
@@ -79,9 +89,11 @@ export const Navbar = () => {
             <ul>
               <a href='/'><li className="list">Inicio</li></a>
               <a href='/'><li className="list">Buscar</li></a>
-              <a href='/'><li className="list">Categorias</li></a>
+              <li className="list" onClick={openCategory}>Categoria</li>
             </ul>
+            <Dropdown/>
           </div>
+          <div className="bg" onClick={closeCategory}></div>
           <div className="location">
             <p onClick={OpenModal}><Location color="red" className="logo-location"/>{`${ locationState ?  locationState:'Seleccione ubicación'}`}</p>
           </div>

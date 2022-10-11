@@ -1,0 +1,55 @@
+/*Dropdown category*/
+.c{
+  position: relative;
+}
+.list.c:active .drop__down{
+  display: flex;
+  background-color: #fff;
+}
+.drop__down{
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10px;
+  width: 40%;
+  height: auto;
+  background-color: #fff;
+  position: absolute;
+  bottom: -170px;
+  right: -20px;
+  gap: 5px;
+  border-radius: 10px;
+}
+.drop__down p{
+  position: relative;
+  font-size: 1.1rem;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  text-align: left;
+}
+.drop__down p::after{
+  content: "";
+  width: 0%;
+  height: 2px;
+  left: 0 ;
+  bottom: 0;
+  transform:translateX(0%);
+  background: #000;
+  position: absolute;
+  transition: all .5s;
+  margin-top: 5px;
+}
+.drop__down p:hover::after{
+  right: 0;
+  width: 50%;
+}
+.bg{
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  top:0;
+  background-color: transparent;
+  z-index: -2;
+}

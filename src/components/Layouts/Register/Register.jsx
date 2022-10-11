@@ -17,7 +17,7 @@ import Login from '../../images/Home/login.jpeg'
 
 
 export const Register = () => {
-  let [confirm,setConfirm] = useState("confirmed");
+  let [confirm,setConfirm] = useState("");
 
   const messageResponse = () =>{
     if(confirm === "confirmed"){
@@ -37,7 +37,7 @@ export const Register = () => {
   };
 
   //Uso de contexto para llamar las modales
-  const { registerUser, closeRegister, openLogin } = useContext(ModalContext);
+  const { registerUser, closeRegister, openLogin, } = useContext(ModalContext);
 
   //Contexto para registro de usuario
   //const {first_name,last_name,email,usernamee,password,userRegister} = useContext(RegisterContext);
@@ -107,7 +107,7 @@ export const Register = () => {
           return errors;
         }}
         onSubmit={({name,last_name,email,username,password}) => {
-            axios.post('http://localhost:8000/auth/signup/',{
+            axios.post('http://10.199.2.22:8000/auth/signup/',{
             first_name: name,
             last_name: last_name,
             email:  email,
@@ -122,6 +122,7 @@ export const Register = () => {
             setConfirm("error")
             console.log(error);
           });
+
         }}
       >
         {({errors}) => (
@@ -132,7 +133,7 @@ export const Register = () => {
                 X
               </button>
               <div className="content__login">
-                
+                {/* {<img src={Login} alt="login"/>} */}
                 <h1>¡Bienvenido!</h1>
                 <p>
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.
