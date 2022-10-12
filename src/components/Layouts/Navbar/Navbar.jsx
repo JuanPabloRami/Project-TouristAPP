@@ -69,14 +69,18 @@ export const Navbar = () => {
     :<Close/>
     return menuIcon
   }
+
   const openCategory = () =>{
     const dropdown = document.querySelector(".drop__down")
+    const bg = document.querySelector(".bg")
     dropdown.style = "display:flex"
-
+    bg.style = "display:block"
   }
   const closeCategory = () =>{
     const dropdown = document.querySelector(".drop__down")
+    const bg = document.querySelector(".bg")
     dropdown.style = "display:none"
+    bg.style = "display:none"
   }
   return (
     <>
