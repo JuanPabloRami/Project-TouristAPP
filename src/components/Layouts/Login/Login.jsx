@@ -51,7 +51,7 @@ export const Login = () => {
           return errors;
         }}
         onSubmit={({email,password}) => {
-          axios.get('http://localhost:8000/auth/signup/',{
+          axios.get('http://10.199.2.22:8000/auth/signup/',{
             email:  email,
             password: password
           })

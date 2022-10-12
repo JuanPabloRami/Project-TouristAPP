@@ -3,6 +3,8 @@ import './Profile.css'
 //Imagenes
 import Account from '../../images/Profile/profile.jpg'
 import FrontPage from '../../images/Profile/frontPage.jpg'
+//componentes
+import {Coments} from '../../UI/Coments/Coments'
 
 export const Profile = () => {
   return (
@@ -20,9 +22,7 @@ export const Profile = () => {
       </div>
     </div>
     <main>
-      <div className="coments">
-        <h2>Comentarios</h2>
-      </div>
+      <Coments/>
       <div className="description__profile">
         <h2>Descripción</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate placeat tempore doloribus nam, animi in quaerat eos ipsum commodi ex quos, praesentium quibusdam eaque deserunt? Eius consectetur nisi quisquam! Inventore?
