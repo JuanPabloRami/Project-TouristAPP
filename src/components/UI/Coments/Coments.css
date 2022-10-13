@@ -3,26 +3,13 @@
   flex-direction: column;
   position: relative;
   width: 30%;
-  height: 100vh;
+  height: 90vh;
   background-color: #fff;
 }
 .comments h2{
   font-size: 2rem;
   text-align: center;
   margin: 10px 0px;
-}
-.comments input[name='comments']{
-  width: 100%;
-  padding: 40px 10px;
-  border: none;
-  box-shadow: 0px -5px 10px #00000015;
-  font-size: 1.1rem;
-}
-.comments input::placeholder{
-  font-size: 1.1rem;
-}
-.comments input:focus{
-  outline: none;
 }
 
 /*Comentarios de los usuarios*/
@@ -71,11 +58,42 @@
   left: -8px;
   clip-path: polygon(100% 0, 0 0, 100% 100%);
 }
+/*campo de los comentarios*/
 .comments__write{
   position: relative;
 }
-.btn__send{
+.comments__write input[name='comments']{
+  width: 100%;
+  padding: 40px 10px;
+  border: none;
+  box-shadow: 0px -5px 10px #0000002c;
+  font-size: 1.1rem;
+}
+.comments__write input::placeholder{
+  font-size: 1.1rem;
+}
+.comments__write input:focus{
+  outline: none;
+}
+/*Boton de enviar comentarios*/
+.content__btn__send{
   position: absolute;
-  top: 0;
-  right: 0;
+  width: 40px;
+  height: 40px;
+  padding: 9px;
+  bottom: 0;
+  right: 10px;
+  top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #007add;
+  border-radius:100%;
+  cursor: pointer;
+}
+.btn__send{
+  margin: auto;
+  color: #fff;
+  width: 100%;
+  height: 100%;
 }

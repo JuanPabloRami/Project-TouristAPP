@@ -5,6 +5,14 @@ import Account from '../../images/Profile/profile.jpg'
 import FrontPage from '../../images/Profile/frontPage.jpg'
 //componentes
 import {Coments} from '../../UI/Coments/Coments'
+import { InfoBussines } from '../../UI/InfoBussines/InfoBussines'
+//icons
+import {FaFacebook as IconFacebook,} from "react-icons/fa";
+import {BsInstagram as IconInstagram} from 'react-icons/bs'
+import {TbWorld as IconNetwork} from 'react-icons/tb'
+import {MdEmail as IconEmail} from 'react-icons/md'
+import {MdLocationPin as IconLocation} from "react-icons/md";
+import {AiFillLike as Heart} from 'react-icons/ai'
 
 export const Profile = () => {
   return (
@@ -18,18 +26,23 @@ export const Profile = () => {
       </div>
       <div className="description__account">
         <h1>McDonald's</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo velit quisquam blanditiis totam ea voluptas labore dolorem officiis possimus! Dolores corporis dolorum molestias! Eos quas nisi voluptatibus cupiditate velit inventore.</p>
+        <div className="socials__networks__bussines">
+          <a href="#"><IconFacebook className='icon_social f'/></a>
+          <a href="#"><IconInstagram className='icon_social i'/></a>
+          <a href="#"><IconNetwork className='icon_social n'/></a>
+          <a href="#"><IconEmail className='icon_social e'/></a>
+          <a href="#"><IconLocation className='icon_social l'/></a>
+          <div className="bussines__state">
+            <div className="state"></div>
+            <p>Abierto: 10:00:00 - 18:00:00</p>
+          </div>
+        </div>
       </div>
+      <button className='btn_like_bussines'> <Heart/> 100</button>
     </div>
     <main>
       <Coments/>
-      <div className="description__profile">
-        <h2>Descripción</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate placeat tempore doloribus nam, animi in quaerat eos ipsum commodi ex quos, praesentium quibusdam eaque deserunt? Eius consectetur nisi quisquam! Inventore?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga nostrum soluta numquam nulla quos eum quia saepe dignissimos sit. Dolorum ad distinctio vero atque labore neque possimus sapiente minima iste.Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate placeat tempore doloribus nam, animi in quaerat eos ipsum commodi ex quos, praesentium quibusdam eaque deserunt? Eius consectetur nisi quisquam! Inventore?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga nostrum soluta numquam nulla quos eum quia saepe dignissimos sit. Dolorum ad distinctio vero atque labore neque possimus sapiente minima iste.
-        </p>
-      </div>
+      <InfoBussines/>
     </main>
     </>
   )

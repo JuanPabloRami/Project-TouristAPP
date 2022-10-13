@@ -32,19 +32,92 @@
 .description__account{
   position: absolute;
   right: 0;
-  transform: translate(-45%, 10%);
-  width: 50%;
+  transform: translate(-38%, 10%);
+}
+.description__account h1{
+  font-size: 2.5rem;
+}
+.btn_like_bussines{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  position: absolute;
+  right: 0;
+  margin: 30px;
+  padding: 8px 30px;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  background-color: #288ce9;
+  cursor: pointer;
+}
+/*Redes sociales del negocio*/
+.socials__networks__bussines{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 10px;
+  gap: 50px;
+  margin-top: 20px;
+}
+.icon_social{
+  font-size: 3rem;
+}
+.icon_social.f{
+  color: #005bb1;
+}
+.icon_social.i{
+  color: #fff;
+  background: #005bb1;
+  border-radius: 10px;
+  padding: 5px;
+}
+.icon_social.n{
+  color: #fff;
+  background-color: #005bb1 ;
+  border-radius: 10px;
+}
+.icon_social.e{
+  background-color: #005bb1;
+  color: #fff;
+  border-radius: 10px;
+}
+.icon_social.l{
+  color: #fff;
+  background-color: #005bb1 ;
+  border-radius: 10px;
+}
+/*Estado del negocio*/
+.bussines__state{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  margin-left: 60px;
+}
+.bussines__state p{
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.state{
+  width: 12px;
+  height: 12px;
+  border-radius: 100%;
+  animation: state 1s infinite ease;
+}
+@keyframes state {
+  0%,100%{
+    background-color: #00ff00;
+  }
+  50%{
+    background-color: #00c700;
+  }
 }
 main{
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-.description__profile{
-  width: 70%;
-  height: 100vh;
-  background-color: #005858;
-}
-.description__profile p{
-  font-size: 1.2rem;
+  gap: 10px;
 }

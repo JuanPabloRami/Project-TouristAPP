@@ -27,7 +27,9 @@ export const Coments = () => {
         </div>
         <div className="comments__write">
           <input name='comments' type='text' placeholder='Escribe un comentario...'/>
-          <Send className='btn__send'/>
+          <div className="content__btn__send">
+            <Send className='btn__send'/>
+          </div>
         </div>
     </div>
   )

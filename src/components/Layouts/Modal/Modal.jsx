@@ -7,7 +7,7 @@ export const Modal = () => {
  
   return (
     <>
-      <div className={`modal ${openModal ? 'modal-open':'modal-close'}`}>
+      <div className={`modal ${openModal ? 'open':'close'}`}>
       <div className="filter-modal">
         <button onClick={CloseModal} className='btn-close'>X</button>
         <h2>Escoge una ubicación</h2>

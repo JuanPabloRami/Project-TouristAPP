@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 import "swiper/css/bundle";
 
@@ -13,10 +14,12 @@ import {ModalContextProvider} from './components/context/Modal/ModalContext'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <GoogleOAuthProvider clientId="81239876980-ksnj46hhfoe1guvrj4apligvulphpnr4.apps.googleusercontent.com">
     <ModalContextProvider>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </ModalContextProvider>
+  </GoogleOAuthProvider>
 );
 reportWebVitals();
