@@ -1,43 +1,25 @@
 /* -- Modal para filtrar los negocios -- */
 .modal{
-  display: none;
+  display: flex;
   background-color: #0e0e0e7e;
   z-index: 100000;
 }
 .close{
-  transform:  translateX(100%);
-  
-}
-.close > .btn-close:target{
-  animation: modalClose .3s ease-in-out;
-}
-@keyframes modalClose {
-  0%{
-    transform:  translatey(0%);
-  }
-  100%{
-    transform:  translateX(100%);
-  }
-}
-.open{
   display: flex;
   justify-content: center;
   align-items: center;
   position:fixed;
   width: 100%;
   height: 100%;
+  transition: transform .4s;
+  transform: translateX(100%);
+}
+
+.open{
+  transition: transform .4s;
   transform:  translateX(0%);
-  z-index:100000;
-  animation: modal .3s ease-in-out;
 }
-@keyframes modal {
-  0%{
-    transform:  translatey(100%);
-  }
-  100%{
-    transform:  translateX(0%);
-  }
-}
+
 .filter-modal{
   border-radius: 10px;
   background-color: #fff;

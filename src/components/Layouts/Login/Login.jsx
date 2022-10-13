@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./Login.css";
 
 import axios from "axios";
@@ -8,14 +8,25 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { ModalContext } from "../../context/Modal/ModalContext";
 import { Button } from "../../UI/Button/Button";
 import {SociaLogin} from '../../UI/SociaLogin/SociaLogin'
-
+//iconos
+import {AiFillEye as Eye} from 'react-icons/ai'
+import {AiFillEyeInvisible as EyeClose} from 'react-icons/ai'
 
 export const Login = () => {
+  const [iconPassword,setIconPassword] = useState(true)
+
+  const changeIcon = () =>{
+    console.log(iconPassword);
+    const change = iconPassword === true ? <Eye/> : <EyeClose/>
+    return change
+  }
+
   const regularExpressions = {
     email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
     password: /^.{4,12}$/,
   };
 
+  //Contexto
   const { loginUser, closeLogin,openRegister } = useContext(ModalContext);
 
   //Funcion para cambiar de modales de login a registro
@@ -51,7 +62,7 @@ export const Login = () => {
           return errors;
         }}
         onSubmit={({email,password}) => {
-          axios.get('http://10.199.2.22:8000/auth/signup/',{
+          axios.post('http://10.199.2.22:8000/auth/login/',{
             email:  email,
             password: password
           })
@@ -85,7 +96,7 @@ export const Login = () => {
 
                 <div className="ContainerInput">
                   <Field
-                   type="text"
+                    type="text"
                     id="mail"
                     name="email"
                     required
@@ -104,10 +115,17 @@ export const Login = () => {
                     id="pass"
                     name="password"
                     required
+                    
                   />
                   <label htmlFor="password">
                     <span className="text-name">Contraseña</span>
                   </label>
+                  <div className="icon_input" onClick={()=>{
+                    setIconPassword(false)
+                  }}
+                  >
+                    {changeIcon()}
+                  </div>
                   <div className="errorMsg">
                     <ErrorMessage name="password" component={() => (<p>{errors.password}</p>)} />
                   </div>

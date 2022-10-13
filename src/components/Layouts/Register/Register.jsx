@@ -5,6 +5,7 @@ import axios from "axios";
 //Icons
 import {GiConfirmed as Confirmed} from 'react-icons/gi'
 import {VscError as Error} from 'react-icons/vsc'
+import {AiFillEye as Eye} from 'react-icons/ai'
 //Formik
 import { Formik, Form,Field,ErrorMessage} from "formik";
 //Contexto
@@ -13,7 +14,6 @@ import { ModalContext } from "../../context/Modal/ModalContext";
 import { Button } from "../../UI/Button/Button";
 import {Message} from '../../UI/Message/Message'
 //imagenes
-import Login from '../../images/Home/login.jpeg'
 
 
 export const Register = () => {
@@ -213,14 +213,15 @@ export const Register = () => {
                     id='password' 
                     required 
                   />
+                  
                   <label htmlFor="password">
                     <span className="text-name">Contraseña</span>
                   </label>
+                  <Eye className="icon_input"/>
                   <div className="errorMsg">
                     <ErrorMessage name="password" component={() => (<p>{errors.password}</p>)} />
                   </div>
                 </div>
-
                 <div className="ContainerInput">
                   <Field
                     type='password'
@@ -231,6 +232,7 @@ export const Register = () => {
                   <label htmlFor="confirmPassword">
                     <span className="text-name">Confirmar Contraseña</span>
                   </label>
+                  <Eye className="icon_input"/>
                   <div className="errorMsg">
                     <ErrorMessage name="confirmPassword" component={() => (<p>{errors.confirmPassword}</p>)} />
                   </div>

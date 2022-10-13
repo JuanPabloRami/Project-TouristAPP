@@ -91,3 +91,12 @@ z-index: 10;
   border-radius: 5px;
   z-index: 2;
 }
+
+/*Iconos del password*/
+.icon_input{
+  position: absolute;
+  right: 30px;
+  top: 14px;
+  z-index: 10;
+  color: red;
+}
