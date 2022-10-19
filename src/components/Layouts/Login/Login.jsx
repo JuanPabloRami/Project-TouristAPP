@@ -1,7 +1,9 @@
 import React, { useContext, useState } from "react";
 import "./Login.css";
 
-import axios from "axios";
+//peticiones
+import {login} from '../../api/requests/request'
+
 //Formik
 import { Formik, Form, Field, ErrorMessage } from "formik";
 //componentes
@@ -16,7 +18,6 @@ export const Login = () => {
   const [iconPassword,setIconPassword] = useState(true)
 
   const changeIcon = () =>{
-    console.log(iconPassword);
     const change = iconPassword === true ? <Eye/> : <EyeClose/>
     return change
   }
@@ -62,16 +63,7 @@ export const Login = () => {
           return errors;
         }}
         onSubmit={({email,password}) => {
-          axios.post('http://10.199.2.22:8000/auth/login/',{
-            email:  email,
-            password: password
-          })
-          .then(function (response){
-            console.log(response);
-          })
-          .catch(function (error){
-            console.log(error);
-          });
+          login(email,password)
         }}
       >
         {({ errors }) => (
@@ -92,7 +84,7 @@ export const Login = () => {
                 <SociaLogin/>
               </div>
               <Form method="GET" className="form">
-                <h2>INICIAR SESIÓN</h2>
+                <h2>INICIA SESIÓN</h2>
 
                 <div className="ContainerInput">
                   <Field

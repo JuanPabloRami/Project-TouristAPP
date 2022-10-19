@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useContext, useState } from "react";
 import "./Register.css";
-import axios from "axios";
+//peticiones
+import {register} from '../../api/requests/request'
 //Icons
 import {GiConfirmed as Confirmed} from 'react-icons/gi'
 import {VscError as Error} from 'react-icons/vsc'
@@ -107,22 +108,7 @@ export const Register = () => {
           return errors;
         }}
         onSubmit={({name,last_name,email,username,password}) => {
-            axios.post('http://10.199.2.22:8000/auth/signup/',{
-            first_name: name,
-            last_name: last_name,
-            email:  email,
-            username:username,
-            password: password
-          })
-          .then(function (response){
-            console.log(response);
-            setConfirm("confirmed")
-          })
-          .catch(function (error){
-            setConfirm("error")
-            console.log(error);
-          });
-
+          register(name,last_name,email,username,password)
         }}
       >
         {({errors}) => (

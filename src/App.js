@@ -13,7 +13,7 @@ import {NotFound} from './components/Pages/NotFound/NotFound'
 import {Navbar} from './components/Layouts/Navbar/Navbar';
 import {Footer} from './components/Layouts/Footer/Footer'
 
-
+/*https://www.youtube.com/watch?v=emiCMV-oVoE*/
 function App() {
   return (
     <div className="App">

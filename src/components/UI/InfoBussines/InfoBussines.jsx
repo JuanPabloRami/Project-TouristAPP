@@ -47,6 +47,10 @@ export const InfoBussines = () => {
               <p>McDonald's</p>
               <img src={Item} alt="Item imagen"/>
             </div>
+            <div className="content__img__items">
+              <p>McDonald's</p>
+              <img src={Item} alt="Item imagen"/>
+            </div>
           </div>
         </div>
       </div>

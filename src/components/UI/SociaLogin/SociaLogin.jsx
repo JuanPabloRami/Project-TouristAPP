@@ -1,6 +1,6 @@
 import React from 'react'
 import { useGoogleLogin } from '@react-oauth/google';
-import axios from 'axios';
+import axios from '../../api/axios/axios';
 
 export const SociaLogin = () => {
 //https://www.npmjs.com/package/@react-oauth/google
@@ -8,9 +8,9 @@ export const SociaLogin = () => {
 const login = useGoogleLogin({
   onSuccess: async response => {
     try{
-      const data = await axios.get("https:10.199.2.22/accounts/login/",{
+      const data = await axios.get("/accounts/login/",{
         headers: {
-          "Authorization": `Bearer ${response.access_token}`
+          "Authorization": `Bearer ${response}`
         }
       })
       console.log(data);

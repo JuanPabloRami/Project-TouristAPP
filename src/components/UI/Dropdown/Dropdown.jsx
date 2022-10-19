@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react'
-import axios from 'axios'
+import axios from '../../api/axios/axios'
 import './Dropdown.css'
 
 export const Dropdown = () => {
@@ -7,11 +7,12 @@ export const Dropdown = () => {
   const [category,setCategory] = useState([])
   //funcion que me trae las categorias
   const categorys = () =>{
-    axios.get('http://10.199.2.22:8000/api/tipo-negocio/')
+    axios.get('/api/tipo-negocio/')
     .then(function (response){
       setCategory(response.data)
     })
     .catch(function (error){
+      console.log(error);
     });
   }
   //renderiza la api al cargar siempre la pagina

@@ -1,0 +1,10 @@
+.list.hidden{
+  display: none;
+}
+
+.list.toggle{
+  position: absolute;
+  background-color: transparent;
+  border-radius: ;
+  z-index: 10;
+}

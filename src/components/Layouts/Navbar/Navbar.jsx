@@ -1,20 +1,18 @@
 import React, { useContext, useState ,useEffect} from "react";
 import "./Navbar.css";
-import axios from "axios";
 
 //Imagenes
 import Logo from "../../images/Logos TouristApp/logo7.png";
-
 //Iconos
 import { AiOutlineClose as Close } from "react-icons/ai";
 import { BsGeoAlt as Location } from "react-icons/bs";
 import {GiHamburgerMenu as Menu }from 'react-icons/gi'
-
 //Componentes
 import {Modal} from '../Modal/Modal'
 import {Login} from '../Login/Login'
 import {Register} from '../Register/Register'
 import {Button} from '../../UI/Button/Button'
+import { Search } from "../../UI/Search/Search";
 
 //Contextos
 import {ModalContext} from '../../context/Modal/ModalContext'
@@ -92,7 +90,7 @@ export const Navbar = () => {
           <div className="links">
             <ul>
               <a href='/'><li className="list">Inicio</li></a>
-              <a href='/'><li className="list">Buscar</li></a>
+              <Search/>
               <li className="list" onClick={openCategory}>Categoria</li>
             </ul>
             <Dropdown/>

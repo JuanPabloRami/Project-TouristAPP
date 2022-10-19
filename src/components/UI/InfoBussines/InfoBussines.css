@@ -26,9 +26,9 @@
 }
 .items__img{
   display: grid;
-  grid-template-columns:repeat(4,1fr);
-  grid-auto-rows: minmax(300px,300px);
-  gap: 20px;
+  grid-template-columns:repeat(3,1fr);
+  grid-auto-rows: minmax(280px,200px);
+  gap: 40px;
   width: 100%;
   height: 50vh;
   /*overflow: hidden;
