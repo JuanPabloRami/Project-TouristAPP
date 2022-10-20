@@ -1,29 +1,30 @@
 import React, { useState } from 'react'
 import './search.css'
-
-export const Searching = () => {
-
-  return(
-    <>
-      <input type='text' name='search' placholder='Buscar..' />
-    </>
-  )
-}
+//icons
+import {GrFormClose as CloseSearch} from 'react-icons/gr'
+import {BiSearchAlt2 as Searching} from 'react-icons/bi'
 
 export const Search = () => {  
   const [search,setSearch] = useState(false)
+  
   const  searching = () =>{
-    setSearch(true)
-    if (
-      
-    ) {
-      
-    }
+    return setSearch(true)
+  }
+
+  const closeSearching = () =>{
+    return setSearch(false)
   }
 
   return (
-    {
+    <>
+      {search&&
+      <>
+        <input className='search_input' type='text' name='search' placeholder='Busca en TouristApp' />
+        <CloseSearch className='icon_close_search' onClick={closeSearching}/>
+        <Searching  className='icon_search'/>
+      </>
+      }
       <li id='search' className="list" onClick={searching}>Buscar</li>
-    }
+    </>
   )
 }

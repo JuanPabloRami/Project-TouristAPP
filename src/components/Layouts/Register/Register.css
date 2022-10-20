@@ -13,8 +13,7 @@
 }
 .form-register h2{
   margin: 0px 15px 35px 15px;
-  -webkit-text-stroke: 1px #000000;
-  color: transparent;
+  color: #000000;
 }
 .errorMsg{
   display: flex;
@@ -59,8 +58,8 @@ z-index: 10;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #ff4242;
-  text-shadow: 0px 2px 2px #fff;
+  background: linear-gradient(#00e1ff,#00a3cc);
+  color: #fff;
   padding: 20px;
 }
 .content__login img{
