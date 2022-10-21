@@ -10,7 +10,20 @@ export const ModalContextProvider = (props) => {
   const [inputCity, setInputCity] = useState("");
   const [loginUser,setLoginUser] = useState(false)
   const [registerUser,setRegisterUser] = useState(false)
+  const [roles,setRoles] = useState(false)
   const body = document.querySelector("body");
+
+  //abre la modal de roles
+  const openRoles = () =>{
+    setRoles(true)
+    body.style = "overflow-y:hidden;";
+  }
+
+  //cierra la modal de roles
+  const closeRoles = () =>{
+    setRoles(false)
+    body.style = "overflow-y:scroll;";
+  }
 
   //abre la modal de registro
   const openRegister = () =>{
@@ -79,7 +92,10 @@ export const ModalContextProvider = (props) => {
       closeLogin,
       registerUser,
       openRegister,
-      closeRegister
+      closeRegister,
+      openRoles,
+      closeRoles,
+      roles,
     }}>
       {props.children}
  

@@ -17,12 +17,13 @@ import { Search } from "../../UI/Search/Search";
 //Contextos
 import {ModalContext} from '../../context/Modal/ModalContext'
 import { Dropdown } from "../../UI/Dropdown/Dropdown";
+import { Roles } from "../../UI/Roles/Roles";
 
 export const Navbar = () => {
   const [menu,setMenu] = useState("close")
 
   //Uso de contexto
-  const { OpenModal,locationState, openLogin,openRegister} = useContext(ModalContext);
+  const { OpenModal,locationState, openLogin,openRoles} = useContext(ModalContext);
 
   window.addEventListener("scroll", () => {
     const icon = document.querySelector(".logo-touristapp");
@@ -101,7 +102,7 @@ export const Navbar = () => {
           </div>
           <div className="links">
             <ul>
-              <li><span onClick={openRegister}><Button text="Registrate"/></span></li>
+              <li><span onClick={openRoles}><Button text="Registrate"/></span></li>
               <li><span onClick={openLogin}><Button text="Iniciar sesión"/></span></li>
             </ul>
           </div>
@@ -123,7 +124,7 @@ export const Navbar = () => {
             <li className="list">  <a href='/'>Inicio</a></li>
             <li className="list">Buscar</li>
             <li className="list">Servicios</li>
-            <li><span onClick={openRegister}>Registro</span></li>
+            <li><span onClick={openRoles}>Registro</span></li>
             <li><span onClick={openLogin}>Iniciar sesión</span></li>
           </ul>
         </div>
@@ -131,6 +132,7 @@ export const Navbar = () => {
       <Modal/>
       <Login/>
       <Register/>
+      <Roles/>
     </>
   );
 };

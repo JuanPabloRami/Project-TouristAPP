@@ -56,7 +56,7 @@
 /*Redes sociales del negocio*/
 .socials__networks__bussines{
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   padding: 10px;
   gap: 50px;
