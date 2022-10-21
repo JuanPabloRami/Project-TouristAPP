@@ -1,0 +1,30 @@
+.content_create_bussines{
+  width: 70%;
+  height: 90vh;
+  background-color: #ffffff;
+  border-radius: 10px 0px 0px 10px;
+  padding: 20px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.content_create_bussines > .create{
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 20px;
+  margin-bottom: 50px;
+  border-radius: 20px;
+  background-color: #cecece;
+  box-shadow: 0px 0px 10px #cecece;
+  cursor: pointer;
+}
+.create > h2{
+  color: #737373;
+  font-size: 2.6rem;
+}
+.create > .icon_create{
+  color: #737373;
+  font-size: 2.8rem;
+}
+.create > textarea{
+  width: 100%;
+}

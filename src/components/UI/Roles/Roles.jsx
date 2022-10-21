@@ -22,7 +22,7 @@ export const Roles = () => {
     <div className={`modal-login${roles ? " open" : " close"}`}>
       <div className="content_roles">
         <button className="btn-close" onClick={closeRoles}>X</button>
-        <h1>Escoge el tipo de usuario</h1>
+        <h1>Seleccione el tipo de usuario</h1>
         <div className="roles">
           <div className="role_user">
             <div className="user" onClick={rolesRegister}>

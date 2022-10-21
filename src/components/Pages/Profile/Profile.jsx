@@ -6,6 +6,7 @@ import FrontPage from '../../images/Profile/frontPage.jpg'
 //componentes
 import {Coments} from '../../UI/Coments/Coments'
 import { InfoBussines } from '../../UI/InfoBussines/InfoBussines'
+import { CreateBussines } from '../../UI/CreateBussines/CreateBussines'
 //icons
 import {FaFacebook as IconFacebook,} from "react-icons/fa";
 import {BsInstagram as IconInstagram} from 'react-icons/bs'
@@ -13,6 +14,7 @@ import {TbWorld as IconNetwork} from 'react-icons/tb'
 import {MdEmail as IconEmail} from 'react-icons/md'
 import {MdLocationPin as IconLocation} from "react-icons/md";
 import {AiFillLike as Heart} from 'react-icons/ai'
+
 
 export const Profile = () => {
   return (
@@ -42,7 +44,8 @@ export const Profile = () => {
     </div>
     <main>
       <Coments/>
-      <InfoBussines/>
+      {/* <InfoBussines/> */}
+      <CreateBussines/>
     </main>
     </>
   )

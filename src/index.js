@@ -10,16 +10,19 @@ import "swiper/css/bundle";
 
 //Contextos
 import {ModalContextProvider} from './components/context/Modal/ModalContext'
+import { CreateBussinesContextProvider } from './components/context/CreateBussines/CreateBussinesContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <GoogleOAuthProvider clientId="81239876980-ksnj46hhfoe1guvrj4apligvulphpnr4.apps.googleusercontent.com">
-    <ModalContextProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ModalContextProvider>
+    <CreateBussinesContextProvider>
+      <ModalContextProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ModalContextProvider>
+    </CreateBussinesContextProvider>
   </GoogleOAuthProvider>
 );
 reportWebVitals();
