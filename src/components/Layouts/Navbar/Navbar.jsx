@@ -18,6 +18,7 @@ import { Search } from "../../UI/Search/Search";
 import {ModalContext} from '../../context/Modal/ModalContext'
 import { Dropdown } from "../../UI/Dropdown/Dropdown";
 import { Roles } from "../../UI/Roles/Roles";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   const [menu,setMenu] = useState("close")
@@ -45,6 +46,7 @@ export const Navbar = () => {
     const navbar = document.getElementById("navbar");
     window.addEventListener("scroll", () => {
       let actual = window.scrollY
+      console.log(actual);
       if (principal >= actual){
         navbar.style.top = "0px"
       }else{
@@ -84,9 +86,9 @@ export const Navbar = () => {
   return (
     <>
       <nav className="nav" id="navbar">
-        <a href='/'>
+        <Link to='/' >
           <img className="logo-touristapp" src={Logo} alt="touristApp" />
-        </a>
+        </Link>
         <div id="services">
           <div className="links">
             <ul>

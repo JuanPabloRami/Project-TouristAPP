@@ -14,6 +14,7 @@ import { ModalContext } from "../../context/Modal/ModalContext";
 //componentes
 import { Button } from "../../UI/Button/Button";
 import {Message} from '../../UI/Message/Message'
+import { RolesContext } from "../../context/Roles/RolesContext";
 //imagenes
 
 
@@ -37,8 +38,9 @@ export const Register = () => {
     password: /^.{8,12}$/,
   };
 
-  //Uso de contexto para llamar las modales
+  //Uso de contexto para llamar las modales y el tipo de usuario
   const { registerUser, closeRegister, openLogin, } = useContext(ModalContext);
+  const {typeUser} = useContext(RolesContext)
 
   //Contexto para registro de usuario
   //const {first_name,last_name,email,usernamee,password,userRegister} = useContext(RegisterContext);
@@ -77,29 +79,29 @@ export const Register = () => {
             errors.last_name = 'El apellido solo puede contener letras y espacios'
           }
 
-           //validacion para el username
-           if(!values.username){
+          //validacion para el username
+          if(!values.username){
             errors.username = 'Por favor ingresa un nombre de usuario'
           }else if(!regularExpressions.username.test(values.username)){
             errors.username = 'El nombre de usuario tiene que ser de 4 a 16 digitos y solo puede contener numeros,letras y guion bajo.'
           }
 
            //validacion para el email
-           if(!values.email){
+          if(!values.email){
             errors.email = 'Por favor ingresa un correo electronico'
           }else if(!regularExpressions.email.test(values.email)){
             errors.email = 'El correo electronico no es valido'
           }
 
            //validacion para el password
-           if(!values.password){
+          if(!values.password){
             errors.password = 'Por favor ingresa una contraseña'
           }else if(!regularExpressions.password.test(values.password)){
             errors.password = 'La constraseña tiene que ser de 8 a 12 digitos'
           }
 
            //validacion para el confirmPassword
-           if(!values.confirmPassword){
+          if(!values.confirmPassword){
             errors.confirmPassword = 'Por favor ingresa una contraseña'
           }else if(!regularExpressions.password.test(values.confirmPassword)){
             errors.confirmPassword = 'La constraseña tiene que ser de 8 a 12 digitos'
@@ -108,7 +110,7 @@ export const Register = () => {
           return errors;
         }}
         onSubmit={({name,last_name,email,username,password}) => {
-          register(name,last_name,email,username,password)
+          register(name,last_name,email,username,password,typeUser)
         }}
       >
         {({errors}) => (

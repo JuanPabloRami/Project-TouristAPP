@@ -13,23 +13,23 @@ export const Modal = () => {
         <h2>Escoge una ubicación</h2>
         <div className="filter-select">
           <select name="Departamento" onClick={locationDepartment}>
-            <option value="" selected disabled hidden>Departamentos...</option>
-            <option value="Quindio">Quindío</option>
+            <option defaultValue="" selected disabled hidden>Departamentos...</option>
+            <option defaultValue="Quindio">Quindío</option>
           </select >
           <select name="Municipios" onChange={locationCity}>
-            <option value="" selected disabled hidden>Municipios...</option>
-            <option value="Armenia">Armenia</option>
-            <option value="Circasia">Circasia</option>
-            <option value="Calarcá">Calarcá</option>
-            <option value="Montenegro">Montenegro</option>
-            <option value="Quimbaya">Quimbaya</option>
-            <option value="Salento">Salento</option>
-            <option value="Pijao">Pijao</option>
-            <option value="Córdoba">Córdoba</option>
-            <option value="Tebaida">Tebaida</option>
-            <option value="Filandia">Filandia</option>
-            <option value="Génova">Génova</option>
-            <option value="Buenavista">Buenavista</option>
+            <option defaultValue="" selected disabled hidden>Municipios...</option>
+            <option defaultValue="Armenia">Armenia</option>
+            <option defaultValue="Circasia">Circasia</option>
+            <option defaultValue="Calarcá">Calarcá</option>
+            <option defaultValue="Montenegro">Montenegro</option>
+            <option defaultValue="Quimbaya">Quimbaya</option>
+            <option defaultValue="Salento">Salento</option>
+            <option defaultValue="Pijao">Pijao</option>
+            <option defaultValue="Córdoba">Córdoba</option>
+            <option defaultValue="Tebaida">Tebaida</option>
+            <option defaultValue="Filandia">Filandia</option>
+            <option defaultValue="Génova">Génova</option>
+            <option defaultValue="Buenavista">Buenavista</option>
           </select>
         </div>
         <button onClick={locationChange} className='btn-change-location'>Cambiar</button>
