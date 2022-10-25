@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import "./Login.css";
 
 //peticiones
-import {login} from '../../api/requests/request'
+import {login} from '../../api/requests/Request'
 
 //Formik
 import { Formik, Form, Field, ErrorMessage } from "formik";

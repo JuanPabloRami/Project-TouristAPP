@@ -46,7 +46,6 @@ export const Navbar = () => {
     const navbar = document.getElementById("navbar");
     window.addEventListener("scroll", () => {
       let actual = window.scrollY
-      console.log(actual);
       if (principal >= actual){
         navbar.style.top = "0px"
       }else{

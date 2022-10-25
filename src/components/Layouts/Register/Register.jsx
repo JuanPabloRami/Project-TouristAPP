@@ -2,7 +2,7 @@
 import React, { useContext, useState } from "react";
 import "./Register.css";
 //peticiones
-import {register} from '../../api/requests/request'
+import {register} from '../../api/requests/Request'
 //Icons
 import {GiConfirmed as Confirmed} from 'react-icons/gi'
 import {VscError as Error} from 'react-icons/vsc'

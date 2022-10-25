@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Home.css";
 
 //Componentes
@@ -10,8 +10,22 @@ import {Section} from '../../Layouts/Section/Section'
 //imagenes
 import Draw from '../../images/Home/business.webp'
 import Clouds from '../../images/Home/clouds.png'
+import { accessToken } from "../../api/requests/Request";
 
 export const Home = () => {
+  useEffect(()=>{
+    if(localStorage.getItem('token')){
+      const token = localStorage.getItem('token')
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+      }
+      accessToken(config)
+    }
+  },[])
+
   return (
     <>
       <div className="welcome">
