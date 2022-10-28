@@ -16,9 +16,11 @@ import { Search } from "../../UI/Search/Search";
 
 //Contextos
 import {ModalContext} from '../../context/Modal/ModalContext'
-import { Dropdown } from "../../UI/Dropdown/Dropdown";
+import { Dropdown } from "../../UI/DropdownCategory/Dropdown";
 import { Roles } from "../../UI/Roles/Roles";
 import { Link } from "react-router-dom";
+import { Transition } from "../../UI/Transition/Transition";
+import { DropdownUser } from "../../UI/DropdownUser/DropdownUser";
 
 export const Navbar = () => {
   const [menu,setMenu] = useState("close")
@@ -102,10 +104,16 @@ export const Navbar = () => {
             <p onClick={OpenModal}><Location color="red" className="logo-location"/>{`${ locationState ?  locationState:'Seleccione ubicación'}`}</p>
           </div>
           <div className="links">
-            <ul>
-              <li><span onClick={openRoles}><Button text="Registrate"/></span></li>
-              <li><span onClick={openLogin}><Button text="Iniciar sesión"/></span></li>
-            </ul>
+            {localStorage.getItem('token') ?
+            
+              <DropdownUser/>
+              :
+              
+              <ul>
+                <li><span onClick={openRoles}><Button text="Registrate"/></span></li>
+                <li><span onClick={openLogin}><Button text="Iniciar sesión"/></span></li>
+              </ul>
+            }
           </div>
         </div>
         
@@ -134,6 +142,7 @@ export const Navbar = () => {
       <Login/>
       <Register/>
       <Roles/>
+      <Transition/>
     </>
   );
 };

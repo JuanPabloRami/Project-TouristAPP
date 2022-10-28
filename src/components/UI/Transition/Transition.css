@@ -1,0 +1,51 @@
+
+.left_transition.close{
+  position: fixed;
+  width: 50%;
+  height: 100vh;
+  background-color: #fff;
+  transition: transform 1s;
+  transform: translateX(-101%);
+  z-index: 1000000
+}
+.right_transition.close{
+  position: fixed;
+  width: 50%;
+  height: 100vh;
+  background-color: #fff;
+  transition: transform 1s;
+  transform: translateX(200%);
+  z-index: 1000000
+}
+.logo.close{
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  transition: transform 1s;
+  transform: translate(426%,-90%);
+  z-index: 1000000;
+}
+.left_transition.open{
+  position: fixed;
+  width: 50%;
+  height: 100vh;
+  background-color: #fff;
+  transition: transform 1s;
+  transform: translateX(0%);
+}
+.right_transition.open{
+  position: fixed;
+  width: 50%;
+  height: 100vh;
+  background-color: #ff0000;
+  transition: transform 1s;
+  transform: translateX(100%);
+}
+.logo.open{
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  transition: transform 1s;
+  transform: translateX(426%,-90%);
+  z-index: 1000000;
+}

@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import { GoogleOAuthProvider } from '@react-oauth/google';
 
 import "swiper/css/bundle";
 
@@ -12,20 +11,24 @@ import "swiper/css/bundle";
 import {ModalContextProvider} from './components/context/Modal/ModalContext'
 import { CreateBussinesContextProvider } from './components/context/CreateBussines/CreateBussinesContext';
 import { RolesContextProvider } from './components/context/Roles/RolesContext';
+import { TransitionsContextProvider } from './components/context/Transitions/TransitionsContext';
+import { UsersContextProvider } from './components/context/Users/UsersContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <GoogleOAuthProvider clientId="81239876980-ksnj46hhfoe1guvrj4apligvulphpnr4.apps.googleusercontent.com">
-    <CreateBussinesContextProvider>
-      <RolesContextProvider>
-        <ModalContextProvider>
-            <BrowserRouter>
-              <App />
-            </BrowserRouter>
-        </ModalContextProvider>
-      </RolesContextProvider>
-    </CreateBussinesContextProvider>
-  </GoogleOAuthProvider>
+  <UsersContextProvider>
+    <TransitionsContextProvider>
+      <CreateBussinesContextProvider>
+        <RolesContextProvider>
+          <ModalContextProvider>
+              <BrowserRouter>
+                <App />
+              </BrowserRouter>
+          </ModalContextProvider>
+        </RolesContextProvider>
+      </CreateBussinesContextProvider>
+    </TransitionsContextProvider>
+  </UsersContextProvider>
 );
 reportWebVitals();

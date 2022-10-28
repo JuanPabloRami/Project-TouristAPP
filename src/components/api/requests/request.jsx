@@ -1,10 +1,7 @@
 import axios from "../axios/axios"
-import {Navigate} from 'react-router-dom'
 
   const automation = (email,password) =>{
   login(email,password)
-  return <Navigate to='/perfil'/>
-  
 }
 
 export const login = (email,password) =>{
@@ -13,8 +10,9 @@ export const login = (email,password) =>{
   })
   .then(function (response){
     console.log(response);
-    console.log(response.data.tokens.access);
-    localStorage.setItem('token',response.data.tokens.access)
+    if (response) {
+      return "SII"
+    }
   })
   .catch(function (error){
     console.log(error);
@@ -37,9 +35,12 @@ export const register = (first_name,last_name,email,username,password,typeUser) 
   });
 }
 
-export const accessToken = (access) =>{
+export const accessToken = (token) =>{
   axios.get('/api/misnegocios/',{
-    access
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
   })
   .then(function (response){
     console.log(response);

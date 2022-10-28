@@ -23,8 +23,6 @@ export const Roles = () => {
     return closeRoles()
   }
 
-  console.log(typeUser);
-
   return (
     <div className={`modal-login${roles ? " open" : " close"}`}>
       <div className="content_roles">

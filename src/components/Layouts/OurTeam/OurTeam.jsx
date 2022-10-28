@@ -19,10 +19,6 @@ export const OurTeam = () => {
           <h2>JUPA</h2>
           <p>BACK-END DEVELOPER</p>
         </div>
-        <div className="photo four">
-          <h2>LU</h2>
-          <p>NULL DEVELOPER</p>
-        </div>
       </div>
     </div>
   );

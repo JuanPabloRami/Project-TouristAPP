@@ -1,20 +1,20 @@
 import React, { useContext, useState } from "react";
 import "./Login.css";
 
-//peticiones
-import {login} from '../../api/requests/Request'
-
 //Formik
 import { Formik, Form, Field, ErrorMessage } from "formik";
 //componentes
 import { ModalContext } from "../../context/Modal/ModalContext";
 import { Button } from "../../UI/Button/Button";
-import {SociaLogin} from '../../UI/SociaLogin/SociaLogin'
 //iconos
 import {AiFillEye as Eye} from 'react-icons/ai'
 import {AiFillEyeInvisible as EyeClose} from 'react-icons/ai'
+import axios from "../../api/axios/axios";
+import { TransitionsContext } from "../../context/Transitions/TransitionsContext";
+import { UsersContext } from "../../context/Users/UsersContext";
 
 export const Login = () => {
+  
   const [iconPassword,setIconPassword] = useState(true)
 
   const changeIcon = () =>{
@@ -29,6 +29,8 @@ export const Login = () => {
 
   //Contexto
   const { loginUser, closeLogin,openRegister } = useContext(ModalContext);
+  const {setTransition} = useContext(TransitionsContext)
+  const  {setUsers} = useContext(UsersContext)
 
   //Funcion para cambiar de modales de login a registro
   const loginRegister = () => {
@@ -63,8 +65,22 @@ export const Login = () => {
           return errors;
         }}
         onSubmit={({email,password}) => {
-          login(email,password)
-        }}
+          axios.post('/auth/login/',{
+            email,password
+          })
+          .then(function (response){
+            console.log(response);
+            if (response.status === 200) {
+              closeLogin()
+              setTransition(true)
+              localStorage.setItem('token',response.data.tokens.access)
+              setUsers(true)
+            }
+          })
+          .catch(function (error){
+            console.log(error);
+          });
+          }}
       >
         {({ errors }) => (
           <div className={`modal-login${loginUser ? " open" : " close"}`}>
@@ -81,7 +97,6 @@ export const Login = () => {
                   laborum. Consequatur delectus fuga distinctio commodi.
                 </p>
                 <button onClick={loginRegister}>Registrarse</button>
-                <SociaLogin/>
               </div>
               <Form method="GET" className="form">
                 <h2>INICIA SESIÓN</h2>
