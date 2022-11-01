@@ -7,6 +7,7 @@ export const CreateBussinesContextProvider = (props) => {
   const [del,setDel] = useState(false)
   const [textarea,setTextarea] = useState(false)
   const [description,setDescription] = useState(false)
+  const [text,setText] = useState('')
 
   const inputDescription = () =>{
     const icon = document.getElementById('input')
@@ -22,8 +23,7 @@ export const CreateBussinesContextProvider = (props) => {
 
 
   const getDescription = (text) =>{
-    console.log(text);
-    <Description description={text}/>
+    setText(text)
   }
 
   const sendText = () =>{
@@ -41,7 +41,8 @@ export const CreateBussinesContextProvider = (props) => {
       sendText,
       description,
       setDescription,
-      del
+      del,
+      text
     }}>
       {props.children}
     </CreateBussinesContext.Provider>
