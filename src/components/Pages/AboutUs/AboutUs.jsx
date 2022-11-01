@@ -19,7 +19,7 @@ export const AboutUs = () => {
                 <img className={styleAboutUs.imgAcerca} src={AcercaDe}></img>
             </div>
             <div className={styleAboutUs.containerImg}>
-                <h3>A cerca de nosotros</h3>
+                <h3>Acerca de nosotros</h3>
                 <p>Negocios a la vista nació con el único propósito de ofrecer
                    a los emprendedores; grandes y pequeños una plataforma para 
                    listar sus negocios en línea para que el mundo conozca sus 

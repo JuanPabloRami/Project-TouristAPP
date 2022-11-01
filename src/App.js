@@ -9,6 +9,8 @@ import {ItemCreate} from './components/Pages/ItemCreate/ItemCreate';
 import {AboutUs} from './components/Pages/AboutUs/AboutUs';
 import {Profile} from './components/Pages/Profile/Profile'
 import {NotFound} from './components/Pages/NotFound/NotFound'
+import { TermsAndConditions } from './components/Pages/TermsAndConditions/TermsAndConditions'
+import { PrivacyPolicy } from './components/Pages/TermsAndConditions/PrivacyPolicy';
 //componentes
 import {Navbar} from './components/Layouts/Navbar/Navbar';
 import {Footer} from './components/Layouts/Footer/Footer'
@@ -25,6 +27,8 @@ function App() {
         <Route path='/crear-negocio' element={<BussinesCreate/>} />
         <Route path='/crear-item' element={<ItemCreate/>} />
         <Route path='/aboutUs' element={<AboutUs/>}/>
+        <Route path='/terminosycondiciones' element={<TermsAndConditions/>}/>
+        <Route path='/privacidad' element={<PrivacyPolicy/>}/>
         <Route path='/perfil' element={<Profile/>}/>
         <Route path='*' element={<NotFound/>} />
       </Routes>

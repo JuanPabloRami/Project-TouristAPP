@@ -1,0 +1,93 @@
+
+.first{
+  background-image: url('../../images/TermsAndConditions/termsandconditions.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100%;
+  width: 100%;
+  height: 70vh;
+}
+
+.firstPrivacyPolicy{
+  background-image: url('../../images/TermsAndConditions/privacypolicy.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100%;
+  width: 100%;
+  height: 70vh;
+}
+
+.firstText{
+display: flex;
+justify-content: center;
+align-items: center;
+height: 70vh;
+}
+
+.firstText h1{
+  font-size: 100px;
+  text-align: center;
+  color: #fff;
+  text-shadow: 8px 0 5px black;
+}
+
+.second{
+  margin-bottom: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.secondText{
+  width:75%;
+}
+
+.secondText h1{
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 50px;
+  color: rgb(0, 0, 0);
+  text-shadow: 2px 0 2px black;
+}
+
+.secondText h2{
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 30px;
+  color: rgb(0, 0, 0);
+  text-shadow: 1px 0 1px black;
+}
+
+.secondText p{
+  margin-bottom: 2rem;
+  font-size: 18px;
+  line-height: 25px;
+}
+
+@media (max-width: 1050px){
+
+  .firstText h1{
+    font-size: 70px;
+  }
+
+  .secondText{
+    width:90%;
+  }
+
+}
+
+@media (max-width: 700px){
+
+  .first{
+    height: 100%;
+  }
+
+  .firstText h1{
+    font-size: 50px;
+  }
+  .secondText h1{
+    font-size: 37px;
+  }
+
+}

@@ -35,10 +35,10 @@ export const Footer = () => {
             <a href='/AboutUs'>
               <p> <AboutUs size='10%'/> Sobre Nosotros</p>
             </a >
-            <a  href='/'>
+            <a  href='/terminosycondiciones'>
               <p> <Terms size='10%'/>Terminos y condiciones</p>
             </a>
-            <a  href='/'>
+            <a  href='/privacidad'>
               <p> <Privacy size='10%'/>Politica de privacidad</p>
             </a>
             <a  href='/'>
