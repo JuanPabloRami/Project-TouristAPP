@@ -1,15 +1,20 @@
 import './DropdownUser.css'
 import { useContext, useEffect, useState } from 'react'
 import { UsersContext } from '../../context/Users/UsersContext'
+import { Link } from 'react-router-dom'
 import axios from '../../api/axios/axios'
-
+//icons
+import {AiOutlineUser as User} from 'react-icons/ai'
+import {MdBusinessCenter as Bussines} from 'react-icons/md'
 export const DropdownUser = () => {
-
+  //Estado que me guarda los datos de la persona logueada
   const [api,setApi] = useState({})
-
+  //Ejecuta el useEffect cuando hay un usuario logueado
+  const {users} = useContext(UsersContext)
+  //trae el token del usuario
   const token = localStorage.getItem('token')
 
-  useEffect(()=>{
+  const getUser = () =>{
     axios.get('/api/misnegocios/',{
       headers: {
         'Content-Type': 'application/json',
@@ -18,26 +23,54 @@ export const DropdownUser = () => {
     })
     .then(function (response){
       console.log(response);
-      setApi(response)
+      setApi(response.data)
     })
     .catch(function (error){
       console.log(error);
     });
-  },[])
+  }
+  //llama la funcion que hace la petición
+  useEffect(()=>{
+   getUser()
+  },[users])
 
+  //Cerrar sesion
   const logout = () =>{
     localStorage.removeItem('token')
     return window.location.reload()
   }
 
-  console.log(api.data.first_name);
+  //icono dependiente del tipo de usuario
+  const typeUser = () =>{
+    if (api.type_user === "Turista"){
+      return <User className='icon'/> 
+    }else{
+      return <Bussines className='icon'/> 
+    }
+  }
+
+
   return (
     <>
-      {api&&
-      <ul>
-        <li><span onClick={logout}>{api.data.first_name}</span></li>
-      </ul>
-    } 
+      {api ?
+      <div className="dropdown_user">
+        <span>{typeUser()} {api.first_name} {api.last_name}</span>
+        <ul className='bussines_drop'>
+          {
+            api.type_user === 'Turista' ?
+              <li onClick={logout}>Cerrar sesión</li>
+            :
+            <>
+              <li><Link to='/perfil'>Ver mi negocio</Link></li>
+              <li onClick={logout}>Cerrar sesión</li>
+            </>
+          } 
+        </ul>
+      </div>
+       
+      : 
+        console.log("No sirvio login")
+       }
     </>
   )
 }

@@ -71,10 +71,10 @@ export const Login = () => {
           .then(function (response){
             console.log(response);
             if (response.status === 200) {
+              setUsers(true)
+              localStorage.setItem('token',response.data.tokens.access)
               closeLogin()
               setTransition(true)
-              localStorage.setItem('token',response.data.tokens.access)
-              setUsers(true)
             }
           })
           .catch(function (error){

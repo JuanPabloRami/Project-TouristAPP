@@ -15,10 +15,12 @@ export const Dropdown = () => {
       console.log(error);
     });
   }
+  
   //renderiza la api al cargar siempre la pagina
   useEffect(()=>{
     categorys()
   },[])
+
   return (
     <div className="drop__down">
       {category.map((Element,index)=>(

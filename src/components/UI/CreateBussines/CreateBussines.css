@@ -28,3 +28,6 @@
 .create > textarea{
   width: 100%;
 }
+.close{
+  display: none;
+}

@@ -188,7 +188,7 @@ li{
     justify-content: center;
     align-items: center;
   }
-  .links ul{
+  .links > .login_and_register{
     height: 100%;
     width: 100%;
     display: flex;

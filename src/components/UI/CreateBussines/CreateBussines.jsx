@@ -5,21 +5,44 @@ import { useContext } from 'react'
 //components
 import { Textarea } from '../Textarea/Textarea'
 import { CreateBussinesContext } from '../../context/CreateBussines/CreateBussinesContext'
+import { Description } from '../Description/Description'
+
 
 export const CreateBussines = () => {
-  
-  const {inputDescription,textarea} = useContext(CreateBussinesContext)
+  const {inputDescription,textarea,description,del} = useContext(CreateBussinesContext)
 
   return (
-    <div className='content_create_bussines'>
-      <div className="create description">
-        {textarea ? <Textarea/> : <h2>Descripción</h2>}
-        <Plus id='input' className='icon_create' onClick={inputDescription}/>
+    <>
+      <div className='content_create_bussines'>
+          <>
+              {description ?
+                <>
+                  <Description/>
+                </>
+              :
+              null
+              }
+            </>
+        <div className={`create description ${del ? 'close' : null}`}>
+        {description ?
+          null
+        :
+          <>
+            {textarea ? 
+              <Textarea/>
+              : 
+              <h2>Descripción</h2>
+            }
+          </>
+        }
+          
+          <Plus id='input' className='icon_create' onClick={inputDescription}/>
+        </div>
+        <div className="create items">
+          <h2>Catalogo</h2>
+          <Plus className='icon_create'/>
+        </div>
       </div>
-      <div className="create items">
-        <h2>Catalogo</h2>
-        <Plus className='icon_create'/>
-      </div>
-    </div>
-  )
-}
+    </>
+    )
+  }

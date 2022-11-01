@@ -92,7 +92,7 @@ export const Navbar = () => {
         </Link>
         <div id="services">
           <div className="links">
-            <ul>
+            <ul className="login_and_register">
               <a href='/'><li className="list">Inicio</li></a>
               <Search/>
               <li className="list" onClick={openCategory}>Categoria</li>
@@ -109,7 +109,7 @@ export const Navbar = () => {
               <DropdownUser/>
               :
               
-              <ul>
+              <ul className="login_and_register">
                 <li><span onClick={openRoles}><Button text="Registrate"/></span></li>
                 <li><span onClick={openLogin}><Button text="Iniciar sesión"/></span></li>
               </ul>

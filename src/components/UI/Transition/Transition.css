@@ -22,7 +22,7 @@
   width: 200px;
   height: 200px;
   transition: transform 1s;
-  transform: translate(426%,-90%);
+  transform: translateY(-90%);
   z-index: 1000000;
 }
 .left_transition.open{
@@ -37,7 +37,7 @@
   position: fixed;
   width: 50%;
   height: 100vh;
-  background-color: #ff0000;
+  background-color: #fff;
   transition: transform 1s;
   transform: translateX(100%);
 }
@@ -45,7 +45,8 @@
   position: fixed;
   width: 200px;
   height: 200px;
+  top: 38%;
+  right: 44%;
   transition: transform 1s;
-  transform: translateX(426%,-90%);
   z-index: 1000000;
 }

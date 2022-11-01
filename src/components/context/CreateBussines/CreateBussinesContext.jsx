@@ -1,9 +1,12 @@
 import { createContext,useState } from "react";
+import { Description } from "../../UI/Description/Description";
 
 export const CreateBussinesContext = createContext();
 
 export const CreateBussinesContextProvider = (props) => {
+  const [del,setDel] = useState(false)
   const [textarea,setTextarea] = useState(false)
+  const [description,setDescription] = useState(false)
 
   const inputDescription = () =>{
     const icon = document.getElementById('input')
@@ -17,13 +20,16 @@ export const CreateBussinesContextProvider = (props) => {
     return setTextarea(false)
   }
 
-  const getText = (e) =>{
-    const text = e.target.value
-    return text
+
+  const getDescription = (text) =>{
+    console.log(text);
+    <Description description={text}/>
   }
 
-  const sendtext = () =>{
-    console.log(getText());
+  const sendText = () =>{
+    closeTextarea()
+    setDescription(true)
+    setDel(true)
   }
   
   return (
@@ -31,8 +37,11 @@ export const CreateBussinesContextProvider = (props) => {
       inputDescription,
       closeTextarea,
       textarea,
-      getText,
-      sendtext,
+      getDescription,
+      sendText,
+      description,
+      setDescription,
+      del
     }}>
       {props.children}
     </CreateBussinesContext.Provider>

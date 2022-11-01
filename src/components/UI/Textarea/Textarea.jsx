@@ -5,16 +5,20 @@ import { CreateBussinesContext } from "../../context/CreateBussines/CreateBussin
 
 export const Textarea = () => {
 
-  const {closeTextarea,getText,sendtext} = useContext(CreateBussinesContext)
+  const {closeTextarea,sendText,getDescription} = useContext(CreateBussinesContext)
 
+  const getText = (event) =>{
+    const text = event.target.value
+    getDescription(text) 
+  }
 
 
   return ( 
     <div className="content_textarea">
       <h2>Descripción</h2>
-      <textarea name="description" id="des_create" cols="20" rows="8" onChange={getText}></textarea>
+      <textarea onChange={getText} name="description" id="des_create" cols="20" rows="8"></textarea>
       <div className="content_button">
-        <button onClick={sendtext}>Guardar Cambios</button>
+        <button onClick={sendText}>Guardar Cambios</button>
         <button onClick={closeTextarea}>Descartar Cambios</button>
       </div>
     </div>
