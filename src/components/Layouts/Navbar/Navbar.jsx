@@ -1,6 +1,9 @@
 import React, { useContext, useState ,useEffect} from "react";
 import "./Navbar.css";
 
+import { Link } from "react-router-dom";
+
+
 //Imagenes
 import Logo from "../../images/Logos TouristApp/logo7.png";
 //Iconos
@@ -13,14 +16,14 @@ import {Login} from '../Login/Login'
 import {Register} from '../Register/Register'
 import {Button} from '../../UI/Button/Button'
 import { Search } from "../../UI/Search/Search";
+import { Transition } from "../../UI/Transition/Transition";
+import { DropdownUser } from "../../UI/DropdownUser/DropdownUser";
+import { Dropdown } from "../../UI/DropdownCategory/Dropdown";
+import { Roles } from "../../UI/Roles/Roles"
+import {Items} from '../../UI/Items/Items'
 
 //Contextos
 import {ModalContext} from '../../context/Modal/ModalContext'
-import { Dropdown } from "../../UI/DropdownCategory/Dropdown";
-import { Roles } from "../../UI/Roles/Roles";
-import { Link } from "react-router-dom";
-import { Transition } from "../../UI/Transition/Transition";
-import { DropdownUser } from "../../UI/DropdownUser/DropdownUser";
 
 export const Navbar = () => {
   const [menu,setMenu] = useState("close")
@@ -143,6 +146,7 @@ export const Navbar = () => {
       <Register/>
       <Roles/>
       <Transition/>
+      <Items/>
     </>
   );
 };

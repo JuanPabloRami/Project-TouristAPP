@@ -1,8 +1,18 @@
 import React, { useContext } from 'react'
 import { CreateBussinesContext } from '../../context/CreateBussines/CreateBussinesContext'
+import { Textarea } from '../Textarea/Textarea'
 import './Description.css'
 
 export const Description = () => {
+  const {setDel,setDescription,inputDescription} = useContext(CreateBussinesContext)
+
+  const editDescription = () => {
+    setDel(false)
+    setDescription(false)
+    inputDescription()
+    return <Textarea/>
+  }
+
   const {text} = useContext(CreateBussinesContext)
   return (
     <>
@@ -13,10 +23,11 @@ export const Description = () => {
             text
           :
           <>
-            No sirve lo otro
+            No hay ninguna descripción
           </>
           }
           </p>
+        <button onClick={editDescription}>Editar</button>
       </div>
     </>
   )

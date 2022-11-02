@@ -16,3 +16,12 @@
   font-size: 1.2rem;
   margin: 15px 0;
 }
+.description__create button{
+  background-color: #288ce9;
+  padding: 8px 15px;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+}

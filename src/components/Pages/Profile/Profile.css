@@ -31,8 +31,8 @@
 }
 .description__account{
   position: absolute;
-  right: 0;
-  transform: translate(-38%, 10%);
+  right: 20%;
+  top: 70%;
 }
 .description__account h1{
   font-size: 2.5rem;
@@ -121,4 +121,91 @@ main{
   align-items: center;
   gap: 10px;
   margin-bottom: 100px;
+}
+
+/*Responsive para la las redes sociales y nombre del negocio*/
+@media (max-width: 2000px) {
+  .description__account{
+    right: 33%;
+  }
+}
+@media  (max-width: 1880px) {
+  .description__account{
+    right: 30%;
+  }
+}
+@media  (max-width: 1800px) {
+  .description__account{
+    right: 28%;
+  }
+}
+@media  (max-width: 1750px) {
+  .description__account{
+    right: 23%;
+  }
+}
+@media  (max-width: 1618px) {
+  .description__account{
+    right: 19%;
+  }
+}
+@media  (max-width: 1540px) {
+  .description__account{
+    right: 15%;
+  }
+}
+@media  (max-width: 1463px) {
+  .description__account{
+    right: 10%;
+  }
+}
+@media  (max-width: 1380px) {
+  .description__account{
+    right: 5%;
+  }
+}
+@media  (max-width: 1310px) {
+  .description__account{
+    right: 0%;
+  }
+}
+@media  (max-width: 1245px) {
+  .description__account{
+    right: 15%;
+  }
+  .description__account h1{
+    font-size: 2rem;
+  }
+  .socials__networks__bussines{
+    gap: 36px;
+  }
+  .socials__networks__bussines  .icon_social{
+    font-size: 2rem;
+  }
+  .bussines__state p{
+    font-size: 1rem;
+  }
+}
+@media  (max-width: 1240px) {
+  .description__account{
+    right: 10%;
+  }
+}
+@media  (max-width: 1170px) {
+  .description__account{
+    right: 5%;
+  }
+}
+@media  (max-width: 1110px) {
+  .description__account{
+    right: 0%;
+  }
+}
+@media  (max-width: 1055px) {
+  .description__account{
+    right: 0%;
+  }
+  .bussines__state{
+    margin-left: 0;
+  }
 }

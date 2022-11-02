@@ -6,9 +6,11 @@ import { useContext } from 'react'
 import { Textarea } from '../Textarea/Textarea'
 import { CreateBussinesContext } from '../../context/CreateBussines/CreateBussinesContext'
 import { Description } from '../Description/Description'
+import { ModalContext } from '../../context/Modal/ModalContext'
 
 
 export const CreateBussines = () => {
+  const {openItems} = useContext(ModalContext)
   const {inputDescription,textarea,description,del} = useContext(CreateBussinesContext)
 
   return (
@@ -40,7 +42,7 @@ export const CreateBussines = () => {
         </div>
         <div className="create items">
           <h2>Catalogo</h2>
-          <Plus className='icon_create'/>
+          <Plus className='icon_create' onClick={openItems}/>
         </div>
       </div>
     </>

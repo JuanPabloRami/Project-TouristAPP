@@ -29,6 +29,7 @@ export const DropdownUser = () => {
       console.log(error);
     });
   }
+
   //llama la funcion que hace la petición
   useEffect(()=>{
    getUser()

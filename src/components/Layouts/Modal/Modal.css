@@ -21,6 +21,10 @@
 }
 
 .filter-modal{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border-radius: 10px;
   background-color: #fff;
   width: 500px;

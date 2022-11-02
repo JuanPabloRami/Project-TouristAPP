@@ -28,14 +28,14 @@ export const Login = () => {
   };
 
   //Contexto
-  const { loginUser, closeLogin,openRegister } = useContext(ModalContext);
+  const { loginUser, closeLogin,openRoles } = useContext(ModalContext);
   const {setTransition} = useContext(TransitionsContext)
   const  {setUsers} = useContext(UsersContext)
 
   //Funcion para cambiar de modales de login a registro
   const loginRegister = () => {
     closeLogin();
-    return openRegister();
+    return openRoles();
   };
 
   return (

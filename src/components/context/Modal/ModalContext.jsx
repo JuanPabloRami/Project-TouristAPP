@@ -10,8 +10,21 @@ export const ModalContextProvider = (props) => {
   const [inputCity, setInputCity] = useState("");
   const [loginUser,setLoginUser] = useState(false)
   const [registerUser,setRegisterUser] = useState(false)
+  const [items,setItems] = useState(false)
   const [roles,setRoles] = useState(false)
   const body = document.querySelector("body");
+
+  //abre la modal de items
+  const openItems = () =>{
+    setItems(true)
+    body.style = "overflow-y:hidden;";
+  }
+
+  //cierra la modal de items
+  const closeItems = () =>{
+    setItems(false)
+    body.style = "overflow-y:scroll;";
+  }
 
   //abre la modal de roles
   const openRoles = () =>{
@@ -83,6 +96,7 @@ export const ModalContextProvider = (props) => {
       openModal,
       OpenModal,
       CloseModal,
+      inputDepartment,
       locationCity,
       locationDepartment,
       locationChange,
@@ -96,6 +110,9 @@ export const ModalContextProvider = (props) => {
       openRoles,
       closeRoles,
       roles,
+      openItems,
+      closeItems,
+      items,
     }}>
       {props.children}
  

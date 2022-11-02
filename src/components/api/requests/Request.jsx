@@ -10,8 +10,8 @@ export const login = (email,password) =>{
   })
   .then(function (response){
     console.log(response);
-    if (response) {
-      return "SII"
+    if (response.status === 200) {
+      localStorage.setItem('token',response.data.tokens.access)
     }
   })
   .catch(function (error){
