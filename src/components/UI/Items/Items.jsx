@@ -106,7 +106,6 @@ export const Items = () => {
                   required
                 />
                 <div className="errorMsg"></div>
-                <img src={baseImage} height="200px" />
               </div>
 
               <Button text="Crear Item" />

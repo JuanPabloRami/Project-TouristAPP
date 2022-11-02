@@ -13,10 +13,12 @@ import { CreateBussinesContextProvider } from './components/context/CreateBussin
 import { RolesContextProvider } from './components/context/Roles/RolesContext';
 import { TransitionsContextProvider } from './components/context/Transitions/TransitionsContext';
 import { UsersContextProvider } from './components/context/Users/UsersContext';
+import { CategoriesContextProvider } from './components/context/Categories/CategoriesContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <CategoriesContextProvider>
   <UsersContextProvider>
     <TransitionsContextProvider>
       <CreateBussinesContextProvider>
@@ -30,5 +32,6 @@ root.render(
       </CreateBussinesContextProvider>
     </TransitionsContextProvider>
   </UsersContextProvider>
+  </CategoriesContextProvider>
 );
 reportWebVitals();

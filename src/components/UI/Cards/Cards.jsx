@@ -3,7 +3,8 @@ import './Cards.css'
 
 
 
-export const Cards = ({image,owner}) => {
+export const Cards = ({image, owner, description, title}) => {
+  
   return (
     <div className="card">
       <div className="img__owner__business">
@@ -14,8 +15,8 @@ export const Cards = ({image,owner}) => {
         <img className="img__business" src={image} alt="img" />
       </div>
       <div className="card__description">
-        <h2>Business</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus asperiores illo voluptatibus dolorum laboriosam accusamus quas libero odio ex! Labore distinctio minus iste voluptatum voluptas ut cupiditate eos culpa saepe!</p>
+        <h2>{title}</h2>
+        <p>{description}</p>
         <button>Ver más</button>
       </div>
     </div>

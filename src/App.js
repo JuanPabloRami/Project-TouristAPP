@@ -8,6 +8,7 @@ import {BussinesCreate} from './components/Pages/BussinesCreate/BussinesCreate';
 import {ItemCreate} from './components/Pages/ItemCreate/ItemCreate';
 import {AboutUs} from './components/Pages/AboutUs/AboutUs';
 import {Profile} from './components/Pages/Profile/Profile'
+import {Categories} from './components/Pages/Categories/Categories';
 import {NotFound} from './components/Pages/NotFound/NotFound'
 import { TermsAndConditions } from './components/Pages/TermsAndConditions/TermsAndConditions'
 import { PrivacyPolicy } from './components/Pages/TermsAndConditions/PrivacyPolicy';
@@ -31,6 +32,7 @@ function App() {
         <Route path='/privacidad' element={<PrivacyPolicy/>}/>
         <Route path='/perfil' element={<Profile/>}/>
         <Route path='*' element={<NotFound/>} />
+        <Route path='/categories' element={<Categories/>}/>
       </Routes>
       <Footer/>    
     </div>
