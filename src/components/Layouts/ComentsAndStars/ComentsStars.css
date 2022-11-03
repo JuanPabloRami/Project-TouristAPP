@@ -24,7 +24,7 @@
   font-size: 1.4rem;
 }
 .border__ipad{
-  width: 90%;
+  width: 70%;
   height: auto;
   display: flex;
   justify-content: center;
@@ -82,7 +82,7 @@
   justify-content: flex-end;
   align-items: center;
   width: 100%;
-  gap: 65%;
+  gap: 60%;
   position: absolute;
   bottom: -35px;
   right: 50px;
