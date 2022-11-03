@@ -1,14 +1,15 @@
 .content__coments{
   width: 100%;
-  height: 90vh;
+  height: auto;
   display: flex;
   justify-content: space-between;
-  flex-direction: row-reverse;
+  flex-direction: column;
+  text-align: justify;
   align-items: center;
   background: #eaeef0;
 }
 .description__coments{
-  width: 70%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -23,8 +24,8 @@
   font-size: 1.4rem;
 }
 .border__ipad{
-  width: 70%;
-  height: 80vh;
+  width: 90%;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,7 +57,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 0px -175px;
+  object-position: 0px -440px;
 }
 .profile_img{
   width: 130px;
@@ -81,7 +82,7 @@
   justify-content: flex-end;
   align-items: center;
   width: 100%;
-  gap: 46%;
+  gap: 65%;
   position: absolute;
   bottom: -35px;
   right: 50px;

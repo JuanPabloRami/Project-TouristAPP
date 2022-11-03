@@ -44,7 +44,7 @@
   display: block;
   bottom: -4px;
   transform: translateY(90%);
-  width: 120%;
+  width: 100%;
   overflow:visible;
   background-color: #0373b4;
   cursor: pointer;
@@ -53,5 +53,5 @@
   display: none;
   position: absolute;
   overflow: hidden;
-  right: -20%;
+  right: 0%;
 }

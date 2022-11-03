@@ -61,6 +61,10 @@
   object-fit: cover;
 }
 .card__description{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   width: 100%;
   height: 50%;
   background-color: #fff;
@@ -87,7 +91,8 @@
   font-size: 1rem;
   margin: 20px 0px;
   cursor: pointer;
-  position: relative;
+  position: absolute;
+  bottom: 0%;
 }
 
 

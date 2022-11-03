@@ -1,9 +1,9 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import "./CardBusiness.css";
 
 //cards de negocio
 import {Cards} from '../Cards/Cards'
-
+import axios from "../../api/axios/axios";
 //Imagenes de negocios
 import Unicentro from "../../images/BussinesCard/uni.jpeg";
 import BogPizzas from "../../images/BussinesCard/bogpizzas.jpg";
@@ -19,6 +19,22 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination, Autoplay} from "swiper";
 
 export const CardBusiness = () => {
+  const [bussines,setBussines] = useState([])
+  const showBussines = () =>{
+    axios.get('/api/negocio/')
+    .then(function (response){
+      setBussines(response.data)
+    })
+    .catch(function (error){
+      console.log(error);
+    });
+  }
+  console.log(bussines)
+
+  useEffect(()=>{
+    showBussines()
+  },[])
+
   return (
     <>
       <div className="cardBusiness">
@@ -42,18 +58,12 @@ export const CardBusiness = () => {
           }}
           modules={[FreeMode, Pagination, Autoplay ]}
         >
-          <SwiperSlide id="slider-business">
-            <Cards image={Unicentro} owner={OWner}/>
-          </SwiperSlide>
-          <SwiperSlide id="slider-business">
-            <Cards image={BogPizzas} owner={OWner}/>
-          </SwiperSlide>
-          <SwiperSlide id="slider-business">
-            <Cards image={ArepasCafe} owner={OWner}/>
-          </SwiperSlide>
-          <SwiperSlide id="slider-business">
-            <Cards image={Estanquillo} owner={OWner}/>
-          </SwiperSlide>
+            {bussines.map((element, index)=>(
+              <SwiperSlide id="slider-business" key={index}>
+                <Cards image={element.imgperfil} owner={element.imgperfil} description={element.descripcion} title={element.nombre} />
+              </SwiperSlide>
+            ))}
+          
         </Swiper>
       </div>
     </>
