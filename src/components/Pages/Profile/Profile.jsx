@@ -5,8 +5,9 @@ import Account from '../../images/Profile/profile.jpg'
 import FrontPage from '../../images/Profile/frontPage.jpg'
 //componentes
 import {Coments} from '../../UI/Coments/Coments'
-import { InfoBussines } from '../../UI/InfoBussines/InfoBussines'
+import { NewBussines } from '../../UI/InfoBussines/InfoBussines'
 import { CreateBussines } from '../../UI/CreateBussines/CreateBussines'
+import { SocialNetworks } from '../../UI/SocialNetworks/SocialNetworks'
 //icons
 import {FaFacebook as IconFacebook,} from "react-icons/fa";
 import {BsInstagram as IconInstagram} from 'react-icons/bs'
@@ -26,7 +27,8 @@ export const Profile = () => {
       <div className="profile__img">
         <img src={Account} alt='perfil'/>
       </div>
-      <div className="description__account">
+      <SocialNetworks/>
+      {/* <div className="description__account">
         <h1>McDonald's</h1>
         <div className="socials__networks__bussines">
           <a href="#"><IconFacebook className='icon_social f'/></a>
@@ -39,12 +41,12 @@ export const Profile = () => {
             <p>Abierto: 10:00:00 - 18:00:00</p>
           </div>
         </div>
-      </div>
+      </div> */}
       <button className='btn_like_bussines'> <Heart/> 100</button>
     </div>
     <main>
       <Coments/>
-      {/* <InfoBussines/> */}
+      {/* <NewBussines/> */}
       <CreateBussines/>
     </main>
     </>

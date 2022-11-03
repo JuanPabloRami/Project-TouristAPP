@@ -36,7 +36,7 @@ export const Dropdown = () => {
     <div className="drop__down">
       {category.map((Element,index)=>(
         <Link to="/categories">
-          <p onClick={selectCategory} key={index}>{Element.nombre}</p>
+          <p key={index} onClick={selectCategory} >{Element.nombre}</p>
         </Link>
       ))}
     </div>

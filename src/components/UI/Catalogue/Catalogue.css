@@ -1,24 +1,13 @@
-.description__profile{
-  width: 70%;
-  background-color: #ffffff;
-  border-radius: 10px 0px 0px 10px;
-  padding: 20px;
-  overflow: hidden;
-  overflow-y: scroll;
+.bussines__items{
+  position: relative;
+  border-radius: 10px;
+  background-color: #fff;
 }
-.description__profile h2{
+.bussines__items h2{
   font-size: 2rem;
   border-left: 15px solid #007add;
   padding: 10px ;
   color: #03233d;
-}
-.description__profile p{
-  text-align: justify;
-  font-size: 1.2rem;
-  margin: 15px 0;
-}
-.bussines__items{
-  border-radius: 10px;
 }
 .bussines__items h2{
   margin-bottom: 15px;
@@ -45,7 +34,7 @@
   object-position: 0% 100%;
   border-radius: 10px;
 }
-.content__img__items .text{
+.content__img__items > .text{
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -67,4 +56,27 @@
   width: 90vw;
   height: 90vh;
 }
-
+.text > h3{
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+.text > p{
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+#price{
+  font-weight: bold;
+}
+.bussines__items button{
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #288ce9;
+  padding: 8px 15px;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+}

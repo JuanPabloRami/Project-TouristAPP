@@ -1,36 +1,25 @@
-import React, { useContext,useState } from 'react'
+import React, { useContext } from 'react'
 import './Items.css'
 
 import { ModalContext } from '../../context/Modal/ModalContext'
 import { Field, Formik, Form} from 'formik'
 import { Button } from '../Button/Button'
+import { CatalogueContext } from '../../context/Catalogue/CatalogueContext'
 
 export const Items = () => {
   
   const {items,closeItems} = useContext(ModalContext)
+  const {uploadImageItem,uploadImagePromotion,setStateItem,setCatalogue,catalogue,itemImage,promotionImage} = useContext(CatalogueContext)
+  
+ const sendItem = (nombre,descripcion,precio,negocio) =>{
+  let item = {nombre,descripcion,precio,itemImage,promotionImage,negocio}
+  setCatalogue(item)
+  setStateItem(true)
+  closeItems()
+ }
 
-  const [baseImage, setBaseImage] = useState("");
+  console.log(catalogue);
 
-  const uploadImage = async (e) => {
-    const file = e.target.files[0];
-    const base64 = await convertBase64(file);
-    setBaseImage(base64);
-  };
-
-  const convertBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
-
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
-  };
 
   return (
     <>
@@ -39,7 +28,7 @@ export const Items = () => {
           nombre: '',
           descripcion: '',
           precio: '',
-          nuevo: '',
+          nuevo: null,
           imagen: '',
           imgpromocion: '',
           negocio: '',
@@ -49,7 +38,9 @@ export const Items = () => {
 
         }}
         
-        onSubmit={()=>{}}
+        onSubmit={({nombre,descripcion,precio,negocio})=>{
+         sendItem(nombre,descripcion,precio,negocio)
+        }}
       >
         <div className={`modal-login${items ? " open" : " close"}`}>
           <div className="conten_itemsCreate">
@@ -62,7 +53,7 @@ export const Items = () => {
                 <Field
                   type="text"
                   id="nameItem"
-                  name="nameItem"
+                  name="nombre"
                   required
                 />
                 <label htmlFor="nameItem">
@@ -75,7 +66,8 @@ export const Items = () => {
                 <Field
                   type="text"
                   id="desItem"
-                  name="desItem"
+                  name="descripcion"
+                  maxlength="150"
                   required
                 />
                 <label htmlFor="desItem">
@@ -88,7 +80,7 @@ export const Items = () => {
                 <Field
                   type="number"
                   id="numItem"
-                  name="numItem"
+                  name="precio"
                   required
                 />
                 <label htmlFor="numItem">
@@ -102,12 +94,24 @@ export const Items = () => {
                   type="file"
                   id="file"
                   name="file"
-                  onChange={uploadImage}
+                  onChange={uploadImageItem}
                   required
                 />
+                <label className='name_file'>Imagen del producto</label>
                 <div className="errorMsg"></div>
               </div>
 
+              <div className="ContainerInput">
+                <Field
+                  type="file"
+                  id="files"
+                  name="files"
+                  onChange={uploadImagePromotion}
+                  required
+                />
+                <label className='name_file'>Imagen de promoción</label>
+                <div className="errorMsg"></div>
+              </div>
               <Button text="Crear Item" />
             </Form>
           </div>

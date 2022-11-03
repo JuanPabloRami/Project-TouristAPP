@@ -14,24 +14,27 @@ import { RolesContextProvider } from './components/context/Roles/RolesContext';
 import { TransitionsContextProvider } from './components/context/Transitions/TransitionsContext';
 import { UsersContextProvider } from './components/context/Users/UsersContext';
 import { CategoriesContextProvider } from './components/context/Categories/CategoriesContext';
+import { CatalogueContextProvider } from './components/context/Catalogue/CatalogueContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <CategoriesContextProvider>
-  <UsersContextProvider>
-    <TransitionsContextProvider>
-      <CreateBussinesContextProvider>
-        <RolesContextProvider>
-          <ModalContextProvider>
-              <BrowserRouter>
-                <App />
-              </BrowserRouter>
-          </ModalContextProvider>
-        </RolesContextProvider>
-      </CreateBussinesContextProvider>
-    </TransitionsContextProvider>
-  </UsersContextProvider>
-  </CategoriesContextProvider>
+  <CatalogueContextProvider>
+    <CategoriesContextProvider>
+      <UsersContextProvider>
+        <TransitionsContextProvider>
+          <CreateBussinesContextProvider>
+            <RolesContextProvider>
+              <ModalContextProvider>
+                  <BrowserRouter>
+                    <App />
+                  </BrowserRouter>
+              </ModalContextProvider>
+            </RolesContextProvider>
+          </CreateBussinesContextProvider>
+        </TransitionsContextProvider>
+      </UsersContextProvider>
+    </CategoriesContextProvider>
+  </CatalogueContextProvider>
 );
 reportWebVitals();
