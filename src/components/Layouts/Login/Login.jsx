@@ -6,17 +6,25 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 //componentes
 import { ModalContext } from "../../context/Modal/ModalContext";
 import { Button } from "../../UI/Button/Button";
+import { Message } from "../../UI/Message/Message";
 //iconos
 import {AiFillEye as Eye} from 'react-icons/ai'
 import {AiFillEyeInvisible as EyeClose} from 'react-icons/ai'
 import axios from "../../api/axios/axios";
 import { TransitionsContext } from "../../context/Transitions/TransitionsContext";
 import { UsersContext } from "../../context/Users/UsersContext";
+import {GiConfirmed as Confirmed} from 'react-icons/gi'
+
 
 export const Login = () => {
   
+  //muestra o no la contraseña
+  const [pwStatus,setPwStatus] = useState("password")
   const [iconPassword,setIconPassword] = useState(true)
-
+  function showPassword(){
+    pwStatus === "password" ? setPwStatus("text") :setPwStatus("password")
+  }
+  //cambia el icono
   const changeIcon = () =>{
     const change = iconPassword === true ? <Eye/> : <EyeClose/>
     return change
@@ -40,6 +48,7 @@ export const Login = () => {
 
   return (
     <>
+      
       <Formik
         initialValues={{
           email: '',
@@ -75,6 +84,7 @@ export const Login = () => {
               localStorage.setItem('token',response.data.tokens.access)
               closeLogin()
               setTransition(true)
+              
             }
           })
           .catch(function (error){
@@ -118,7 +128,7 @@ export const Login = () => {
 
                 <div className="ContainerInput">
                   <Field
-                    type="password"
+                    type={pwStatus}
                     id="pass"
                     name="password"
                     required
@@ -128,7 +138,8 @@ export const Login = () => {
                     <span className="text-name">Contraseña</span>
                   </label>
                   <div className="icon_input" onClick={()=>{
-                    setIconPassword(false)
+                    showPassword()
+                    setIconPassword(!iconPassword)
                   }}
                   >
                     {changeIcon()}
@@ -139,10 +150,15 @@ export const Login = () => {
                 </div>
                 <Button text="Ingresar" />
               </Form>
+              
             </div>
+            <Message text="Login exitoso" icon={<Confirmed className="icon__message"/>} message="open"/>
           </div>
+          
         )}
+        
       </Formik>
+      
     </>
   );
 };

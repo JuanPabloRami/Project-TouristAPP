@@ -6,7 +6,11 @@ import {register} from '../../api/requests/Request'
 //Icons
 import {GiConfirmed as Confirmed} from 'react-icons/gi'
 import {VscError as Error} from 'react-icons/vsc'
+//icono show password
 import {AiFillEye as Eye} from 'react-icons/ai'
+import {AiFillEyeInvisible as EyeClose} from 'react-icons/ai'
+import { RolesContext } from "../../context/Roles/RolesContext";
+
 //Formik
 import { Formik, Form,Field,ErrorMessage} from "formik";
 //Contexto
@@ -14,7 +18,6 @@ import { ModalContext } from "../../context/Modal/ModalContext";
 //componentes
 import { Button } from "../../UI/Button/Button";
 import {Message} from '../../UI/Message/Message'
-import { RolesContext } from "../../context/Roles/RolesContext";
 //imagenes
 //link
 import { Link } from "react-router-dom";
@@ -52,6 +55,18 @@ export const Register = () => {
     closeRegister();
     return openLogin();
   };
+
+  //muestra o no la contraseña
+  const [pwStatus,setPwStatus] = useState("password")
+  const [iconPassword,setIconPassword] = useState(true)
+  function showPassword(){
+    pwStatus === "password" ? setPwStatus("text") :setPwStatus("password")
+  }
+  //cambia el icono
+  const changeIcon = () =>{
+    const change = iconPassword === true ? <Eye/> : <EyeClose/>
+    return change
+  }
 
   return (
     <>
@@ -105,9 +120,10 @@ export const Register = () => {
            //validacion para el confirmPassword
           if(!values.confirmPassword){
             errors.confirmPassword = 'Por favor ingresa una contraseña'
-          }else if(!regularExpressions.password.test(values.confirmPassword)){
-            errors.confirmPassword = 'La constraseña tiene que ser de 8 a 12 digitos'
+          }else if(values.confirmPassword !== values.password){
+            errors.confirmPassword = 'Las contraseñas no coinciden'
           }
+          
 
           //validacion acepto acceptterms
           if (!values.acceptterms){
@@ -203,7 +219,7 @@ export const Register = () => {
 
                 <div className="ContainerInput">
                   <Field 
-                    type='password'
+                    type={pwStatus}
                     name="password"
                     id='password' 
                     required 
@@ -212,14 +228,20 @@ export const Register = () => {
                   <label htmlFor="password">
                     <span className="text-name">Contraseña</span>
                   </label>
-                  <Eye className="icon_input"/>
+                  <div className="icon_input" onClick={()=>{
+                    showPassword()
+                    setIconPassword(!iconPassword)
+                  }}
+                  >
+                    {changeIcon()}
+                  </div>
                   <div className="errorMsg">
                     <ErrorMessage name="password" component={() => (<p>{errors.password}</p>)} />
                   </div>
                 </div>
                 <div className="ContainerInput">
                   <Field
-                    type='password'
+                    type="password"
                     name="confirmPassword"
                     id='confirmPassword'
                     required 
@@ -227,7 +249,7 @@ export const Register = () => {
                   <label htmlFor="confirmPassword">
                     <span className="text-name">Confirmar Contraseña</span>
                   </label>
-                  <Eye className="icon_input"/>
+                  {/* <Eye className="icon_input" onClick={showPassword("pwConfirm")}/> */}
                   <div className="errorMsg">
                     <ErrorMessage name="confirmPassword" component={() => (<p>{errors.confirmPassword}</p>)} />
                   </div>

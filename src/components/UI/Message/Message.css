@@ -1,8 +1,7 @@
 .message__response{
   position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 40px 10px;
+  top: 0;
+  margin: 103px 10px;
   display: flex;
   justify-content: center;
   align-items: center;
