@@ -3,12 +3,16 @@ import { useContext, useEffect, useState } from 'react'
 import { UsersContext } from '../../context/Users/UsersContext'
 import { Link } from 'react-router-dom'
 import axios from '../../api/axios/axios'
+import { SyncLoader } from "react-spinners";
 //icons
 import {AiOutlineUser as User} from 'react-icons/ai'
 import {MdBusinessCenter as Bussines} from 'react-icons/md'
+import { TransitionsContext } from '../../context/Transitions/TransitionsContext'
+import { Autoplay } from 'swiper'
 export const DropdownUser = () => {
   //Estado que me guarda los datos de la persona logueada
   const [api,setApi] = useState({})
+  const {setLoading, loading} = useContext(TransitionsContext)
   //Ejecuta el useEffect cuando hay un usuario logueado
   const {users} = useContext(UsersContext)
   //trae el token del usuario
@@ -30,6 +34,13 @@ export const DropdownUser = () => {
     });
   }
 
+  const changeState = () =>{
+    setTimeout(()=>{
+      localStorage.removeItem('token')
+      setLoading(false)
+    }, 2000);
+  }
+
   //llama la funcion que hace la petición
   useEffect(()=>{
    getUser()
@@ -37,8 +48,9 @@ export const DropdownUser = () => {
 
   //Cerrar sesion
   const logout = () =>{
-    localStorage.removeItem('token')
-    return window.location.reload()
+    setLoading(true)
+     return changeState()
+  
   }
 
   //icono dependiente del tipo de usuario
@@ -49,10 +61,15 @@ export const DropdownUser = () => {
       return <Bussines className='icon'/> 
     }
   }
-
-
+  if(loading){
+    return(
+      <SyncLoader cssOverride={{margin: 'auto','justify-content': 'center'}} color="rgba(155, 170, 177, 1)"size={18}/>
+    )
+  }
+  else{
   return (
     <>
+    {loading&&  <SyncLoader cssOverride={{margin: 'auto','justify-content': 'center'}} color="rgba(155, 170, 177, 1)"size={18}/>}
       {api ?
       <div className="dropdown_user">
         <span>{typeUser()} {api.first_name} {api.last_name}</span>
@@ -74,4 +91,5 @@ export const DropdownUser = () => {
        }
     </>
   )
+}
 }

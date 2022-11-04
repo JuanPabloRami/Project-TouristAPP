@@ -104,3 +104,12 @@
 .Gmail{
   padding: 10px 40px;
 }
+
+.componentLoading {
+  color: #000000;
+  position: absolute;
+  height: 50%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
