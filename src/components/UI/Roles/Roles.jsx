@@ -34,18 +34,12 @@ export const Roles = () => {
               <User className='icon_role'/>
             </div>
             <h2>Usuario</h2>
-            <div className="role_description">
-              <p className='des'>Los usuarios tendran la capacidad de apoyar y visitar los negocios que más le agraden o que esten mas cerca de su posición. </p>
-            </div>
           </div>
           <div className="role_user">
             <div className="user" onClick={EntrepreneurRole}>
               <Bussines className='icon_role'/>
             </div>
             <h2>Emprendedor</h2>
-            <div className="role_description">
-              <p className='des'>Los emprendedores podran crear su negocio y editarlo como más deseen, para que los usuarios los vean y puedan interactuar, Asi, con el proposito de que alcancen más clientes.</p>
-            </div>
           </div>
         </div>
       </div>

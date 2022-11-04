@@ -14,6 +14,8 @@ import axios from "../../api/axios/axios";
 import { TransitionsContext } from "../../context/Transitions/TransitionsContext";
 import { UsersContext } from "../../context/Users/UsersContext";
 import {GiConfirmed as Confirmed} from 'react-icons/gi'
+//images
+import imgregister from "../../images/Register/register.jpg"
 
 
 export const Login = () => {
@@ -132,14 +134,15 @@ export const Login = () => {
               <button className="btn-close" onClick={closeLogin}>
                 X
               </button>
-              <div className="content__login">
-                <h1>¡Bienvenido!</h1>
-                <p>
+              <div className="content__login"> 
+              {<img src={imgregister} alt="login"/>}
+                <h1>¿Aun no tienes cuenta?</h1>
+                {/* <p>
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                   Cupiditate sit, nostrum impedit blanditiis rem accusamus fugit
                   nobis accusantium eos voluptates, atque repellat non? Omnis,
                   laborum. Consequatur delectus fuga distinctio commodi.
-                </p>
+                </p> */}
 
                 <button onClick={loginRegister}>Registrarse</button>
               </div>

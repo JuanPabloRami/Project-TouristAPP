@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import "./Register.css";
 import { BarLoader } from "react-spinners";
 //peticiones
-import {login, register} from '../../api/requests/Request'
+import {login} from '../../api/requests/Request'
 //Icons
 import {GiConfirmed as Confirmed} from 'react-icons/gi'
 import {VscError as Error} from 'react-icons/vsc'
@@ -20,6 +20,7 @@ import { ModalContext } from "../../context/Modal/ModalContext";
 import { Button } from "../../UI/Button/Button";
 import {Message} from '../../UI/Message/Message'
 //imagenes
+import imglogin from "../../images/Login/login.jpg";
 //link
 import { Link } from "react-router-dom";
 import axios from "../../api/axios/axios";
@@ -184,14 +185,14 @@ export const Register = () => {
                 X
               </button>
               <div className="content__login">
-                {/* {<img src={Login} alt="login"/>} */}
-                <h1>¡Bienvenido!</h1>
-                <p>
+                 {<img src={imglogin} alt="login"/>} 
+                 <h1>¿ Ya tienes cuenta ?</h1>
+                {/* <p>
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                   Cupiditate sit, nostrum impedit blanditiis rem accusamus fugit
                   nobis accusantium eos voluptates, atque repellat non? Omnis,
                   laborum. Consequatur delectus fuga distinctio commodi.
-                </p>
+                </p>  */}
                 <button onClick={loginRegister}>Iniciar sesión</button>
               </div>
 
