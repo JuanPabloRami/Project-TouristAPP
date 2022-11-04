@@ -47,6 +47,9 @@ export const Login = () => {
     return openRoles();
   };
 
+  //estado del alert de exito o error
+  const [alert,setAlert] = useState("close")
+
   return (
     <>
       
@@ -87,7 +90,16 @@ export const Login = () => {
                 setLoading(false);
                 setUsers(true);
                 localStorage.setItem("token", response.data.tokens.access);
-                closeLogin();
+                setAlert("open")
+                setTimeout(()=>{
+                  setAlert("close")
+                  
+                },1500)
+                setTimeout(()=>{
+                  closeLogin();
+                },2000)
+                // 
+                // 
                 //setTransition(true)
               }
             })
@@ -176,7 +188,7 @@ export const Login = () => {
               </Form>
               
             </div>
-            <Message text="Login exitoso" icon={<Confirmed className="icon__message"/>} message="open"/>
+            <Message text="Login exitoso" icon={<Confirmed className="icon__message"/>} message={alert}/>
           </div>
           
         )}

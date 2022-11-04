@@ -11,11 +11,11 @@
   width: 300px;
 }
 .window_close{
-  transform: translate(100%);
+  transform: translateY(-300%);
   transition: transform .5s;
 }
 .window_open{
-  transform: translate(0%);
+  transform: translateY(0%);
   transition: transform .5s;
 }
 .message__response .icon__message{
