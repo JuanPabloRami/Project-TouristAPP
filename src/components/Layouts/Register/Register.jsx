@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useContext, useState } from "react";
 import "./Register.css";
+import { BarLoader } from "react-spinners";
 //peticiones
-import {register} from '../../api/requests/Request'
+import {login, register} from '../../api/requests/Request'
 //Icons
 import {GiConfirmed as Confirmed} from 'react-icons/gi'
 import {VscError as Error} from 'react-icons/vsc'
@@ -21,10 +22,12 @@ import {Message} from '../../UI/Message/Message'
 //imagenes
 //link
 import { Link } from "react-router-dom";
+import axios from "../../api/axios/axios";
 
 
 export const Register = () => {
   let [confirm,setConfirm] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const messageResponse = () =>{
     if(confirm === "confirmed"){
@@ -68,6 +71,10 @@ export const Register = () => {
     return change
   }
 
+  //Logeo automatico
+  const automation = (email,password) =>{
+    login(email,password)
+  }
   return (
     <>
       <Formik
@@ -133,12 +140,45 @@ export const Register = () => {
           return errors;
         }}
         onSubmit={({name,last_name,email,username,password}) => {
-          register(name,last_name,email,username,password,typeUser)
+          setLoading(true);
+          axios.post('/auth/signup/',{
+            first_name:name,
+            last_name,email,username,password,
+            type_user: typeUser
+          })
+          .then(function (response){
+            console.log(response);
+            if (response.status === 201){
+              automation(email,password)
+              setLoading(false);
+            }
+          })
+          .catch(function (error){
+            console.log(error);
+          });
         }}
       >
         {({errors}) => (
           <div className={`modal-login${registerUser ? " open" : " close"}`}>
             {messageResponse()}
+            {loading ? (
+              <>
+                {loading && (
+                  <BarLoader
+                    cssOverride={{
+                      margin: "auto",
+                      "justify-content": "center",
+                      position: "absolute",
+                      top: "0",
+                      left: "0",
+                      width: "100%",
+                    }}
+                    color="#0373b4"
+                    size={90}
+                  />
+                )}
+              </>
+            ) : null}
             <div className="form-register">
               <button className="btn-close" onClick={closeRegister}>
                 X
