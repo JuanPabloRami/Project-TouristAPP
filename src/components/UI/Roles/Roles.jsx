@@ -13,14 +13,14 @@ export const Roles = () => {
 
   const userRole = () =>{
     rolUSer()
-    openRegister()
-    return closeRoles()
+    closeRoles()
+    return openRegister()
   }
 
   const EntrepreneurRole = () =>{
     rolEntrepreneur()
-    openRegister()
-    return closeRoles()
+    closeRoles()
+    return openRegister()
   }
 
   return (

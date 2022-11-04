@@ -141,22 +141,7 @@ export const Register = () => {
           return errors;
         }}
         onSubmit={({name,last_name,email,username,password}) => {
-          setLoading(true);
-          axios.post('/auth/signup/',{
-            first_name:name,
-            last_name,email,username,password,
-            type_user: typeUser
-          })
-          .then(function (response){
-            console.log(response);
-            if (response.status === 201){
-              automation(email,password)
-              setLoading(false);
-            }
-          })
-          .catch(function (error){
-            console.log(error);
-          });
+          console.log("si");
         }}
       >
         {({errors}) => (
