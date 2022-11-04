@@ -99,3 +99,25 @@ z-index: 10;
   z-index: 10;
   color: red;
 }
+
+.ContainerCheckbox{
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 20px;
+}
+
+.checkboxLabel{
+  display: flex;
+  gap:15px;
+}
+
+.ContainerCheckbox p{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: #d30505;
+  font-size: .75rem;
+}

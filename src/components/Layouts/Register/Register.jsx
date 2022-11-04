@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useContext, useState } from "react";
 import "./Register.css";
+//peticiones
+import {register} from '../../api/requests/Request'
 //Icons
 import {GiConfirmed as Confirmed} from 'react-icons/gi'
 import {VscError as Error} from 'react-icons/vsc'
@@ -13,14 +15,13 @@ import { ModalContext } from "../../context/Modal/ModalContext";
 import { Button } from "../../UI/Button/Button";
 import {Message} from '../../UI/Message/Message'
 import { RolesContext } from "../../context/Roles/RolesContext";
-import { TransitionsContext } from "../../context/Transitions/TransitionsContext";
-import axios from "../../api/axios/axios";
-import { UsersContext } from "../../context/Users/UsersContext";
 //imagenes
+//link
+import { Link } from "react-router-dom";
 
 
 export const Register = () => {
-  const [confirm,setConfirm] = useState("");
+  let [confirm,setConfirm] = useState("");
 
   const messageResponse = () =>{
     if(confirm === "confirmed"){
@@ -29,22 +30,6 @@ export const Register = () => {
     }else if (confirm === "error"){
       return <Message text="Campos incorrectos" icon={<Error className="icon__message"/>} message="open"/>
     }
-  }
-
-  const loginAutomate = (email,password) =>{
-    axios.post('/auth/login/',{
-      email,password
-    })
-    .then(function (response){
-      console.log(response);
-      if (response.status === 200) {
-        setUsers(true)
-        localStorage.setItem('token',response.data.tokens.access)
-      }
-    })
-    .catch(function (error){
-      console.log(error);
-    });
   }
 
   //objeto el cual incluye todas las expresiones regulares para validar los campos.
@@ -58,8 +43,6 @@ export const Register = () => {
   //Uso de contexto para llamar las modales y el tipo de usuario
   const { registerUser, closeRegister, openLogin, } = useContext(ModalContext);
   const {typeUser} = useContext(RolesContext)
-  const {setTransition} = useContext(TransitionsContext);
-  const {setUsers} = useContext(UsersContext);
 
   //Contexto para registro de usuario
   //const {first_name,last_name,email,usernamee,password,userRegister} = useContext(RegisterContext);
@@ -126,25 +109,15 @@ export const Register = () => {
             errors.confirmPassword = 'La constraseña tiene que ser de 8 a 12 digitos'
           }
 
+          //validacion acepto acceptterms
+          if (!values.acceptterms){
+            errors.acceptterms = 'Debe aceptar los terminos para poder registrarse.'
+          }
+
           return errors;
         }}
         onSubmit={({name,last_name,email,username,password}) => {
-          axios.post('/auth/signup/',{
-              first_name: name,
-              last_name,email,username,password,
-              type_user: typeUser
-          })
-          .then(function (response){
-            console.log(response);
-            if (response.status === 201){
-              loginAutomate(email,password)
-              closeRegister()
-              setTransition(true)
-            }
-          })
-          .catch(function (error){
-            console.log(error);
-          });
+          register(name,last_name,email,username,password,typeUser)
         }}
       >
         {({errors}) => (
@@ -257,6 +230,23 @@ export const Register = () => {
                   <Eye className="icon_input"/>
                   <div className="errorMsg">
                     <ErrorMessage name="confirmPassword" component={() => (<p>{errors.confirmPassword}</p>)} />
+                  </div>
+                </div>
+                <div className="ContainerCheckbox">
+                  <div className="checkboxLabel">
+                    <Field 
+                      type='checkbox'
+                      name="acceptTerms"
+                      id='acceptTerms' 
+                      required 
+                    />
+
+                    <label htmlFor="checkbox">
+                      <span className="">Acepto los <Link to='/terminosycondiciones' >Terminos y condiciones</Link> y la <Link to='/privacidad' >politica de privacidad</Link></span>
+                    </label>
+                  </div>
+                  <div className="errorMsg">
+                    <ErrorMessage name="password" component={() => (<p>{errors.acceptterms}</p>)} />
                   </div>
                 </div>
                 <Button text='Registrarse'/>

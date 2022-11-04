@@ -96,7 +96,7 @@ export const Navbar = () => {
         <div id="services">
           <div className="links">
             <ul className="login_and_register">
-              <a href='/'><li className="list">Inicio</li></a>
+            <Link to='/' ><li className="list">Inicio</li></Link>
               <Search/>
               <li className="list" onClick={openCategory}>Categoria</li>
             </ul>
