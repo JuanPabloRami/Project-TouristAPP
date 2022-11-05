@@ -115,11 +115,12 @@ export const Navbar = () => {
             <ul className="login_and_register">
             <Link to='/' ><li className="list">Inicio</li></Link>
               <Search/>
-              <li className="list" onClick={openCategory}>Categoria</li>
+              <div className="containerDrop">
+              <li  className="listcategories" id="categories">Categoria</li>
+                <Dropdown/>
+              </div>
             </ul>
-            <Dropdown/>
           </div>
-          <div className="bg" onClick={closeCategory}></div>
           <div className="location">
             <p onClick={OpenModal}><Location color="red" className="logo-location"/>{`${ locationState ?  locationState:'Seleccione ubicación'}`}</p>
           </div>

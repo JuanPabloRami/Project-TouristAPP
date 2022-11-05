@@ -11,15 +11,13 @@
   flex-direction: column;
   justify-content: space-around;
   padding: 10px;
-  width: 40%;
+  width: 100%;
   height: auto;
   background-color: #fff;
-  box-shadow: 0px 0px 10px black;
   position: absolute;
-  bottom: -170px;
-  right: -20px;
+  bottom: -140px;
+  left: 0;
   gap: 5px;
-  border-radius: 10px;
 }
 .drop__down p{
   position: relative;
@@ -41,9 +39,21 @@
   transition: all .5s;
   margin-top: 5px;
 }
+.drop__down:hover{
+  display: flex;
+}
+.drop__down:hover + .listcategories{
+  background-color: #fff;
+  color: #000;
+
+}
 .drop__down p:hover::after{
   right: 0;
   width: 50%;
+}
+.containerDrop{
+  position: relative;
+  width: 100%;
 }
 .bg{
   display: none;
@@ -58,4 +68,18 @@
 .drop__down > a {
   text-decoration: none;
   color: #000;
+}
+.listcategories:hover + .drop__down{
+  display: flex;
+}
+
+.listcategories:hover{
+  color: #000;
+  background-color: white;
+  padding: 12px 0px;
+  position: relative;
+}
+
+.listcategories{
+  color: white;
 }
