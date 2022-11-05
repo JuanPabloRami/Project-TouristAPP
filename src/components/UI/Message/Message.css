@@ -1,17 +1,18 @@
 .message__response{
   position: absolute;
-  top: 0;
-  margin: 103px 10px;
+  bottom: 0;
+  margin: 15px  10px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  background-color: #0f151cf5;
+  background-color: #0f151ce8;
   height: 60px;
   width: 300px;
+  border-radius: 10px;
 }
 .window_close{
-  transform: translateY(-300%);
+  transform: translateY(200%);
   transition: transform .5s;
 }
 .window_open{
@@ -21,6 +22,11 @@
 .message__response .icon__message{
   font-size: 1.2rem;
   color: #1bb822;
+}
+
+.message__response .icon__error{
+  font-size: 1.2rem;
+  color: #ff0000;
 }
 .message__response p{
   font-size: 1.3rem;

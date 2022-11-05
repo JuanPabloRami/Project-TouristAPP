@@ -14,6 +14,7 @@ import axios from "../../api/axios/axios";
 import { TransitionsContext } from "../../context/Transitions/TransitionsContext";
 import { UsersContext } from "../../context/Users/UsersContext";
 import {GiConfirmed as Confirmed} from 'react-icons/gi'
+import {VscError as ErrorIcon} from 'react-icons/vsc'
 //images
 import imgregister from "../../images/Register/register.jpg"
 
@@ -50,7 +51,8 @@ export const Login = () => {
 
   //estado del alert de exito o error
   const [alert,setAlert] = useState("close")
-
+  const [errorAlert,setErrAlert] = useState("close")
+  const [errorText,setErrText] = useState("Ha ocurrido un error")
   return (
     <>
       
@@ -102,9 +104,18 @@ export const Login = () => {
                 // 
                 //setTransition(true)
               }
+              
             })
             .catch(function (error) {
               console.log(error);
+              if (error.response.status === 400){
+                setLoading(false)
+                setErrText(error.response.data.message)
+                setErrAlert("open")
+                setTimeout(()=>{
+                  setErrAlert("close")
+                },1500)
+              }
             });
         }}
       >
@@ -190,6 +201,7 @@ export const Login = () => {
               
             </div>
             <Message text="Login exitoso" icon={<Confirmed className="icon__message"/>} message={alert}/>
+            <Message text={errorText} icon={<ErrorIcon className="icon__error"/>} message={errorAlert}/>
           </div>
           
         )}

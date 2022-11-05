@@ -10,6 +10,10 @@ import {AiFillEye as Eye} from 'react-icons/ai'
 import {AiFillEyeInvisible as EyeClose} from 'react-icons/ai'
 import { RolesContext } from "../../context/Roles/RolesContext";
 
+//iconos exito o error para alerts
+import {GiConfirmed as ConfirmedIcon} from 'react-icons/gi'
+import {VscError as ErrorIcon} from 'react-icons/vsc'
+
 //Formik
 import { Formik, Form,Field,ErrorMessage} from "formik";
 //Contexto
@@ -88,6 +92,11 @@ export const Register = () => {
     });
   }
 
+  //estado del alert de exito o error
+  const [alert,setAlert] = useState("close")
+  const [errorAlert,setErrAlert] = useState("close")
+  const [errorText,setErrText] = useState("Ha ocurrido un error")
+
   return (
     <>
       <Formik
@@ -157,6 +166,11 @@ export const Register = () => {
             console.log(response);
             if (response.status === 201){
               automation(email,password)
+              setAlert("open")
+                setTimeout(()=>{
+                  setAlert("close")
+                  
+                },1500)
               setTimeout(() =>{
                 setLoading(false);              
                 setSwitchNav(true)
@@ -167,6 +181,14 @@ export const Register = () => {
           })
           .catch(function (error){
             console.log(error);
+            if (error.response.status === 400){
+              setLoading(false)
+              setErrText(error.response.data.errors)
+              setErrAlert("open")
+              setTimeout(()=>{
+                setErrAlert("close")
+              },1500)
+            }
           });
         }}
       >
@@ -317,6 +339,8 @@ export const Register = () => {
                 <Button text='Registrarse'/>
               </Form>
             </div>
+            <Message text="Te has registrado correctamente!" icon={<ConfirmedIcon className="icon__message"/>} message={alert}/>
+            <Message text={errorText} icon={<ErrorIcon className="icon__error"/>} message={errorAlert}/>
           </div>
         )}
       </Formik>
