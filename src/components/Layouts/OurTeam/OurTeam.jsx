@@ -7,6 +7,7 @@ import Polez from "../../images/OurTeam/Polez.png"
 export const OurTeam = () => {
   return (
     <div className="our-team">
+      <div className="linea"></div>
       <h1>Equipo</h1>
       <div className="about-us">
         <div className="photo one">

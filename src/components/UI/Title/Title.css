@@ -2,7 +2,7 @@
   position: relative;
   text-align: center;
   margin: 10px 0 0px 0;
-  color: #fff;
+  color: #000;
   -webkit-text-stroke: 1px #000;
   font-size: 100px;
   -webkit-background-clip: text;
@@ -14,7 +14,7 @@
   position: relative;
   text-align: center;
   margin: 10px 0 0px 0;
-  color: #fff;
+  color: #000;
   -webkit-text-stroke: 1px #000;
   font-size: 100px;
   -webkit-background-clip: text;
@@ -22,29 +22,20 @@
   z-index: 2;
 
 }
-#title__ng::after{
-  content: "Negocios";
-  position: absolute;
-  color: #000;
-  top: 0;
-  transform: translate(-100%);
-  animation: text-ocean 3s linear infinite;
-  z-index: 3;
-}
-#title__pm::after{
-  content: "Promociones";
-  position: absolute;
-  color: #000;
-  top: 0;
-  transform: translate(-100%);
-  animation: text-ocean 3s linear infinite;
-  z-index: 3;
-}
 #bag{
  position: absolute;
- left: 33%;
+ left: 30%;
  top: -28px;
  font-size: 9rem;
  color: #0a4a6e21;
  transform: rotate(330deg);
+}
+
+#tag{
+  position: absolute;
+  left: 24%;
+  top: -28px;
+  font-size: 9rem;
+  color: #0a4a6e21;
+  transform: rotate(100deg); 
 }

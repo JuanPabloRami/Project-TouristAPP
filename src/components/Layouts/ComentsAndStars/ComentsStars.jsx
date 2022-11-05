@@ -23,11 +23,6 @@ export const ComentsStars = () => {
   return (
     <>
       <div className="content__coments">
-        <div className="description__coments">
-          <h1>Comentarios y estrellas</h1>
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus pariatur, ipsa eligendi architecto aliquid expedita tempora, voluptatum ratione sunt esse repellendus sapiente neque numquam debitis perspiciatis voluptatem reiciendis mollitia! Aspernatur!</p>
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus pariatur, ipsa eligendi architecto aliquid expedita tempora, voluptatum ratione sunt esse repellendus sapiente neque numquam debitis perspiciatis voluptatem reiciendis mollitia! Aspernatur!</p>
-        </div>
         <div className="border__ipad">
           <div className="content__ipad">
             <div className="navbar_ipad">

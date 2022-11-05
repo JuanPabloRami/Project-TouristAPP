@@ -1,12 +1,16 @@
 .content__coments{
   width: 100%;
-  height: auto;
+  height: 800px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: column;
   text-align: justify;
   align-items: center;
-  background: #eaeef0;
+  background-image: url('../../images/Coments/fondo.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
 }
 .description__coments{
   width: 90%;
@@ -33,6 +37,7 @@
   padding:23px ;
   border-radius: 20px;
   margin-left: 20px ;
+  box-shadow: 0px 0px 5px white;
 }
 .content__ipad{
   width: 100%;

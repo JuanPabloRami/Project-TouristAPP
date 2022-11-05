@@ -2,14 +2,13 @@ import React from 'react'
 import "./Title.css"
 
 //icons
-import {BsFillHandbagFill as Bag} from "react-icons/bs"
 
-export const Title = ({text, clas}) => {
+export const Title = ({text, clas, icon}) => {
   return (
     <>
-      <Bag id='bag'/>
-      <h1 id={`title__${clas}`}>{text}</h1>
+      <h1 id={`title__${clas}`}>{text}{icon}</h1>
     </>
+    
     
   );
 }
