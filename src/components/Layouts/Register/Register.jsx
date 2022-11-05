@@ -2,8 +2,6 @@
 import React, { useContext, useState } from "react";
 import "./Register.css";
 import { BarLoader } from "react-spinners";
-//peticiones
-import {login} from '../../api/requests/Request'
 //Icons
 import {GiConfirmed as Confirmed} from 'react-icons/gi'
 import {VscError as Error} from 'react-icons/vsc'
@@ -24,6 +22,8 @@ import imglogin from "../../images/Login/login.jpg";
 //link
 import { Link } from "react-router-dom";
 import axios from "../../api/axios/axios";
+import { UsersContext } from "../../context/Users/UsersContext";
+import { TransitionsContext } from "../../context/Transitions/TransitionsContext";
 
 
 export const Register = () => {
@@ -50,9 +50,8 @@ export const Register = () => {
   //Uso de contexto para llamar las modales y el tipo de usuario
   const { registerUser, closeRegister, openLogin, } = useContext(ModalContext);
   const {typeUser} = useContext(RolesContext)
-
-  //Contexto para registro de usuario
-  //const {first_name,last_name,email,usernamee,password,userRegister} = useContext(RegisterContext);
+  const { setUsers } = useContext(UsersContext);
+  const {setSwitchNav} = useContext(TransitionsContext)
   
   //Cambia de modal de registro a iniciar sesion
   const loginRegister = () => {
@@ -74,8 +73,21 @@ export const Register = () => {
 
   //Logeo automatico
   const automation = (email,password) =>{
-    login(email,password)
+    axios.post('/auth/login/',{
+      email,password
+    })
+    .then(function (response){
+      console.log(response);
+      if (response.status === 200) {
+        localStorage.setItem('token',response.data.tokens.access)
+          setUsers(true);
+      }
+    })
+    .catch(function (error){
+      console.log(error);
+    });
   }
+
   return (
     <>
       <Formik
@@ -132,16 +144,30 @@ export const Register = () => {
             errors.confirmPassword = 'Las contraseñas no coinciden'
           }
           
-
-          //validacion acepto acceptterms
-          if (!values.acceptterms){
-            errors.acceptterms = 'Debe aceptar los terminos para poder registrarse.'
-          }
-
           return errors;
         }}
         onSubmit={({name,last_name,email,username,password}) => {
-          console.log("si");
+          setLoading(true);
+          axios.post('/auth/signup/',{
+            first_name:name,
+            last_name,email,username,password,
+            type_user: typeUser
+          })
+          .then(function (response){
+            console.log(response);
+            if (response.status === 201){
+              automation(email,password)
+              setTimeout(() =>{
+                setLoading(false);              
+                setSwitchNav(true)
+                closeRegister()
+              },1000)
+             
+            }
+          })
+          .catch(function (error){
+            console.log(error);
+          });
         }}
       >
         {({errors}) => (
@@ -172,12 +198,6 @@ export const Register = () => {
               <div className="content__login">
                  {<img src={imglogin} alt="login"/>} 
                  <h1>¿ Ya tienes cuenta ?</h1>
-                {/* <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Cupiditate sit, nostrum impedit blanditiis rem accusamus fugit
-                  nobis accusantium eos voluptates, atque repellat non? Omnis,
-                  laborum. Consequatur delectus fuga distinctio commodi.
-                </p>  */}
                 <button onClick={loginRegister}>Iniciar sesión</button>
               </div>
 
@@ -292,9 +312,6 @@ export const Register = () => {
                     <label htmlFor="checkbox">
                       <span className="">Acepto los <Link to='/terminosycondiciones' >Terminos y condiciones</Link> y la <Link to='/privacidad' >politica de privacidad</Link></span>
                     </label>
-                  </div>
-                  <div className="errorMsg">
-                    <ErrorMessage name="password" component={() => (<p>{errors.acceptterms}</p>)} />
                   </div>
                 </div>
                 <Button text='Registrarse'/>

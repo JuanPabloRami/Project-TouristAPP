@@ -88,23 +88,22 @@ export const Navbar = () => {
     dropdown.style = "display:none"
     bg.style = "display:none"
   }
-  const {loading} = useContext(TransitionsContext)
+  const {switchNav} = useContext(TransitionsContext)
+
   const newFuction = () =>{
     return(
-    localStorage.getItem('token') ?
-
-              <DropdownUser/>
-              :
-              
-              <ul className="login_and_register">
-                <li><span onClick={openRoles}><Button text="Registrate"/></span></li>
-                <li><span onClick={openLogin}><Button text="Iniciar sesión"/></span></li>
-              </ul>
-
+      localStorage.key('token') ?
+        <DropdownUser/>
+      :
+        <ul className="login_and_register">
+          <li><span onClick={openRoles}><Button text="Registrate"/></span></li>
+          <li><span onClick={openLogin}><Button text="Iniciar sesión"/></span></li>
+        </ul>
     )}
+
   useEffect(()=>{
     newFuction()
-  }, [loading])
+  }, [switchNav])
   return (
     <>
       <nav className="nav" id="navbar">

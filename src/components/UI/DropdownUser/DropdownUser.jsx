@@ -8,11 +8,10 @@ import { SyncLoader } from "react-spinners";
 import {AiOutlineUser as User} from 'react-icons/ai'
 import {MdBusinessCenter as Bussines} from 'react-icons/md'
 import { TransitionsContext } from '../../context/Transitions/TransitionsContext'
-import { Autoplay } from 'swiper'
 export const DropdownUser = () => {
   //Estado que me guarda los datos de la persona logueada
   const [api,setApi] = useState({})
-  const {setLoading, loading} = useContext(TransitionsContext)
+  const {setLoading, loading,setSwitchNav} = useContext(TransitionsContext)
   //Ejecuta el useEffect cuando hay un usuario logueado
   const {users} = useContext(UsersContext)
   //trae el token del usuario
@@ -38,6 +37,7 @@ export const DropdownUser = () => {
     setTimeout(()=>{
       localStorage.removeItem('token')
       setLoading(false)
+      setSwitchNav(false)
     }, 2000);
   }
 

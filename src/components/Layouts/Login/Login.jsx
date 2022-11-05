@@ -40,7 +40,6 @@ export const Login = () => {
 
   //Contexto
   const { loginUser, closeLogin, openRoles } = useContext(ModalContext);
-  const { setTransition } = useContext(TransitionsContext);
   const { setUsers } = useContext(UsersContext);
 
   //Funcion para cambiar de modales de login a registro
@@ -81,8 +80,7 @@ export const Login = () => {
         }}
         onSubmit={({ email, password }) => {
           setLoading(true);
-          axios
-            .post("/auth/login/", {
+          axios.post("/auth/login/", {
               email,
               password,
             })
