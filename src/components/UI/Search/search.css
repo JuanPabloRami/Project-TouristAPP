@@ -22,3 +22,40 @@
   cursor: pointer;
   z-index: 11;
 }
+
+.resultSearch{
+  position: absolute;
+  width: 100%;
+
+  background-color: #fff;
+  top:20px;
+  display: none;
+  padding: 8px;
+  border-radius: 0px 10px 10px;
+}
+.showValue{
+  display: block;
+}
+.containerValue{
+  display: flex;
+  padding-top: 15px;
+  gap: 15px;
+  
+}
+.containerValue img{
+  height: 40px;
+  width: 40px;
+  margin-left: 10px;
+  border-radius: 50px;
+}
+.category{
+  display: flex;
+  flex-direction: column;
+  font-size: .9375rem;
+}
+#valueCategories{
+  padding-top: 6px;
+  font-size: .8125rem;
+  font-weight: none;
+  color: gray;
+}

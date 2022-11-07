@@ -1,30 +1,79 @@
-import React, { useState } from 'react'
-import './search.css'
+import React, { useState } from "react";
+import "./search.css";
 //icons
-import {GrFormClose as CloseSearch} from 'react-icons/gr'
-import {BiSearchAlt2 as Searching} from 'react-icons/bi'
+import { GrFormClose as CloseSearch } from "react-icons/gr";
+import { BiSearchAlt2 as Searching } from "react-icons/bi";
+import axios from "../../api/axios/axios";
+import { useEffect } from "react";
 
-export const Search = () => {  
-  const [search,setSearch] = useState(false)
-  
-  const  searching = () =>{
-    return setSearch(true)
+export const Search = () => {
+  const [search, setSearch] = useState(false);
+  const [searchBusinnes, setSearchBusinnes] = useState("");
+  const [dataBussiness, setDataBussiness] = useState({})
+
+  const searching = () => {
+    return setSearch(true);
+  };
+
+  const closeSearching = () => {
+    return setSearch(false);
+  };
+
+  const getBusiness = async (names) => {
+    await axios
+      .get("api/negocio/?nombre__contains=" + names)
+      .then((response) => {
+        setDataBussiness(response.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+
+  const handleChange = (e) => {
+    setSearchBusinnes(e.target.value);
+    getBusiness(e.target.value);
+  };
+
+  const showValues = () => {
+  const valueResult = document.querySelector(".resultSearch");
+  valueResult.classList.add('showValue');
   }
 
-  const closeSearching = () =>{
-    return setSearch(false)
-  }
+  useEffect(() => getBusiness(), []);
 
   return (
     <>
-      {search&&
-      <>
-        <input className='search_input' type='text' name='search' placeholder='Busca en TouristApp' />
-        <CloseSearch className='icon_close_search' onClick={closeSearching}/>
-        <Searching  className='icon_search'/>
-      </>
-      }
-      <li id='search' className="list" onClick={searching}>Buscar</li>
+      {search && (
+        <>
+          <input
+            className="search_input"
+            type="text"
+            name="search"
+            placeholder="Busca en TouristApp"
+            value={searchBusinnes}
+            onChange={handleChange}
+            onClick={showValues}
+          />
+          <CloseSearch className="icon_close_search" onClick={closeSearching} />
+          <Searching className="icon_search" />
+          <div className="resultSearch">
+            {dataBussiness.map((element, index)=>(
+            <div className="containerValue">
+              <img src={element.imgperfil}></img>
+            <div className="category">
+              <p>{element.nombre}</p>
+              <p id="valueCategories">{element.tipo_Negocio.nombre}</p>
+            </div>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+      <li id="search" className="list" onClick={searching}>
+        Buscar
+      </li>
     </>
-  )
-}
+  );
+};
