@@ -13,12 +13,13 @@ export const Items = () => {
   
  const sendItem = (nombre,descripcion,precio,negocio) =>{
   let item = {nombre,descripcion,precio,itemImage,promotionImage,negocio}
-  setCatalogue(item)
+  //setCatalogue(item)
   setStateItem(true)
+  catalogue.push(item)
   closeItems()
  }
-
-  console.log(catalogue);
+  
+      console.log("holiboli",catalogue);
 
 
   return (

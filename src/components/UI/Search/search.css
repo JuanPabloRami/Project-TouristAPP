@@ -8,6 +8,11 @@
   font-size: 1rem;
   z-index: 10;
 }
+
+.search_input:focus{
+  outline: none;
+}
+
 .icon_close_search{
   position: absolute;
   right: 10px;
@@ -28,7 +33,7 @@
   width: 100%;
 
   background-color: #fff;
-  top:20px;
+  top:22px;
   display: none;
   padding: 8px;
   border-radius: 0px 10px 10px;
