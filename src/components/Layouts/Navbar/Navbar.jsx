@@ -25,13 +25,14 @@ import {Items} from '../../UI/Items/Items'
 //Contextos
 import {ModalContext} from '../../context/Modal/ModalContext'
 import { TransitionsContext } from "../../context/Transitions/TransitionsContext";
+import { ModalSocial } from "../../UI/ModalSocialNetworks/ModalSocial";
 
 export const Navbar = () => {
   const [menu,setMenu] = useState("close")
 
   //Uso de contexto
   const { OpenModal,locationState, openLogin,openRoles} = useContext(ModalContext);
-  
+
   window.addEventListener("scroll", () => {
     const icon = document.querySelector(".logo-touristapp");
     const nav = document.querySelector("nav");
@@ -156,6 +157,7 @@ export const Navbar = () => {
       <Roles/>
       <Transition/>
       <Items/>
+      <ModalSocial/>
     </>
   );
 };

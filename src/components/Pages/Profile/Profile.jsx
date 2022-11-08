@@ -15,38 +15,44 @@ import {TbWorld as IconNetwork} from 'react-icons/tb'
 import {MdEmail as IconEmail} from 'react-icons/md'
 import {MdLocationPin as IconLocation} from "react-icons/md";
 import {AiFillLike as Heart} from 'react-icons/ai'
+import {BsCameraFill as Cam} from 'react-icons/bs'
+import { CatalogueContext } from '../../context/Catalogue/CatalogueContext'
+import { useContext } from 'react'
 
 
 export const Profile = () => {
+  const {uploadImageProfile,uploadImagePort,imageProfile,imagePort} = useContext(CatalogueContext)
   return (
     <>
     <div className="account__images">
       <div className="front__page">
-        <img src={FrontPage} alt='portada'/>
+        {imagePort === '' ?
+          <img src={FrontPage} alt='portada'/>
+         :  
+          <img src={imagePort} alt='portada'/>
+         }
+        <div className="input_img">
+          <label  htmlFor='input_file'><Cam/>Editar foto de portada</label>
+          <input onChange={uploadImagePort} id='input_file' type='file'/>
+        </div>
       </div>
       <div className="profile__img">
-        <img src={Account} alt='perfil'/>
+      {imageProfile === '' ?
+          <img src={Account} alt='perfil'/>
+         :  
+          <img src={imageProfile} alt='perfil'/>
+         }
+        <div className="input_img_profile">
+          <label htmlFor='input_file_profile'><Cam className='icon'/></label>
+          <input onChange={uploadImageProfile} id='input_file_profile' type='file'/>
+        </div>
       </div>
       <SocialNetworks/>
-      {/* <div className="description__account">
-        <h1>McDonald's</h1>
-        <div className="socials__networks__bussines">
-          <a href="#"><IconFacebook className='icon_social f'/></a>
-          <a href="#"><IconInstagram className='icon_social i'/></a>
-          <a href="#"><IconNetwork className='icon_social n'/></a>
-          <a href="#"><IconEmail className='icon_social e'/></a>
-          <a href="#"><IconLocation className='icon_social l'/></a>
-          <div className="bussines__state">
-            <div className="state"></div>
-            <p>Abierto: 10:00:00 - 18:00:00</p>
-          </div>
-        </div>
-      </div> */}
       <button className='btn_like_bussines'> <Heart/> 100</button>
     </div>
     <main>
       <Coments/>
-      {/* <NewBussines/> */}
+      {/* <NewBussines/>  */}
       <CreateBussines/>
     </main>
     </>

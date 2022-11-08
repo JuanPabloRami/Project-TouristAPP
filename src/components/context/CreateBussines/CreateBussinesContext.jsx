@@ -11,7 +11,11 @@ export const CreateBussinesContextProvider = (props) => {
   const [description,setDescription] = useState(false)
   //obtiene el texto escrito por el usuario
   const [text,setText] = useState('')
-
+  //obtiene el nombre del negocio escrito por el usuario
+  const [textName,setTextName] = useState('')
+  //Muestra el nombre del negocio
+  const [nameBusiness,setNameBusiness] = useState(false)
+  
   //Oculta boton de más de la descripción
   const inputDescription = () =>{
     const icon = document.getElementById('input')
@@ -53,6 +57,10 @@ export const CreateBussinesContextProvider = (props) => {
       del,
       setDel,
       text,
+      setTextName,
+      textName,
+      setNameBusiness,
+      nameBusiness
     }}>
       {props.children}
     </CreateBussinesContext.Provider>

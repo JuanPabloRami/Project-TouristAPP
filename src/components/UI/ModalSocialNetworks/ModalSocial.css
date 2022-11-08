@@ -1,0 +1,39 @@
+.socialNetworks_content{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 10px;
+  width: 70%;
+  height: 80%;
+}
+.socialNetworks_content h1{
+  margin-bottom: 20px;
+}
+.text-hours{
+  position: absolute;
+  left: 25px;
+  transform: translateY(-298%);
+  font-size: .9rem;
+  color: #000000;
+  background-color: #fff;
+  transition: all .5s;
+  z-index: 10;
+}
+.location_content{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 0px 20px;
+  margin: 20px 0px;
+}
+.location_content label{
+  font-size: 1.2rem;
+}
+.content_select select{
+  padding: 10px;
+  margin-left: 10px ;
+}
