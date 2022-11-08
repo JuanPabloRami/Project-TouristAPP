@@ -1,26 +1,27 @@
 import { Formik,Field,Form} from 'formik'
 import React, {useContext,useState,useEffect} from 'react'
 import axios from '../../api/axios/axios'
-import { ModalContext } from '../../context/Modal/ModalContext'
+import { InformationBusinessContext } from '../../context/InformationBusiness/InformationBusinessContext'
 import { Button } from '../Button/Button'
 import './ModalSocial.css'
 
 export const ModalSocial = () => {
-  const {closeSocial,social} = useContext(ModalContext)
+  const {closeSocial,social} = useContext(InformationBusinessContext)
    //Guarda la data de los departamentos
    const [department, setDepartment] = useState([])
    //Guarda la data de los municipios
    const [citys, setCitys] = useState([])
-   const { locationDepartment,locationCity,inputDepartment} = useContext(ModalContext)
+
+   const {locationCity,locationChange,locationState,locationDepartment,inputDepartment} = useContext(InformationBusinessContext)
  
    //Hace la peticion de los departamentos
    const Department = () =>{
      axios.get('/api/departamento/')
      .then(function (response) {
-       setDepartment(response.data)
+      setDepartment(response.data)
      })
      .catch(function (error) {
-       console.log(error);
+      console.log(error);
      })
    }
  
@@ -42,24 +43,32 @@ export const ModalSocial = () => {
    useEffect(()=>{
      city()
    },[inputDepartment])
+
+  //Contexto de la modal de informacion del negocio
+  const {setDataInformation} = useContext(InformationBusinessContext)
+  const sendInformationBusiness = (ubicacion,horaEntrada,horaSalida,contactFacebook,contactInstagram,contactWEB,contactEmail) =>{
+    const data = {ubicacion,horaEntrada,horaSalida,contactFacebook,contactInstagram,contactWEB,contactEmail,locationState}
+    setDataInformation(data)
+  }
+  
   return (
     <Formik
     initialValues={{
-      ubicacion:"PUTENTE",
-      horaEntrada:"14:30",
-      horaSalida:"15:30",
-      contactFacebook:null,
+      ubicacion:"",
+      horaEntrada:"",
+      horaSalida:"",
+      contactFacebook:"",
       contactInstagram:null,
       contactWEB:null,
-      contactEmail:null
+      contactEmail:''
     }}
 
     validate={()=>{
 
     }}
     
-    onSubmit={()=>{
-     
+    onSubmit={({ubicacion,horaEntrada,horaSalida,contactFacebook,contactInstagram,contactWEB,contactEmail})=>{
+      sendInformationBusiness(ubicacion,horaEntrada,horaSalida,contactFacebook,contactInstagram,contactWEB,contactEmail)
     }}
     >
       <div className={`modal-login${social ? " open" : " close"}`}>
@@ -90,10 +99,10 @@ export const ModalSocial = () => {
               <Field
                 type="text"
                 id="Localidad"
-                name="Localidad"
+                name="ubicacion"
                 required
               />
-              <label htmlFor="Localidad">
+              <label htmlFor="ubicacion">
                 <span className="text-name">Dirección del negocio</span>
               </label>
               <div className="errorMsg"></div>
@@ -103,10 +112,10 @@ export const ModalSocial = () => {
               <Field
                 type="text"
                 id="Facebook"
-                name="Facebook"
+                name="contactFacebook"
                 required
               />
-              <label htmlFor="Facebook">
+              <label htmlFor="contactFacebook">
                 <span className="text-name">Facebook</span>
               </label>
               <div className="errorMsg"></div>
@@ -116,10 +125,10 @@ export const ModalSocial = () => {
               <Field
                 type="text"
                 id="emailBusiness"
-                name="emailBusiness"
+                name="contactEmail"
                 required
               />
-              <label htmlFor="emailBusiness">
+              <label htmlFor="contactEmail">
                 <span className="text-name">Correo electronico de la empresa</span>
               </label>
               <div className="errorMsg"></div>
@@ -129,10 +138,10 @@ export const ModalSocial = () => {
               <Field
                 type="time"
                 id="horarios"
-                name="horarios"
+                name="horaEntrada"
                 required
               />
-              <label htmlFor="horarios">
+              <label htmlFor="horaEntrada">
                 <span className="text-hours">Horario de apertura</span>
               </label>
               <div className="errorMsg"></div>
@@ -141,16 +150,22 @@ export const ModalSocial = () => {
             <div className="ContainerInput">
               <Field
                 type="time"
-                id="hoursClose"
-                name="hoursClose"
+                id="horaSalida"
+                name="horaSalida"
                 required
               />
-              <label htmlFor="hoursClose">
+              <label htmlFor="horaSalida">
                 <span className="text-hours">Horario de cierre</span>
               </label>
               <div className="errorMsg"></div>
             </div>
-            <Button text='Guardar información'/>
+
+            <div className="ContainerInput">
+              <select>Categoria</select>
+              <label>Categoria</label>
+              <div className="errorMsg"></div>
+            </div>
+            <button onClick={locationChange}>Guardar informacion</button>
           </Form>
         </div>
       </div>

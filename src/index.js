@@ -15,26 +15,29 @@ import { TransitionsContextProvider } from './components/context/Transitions/Tra
 import { UsersContextProvider } from './components/context/Users/UsersContext';
 import { CategoriesContextProvider } from './components/context/Categories/CategoriesContext';
 import { CatalogueContextProvider } from './components/context/Catalogue/CatalogueContext';
+import { InformationBusinessContextProvider } from './components/context/InformationBusiness/InformationBusinessContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <CatalogueContextProvider>
-    <CategoriesContextProvider>
-      <UsersContextProvider>
-        <TransitionsContextProvider>
-          <CreateBussinesContextProvider>
-            <RolesContextProvider>
-              <ModalContextProvider>
-                  <BrowserRouter>
-                    <App />
-                  </BrowserRouter>
-              </ModalContextProvider>
-            </RolesContextProvider>
-          </CreateBussinesContextProvider>
-        </TransitionsContextProvider>
-      </UsersContextProvider>
-    </CategoriesContextProvider>
-  </CatalogueContextProvider>
+  <InformationBusinessContextProvider>
+    <CatalogueContextProvider>
+      <CategoriesContextProvider>
+        <UsersContextProvider>
+          <TransitionsContextProvider>
+            <CreateBussinesContextProvider>
+              <RolesContextProvider>
+                <ModalContextProvider>
+                    <BrowserRouter>
+                      <App />
+                    </BrowserRouter>
+                </ModalContextProvider>
+              </RolesContextProvider>
+            </CreateBussinesContextProvider>
+          </TransitionsContextProvider>
+        </UsersContextProvider>
+      </CategoriesContextProvider>
+    </CatalogueContextProvider>
+  </InformationBusinessContextProvider>
 );
 reportWebVitals();

@@ -1,21 +1,19 @@
 import './SocialNetworks.css'
 import { useContext } from 'react'
 import { CreateBussinesContext } from '../../context/CreateBussines/CreateBussinesContext'
+import { InformationBusinessContext } from '../../context/InformationBusiness/InformationBusinessContext'
 
 //icons
 import {BsPlusSquareFill as Plus} from 'react-icons/bs'
-import { ModalContext } from '../../context/Modal/ModalContext'
-// import {FaFacebook as IconFacebook,} from "react-icons/fa";
-// import {BsInstagram as IconInstagram} from 'react-icons/bs'
-// import {TbWorld as IconNetwork} from 'react-icons/tb'
-// import {MdEmail as IconEmail} from 'react-icons/md'
-// import {MdLocationPin as IconLocation} from "react-icons/md";
+import {FaFacebook as IconFacebook,} from "react-icons/fa";
+import {MdEmail as IconEmail} from 'react-icons/md'
+import {MdLocationPin as IconLocation} from "react-icons/md";
 
 
 export const SocialNetworks = () => {
 
   const {setTextName,textName,setNameBusiness,nameBusiness} = useContext(CreateBussinesContext)
-  const {openSocial} = useContext(ModalContext)
+  const {openSocial,dataInformation,buttonInfo} = useContext(InformationBusinessContext)
 
   const getText = (event) =>{
     const text = event.target.value
@@ -48,10 +46,24 @@ export const SocialNetworks = () => {
               <button onClick={showName}>Guardar</button>
             </>
           }
-         
         </div>
         <div className="more_optiones">
-          <button onClick={openSocial}>Más opciones <Plus/></button>
+          {buttonInfo ?
+            <div className="information_business">
+              <div className="information_import">
+                <p><IconLocation className='icon l'/>{dataInformation.ubicacion} {dataInformation.locationState}</p>
+                <p><IconEmail className='icon e'/>{dataInformation.contactEmail}</p>
+                <p><IconFacebook className='icon f'/>@{dataInformation.contactFacebook}</p>
+              </div>
+              <div className="schedule">
+              <div className="state"></div>
+                <p>Abierto: {dataInformation.horaEntrada} - {dataInformation.horaSalida}</p>
+              </div>
+              <button onClick={openSocial}>Editar</button>
+            </div>
+            :
+            <button onClick={openSocial}>Más opciones <Plus/></button>
+          }
         </div>
       </div>
     </>

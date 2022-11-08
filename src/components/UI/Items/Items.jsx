@@ -18,9 +18,6 @@ export const Items = () => {
   catalogue.push(item)
   closeItems()
  }
-  
-      console.log("holiboli",catalogue);
-
 
   return (
     <>

@@ -12,20 +12,8 @@ export const ModalContextProvider = (props) => {
   const [registerUser,setRegisterUser] = useState(false)
   const [items,setItems] = useState(false)
   const [roles,setRoles] = useState(false)
-  const [social,setSocial] = useState(false)
   const body = document.querySelector("body");
 
-   //abre la modal de items
-   const openSocial = () =>{
-    setSocial(true)
-    body.style = "overflow-y:hidden;";
-  }
-
-  //cierra la modal de items
-  const closeSocial = () =>{
-    setSocial(false)
-    body.style = "overflow-y:scroll;";
-  }
 
   //abre la modal de items
   const openItems = () =>{
@@ -126,10 +114,6 @@ export const ModalContextProvider = (props) => {
       openItems,
       closeItems,
       items,
-      social,
-      setSocial,
-      openSocial,
-      closeSocial
     }}>
       {props.children}
  

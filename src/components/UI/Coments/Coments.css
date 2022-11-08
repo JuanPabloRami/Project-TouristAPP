@@ -15,8 +15,16 @@
 /*Comentarios de los usuarios*/
 .comments__bussines{
   width: 100%;
+  height: 100%;
   overflow: hidden;
   overflow-y: scroll;
+}
+.nothing_coments{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .comment__user{
   display: flex;

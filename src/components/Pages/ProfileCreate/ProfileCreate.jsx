@@ -1,27 +1,23 @@
 import React from 'react'
-import './Profile.css'
+import './ProfileCreate.css'
 //Imagenes
 import Account from '../../images/Profile/profile.jpg'
 import FrontPage from '../../images/Profile/frontPage.jpg'
 //componentes
 import {Coments} from '../../UI/Coments/Coments'
-import { NewBussines } from '../../UI/InfoBussines/InfoBussines'
 import { CreateBussines } from '../../UI/CreateBussines/CreateBussines'
 import { SocialNetworks } from '../../UI/SocialNetworks/SocialNetworks'
 //icons
-import {FaFacebook as IconFacebook,} from "react-icons/fa";
-import {BsInstagram as IconInstagram} from 'react-icons/bs'
-import {TbWorld as IconNetwork} from 'react-icons/tb'
-import {MdEmail as IconEmail} from 'react-icons/md'
-import {MdLocationPin as IconLocation} from "react-icons/md";
 import {AiFillLike as Heart} from 'react-icons/ai'
 import {BsCameraFill as Cam} from 'react-icons/bs'
 import { CatalogueContext } from '../../context/Catalogue/CatalogueContext'
 import { useContext } from 'react'
 
 
-export const Profile = () => {
+export const ProfileCreate = () => {
   const {uploadImageProfile,uploadImagePort,imageProfile,imagePort} = useContext(CatalogueContext)
+
+
   return (
     <>
     <div className="account__images">
@@ -48,11 +44,11 @@ export const Profile = () => {
         </div>
       </div>
       <SocialNetworks/>
-      <button className='btn_like_bussines'> <Heart/> 100</button>
+      {/* <button className='btn_like_bussines'> <Heart/> 100</button> */}
+      <button className='btn_like_bussines'>Crear negocio</button>
     </div>
     <main>
       <Coments/>
-      {/* <NewBussines/>  */}
       <CreateBussines/>
     </main>
     </>
