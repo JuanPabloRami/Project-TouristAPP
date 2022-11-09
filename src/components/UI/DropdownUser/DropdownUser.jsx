@@ -27,15 +27,17 @@ export const DropdownUser = () => {
     .then(function (response){
       console.log(response);
       setApi(response.data)
+      localStorage.setItem('typeUser', response.data.type_user)
     })
     .catch(function (error){
       console.log(error);
     });
   }
-
+console.log(api);
   const changeState = () =>{
     setTimeout(()=>{
-      localStorage.removeItem('token')
+      localStorage.removeItem('token');
+      localStorage.removeItem('typeUser');
       setLoading(false)
       setSwitchNav(false)
     }, 2000);

@@ -17,6 +17,8 @@ import {Navbar} from './components/Layouts/Navbar/Navbar';
 import {Footer} from './components/Layouts/Footer/Footer'
 
 
+//ProtectedRoute
+import {ProtectedRouteCreateBusiness} from './components/ProtectRouter/ProtectedRoute';
 /*https://www.youtube.com/watch?v=emiCMV-oVoE*/
 function App() {
   return (
@@ -25,11 +27,17 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>}  />
         <Route path='/register' element={<Register/>} />
-        <Route path='/login' element={<Login/>} />
+        
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/crear-negocio' element={
+        <ProtectedRouteCreateBusiness>
+            <ProfileCreate/>
+        </ProtectedRouteCreateBusiness>
+        } />
+
         <Route path='/aboutUs' element={<AboutUs/>}/>
         <Route path='/terminosycondiciones' element={<TermsAndConditions/>}/>
         <Route path='/privacidad' element={<PrivacyPolicy/>}/>
-        <Route path='/crear-negocio' element={<ProfileCreate/>}/>
         <Route path='*' element={<NotFound/>} />
         <Route path='/categories' element={<Categories/>}/>
       </Routes>

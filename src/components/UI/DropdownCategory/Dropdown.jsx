@@ -22,6 +22,7 @@ export const Dropdown = () => {
 
   const selectCategory = (e) => {
     let category = e.target.outerText
+    localStorage.setItem('categories', category)
     return setCategories(category)
   }
   

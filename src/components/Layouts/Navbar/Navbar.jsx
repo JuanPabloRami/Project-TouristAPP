@@ -94,13 +94,19 @@ export const Navbar = () => {
 
   const newFuction = () =>{
     return(
-      localStorage.key('token') ?
+      localStorage.getItem('token')  ?
         <DropdownUser/>
       :
+      localStorage.getItem('categories') ?
         <ul className="login_and_register">
           <li><span onClick={openRoles}><Button text="Registrate"/></span></li>
           <li><span onClick={openLogin}><Button text="Iniciar sesión"/></span></li>
         </ul>
+      :
+      <ul className="login_and_register">
+      <li><span onClick={openRoles}><Button text="Registrate"/></span></li>
+      <li><span onClick={openLogin}><Button text="Iniciar sesión"/></span></li>
+    </ul>
     )}
 
   useEffect(()=>{

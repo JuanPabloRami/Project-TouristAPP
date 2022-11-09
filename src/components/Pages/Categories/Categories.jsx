@@ -2,7 +2,6 @@ import React, {useContext} from 'react'
 import './StyleCategories.css'
 import { Cards } from "../../UI/Cards/Cards"
 import OWner from '../../images/Profile/owner.jpg'
-import Cafeteria from '../../images/Categories/categorie.jpg'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import axios from "../../api/axios/axios";
@@ -15,7 +14,7 @@ export const Categories = () => {
     const [data, setData] = useState({})
     const [dataBussiness, setDataBussiness] = useState([])
     const showCategory = () =>{
-    axios.get(`api/tipo-negocio/?nombre=${categories}`)
+    axios.get(`api/tipo-negocio/?nombre=${localStorage.getItem('categories')}`)
     .then(function(response) {
          //console.log(response)
         if(response.status === 200) {
@@ -26,7 +25,7 @@ export const Categories = () => {
         console.log(error)
     })
     
-    axios.get(`api/negocio/?tipo_Negocio__nombre__contains=${categories}`)
+    axios.get(`api/negocio/?tipo_Negocio__nombre__contains=${localStorage.getItem('categories')}`)
     .then(function(response) {
          //console.log(response)
         if(response.status === 200) {
