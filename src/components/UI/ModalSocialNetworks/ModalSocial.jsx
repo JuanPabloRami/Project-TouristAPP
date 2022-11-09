@@ -14,9 +14,9 @@ export const ModalSocial = () => {
    //Guarda las categorias
    const [categorie,setCategorie] = useState([])
    //guarda el nombre de la categoria
-   const [nameCategorie,setNameCategorie] = useState('') 
+   const [nameCategorie,setNameCategorie] = useState('')
 
-   const {locationCity,locationChange,locationState,locationDepartment,inputDepartment} = useContext(InformationBusinessContext)
+   const {locationCity,locationChange,locationState,locationDepartment,inputDepartment,inputCity} = useContext(InformationBusinessContext)
  
    //Hace la peticion de los departamentos
    const Department = () =>{
@@ -47,10 +47,11 @@ export const ModalSocial = () => {
    useEffect(()=>{
      city()
    },[inputDepartment])
+   
 
   //Contexto de la modal de informacion del negocio
   const {setDataInformation} = useContext(InformationBusinessContext)
-  const {setInformationSocial} = useContext(CreateBussinesContext)
+  const {setInformationSocial,setIdCategory,setIdCity} = useContext(CreateBussinesContext)
   const sendInformationBusiness = (ubicacion,horaEntrada,horaSalida,contactFacebook,contactInstagram,contactWEB,contactEmail) =>{
     const data = {ubicacion,horaEntrada,horaSalida,contactFacebook,contactInstagram,contactWEB,contactEmail,locationState,nameCategorie}
     setDataInformation(data)
@@ -70,19 +71,33 @@ export const ModalSocial = () => {
   useEffect(()=>{
     categories()
   },[])
-  
+
+
   const nameCategories = (e) =>{
     const name = e.target.value
     setNameCategorie(name)
+  }
 
+  useEffect(()=>{
+    axios.get(`/api/ciudad/?nombre__contains=${inputCity}&departamento__nombre__contains=${inputDepartment}`)
+    .then(function (response) {
+      setIdCity(response.data[0].id);
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+  },[inputCity])
+  
+
+  useEffect(()=>{
     axios.get(`api/tipo-negocio/?nombre=${nameCategorie}`)
     .then(function(response) {
-      console.log(response)
+      setIdCategory(response.data.id)
     })
     .catch(function(error){
       console.log(error)
     })
-  }
+  },[nameCategorie])
   
   return (
     <Formik

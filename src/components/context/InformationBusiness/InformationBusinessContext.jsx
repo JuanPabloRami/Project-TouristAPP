@@ -56,7 +56,8 @@ export const InformationBusinessContextProvider = (props) => {
       closeSocial,
       openSocial,
       buttonInfo,
-      setButtonInfo
+      setButtonInfo,
+      inputCity
     }}>
       {props.children}
     </InformationBusinessContext.Provider>

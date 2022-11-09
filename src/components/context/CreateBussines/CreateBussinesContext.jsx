@@ -25,51 +25,33 @@ export const CreateBussinesContextProvider = (props) => {
   const [informationSocial,setInformationSocial] = useState([])
   const [idCategory, setIdCategory] = useState(0);
   const [idCity, setIdCity] = useState(0);
-  const [dataBusiness,setDataBusiness] = useState([])
-  const [dataItems,setDataItems] = useState([])
-
-  const vamoo = ()=>{
-    const data = {
-      nombre: textName,
-      descripcion: text,
-      imgperfil:imageProfile,
-      imgportada: imagePort,
-      tipo_Negocio_id: idCategory,
-      ciudad_id:idCity,
-      ubicacion: informationSocial.ubicacion,
-      horaEntrada: informationSocial.horaEntrada,
-      horaSalida: informationSocial.horaSalida,
-      contactFacebook: informationSocial.contactFacebook,
-      contactInstagram:null,
-      contactWEB:null,
-      contactEmail: informationSocial.contactEmail
-    }
-    console.log(data);
-  }
 
 
+  const token = localStorage.getItem('token')
+
+  // nombre: text,
+  // descripcion: textName,
+  // imgperfil:imageProfile,
+  // imgportada: imagePort,
+  // tipo_Negocio_id: idCategory,
+  // ciudad_id:idCity,
+  // ubicacion: informationSocial.ubicacion,
+  // horaEntrada: informationSocial.horaEntrada,
+  // horaSalida: informationSocial.horaSalida,
+  // contactFacebook: informationSocial.contactFacebook,
+  // contactInstagram:null,
+  // contactWEB:null,
+  // contactEmail: informationSocial.contactEmail,
 
   const bussinesRequest = () =>{
     axios.post('/api/negocio/',{
-      nombre: text,
-      descripcion: textName,
-      imgperfil:imageProfile,
-      imgportada: imagePort,
-      tipo_Negocio_id: 3,
-      ciudad_id:1,
-      ubicacion: informationSocial.ubicacion,
-      horaEntrada: informationSocial.horaEntrada,
-      horaSalida: informationSocial.horaSalida,
-      contactFacebook: informationSocial.contactFacebook,
-      contactInstagram:null,
-      contactWEB:null,
-      contactEmail: informationSocial.contactEmail
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
     })
     .then(function (response){
       console.log(response);
-      if (response.status === 200) {
-        localStorage.setItem('token',response.data.tokens.access)
-      }
     })
     .catch(function (error){
       console.log(error);
@@ -173,9 +155,9 @@ export const CreateBussinesContextProvider = (props) => {
       imageProfile,
       imagePort,
       setInformationSocial,
-      vamoo,
       setIdCity,
-      setIdCategory
+      setIdCategory,
+      bussinesRequest
     }}>
       {props.children}
     </CreateBussinesContext.Provider>
