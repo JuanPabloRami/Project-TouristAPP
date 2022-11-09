@@ -21,23 +21,23 @@ import { InformationBusinessContextProvider } from './components/context/Informa
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <InformationBusinessContextProvider>
-    <CatalogueContextProvider>
-      <CategoriesContextProvider>
-        <UsersContextProvider>
-          <TransitionsContextProvider>
-            <CreateBussinesContextProvider>
-              <RolesContextProvider>
-                <ModalContextProvider>
-                    <BrowserRouter>
-                      <App />
-                    </BrowserRouter>
-                </ModalContextProvider>
-              </RolesContextProvider>
-            </CreateBussinesContextProvider>
-          </TransitionsContextProvider>
-        </UsersContextProvider>
-      </CategoriesContextProvider>
-    </CatalogueContextProvider>
+    <CreateBussinesContextProvider>
+      <CatalogueContextProvider>
+        <CategoriesContextProvider>
+          <UsersContextProvider>
+            <TransitionsContextProvider>
+                <RolesContextProvider>
+                  <ModalContextProvider>
+                      <BrowserRouter>
+                        <App />
+                      </BrowserRouter>
+                  </ModalContextProvider>
+                </RolesContextProvider>
+            </TransitionsContextProvider>
+          </UsersContextProvider>
+        </CategoriesContextProvider>
+      </CatalogueContextProvider>
+    </CreateBussinesContextProvider>
   </InformationBusinessContextProvider>
 );
 reportWebVitals();

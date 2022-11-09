@@ -48,10 +48,19 @@
   font-size: 1rem;
 }
 .information_business{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(1,1fr);
   width: 100%;
+  gap: 5px;
+}
+.content_grid{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-template-rows: repeat(1,1fr);
+}
+.location_business{
+  width: 100%;
+  height: auto;
 }
 .information_business p{
   font-size: 1.2rem;
@@ -82,6 +91,9 @@
 .f{
   color: #288ce9;
 }
+.c{
+  color: #999900;
+}
 .schedule{
   display: flex;
   justify-content: center;
@@ -102,4 +114,49 @@
     color: white;
     margin: 10px 20px;
     cursor: pointer;
+}
+@media (max-width: 1790px) {
+  .content_creating{
+    right: 25%;
+  }
+}
+@media (max-width: 1630px) {
+  .content_creating{
+    right: 23%;
+  }
+}
+@media (max-width: 1523px) {
+  .content_creating{
+    right: 21%;
+  }
+}
+@media (max-width: 1420px) {
+  .content_creating{
+    right: 19%;
+  }
+}
+@media (max-width: 1320px) {
+  .content_creating{
+    right: 17%;
+  }
+}
+@media (max-width: 1220px) {
+  .content_creating{
+    right: 15%;
+  }
+}
+@media (max-width: 1160px) {
+  .content_creating{
+    right: 13%;
+  }
+}
+@media (max-width: 1100px) {
+  .content_creating{
+    right: 10%;
+  }
+}
+@media (max-width: 1035px) {
+  .content_creating{
+    right: 7%;
+  }
 }

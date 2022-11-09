@@ -10,13 +10,17 @@ import { SocialNetworks } from '../../UI/SocialNetworks/SocialNetworks'
 //icons
 import {AiFillLike as Heart} from 'react-icons/ai'
 import {BsCameraFill as Cam} from 'react-icons/bs'
-import { CatalogueContext } from '../../context/Catalogue/CatalogueContext'
 import { useContext } from 'react'
+import { CreateBussinesContext } from '../../context/CreateBussines/CreateBussinesContext'
 
 
 export const ProfileCreate = () => {
-  const {uploadImageProfile,uploadImagePort,imageProfile,imagePort} = useContext(CatalogueContext)
+  const {uploadImageProfile,uploadImagePort,imageProfile,imagePort} = useContext(CreateBussinesContext)
+  const {setModalConfirm} = useContext(CreateBussinesContext)
 
+  const openModal = () =>{
+    setModalConfirm(true)
+  }
 
   return (
     <>
@@ -45,7 +49,7 @@ export const ProfileCreate = () => {
       </div>
       <SocialNetworks/>
       {/* <button className='btn_like_bussines'> <Heart/> 100</button> */}
-      <button className='btn_like_bussines'>Crear negocio</button>
+      <button onClick={openModal} className='btn_like_bussines'>Crear negocio</button>
     </div>
     <main>
       <Coments/>

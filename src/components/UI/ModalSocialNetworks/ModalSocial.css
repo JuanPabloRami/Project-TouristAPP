@@ -7,7 +7,7 @@
   background-color: #ffffff;
   border-radius: 10px;
   width: 70%;
-  height: 80%;
+  height: 90%;
 }
 .socialNetworks_content h1{
   margin-bottom: 20px;
@@ -36,4 +36,18 @@
 .content_select select{
   padding: 10px;
   margin-left: 10px ;
+}
+.select_categorie{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  padding: 0px 20px;
+  margin-top: 20px;
+}
+.select_categorie select{
+  padding: 5px;
+  font-size: 1rem;
 }

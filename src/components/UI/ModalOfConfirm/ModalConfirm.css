@@ -1,0 +1,45 @@
+.content_confirm_modal{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  width: 30%;
+  height: 40%;
+  border-radius: 10px;
+  padding: 10px;
+}
+.confirm_modal_header{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80%;
+}
+.confirm_modal_header .icon{
+  font-size: 9rem;
+  color:#0077c7;
+}
+.content_confirm_modal .buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 20%;
+  gap: 40px;
+}
+.buttons button{
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+.buttons .cancel{
+  background-color: red;
+}
+.buttons .confirm{
+  background-color: #0077c7;
+}

@@ -1,8 +1,8 @@
 import { Formik,Field,Form} from 'formik'
 import React, {useContext,useState,useEffect} from 'react'
 import axios from '../../api/axios/axios'
+import { CreateBussinesContext } from '../../context/CreateBussines/CreateBussinesContext'
 import { InformationBusinessContext } from '../../context/InformationBusiness/InformationBusinessContext'
-import { Button } from '../Button/Button'
 import './ModalSocial.css'
 
 export const ModalSocial = () => {
@@ -11,6 +11,10 @@ export const ModalSocial = () => {
    const [department, setDepartment] = useState([])
    //Guarda la data de los municipios
    const [citys, setCitys] = useState([])
+   //Guarda las categorias
+   const [categorie,setCategorie] = useState([])
+   //guarda el nombre de la categoria
+   const [nameCategorie,setNameCategorie] = useState('') 
 
    const {locationCity,locationChange,locationState,locationDepartment,inputDepartment} = useContext(InformationBusinessContext)
  
@@ -46,9 +50,38 @@ export const ModalSocial = () => {
 
   //Contexto de la modal de informacion del negocio
   const {setDataInformation} = useContext(InformationBusinessContext)
+  const {setInformationSocial} = useContext(CreateBussinesContext)
   const sendInformationBusiness = (ubicacion,horaEntrada,horaSalida,contactFacebook,contactInstagram,contactWEB,contactEmail) =>{
-    const data = {ubicacion,horaEntrada,horaSalida,contactFacebook,contactInstagram,contactWEB,contactEmail,locationState}
+    const data = {ubicacion,horaEntrada,horaSalida,contactFacebook,contactInstagram,contactWEB,contactEmail,locationState,nameCategorie}
     setDataInformation(data)
+    setInformationSocial(data)
+  }
+
+  const categories = () =>{
+    axios.get('/api/tipo-negocio/')
+    .then(function (response) {
+      setCategorie(response.data)
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+  }
+
+  useEffect(()=>{
+    categories()
+  },[])
+  
+  const nameCategories = (e) =>{
+    const name = e.target.value
+    setNameCategorie(name)
+
+    axios.get(`api/tipo-negocio/?nombre=${nameCategorie}`)
+    .then(function(response) {
+      console.log(response)
+    })
+    .catch(function(error){
+      console.log(error)
+    })
   }
   
   return (
@@ -111,6 +144,7 @@ export const ModalSocial = () => {
             <div className="ContainerInput">
               <Field
                 type="text"
+                defaultValue=''
                 id="Facebook"
                 name="contactFacebook"
                 required
@@ -124,6 +158,7 @@ export const ModalSocial = () => {
             <div className="ContainerInput">
               <Field
                 type="text"
+                defaultValue=''
                 id="emailBusiness"
                 name="contactEmail"
                 required
@@ -137,6 +172,7 @@ export const ModalSocial = () => {
             <div className="ContainerInput">
               <Field
                 type="time"
+                defaultValue=''
                 id="horarios"
                 name="horaEntrada"
                 required
@@ -150,6 +186,7 @@ export const ModalSocial = () => {
             <div className="ContainerInput">
               <Field
                 type="time"
+                defaultValue=''
                 id="horaSalida"
                 name="horaSalida"
                 required
@@ -157,15 +194,18 @@ export const ModalSocial = () => {
               <label htmlFor="horaSalida">
                 <span className="text-hours">Horario de cierre</span>
               </label>
-              <div className="errorMsg"></div>
             </div>
 
-            <div className="ContainerInput">
-              <select>Categoria</select>
-              <label>Categoria</label>
-              <div className="errorMsg"></div>
+            <div className="select_categorie">
+              <label>Categorias:</label>
+            <select defaultValue='categorias' name="Categorias" onChange={nameCategories}>
+              <option defaultValue="categorie" selected disabled hidden>Categoria</option>
+              {categorie.map((Element,index)=>(
+                <option key={index}>{Element.nombre}</option>
+              ))}
+            </select>
             </div>
-            <button onClick={locationChange}>Guardar informacion</button>
+            <button className='btn' onClick={locationChange}>Guardar informacion</button>
           </Form>
         </div>
       </div>

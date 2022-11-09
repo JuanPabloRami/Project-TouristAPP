@@ -8,6 +8,7 @@ import {BsPlusSquareFill as Plus} from 'react-icons/bs'
 import {FaFacebook as IconFacebook,} from "react-icons/fa";
 import {MdEmail as IconEmail} from 'react-icons/md'
 import {MdLocationPin as IconLocation} from "react-icons/md";
+import {BiCategory as Category} from 'react-icons/bi'
 
 
 export const SocialNetworks = () => {
@@ -37,8 +38,17 @@ export const SocialNetworks = () => {
         <div className="create_nameBusiness">
           {nameBusiness ?
             <>
-              <h1>{textName}</h1>
-              <button onClick={editName}>Editar</button>
+              {textName === '' ? 
+              <>
+                <h1>Sin nombre</h1>
+                <button onClick={editName}>Editar</button>
+              </>
+              :
+              <>
+                <h1>{textName}</h1>
+                <button onClick={editName}>Editar</button>
+              </>
+              }
             </>
           :
             <>
@@ -50,16 +60,21 @@ export const SocialNetworks = () => {
         <div className="more_optiones">
           {buttonInfo ?
             <div className="information_business">
-              <div className="information_import">
-                <p><IconLocation className='icon l'/>{dataInformation.ubicacion} {dataInformation.locationState}</p>
-                <p><IconEmail className='icon e'/>{dataInformation.contactEmail}</p>
-                <p><IconFacebook className='icon f'/>@{dataInformation.contactFacebook}</p>
+              <div className="location_business">
+                <p><IconLocation className='icon l'/>{dataInformation.ubicacion} - {dataInformation.locationState}</p>
               </div>
-              <div className="schedule">
-              <div className="state"></div>
-                <p>Abierto: {dataInformation.horaEntrada} - {dataInformation.horaSalida}</p>
+              <div className="content_grid">
+                <div className="information_import">
+                  <p><IconEmail className='icon e'/>{dataInformation.contactEmail}</p>
+                  <p><IconFacebook className='icon f'/>@{dataInformation.contactFacebook}</p>
+                  <p><Category className='icon c'/>{dataInformation.nameCategorie}</p>
+                </div>
+                <div className="schedule">
+                  <div className="state"></div>
+                  <p>Abierto: {dataInformation.horaEntrada} - {dataInformation.horaSalida}</p>
+                  <button onClick={openSocial}>Editar</button>
+                </div>
               </div>
-              <button onClick={openSocial}>Editar</button>
             </div>
             :
             <button onClick={openSocial}>Más opciones <Plus/></button>
