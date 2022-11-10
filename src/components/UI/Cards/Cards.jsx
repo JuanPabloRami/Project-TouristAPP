@@ -3,7 +3,7 @@ import './Cards.css'
 
 
 
-export const Cards = ({image, owner, description, title}) => {
+export const Cards = ({image, owner, description, title,city}) => {
   
   return (
     <div className="card">
@@ -17,6 +17,7 @@ export const Cards = ({image, owner, description, title}) => {
       <div className="card__description">
         <h2>{title}</h2>
         <p>{description}</p>
+        <p>{city}</p>
         <button>Ver más</button>
       </div>
     </div>

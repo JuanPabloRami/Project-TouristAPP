@@ -7,7 +7,7 @@ export const ModalContextProvider = (props) => {
   const [locationState,setLocationState] = useState("");
   const [openModal, setOpenModal] = useState(false);
   const [inputDepartment, setInputDepartment] = useState("");
-  const [inputCity, setInputCity] = useState("");
+  const [inputCity, setInputCity] = useState("")
   const [loginUser,setLoginUser] = useState(false)
   const [registerUser,setRegisterUser] = useState(false)
   const [items,setItems] = useState(false)

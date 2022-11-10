@@ -1,5 +1,6 @@
-import React,{useEffect,useState} from "react";
+import React,{useEffect,useState,useContext} from "react";
 import "./CardBusiness.css";
+import {ModalContext} from '../../context/Modal/ModalContext'
 
 //cards de negocio
 import {Cards} from '../Cards/Cards'
@@ -19,21 +20,30 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination, Autoplay} from "swiper";
 
 export const CardBusiness = () => {
+
+  const {locationState} = useContext(ModalContext);
+
+
+
+  // request de negocios
   const [bussines,setBussines] = useState([])
+  const city = locationState.split(" ")
+  console.log(city[0]);
   const showBussines = () =>{
-    axios.get('/api/negocio/')
+    axios.get(`/api/negocio/?ciudad__nombre__contains=${city[0]}`)
     .then(function (response){
       setBussines(response.data)
+      console.log(response);
     })
     .catch(function (error){
       console.log(error);
     });
   }
-  console.log(bussines)
-
+  
   useEffect(()=>{
+    
     showBussines()
-  },[])
+  },[city[0]])
 
   return (
     <>
@@ -60,7 +70,7 @@ export const CardBusiness = () => {
         >
             {bussines.map((element, index)=>(
               <SwiperSlide id="slider-business" key={index}>
-                <Cards image={element.imgperfil} owner={element.imgperfil} description={element.descripcion} title={element.nombre} />
+                <Cards image={element.imgperfil} owner={element.imgperfil} description={element.descripcion} title={element.nombre} city={element.ciudad.nombre} />
               </SwiperSlide>
             ))}
           
