@@ -13,7 +13,7 @@ export const DropdownUser = () => {
   const [api,setApi] = useState({})
   const {setLoading, loading,setSwitchNav} = useContext(TransitionsContext)
   //Ejecuta el useEffect cuando hay un usuario logueado
-  const {users} = useContext(UsersContext)
+  const {users,setDataBusiness} = useContext(UsersContext)
   //trae el token del usuario
   const token = localStorage.getItem('token')
 
@@ -33,7 +33,7 @@ export const DropdownUser = () => {
       console.log(error);
     });
   }
-console.log(api);
+  
   const changeState = () =>{
     setTimeout(()=>{
       localStorage.removeItem('token');

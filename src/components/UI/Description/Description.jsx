@@ -4,7 +4,7 @@ import { Textarea } from '../Textarea/Textarea'
 import './Description.css'
 
 export const Description = () => {
-  const {setDel,setDescription,inputDescription} = useContext(CreateBussinesContext)
+  const {setDel,setDescription,inputDescription,hiddenBtn} = useContext(CreateBussinesContext)
 
   const editDescription = () => {
     setDel(false)
@@ -27,7 +27,12 @@ export const Description = () => {
           </>
           }
           </p>
-        <button onClick={editDescription}>Editar</button>
+          {hiddenBtn ?
+            null
+          :
+            <button onClick={editDescription}>Editar</button>
+          }
+        
       </div>
     </>
   )

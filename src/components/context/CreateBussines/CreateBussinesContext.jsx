@@ -19,6 +19,8 @@ export const CreateBussinesContextProvider = (props) => {
   const [nameBusiness,setNameBusiness] = useState(false)
   //Muestra u oculta la modal de confirmacion de crear negocio
   const [modalConfirm,setModalConfirm] = useState(false)
+  //Estado que oculta los botones de editar cuando crea negocio
+  const [hiddenBtn,setHiddenBtn] = useState(false)
 
   
   
@@ -110,6 +112,7 @@ const bussinesRequest = () =>{
       setHiddenItems(true)
       setModalConfirm(false)
       setShowBtnItem(true)
+      setHiddenBtn(true)
     }
   })
   .catch(function (error){
@@ -118,7 +121,7 @@ const bussinesRequest = () =>{
 }
 
 //Estado que obtiene la informacion de los items
-const [dataItems,setDataItems] = useState([])
+const [dataItems,setDataItems] = useState({})
 const [showBtnItem,setShowBtnItem] = useState(false)
 const [idBusiness,setIdBusiness] = useState(0)
 const [hiddenItems,setHiddenItems] = useState(false)
@@ -133,19 +136,18 @@ const dataItem = {
   negocio:idBusiness
 }
 
-const responseItems = ()=>{
-  axios.post('/api/item/',
-    dataItem,
-    config
-  )
-  .then(function (response){
-    console.log(response);
-  })
-  .catch(function (error){
-    console.log(error);
-  });
-
-}
+  useEffect(()=>{
+    axios.post('/api/item/',
+      dataItem,
+      config
+    )
+    .then(function (response){
+      console.log(response);
+    })
+    .catch(function (error){
+      console.log(error);
+    });
+  },[dataItems])
 
     //Oculta boton de más de la descripción
   const inputDescription = () =>{
@@ -204,9 +206,10 @@ const responseItems = ()=>{
       bussinesRequest,
       dataItems,
       hiddenItems,
-      responseItems,
       showBtnItem,
-      setDataItems
+      setDataItems,
+      idBusiness,
+      hiddenBtn
     }}>
       {props.children}
     </CreateBussinesContext.Provider>

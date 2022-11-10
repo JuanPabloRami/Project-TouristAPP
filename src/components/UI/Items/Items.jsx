@@ -112,7 +112,7 @@ export const Items = () => {
                 <label className='name_file'>Imagen de promoción</label>
                 <div className="errorMsg"></div>
               </div>
-              <button className='btn' onClick={responseItems}>Crear item</button>
+              <button className='btn' >Crear item</button>
             </Form>
           </div>
         </div>

@@ -4,8 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import {Home} from './components/Pages/Home/Home';
 import {Register} from './components/Layouts/Register/Register';
 import {Login} from './components/Layouts/Login/Login';
-import {BussinesCreate} from './components/Pages/BussinesCreate/BussinesCreate';
-import {ItemCreate} from './components/Pages/ItemCreate/ItemCreate';
+import { MyProfile } from './components/Pages/MyProfile/MyProfile';
 import {AboutUs} from './components/Pages/AboutUs/AboutUs';
 import { ProfileCreate } from './components/Pages/ProfileCreate/ProfileCreate';
 import {Categories} from './components/Pages/Categories/Categories';
@@ -15,10 +14,9 @@ import { PrivacyPolicy } from './components/Pages/TermsAndConditions/PrivacyPoli
 //componentes
 import {Navbar} from './components/Layouts/Navbar/Navbar';
 import {Footer} from './components/Layouts/Footer/Footer'
-
-
 //ProtectedRoute
 import {ProtectedRouteCreateBusiness} from './components/ProtectRouter/ProtectedRoute';
+
 /*https://www.youtube.com/watch?v=emiCMV-oVoE*/
 function App() {
   return (
@@ -27,14 +25,17 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>}  />
         <Route path='/register' element={<Register/>} />
-        
+        <Route path='/minegocio' element={
+        <ProtectedRouteCreateBusiness>
+          <MyProfile/>
+        </ProtectedRouteCreateBusiness>
+        }/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/crear-negocio' element={
         <ProtectedRouteCreateBusiness>
             <ProfileCreate/>
         </ProtectedRouteCreateBusiness>
         } />
-
         <Route path='/aboutUs' element={<AboutUs/>}/>
         <Route path='/terminosycondiciones' element={<TermsAndConditions/>}/>
         <Route path='/privacidad' element={<PrivacyPolicy/>}/>
