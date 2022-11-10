@@ -5,15 +5,17 @@ import { ModalContext } from '../../context/Modal/ModalContext'
 import { Field, Formik, Form} from 'formik'
 import { Button } from '../Button/Button'
 import { CatalogueContext } from '../../context/Catalogue/CatalogueContext'
+import { CreateBussinesContext } from '../../context/CreateBussines/CreateBussinesContext'
 
 export const Items = () => {
   
   const {items,closeItems} = useContext(ModalContext)
-  const {uploadImageItem,uploadImagePromotion,setStateItem,setCatalogue,catalogue,itemImage,promotionImage} = useContext(CatalogueContext)
-  
+  const {uploadImageItem,uploadImagePromotion,setStateItem,catalogue,itemImage,promotionImage} = useContext(CatalogueContext)
+  const {setDataItems,responseItems} = useContext(CreateBussinesContext)
+
  const sendItem = (nombre,descripcion,precio,negocio) =>{
   let item = {nombre,descripcion,precio,itemImage,promotionImage,negocio}
-  //setCatalogue(item)
+  setDataItems(item)
   setStateItem(true)
   catalogue.push(item)
   closeItems()
@@ -110,7 +112,7 @@ export const Items = () => {
                 <label className='name_file'>Imagen de promoción</label>
                 <div className="errorMsg"></div>
               </div>
-              <Button text="Crear Item" />
+              <button className='btn' onClick={responseItems}>Crear item</button>
             </Form>
           </div>
         </div>

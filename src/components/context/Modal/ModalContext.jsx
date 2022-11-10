@@ -77,7 +77,7 @@ export const ModalContextProvider = (props) => {
   //Obtiene el valor del select de ciudades
   const locationCity = (event) => {
     const city = event.target.value;
-    return setInputCity(city);
+    setInputCity(city);
   }
   //Obtiene el valor del select de departamentos
   const locationDepartment = (event) => {

@@ -48,22 +48,6 @@ export const Navbar = () => {
     
   });
 
-  //Efecto para esconder la navbar con el scroll
-  useEffect(() =>{
-    let principal = window.scrollY
-    const navbar = document.getElementById("navbar");
-    window.addEventListener("scroll", () => {
-      let actual = window.scrollY
-      if (principal >= actual){
-        navbar.style.top = "0px"
-      }else{
-        navbar.style.top = "-90px"
-      }
-      principal = actual
-    });
-  },[]);
-
-
   const burgerMenu = () => {
     const menuActive = menu === 'close'
     ? setMenu("active")
@@ -124,7 +108,7 @@ export const Navbar = () => {
             <Link to='/' ><li className="list">Inicio</li></Link>
               <Search/>
               <div className="containerDrop">
-              <li  className="listcategories" id="categories">Categoria</li>
+              <li  className="listcategories" id="categories">Categorias</li>
                 <Dropdown/>
               </div>
             </ul>

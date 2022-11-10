@@ -31,8 +31,6 @@ export const Dropdown = () => {
     categorys()
   },[])
 
-
-
   return (
     <div className="drop__down">
       {category.map((Element,index)=>(

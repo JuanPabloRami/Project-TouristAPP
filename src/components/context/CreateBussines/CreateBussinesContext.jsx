@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { createContext,useState } from "react";
 import axios from "../../api/axios/axios";
 
@@ -19,47 +20,10 @@ export const CreateBussinesContextProvider = (props) => {
   //Muestra u oculta la modal de confirmacion de crear negocio
   const [modalConfirm,setModalConfirm] = useState(false)
 
-  //Estados que recogen la data del negocio y los items
-  const [imageProfile, setimageProfile] = useState("");
-  const [imagePort, setImagePort] = useState("");
-  const [informationSocial,setInformationSocial] = useState([])
-  const [idCategory, setIdCategory] = useState(0);
-  const [idCity, setIdCity] = useState(0);
-
-
-  const token = localStorage.getItem('token')
-
-  // nombre: text,
-  // descripcion: textName,
-  // imgperfil:imageProfile,
-  // imgportada: imagePort,
-  // tipo_Negocio_id: idCategory,
-  // ciudad_id:idCity,
-  // ubicacion: informationSocial.ubicacion,
-  // horaEntrada: informationSocial.horaEntrada,
-  // horaSalida: informationSocial.horaSalida,
-  // contactFacebook: informationSocial.contactFacebook,
-  // contactInstagram:null,
-  // contactWEB:null,
-  // contactEmail: informationSocial.contactEmail,
-
-  const bussinesRequest = () =>{
-    axios.post('/api/negocio/',{
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-      },
-    })
-    .then(function (response){
-      console.log(response);
-    })
-    .catch(function (error){
-      console.log(error);
-    });
-  }
-
-     //convertidor de images de perfil
-     const uploadImageProfile = async (e) => {
+  
+  
+  //convertidor de images de perfil
+  const uploadImageProfile = async (e) => {
       const file = e.target.files[0];
       const base64 = await convertBase64Profile(file);
       setimageProfile(base64);
@@ -91,19 +55,99 @@ export const CreateBussinesContextProvider = (props) => {
       return new Promise((resolve, reject) => {
         const fileReader = new FileReader();
         fileReader.readAsDataURL(file);
-  
+        
         fileReader.onload = () => {
           resolve(fileReader.result);
         };
-  
+        
         fileReader.onerror = (error) => {
           reject(error);
         };
       });
     };
-  
+    
 
-  //Oculta boton de más de la descripción
+//Estados que recogen la data del negocio
+const [imageProfile, setimageProfile] = useState("");
+const [imagePort, setImagePort] = useState("");
+const [informationSocial,setInformationSocial] = useState([])
+const [idCategory, setIdCategory] = useState(0);
+const [idCity, setIdCity] = useState(0);
+
+const token = localStorage.getItem('token')
+
+const config = {
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`,
+    },
+}
+  const data = {
+  nombre: textName,
+  descripcion: text,
+  imgperfil:imageProfile,
+  imgportada: imagePort,
+  tipo_Negocio_id: idCategory,
+  ciudad_id:idCity,
+  ubicacion: informationSocial.ubicacion,
+  horaEntrada: informationSocial.horaEntrada,
+  horaSalida: informationSocial.horaSalida,
+  contactFacebook: informationSocial.contactFacebook,
+  contactInstagram:null,
+  contactWEB:null,
+  contactEmail: informationSocial.contactEmail,
+}
+
+const bussinesRequest = () =>{
+  axios.post('/api/negocio/',
+    data,
+    config
+    )
+  .then(function (response){
+    console.log(response);
+    if(response.status === 201){
+      setIdBusiness(response.data.id)
+      setHiddenItems(true)
+      setModalConfirm(false)
+      setShowBtnItem(true)
+    }
+  })
+  .catch(function (error){
+    console.log(error);
+  });
+}
+
+//Estado que obtiene la informacion de los items
+const [dataItems,setDataItems] = useState([])
+const [showBtnItem,setShowBtnItem] = useState(false)
+const [idBusiness,setIdBusiness] = useState(0)
+const [hiddenItems,setHiddenItems] = useState(false)
+
+
+const dataItem = {
+  nombre:dataItems.nombre,
+  descripcion:dataItems.descripcion,
+  precio:dataItems.precio,
+  nuevo:true,
+  imagen:dataItems.itemImage,
+  negocio:idBusiness
+}
+
+const responseItems = ()=>{
+  axios.post('/api/item/',
+    dataItem,
+    config
+  )
+  .then(function (response){
+    console.log(response);
+  })
+  .catch(function (error){
+    console.log(error);
+  });
+
+}
+
+    //Oculta boton de más de la descripción
   const inputDescription = () =>{
     const icon = document.getElementById('input')
     icon.style.display = "none"
@@ -157,7 +201,12 @@ export const CreateBussinesContextProvider = (props) => {
       setInformationSocial,
       setIdCity,
       setIdCategory,
-      bussinesRequest
+      bussinesRequest,
+      dataItems,
+      hiddenItems,
+      responseItems,
+      showBtnItem,
+      setDataItems
     }}>
       {props.children}
     </CreateBussinesContext.Provider>

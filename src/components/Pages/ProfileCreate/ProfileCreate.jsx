@@ -15,8 +15,9 @@ import { CreateBussinesContext } from '../../context/CreateBussines/CreateBussin
 
 
 export const ProfileCreate = () => {
-  const {uploadImageProfile,uploadImagePort,imageProfile,imagePort} = useContext(CreateBussinesContext)
+  const {uploadImageProfile,uploadImagePort,imageProfile,imagePort,showBtnItem} = useContext(CreateBussinesContext)
   const {setModalConfirm} = useContext(CreateBussinesContext)
+
 
   const openModal = () =>{
     setModalConfirm(true)
@@ -49,7 +50,11 @@ export const ProfileCreate = () => {
       </div>
       <SocialNetworks/>
       {/* <button className='btn_like_bussines'> <Heart/> 100</button> */}
-      <button onClick={openModal} className='btn_like_bussines'>Crear negocio</button>
+      {showBtnItem ?
+        <button className='btn_like_bussines'> <Heart/> 100</button>
+       :
+        <button onClick={openModal} className='btn_like_bussines'>Crear negocio</button>
+       }
     </div>
     <main>
       <Coments/>

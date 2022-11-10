@@ -36,12 +36,7 @@ export const register = (first_name,last_name,email,username,password,typeUser) 
 }
 
 export const accessToken = (token) =>{
-  axios.get('/api/misnegocios/',{
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
-    },
-  })
+  axios.get('/api/misnegocios/')
   .then(function (response){
     console.log(response);
   })

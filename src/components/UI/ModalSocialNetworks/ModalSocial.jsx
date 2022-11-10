@@ -92,7 +92,7 @@ export const ModalSocial = () => {
   useEffect(()=>{
     axios.get(`api/tipo-negocio/?nombre=${nameCategorie}`)
     .then(function(response) {
-      setIdCategory(response.data.id)
+      setIdCategory(response.data[0].id)
     })
     .catch(function(error){
       console.log(error)

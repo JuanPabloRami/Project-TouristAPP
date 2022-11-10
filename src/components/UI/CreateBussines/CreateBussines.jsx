@@ -13,7 +13,7 @@ import { Catalogue } from '../Catalogue/Catalogue'
 
 export const CreateBussines = () => {
   const {openItems} = useContext(ModalContext)
-  const {inputDescription,textarea,description,del} = useContext(CreateBussinesContext)
+  const {inputDescription,textarea,description,del,hiddenItems} = useContext(CreateBussinesContext)
   const {stateItem} = useContext(CatalogueContext)
 
   return (
@@ -41,21 +41,29 @@ export const CreateBussines = () => {
           
           <Plus id='input' className='icon_create' onClick={inputDescription}/>
         </div>
-        <div className={`create items ${stateItem ? 'close' : null}`}>
-          {stateItem?
-            null
-          :
-           <>
-            <h2>Catalogo</h2>
-            <Plus className='icon_create' onClick={openItems}/>
-           </>
-          }
-        </div>
         <>
-          {stateItem ?
-            <Catalogue/>
+          {hiddenItems ? 
+            <>
+              <div className={`create items ${stateItem ? 'close' : null}`}>
+                {stateItem?
+                  null
+                :
+                <>
+                  <h2>Catalogo</h2>
+                  <Plus className='icon_create' onClick={openItems}/>
+                </>
+                }
+              </div>
+              <>
+                {stateItem ?
+                  <Catalogue/>
+                :
+                null
+                }
+              </>
+            </>
           :
-          null
+            null
           }
         </>
       </div>
