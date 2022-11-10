@@ -52,9 +52,24 @@ export const DropdownUser = () => {
   const logout = () =>{
     setLoading(true)
      return changeState()
-  
   }
 
+
+  const showProfile = () =>{
+    if(api.type_user === 'Emprendedor' && api.negocios.length <= 0){
+      return (<><li><Link to='/crear-negocio'>Crear mi negocio</Link></li>
+              <li onClick={logout}>Cerrar sesión</li></>)
+    }else if(api.type_user === 'Emprendedor' && api.negocios.length > 0)
+      return (
+        <>
+        <li><Link to='/minegocio'>Ver mi negocio</Link></li>
+        <li onClick={logout}>Cerrar sesión</li>
+        </>)
+  return(
+    <li onClick={logout}>Cerrar sesión</li>
+    )
+  }
+  
   //icono dependiente del tipo de usuario
   const typeUser = () =>{
     if (api.type_user === "Turista"){
@@ -77,13 +92,21 @@ export const DropdownUser = () => {
         <span>{typeUser()} {api.first_name} {api.last_name}</span>
         <ul className='bussines_drop'>
           {
-            api.type_user === 'Turista' ?
-              <li onClick={logout}>Cerrar sesión</li>
-            :
-            <>
-              <li><Link to='/perfil'>Ver mi negocio</Link></li>
-              <li onClick={logout}>Cerrar sesión</li>
-            </>
+            showProfile()
+            // api.type_user === 'Emprendedor' && api.negocios === [] ?
+            // <li><Link to='/crear-negocio'>Crear mi negocio</Link></li>
+            // :
+            // <>
+            //   <li><Link to='/perfil'>Ver mi negocio</Link></li>
+            //   <li onClick={logout}>Cerrar sesión</li>
+            // </>
+            // api.type_user === 'Turista' ?
+            //   <li onClick={logout}>Cerrar sesión</li>
+            // :
+            // <>
+            //   <li><Link to='/perfil'>Ver mi negocio</Link></li>
+            //   <li onClick={logout}>Cerrar sesión</li>
+            // </>
           } 
         </ul>
       </div>
