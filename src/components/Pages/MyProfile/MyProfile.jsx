@@ -17,9 +17,15 @@ import { UsersContext } from "../../context/Users/UsersContext";
 import { InformationBusinessContext } from "../../context/InformationBusiness/InformationBusinessContext";
 //component loading
 import { BarLoader } from "react-spinners";
+// alerts
+import { Message } from "../../UI/Message/Message";
+
+//iconos exito y error
+import {GiConfirmed as Confirmed} from 'react-icons/gi'
+import {VscError as ErrorIcon} from 'react-icons/vsc' 
 
 export const MyProfile = () => {
-  const {users} = useContext(UsersContext)
+  const {users,setNegocioId,alert,errorText,errorAlert} = useContext(UsersContext)
   const [dataBusiness,setDataBusiness] = useState({})
   const [dataItems,setDataItems] = useState({})
   const [category,setcategory] = useState('')
@@ -29,7 +35,8 @@ export const MyProfile = () => {
   const [department,setDepartment] = useState('')
   const [loading, setLoading] = useState(false);
 
-  const url = "http://touristapp-backend-production.up.railway.app";
+
+  const url = "http://10.199.2.22:8000";
 
   useEffect(()=>{
     setLoading(true);
@@ -45,6 +52,7 @@ export const MyProfile = () => {
         setcategory(response.data.negocios[0].tipo_Negocio.nombre)
         setCity(response.data.negocios[0].ciudad.nombre)
         setDepartment(response.data.negocios[0].ciudad.departamento.nombre)
+        setNegocioId(response.data.negocios[0].id)
       }
     })
     .catch(function (error){
@@ -166,7 +174,10 @@ export const MyProfile = () => {
             </div>
           </div>
         ) : null}
+        
       </main>
+      <Message text="Comentario enviado" icon={<Confirmed className="icon__message"/>} message={alert}/>
+      <Message text={errorText} icon={<ErrorIcon className="icon__error"/>} message="close"/>
     </>
   );
 };
