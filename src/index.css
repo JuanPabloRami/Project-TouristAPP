@@ -10,3 +10,11 @@ body{
 .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal{
   display: none;
 }
+.swiper.swiper-initialized.swiper-horizontal.swiper-pointer-events.swiper-free-mode.swiper-backface-hidden{
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin:0;
+  width: 100%;
+
+}

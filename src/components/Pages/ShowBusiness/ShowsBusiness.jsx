@@ -1,11 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 
-//Imagenes
-import Account from "../../images/Profile/profile.jpg";
-import FrontPage from "../../images/Profile/frontPage.jpg";
 //componentes
 import { Coments } from "../../UI/Coments/Coments";
-import { CreateBussines } from "../../UI/CreateBussines/CreateBussines";
 //icons
 import { AiFillLike as Heart } from "react-icons/ai";
 import { FaFacebook as IconFacebook } from "react-icons/fa";
@@ -14,63 +10,40 @@ import { MdLocationPin as IconLocation } from "react-icons/md";
 import { BiCategory as Category } from "react-icons/bi";
 import axios from "../../api/axios/axios";
 import { UsersContext } from "../../context/Users/UsersContext";
-import { InformationBusinessContext } from "../../context/InformationBusiness/InformationBusinessContext";
 //component loading
 import { BarLoader } from "react-spinners";
-// alerts
-import { Message } from "../../UI/Message/Message";
 
-//iconos exito y error
-import {GiConfirmed as Confirmed} from 'react-icons/gi'
-import {VscError as ErrorIcon} from 'react-icons/vsc' 
-//component loading
-import { BarLoader } from "react-spinners";
-import { Message } from "../../UI/Message/Message";
-
-export const MyProfile = () => {
-  const {users,setNegocioId,alert,errorText,errorAlert} = useContext(UsersContext)
-  const [dataBusiness,setDataBusiness] = useState({})
+export const ShowsBusiness = () => {
+  const {users,idBusiness} = useContext(UsersContext)
+  const [data,setData] = useState({})
   const [dataItems,setDataItems] = useState({})
   const [category,setcategory] = useState('')
-  const token = localStorage.getItem('token')
   const [showItems,setShowItems] = useState(false)
   const [city,setCity] = useState('')
   const [department,setDepartment] = useState('')
   const [loading, setLoading] = useState(false);
 
-
-  const url = "http://10.199.2.22:8000";
+  const url = 'http://10.199.2.22:8000';
 
   useEffect(()=>{
     setLoading(true);
-    axios.get('/api/misnegocios/',{
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-      },
-    })
+    axios.get(`/api/negocio/?id__contains=${idBusiness}`)
     .then(function (response){
+      console.log(response.data[0]);
       if(response.status === 200){
-        setDataBusiness(response.data.negocios[0])
-        setcategory(response.data.negocios[0].tipo_Negocio.nombre)
-        setCity(response.data.negocios[0].ciudad.nombre)
-        setDepartment(response.data.negocios[0].ciudad.departamento.nombre)
-        setNegocioId(response.data.negocios[0].id)
+        setData(response.data[0])
+        setcategory(response.data[0].tipo_Negocio.nombre)
+        setCity(response.data[0].ciudad.nombre)
+        setDepartment(response.data[0].ciudad.departamento.nombre)
       }
     })
     .catch(function (error){
       console.log(error);
     });
-  },[users])
+  },[])
 
   useEffect(() => {
-    axios
-      .get(`/api/item/?negocio__id=${dataBusiness.id}`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      })
+    axios.get(`/api/item/?negocio__id=${data.id}`)
       .then(function (response) {
         if (response.status === 200) {
           console.log(response);
@@ -81,7 +54,7 @@ export const MyProfile = () => {
       .catch(function (error) {
         console.log(error);
       });
-  }, [dataBusiness]);
+  },[data]);
 
   return (
     <>
@@ -104,32 +77,32 @@ export const MyProfile = () => {
       ) : null}
       <div className="account__images">
         <div className="front__page">
-          <img src={url + dataBusiness.imgportada} alt="portada" />
+          <img src={data.imgportada} alt="portada" />
         </div>
         <div className="profile__img">
-          <img src={url + dataBusiness.imgperfil} alt="perfil" />
+          <img src={data.imgperfil} alt="perfil" />
         </div>
         <div className="content_creating">
           <div className="create_nameBusiness">
-            <h1>{dataBusiness.nombre}</h1>
+            <h1>{data.nombre}</h1>
           </div>
           <div className="more_optiones">
             <div className="information_business">
               <div className="location_business">
                 <p>
                   <IconLocation className="icon l" />
-                  {dataBusiness.ubicacion} - {city} - {department}
+                  {data.ubicacion} - {city} - {department}
                 </p>
               </div>
               <div className="content_grid">
                 <div className="information_import">
                   <p>
                     <IconEmail className="icon e" />
-                    {dataBusiness.contactEmail}
+                    {data.contactEmail}
                   </p>
                   <p>
                     <IconFacebook className="icon f" />@
-                    {dataBusiness.contactFacebook}
+                    {data.contactFacebook}
                   </p>
                   <p>
                     <Category className="icon c" />
@@ -139,8 +112,8 @@ export const MyProfile = () => {
                 <div className="schedule">
                   <div className="state"></div>
                   <p>
-                    Abierto: {dataBusiness.horaEntrada} -{" "}
-                    {dataBusiness.horaSalida}
+                    Abierto: {data.horaEntrada} -{" "}
+                    {data.horaSalida}
                   </p>
                 </div>
               </div>
@@ -158,7 +131,7 @@ export const MyProfile = () => {
           <div className="content_create_bussines">
             <div className="description__create">
               <h2>Descripción</h2>
-              <p>{dataBusiness.descripcion}</p>
+              <p>{data.descripcion}</p>
             </div>
             <div className="bussines__items">
               <h2>Catalogo</h2>
@@ -177,10 +150,7 @@ export const MyProfile = () => {
             </div>
           </div>
         ) : null}
-        
       </main>
-      <Message text="Comentario enviado" icon={<Confirmed className="icon__message"/>} message={alert}/>
-      <Message text={errorText} icon={<ErrorIcon className="icon__error"/>} message="close"/>
     </>
   );
 };

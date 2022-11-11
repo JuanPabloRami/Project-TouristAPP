@@ -11,6 +11,7 @@ import {Categories} from './components/Pages/Categories/Categories';
 import {NotFound} from './components/Pages/NotFound/NotFound'
 import { TermsAndConditions } from './components/Pages/TermsAndConditions/TermsAndConditions'
 import { PrivacyPolicy } from './components/Pages/TermsAndConditions/PrivacyPolicy';
+import {ShowsBusiness} from './components/Pages/ShowBusiness/ShowsBusiness'
 //componentes
 import {Navbar} from './components/Layouts/Navbar/Navbar';
 import {Footer} from './components/Layouts/Footer/Footer'
@@ -30,6 +31,7 @@ function App() {
           <MyProfile/>
         </ProtectedRouteCreateBusiness>
         }/>
+        <Route path='/negocio' element={<ShowsBusiness/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/crear-negocio' element={
         <ProtectedRouteCreateBusiness>

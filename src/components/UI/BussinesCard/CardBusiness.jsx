@@ -40,7 +40,6 @@ export const CardBusiness = () => {
   useEffect(()=>{
       axios.get(`/api/negocio/?ciudad__nombre__contains=${city[0]}&ciudad__departamento__nombre__contains=${city[2]}`)
       .then(function (response) {
-        console.log(response.data);
         setBussines(response.data);
       })
       .catch(function (error) {
@@ -67,7 +66,7 @@ export const CardBusiness = () => {
           slidesPerView={4}
           spaceBetween={30}
           freeMode={true}
-          loop={true}
+          loop={false}
           loopFillGroupWithBlank={true}
           pagination={{
             clickable: true,

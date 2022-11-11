@@ -210,7 +210,6 @@ li{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    cursor: pointer;
     text-transform: uppercase;
     font-weight: none;
     font-size: .9rem;

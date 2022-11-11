@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./search.css";
 //icons
 import { GrFormClose as CloseSearch } from "react-icons/gr";
 import { BiSearchAlt2 as Searching } from "react-icons/bi";
 import axios from "../../api/axios/axios";
 import { useEffect } from "react";
+import { UsersContext } from "../../context/Users/UsersContext";
+import { Navigate } from "react-router";
 
 export const Search = () => {
   const [search, setSearch] = useState(false);
@@ -43,6 +45,12 @@ export const Search = () => {
 
   useEffect(() => getBusiness(), []);
 
+  const {setIdBusiness,idBusiness,getValue,value,setValue} = useContext(UsersContext)
+
+  if(value){
+    setValue(false)
+    return <Navigate to="/negocio" />;
+  }
   return (
     <>
       {search && (
@@ -60,7 +68,8 @@ export const Search = () => {
           <Searching className="icon_search" />
           <div className="resultSearch">
             {dataBussiness.map((element, index)=>(
-            <div className="containerValue">
+            <div key={index} className="containerValue">
+              <button value={element.id} onClick={getValue}></button>
               <img src={element.imgperfil}></img>
             <div className="category">
               <p>{element.nombre}</p>
@@ -77,3 +86,4 @@ export const Search = () => {
     </>
   );
 };
+

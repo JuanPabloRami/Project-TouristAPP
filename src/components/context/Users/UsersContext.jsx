@@ -11,6 +11,14 @@ export const UsersContextProvider = (props) => {
   const [alert,setAlert] = useState("close")
   const [errorAlert,setErrAlert] = useState("close")
   const [errorText,setErrText] = useState("Ha ocurrido un error")
+  const [idBusiness,setIdBusiness] = useState(0)
+  const [value,setValue] = useState(false)
+
+  const getValue = (e) =>{
+    console.log(e.target.value);
+    setIdBusiness(e.target.value)
+    setValue(true)
+  }
 
   return (
     <UsersContext.Provider value={{
@@ -25,7 +33,12 @@ export const UsersContextProvider = (props) => {
       errorAlert,
       setErrAlert,
       errorText,
-      setErrText
+      setErrText,
+      idBusiness,
+      setIdBusiness,
+      value,
+      setValue,
+      getValue
     }}>
       {props.children}
     </UsersContext.Provider>

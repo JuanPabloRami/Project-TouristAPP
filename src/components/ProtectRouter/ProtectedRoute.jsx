@@ -9,9 +9,9 @@ export const ProtectedRouteCreateBusiness = ({children}) => {
 };
 
 
-// export const ProtectedRouteCreateItem = () => {
-//   if (localStorage.getItem("typeUser") === "Emprendedor") {
-//     return <Navigate to="/" />;
-//   }
-//   return <Navigate to="/crear-negocio" />;
-// };
+export const ProtectedRouteCreateItem = () => {
+  if (localStorage.getItem("typeUser") === "Emprendedor") {
+    return <Navigate to="/" />;
+  }
+  return <Navigate to="/crear-negocio" />;
+};
