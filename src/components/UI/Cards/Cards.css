@@ -94,5 +94,11 @@
   position: absolute;
   bottom: 0%;
 }
-
+.category_p{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 10px;
+}
 

@@ -23,7 +23,9 @@ export const MyProfile = () => {
   const [category,setcategory] = useState('')
   const token = localStorage.getItem('token')
   const [showItems,setShowItems] = useState(false)
-  const {locationState} = useContext(InformationBusinessContext)
+  const [city,setCity] = useState('')
+  const [department,setDepartment] = useState('')
+
 
   const url = 'http://touristapp-backend-production.up.railway.app'
 
@@ -35,8 +37,12 @@ export const MyProfile = () => {
       },
     })
     .then(function (response){
-      setDataBusiness(response.data.negocios[0])
-      setcategory(response.data.negocios[0].tipo_Negocio.nombre)
+      if(response.status === 200){
+        setDataBusiness(response.data.negocios[0])
+        setcategory(response.data.negocios[0].tipo_Negocio.nombre)
+        setCity(response.data.negocios[0].ciudad.nombre)
+        setDepartment(response.data.negocios[0].ciudad.departamento.nombre)
+      }
     })
     .catch(function (error){
       console.log(error);
@@ -71,12 +77,12 @@ export const MyProfile = () => {
       </div>
       <div className="content_creating">
         <div className="create_nameBusiness">
-          <h1>Sin nombre</h1>
+          <h1>{dataBusiness.nombre}</h1>
         </div>
         <div className="more_optiones">
           <div className="information_business">
             <div className="location_business">
-              <p><IconLocation className='icon l'/>{dataBusiness.ubicacion} - {locationState}</p>
+              <p><IconLocation className='icon l'/>{dataBusiness.ubicacion} - {city} - {department}</p>
             </div>
             <div className="content_grid">
               <div className="information_import">

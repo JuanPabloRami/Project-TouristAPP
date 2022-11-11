@@ -14,27 +14,27 @@ export const Categories = () => {
     const [data, setData] = useState({})
     const [dataBussiness, setDataBussiness] = useState([])
     const showCategory = () =>{
-    axios.get(`api/tipo-negocio/?nombre=${localStorage.getItem('categories')}`)
-    .then(function(response) {
-         //console.log(response)
-        if(response.status === 200) {
-            setData(response.data[0])
-        }
-    })
-    .catch(function(error){
-        console.log(error)
-    })
-    
-    axios.get(`api/negocio/?tipo_Negocio__nombre__contains=${localStorage.getItem('categories')}`)
-    .then(function(response) {
-         //console.log(response)
-        if(response.status === 200) {
-            setDataBussiness(response.data)
-        }
-    })
-    .catch(function(error){
-        console.log(error)
-    })
+        axios.get(`api/tipo-negocio/?nombre=${localStorage.getItem('categories')}`)
+        .then(function(response) {
+            //console.log(response)
+            if(response.status === 200) {
+                setData(response.data[0])
+            }
+        })
+        .catch(function(error){
+            console.log(error)
+        })
+        
+        axios.get(`api/negocio/?tipo_Negocio__nombre__contains=${localStorage.getItem('categories')}`)
+        .then(function(response) {
+            //console.log(response)
+            if(response.status === 200) {
+                setDataBussiness(response.data)
+            }
+        })
+        .catch(function(error){
+            console.log(error)
+        })
     }
     useEffect(()=>{
         showCategory()

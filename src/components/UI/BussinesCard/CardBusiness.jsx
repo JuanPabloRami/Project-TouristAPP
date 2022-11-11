@@ -1,29 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import "./CardBusiness.css";
 import {ModalContext} from '../../context/Modal/ModalContext'
+import { UsersContext } from "../../context/Users/UsersContext";
 
 //cards de negocio
 import { Cards } from "../Cards/Cards";
 import axios from "../../api/axios/axios";
-//Imagenes de negocios
-import Unicentro from "../../images/BussinesCard/uni.jpeg";
-import BogPizzas from "../../images/BussinesCard/bogpizzas.jpg";
-import ArepasCafe from "../../images/BussinesCard/arepasCafe.jpg";
-import Estanquillo from "../../images/BussinesCard/estanquillo.jpg";
-//import Cacheo from "../../images/BussinesCard/cacheo.jpg";
-//import Morcilla from "../../images/BussinesCard/morcilla.webp";
-//Imagenes de dueños del negocio
-import OWner from "../../images/Profile/owner.jpg";
 
 // import required modules
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination, Autoplay } from "swiper";
 
 export const CardBusiness = () => {
+  const {locationState} = useContext(ModalContext);
+  const {request} = useContext(UsersContext)
+
   const [bussines, setBussines] = useState([]);
+
+
+  //Peticion que me trae todos los negocios
   const showBussines = () => {
-    axios
-      .get("/api/negocio/")
+    axios.get("/api/negocio/")
       .then(function (response) {
         setBussines(response.data);
       })
@@ -31,11 +28,36 @@ export const CardBusiness = () => {
         console.log(error);
       });
   };
-  console.log(bussines);
 
   useEffect(() => {
     showBussines();
   }, []);
+
+  //Me separa el departamento y el municipio
+  const city = locationState.split(" ")
+
+  //Hace el filtado de departamento y municipios para los negocios
+  useEffect(()=>{
+      axios.get(`/api/negocio/?ciudad__nombre__contains=${city[0]}&ciudad__departamento__nombre__contains=${city[2]}`)
+      .then(function (response) {
+        console.log(response.data);
+        setBussines(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+  },[locationState])
+
+  useEffect(()=>{
+    axios.get(`api/negocio/?tipo_Negocio__nombre__contains=${localStorage.getItem('categoryFilter')}`)
+    .then(function(response) {
+      console.log(response);
+      setBussines(response.data)
+    })
+    .catch(function(error){
+        console.log(error)
+    })
+  },[request])
 
   return (
     <>
@@ -60,6 +82,7 @@ export const CardBusiness = () => {
         >
           {bussines.map((element, index) => (
             <SwiperSlide id="slider-business" key={index}>
+              {bussines.length > 0 ? 
               <Cards
                 image={element.imgportada}
                 owner={element.imgperfil}
@@ -67,7 +90,11 @@ export const CardBusiness = () => {
                 title={element.nombre}
                 ciudad={element.ciudad.nombre}
                 departamento={element.ciudad.departamento.nombre}
+                category={element.tipo_Negocio.nombre}
               />
+              :
+              <h2>No hay negocios en esta ubicación</h2>
+              }
             </SwiperSlide>
           ))}
         </Swiper>

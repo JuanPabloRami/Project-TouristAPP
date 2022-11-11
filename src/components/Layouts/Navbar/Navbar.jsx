@@ -114,7 +114,7 @@ export const Navbar = () => {
             </ul>
           </div>
           <div className="location">
-            <p onClick={OpenModal}><Location color="red" className="logo-location"/>{`${ locationState ?  locationState:'Seleccione ubicación'}`}</p>
+            <p ><Location color="red" className="logo-location"/>{`${ locationState ?  locationState:'Ubicación'}`}</p>
           </div>
           <div className="links">
             {newFuction()}

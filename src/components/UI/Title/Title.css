@@ -7,8 +7,11 @@
   font-size: 100px;
   -webkit-background-clip: text;
   background-position: 10px 0;
+  text-transform: lowercase;
   z-index: 2;
-
+}
+#title__ng::first-letter{
+  text-transform: uppercase;
 }
 #title__pm{
   position: relative;
