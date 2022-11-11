@@ -51,8 +51,9 @@ export const Categories = () => {
         </div>
         <div className='contCard'>
             {dataBussiness.map((element,index)=>(
-
-                <Cards image={element.imgperfil} owner={element.imgperfil} description={element.descripcion} title={element.nombre} />
+                <div key={index}>
+                < Cards image={element.imgperfil} owner={element.imgperfil} description={element.descripcion} title={element.nombre} id={element.id} />
+                </div>
             ))}
         </div>
     </div>

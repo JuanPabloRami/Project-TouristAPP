@@ -23,11 +23,11 @@ export const ShowsBusiness = () => {
   const [department,setDepartment] = useState('')
   const [loading, setLoading] = useState(false);
 
-  const url = 'http://10.199.2.22:8000';
+  const url = 'http://10.199.2.22:8000' ;
 
   useEffect(()=>{
     setLoading(true);
-    axios.get(`/api/negocio/?id__contains=${idBusiness}`)
+    axios.get(`/api/negocio/?id__contains=${localStorage.getItem('value')}`)
     .then(function (response){
       console.log(response.data[0]);
       if(response.status === 200){

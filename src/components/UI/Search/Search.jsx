@@ -45,11 +45,10 @@ export const Search = () => {
 
   useEffect(() => getBusiness(), []);
 
-  const {setIdBusiness,idBusiness,getValue,value,setValue} = useContext(UsersContext)
+  const {getValue,value,idBusiness} = useContext(UsersContext)
 
   if(value){
-    setValue(false)
-    return <Navigate to="/negocio" />;
+    return <Navigate to={`/negocio/${idBusiness}`}/>;
   }
   return (
     <>

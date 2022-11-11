@@ -23,9 +23,7 @@ import { Message } from "../../UI/Message/Message";
 //iconos exito y error
 import {GiConfirmed as Confirmed} from 'react-icons/gi'
 import {VscError as ErrorIcon} from 'react-icons/vsc' 
-//component loading
-import { BarLoader } from "react-spinners";
-import { Message } from "../../UI/Message/Message";
+
 
 export const MyProfile = () => {
   const {users,setNegocioId,alert,errorText,errorAlert} = useContext(UsersContext)

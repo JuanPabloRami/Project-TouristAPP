@@ -90,6 +90,7 @@ export const CardBusiness = () => {
                 ciudad={element.ciudad.nombre}
                 departamento={element.ciudad.departamento.nombre}
                 category={element.tipo_Negocio.nombre}
+                id={element.id}
               />
               :
               <h2>No hay negocios en esta ubicación</h2>

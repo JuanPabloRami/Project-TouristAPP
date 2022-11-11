@@ -15,10 +15,14 @@ export const UsersContextProvider = (props) => {
   const [value,setValue] = useState(false)
 
   const getValue = (e) =>{
-    console.log(e.target.value);
+    console.log(e.target);
     setIdBusiness(e.target.value)
+    localStorage.setItem('value',e.target.value)
     setValue(true)
   }
+  const [idProfile, setIdProfile] = useState('')
+  const [valueCard,setValueCard] = useState(false)
+
 
   return (
     <UsersContext.Provider value={{
@@ -38,7 +42,11 @@ export const UsersContextProvider = (props) => {
       setIdBusiness,
       value,
       setValue,
-      getValue
+      getValue,
+      idProfile,
+      setIdProfile,
+      setValueCard,
+      valueCard,
     }}>
       {props.children}
     </UsersContext.Provider>

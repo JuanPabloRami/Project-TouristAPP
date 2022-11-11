@@ -20,6 +20,9 @@ import {ProtectedRouteCreateBusiness} from './components/ProtectRouter/Protected
 
 /*https://www.youtube.com/watch?v=emiCMV-oVoE*/
 function App() {
+
+  const idValue = localStorage.getItem('value')
+  console.log(idValue);
   return (
     <div className="App">
       <Navbar/>
@@ -31,7 +34,7 @@ function App() {
           <MyProfile/>
         </ProtectedRouteCreateBusiness>
         }/>
-        <Route path='/negocio' element={<ShowsBusiness/>}/>
+        <Route path={'/negocio/'} element={<ShowsBusiness/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/crear-negocio' element={
         <ProtectedRouteCreateBusiness>

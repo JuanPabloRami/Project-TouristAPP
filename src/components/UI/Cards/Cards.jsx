@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useEffect,useState} from "react";
 import './Cards.css'
 import { BsGeoAlt as Location } from "react-icons/bs";
 import {BiCategoryAlt as Category} from 'react-icons/bi'
+import axios from "../../api/axios/axios";
+import { UsersContext } from "../../context/Users/UsersContext";
+import { useContext } from "react";
+import { Navigate } from "react-router";
 
 
 
-export const Cards = ({image, owner, description, title,ciudad,departamento,category}) => {
+
+export const Cards = ({image, owner, description, title,ciudad,departamento,category, id}) => {
+
+  const {idProfile,showId,setValueCard,valueCard} = useContext(UsersContext)
+
+
+  const {getValue,value,setValue,idBusiness} = useContext(UsersContext)
   
+
+  if(value){
+    setValue(false)
+    return <Navigate to={`/negocio`}/>;
+  }
+
   return (
     <div className="card">
       <div className="img__owner__business">
@@ -21,7 +37,7 @@ export const Cards = ({image, owner, description, title,ciudad,departamento,cate
           <p className="category_p"> <Category color='#8a9401' />{category}</p>
         <p>{description}</p>
         
-        <button>Ver más</button>
+        <button value={id} onClick={getValue}>Ver más </button>
       </div>
     </div>
   );
