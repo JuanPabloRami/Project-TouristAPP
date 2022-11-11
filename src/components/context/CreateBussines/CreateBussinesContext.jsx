@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { createContext,useState } from "react";
 import axios from "../../api/axios/axios";
 
+
 export const CreateBussinesContext = createContext();
 
 export const CreateBussinesContextProvider = (props) => {
@@ -21,6 +22,12 @@ export const CreateBussinesContextProvider = (props) => {
   const [modalConfirm,setModalConfirm] = useState(false)
   //Estado que oculta los botones de editar cuando crea negocio
   const [hiddenBtn,setHiddenBtn] = useState(false)
+  //Estado que oculta el componente de carga
+    const [loading, setLoading] = useState(false)
+  //estado del alert de exito o error
+  const [alert,setAlert] = useState("close")
+  const [errorAlert,setErrAlert] = useState("close")
+  const [errorText,setErrText] = useState("Ha ocurrido un error")
 
   
   
@@ -101,6 +108,7 @@ const config = {
 }
 
 const bussinesRequest = () =>{
+  setLoading(true)
   axios.post('/api/negocio/',
     data,
     config
@@ -110,13 +118,31 @@ const bussinesRequest = () =>{
     if(response.status === 201){
       setIdBusiness(response.data.id)
       setHiddenItems(true)
-      setModalConfirm(false)
       setShowBtnItem(true)
       setHiddenBtn(true)
+      setLoading(false);
+      setAlert("open")
+      setTimeout(()=>{
+        setAlert("close")
+      },3500)
+      setTimeout(()=>{
+        setModalConfirm(false)
+      },4000)
     }
   })
   .catch(function (error){
     console.log(error);
+    if (error.response.status === 400){
+      setLoading(false)
+      setErrText(error.response.data.message)
+      setErrAlert("open")
+      setTimeout(()=>{
+        setErrAlert("close")
+      },1500)
+      setTimeout(()=>{
+        setModalConfirm(false)
+      },2000)
+    }
   });
 }
 
@@ -180,6 +206,10 @@ const dataItem = {
   
   return (
     <CreateBussinesContext.Provider value={{
+      alert,
+      errorAlert,
+      errorText,
+      loading,
       inputDescription,
       closeTextarea,
       textarea,

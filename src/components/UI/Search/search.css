@@ -31,7 +31,9 @@
 .resultSearch{
   position: absolute;
   width: 100%;
-
+  height: 22rem;
+  overflow: hidden;
+  overflow-y: scroll;
   background-color: #fff;
   top:22px;
   display: none;
