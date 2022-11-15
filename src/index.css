@@ -8,7 +8,7 @@ body{
   overflow-x: hidden ;
 }
 .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal{
-  display: none;
+  bottom: -3px;
 }
 .swiper.swiper-initialized.swiper-horizontal.swiper-pointer-events.swiper-free-mode.swiper-backface-hidden{
   display: flex;

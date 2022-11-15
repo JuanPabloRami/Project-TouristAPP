@@ -1,11 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
 
-//Imagenes
-import Account from "../../images/Profile/profile.jpg";
-import FrontPage from "../../images/Profile/frontPage.jpg";
+
 //componentes
 import { Coments } from "../../UI/Coments/Coments";
-import { CreateBussines } from "../../UI/CreateBussines/CreateBussines";
 //icons
 import { AiFillLike as Heart } from "react-icons/ai";
 import { FaFacebook as IconFacebook } from "react-icons/fa";
@@ -14,16 +11,13 @@ import { MdLocationPin as IconLocation } from "react-icons/md";
 import { BiCategory as Category } from "react-icons/bi";
 import axios from "../../api/axios/axios";
 import { UsersContext } from "../../context/Users/UsersContext";
-import { InformationBusinessContext } from "../../context/InformationBusiness/InformationBusinessContext";
-//component loading
-import { BarLoader } from "react-spinners";
 // alerts
 import { Message } from "../../UI/Message/Message";
-
 //iconos exito y error
 import {GiConfirmed as Confirmed} from 'react-icons/gi'
 import {VscError as ErrorIcon} from 'react-icons/vsc' 
-
+//component loading
+import { BarLoader } from "react-spinners";
 
 export const MyProfile = () => {
   const {users,setNegocioId,alert,errorText,errorAlert} = useContext(UsersContext)

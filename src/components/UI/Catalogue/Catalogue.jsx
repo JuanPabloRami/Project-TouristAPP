@@ -6,7 +6,7 @@ import "./Catalogue.css";
 import { ModalContext } from "../../context/Modal/ModalContext";
 
 export const Catalogue = () => {
-  const { itemImage, catalogue } = useContext(CatalogueContext);
+  const {catalogue } = useContext(CatalogueContext);
   const { openItems } = useContext(ModalContext);
 
   return (

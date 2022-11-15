@@ -14,7 +14,7 @@ import { UsersContext } from "../../context/Users/UsersContext";
 import { BarLoader } from "react-spinners";
 
 export const ShowsBusiness = () => {
-  const {users,idBusiness} = useContext(UsersContext)
+  const {users,idBusiness,setNegocioId} = useContext(UsersContext)
   const [data,setData] = useState({})
   const [dataItems,setDataItems] = useState({})
   const [category,setcategory] = useState('')
@@ -36,6 +36,7 @@ export const ShowsBusiness = () => {
         setcategory(response.data[0].tipo_Negocio.nombre)
         setCity(response.data[0].ciudad.nombre)
         setDepartment(response.data[0].ciudad.departamento.nombre)
+        setNegocioId(response.data[0].id)
       }
     })
     .catch(function (error){

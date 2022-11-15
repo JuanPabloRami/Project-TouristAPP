@@ -12,6 +12,7 @@ import {NotFound} from './components/Pages/NotFound/NotFound'
 import { TermsAndConditions } from './components/Pages/TermsAndConditions/TermsAndConditions'
 import { PrivacyPolicy } from './components/Pages/TermsAndConditions/PrivacyPolicy';
 import {ShowsBusiness} from './components/Pages/ShowBusiness/ShowsBusiness'
+import {EditBusiness} from './components/Pages/EditBusiness/EditBusiness'
 //componentes
 import {Navbar} from './components/Layouts/Navbar/Navbar';
 import {Footer} from './components/Layouts/Footer/Footer'
@@ -37,6 +38,11 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path='/' element={<Home/>}  />
+        <Route path='/editar-negocio' element={
+        <ProtectedRouteCreateBusiness>
+          <EditBusiness/>
+        </ProtectedRouteCreateBusiness>
+        }/>
         <Route path='/register' element={<Register/>} />
         <Route path='/minegocio' element={
         <ProtectedRouteCreateBusiness>
