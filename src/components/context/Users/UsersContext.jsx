@@ -13,6 +13,7 @@ export const UsersContextProvider = (props) => {
   const [errorText,setErrText] = useState("Ha ocurrido un error")
   const [idBusiness,setIdBusiness] = useState(0)
   const [value,setValue] = useState(false)
+  const [valueId,setValueId] = useState(0)
 
   const getValue = (e) =>{
     console.log(e.target);
@@ -20,12 +21,15 @@ export const UsersContextProvider = (props) => {
     localStorage.setItem('value',e.target.value)
     setValue(true)
   }
+  console.log("polez",idBusiness)
   const [idProfile, setIdProfile] = useState('')
   const [valueCard,setValueCard] = useState(false)
 
 
   return (
     <UsersContext.Provider value={{
+      valueId,
+      setValueId,
       users,
       setUsers,
       setRequest,

@@ -17,12 +17,21 @@ import {Navbar} from './components/Layouts/Navbar/Navbar';
 import {Footer} from './components/Layouts/Footer/Footer'
 //ProtectedRoute
 import {ProtectedRouteCreateBusiness} from './components/ProtectRouter/ProtectedRoute';
+import { useContext, useEffect, useState } from 'react';
+import { UsersContext } from './components/context/Users/UsersContext';
 
 /*https://www.youtube.com/watch?v=emiCMV-oVoE*/
 function App() {
 
-  const idValue = localStorage.getItem('value')
-  console.log(idValue);
+  const {idBusiness} = useContext(UsersContext)
+ 
+
+  useEffect(()=>{
+    const idValue = localStorage.getItem('title')
+    console.log("holi",idValue);
+  },[idBusiness])
+
+
   return (
     <div className="App">
       <Navbar/>
@@ -34,7 +43,7 @@ function App() {
           <MyProfile/>
         </ProtectedRouteCreateBusiness>
         }/>
-        <Route path={'/negocio/'} element={<ShowsBusiness/>}/>
+        <Route path={`/negocio/${idBusiness}`} element={<ShowsBusiness/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/crear-negocio' element={
         <ProtectedRouteCreateBusiness>

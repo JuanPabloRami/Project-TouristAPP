@@ -16,11 +16,14 @@ export const Cards = ({image, owner, description, title,ciudad,departamento,cate
 
 
   const {getValue,value,setValue,idBusiness} = useContext(UsersContext)
+
+  const idValue = localStorage.getItem('value');
+  
   
 
   if(value){
     setValue(false)
-    return <Navigate to={`/negocio`}/>;
+    return <Navigate to={`/negocio/${idValue}`}/>;
   }
 
   return (

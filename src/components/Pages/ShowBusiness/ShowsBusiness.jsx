@@ -32,6 +32,7 @@ export const ShowsBusiness = () => {
       console.log(response.data[0]);
       if(response.status === 200){
         setData(response.data[0])
+        localStorage.setItem('title',response.data[0].nombre)
         setcategory(response.data[0].tipo_Negocio.nombre)
         setCity(response.data[0].ciudad.nombre)
         setDepartment(response.data[0].ciudad.departamento.nombre)
