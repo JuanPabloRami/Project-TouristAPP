@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect,useState } from 'react'
 //Imagenes
 import Account from '../../images/Profile/profile.jpg'
 import FrontPage from '../../images/Profile/frontPage.jpg'
@@ -17,6 +17,8 @@ import { CreateBussinesContext } from '../../context/CreateBussines/CreateBussin
 import { InformationBusinessContext } from '../../context/InformationBusiness/InformationBusinessContext'
 import { CatalogueContext } from '../../context/Catalogue/CatalogueContext'
 import { ModalContext } from '../../context/Modal/ModalContext'
+import axios from '../../api/axios/axios'
+import { UsersContext } from '../../context/Users/UsersContext'
 
 export const EditBusiness = () => {
   const {uploadImageProfile,uploadImagePort,imageProfile,imagePort,nameBusiness,setNameBusiness,setTextName,textName} = useContext(CreateBussinesContext)
@@ -24,6 +26,17 @@ export const EditBusiness = () => {
   const {setDel,setDescription,inputDescription} = useContext(CreateBussinesContext)
   const {catalogue } = useContext(CatalogueContext);
   const { openItems } = useContext(ModalContext);
+
+  const {users,setNegocioId} = useContext(UsersContext)
+  const [dataBusiness,setDataBusiness] = useState({})
+  const [dataItems,setDataItems] = useState({})
+  const [category,setcategory] = useState('')
+  const [city,setCity] = useState('')
+  const [department,setDepartment] = useState('')
+  const [loading, setLoading] = useState(false);
+  const [showItems,setShowItems] = useState(false)
+
+  const url = "http://10.199.2.22:8000";
 
   const showName = () =>{
     setNameBusiness(false)
@@ -47,27 +60,59 @@ export const EditBusiness = () => {
     inputDescription()
     return <Textarea/>
   }
+  const token = localStorage.getItem('token')
+
+  useEffect(()=>{
+    axios.get('/api/misnegocios/',{
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
+    })
+    .then(function (response){
+      if(response.status === 200){
+        setDataBusiness(response.data.negocios[0])
+        setcategory(response.data.negocios[0].tipo_Negocio.nombre)
+        setCity(response.data.negocios[0].ciudad.nombre)
+        setDepartment(response.data.negocios[0].ciudad.departamento.nombre)
+        setNegocioId(response.data.negocios[0].id)
+      }
+    })
+    .catch(function (error){
+      console.log(error);
+    });
+  },[users])
+
+  useEffect(() => {
+    axios.get(`/api/item/?negocio__id=${dataBusiness.id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(function (response) {
+        if (response.status === 200) {
+          setDataItems(response.data);
+          setShowItems(true);
+          setLoading(false);
+  }})
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, [dataBusiness])
 
   return (
     <>
-       <div className="account__images">
+      <div className="account__images">
       <div className="front__page">
-        {imagePort === '' ?
-          <img src={FrontPage} alt='portada'/>
-         :  
-          <img src={imagePort} alt='portada'/>
-         }
+        <img src={url+dataBusiness.imgportada} alt='portada'/>
         <div className="input_img">
           <label  htmlFor='input_file'><Cam/>Editar foto de portada</label>
           <input onChange={uploadImagePort} id='input_file' type='file'/>
         </div>
       </div>
       <div className="profile__img">
-      {imageProfile === '' ?
-          <img src={Account} alt='perfil'/>
-         :  
-          <img src={imageProfile} alt='perfil'/>
-         }
+        <img src={url+dataBusiness.imgperfil} alt='perfil'/>
         <div className="input_img_profile">
           <label htmlFor='input_file_profile'><Cam className='icon'/></label>
           <input onChange={uploadImageProfile} id='input_file_profile' type='file'/>
@@ -82,7 +127,7 @@ export const EditBusiness = () => {
             </>
           :
           <>
-            <h1>Sin nombre</h1>
+            <h1>{dataBusiness.nombre}</h1>
             <button onClick={editName}>Editar</button>
           </>
           }
@@ -90,17 +135,17 @@ export const EditBusiness = () => {
         <div className="more_optiones">
           <div className="information_business">
             <div className="location_business">
-              <p><IconLocation className='icon l'/>{dataInformation.ubicacion} - {dataInformation.locationState}</p>
+              <p><IconLocation className='icon l'/>{dataBusiness.ubicacion} - {city} - {department}</p>
             </div>
             <div className="content_grid">
               <div className="information_import">
-                <p><IconEmail className='icon e'/>{dataInformation.contactEmail}</p>
-                <p><IconFacebook className='icon f'/>@{dataInformation.contactFacebook}</p>
-                <p><Category className='icon c'/>{dataInformation.nameCategorie}</p>
+                <p><IconEmail className='icon e'/>{dataBusiness.contactEmail}</p>
+                <p><IconFacebook className='icon f'/>@{dataBusiness.contactFacebook}</p>
+                <p><Category className='icon c'/>{category}</p>
               </div>
                 <div className="schedule">
                   <div className="state"></div>
-                  <p>Abierto: {dataInformation.horaEntrada} - {dataInformation.horaSalida}</p>
+                  <p>Abierto: {dataBusiness.horaEntrada} - {dataBusiness.horaSalida}</p>
                   <button onClick={openSocial}>Editar</button>
               </div>
             </div>
@@ -111,28 +156,7 @@ export const EditBusiness = () => {
     </div>
     <main>
       <Coments/>
-      <div className='content_create_bussines'>
-        <div className="description__create">
-          <h2>Descripción</h2>
-          <button onClick={editDescription}>Editar</button>
-        </div>
-        <div className="bussines__items">
-          <h2>Catalogo</h2>
-            <div className="items__img">
-              {catalogue.map((element, index) => (
-              <div key={index} className="content__img__items">
-                <div className="text">
-                  <h3>{element.nombre}</h3>
-                  <p>{element.descripcion}</p>
-                  <p id="price"> {element.precio} COP</p>
-                </div>
-                <img key={index} src={element.itemImage} alt="Item imagen" />
-              </div>
-          ))}
-          </div>
-          <button onClick={openItems}>Agregar item</button>
-        </div>
-      </div>
+      
     </main>
     </>
   )

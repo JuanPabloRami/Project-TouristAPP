@@ -16,12 +16,11 @@ export const UsersContextProvider = (props) => {
   const [valueId,setValueId] = useState(0)
 
   const getValue = (e) =>{
-    console.log(e.target);
     setIdBusiness(e.target.value)
     localStorage.setItem('value',e.target.value)
     setValue(true)
   }
-  console.log("polez",idBusiness)
+
   const [idProfile, setIdProfile] = useState('')
   const [valueCard,setValueCard] = useState(false)
 

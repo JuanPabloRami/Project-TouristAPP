@@ -25,11 +25,9 @@ import { UsersContext } from './components/context/Users/UsersContext';
 function App() {
 
   const {idBusiness} = useContext(UsersContext)
- 
 
   useEffect(()=>{
-    const idValue = localStorage.getItem('title')
-    console.log("holi",idValue);
+    localStorage.getItem('title')
   },[idBusiness])
 
 

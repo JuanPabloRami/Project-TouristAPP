@@ -20,7 +20,7 @@ import {VscError as ErrorIcon} from 'react-icons/vsc'
 import { BarLoader } from "react-spinners";
 
 export const MyProfile = () => {
-  const {users,setNegocioId,alert,errorText,errorAlert} = useContext(UsersContext)
+  const {users,setNegocioId,alert,errorText} = useContext(UsersContext)
   const [dataBusiness,setDataBusiness] = useState({})
   const [dataItems,setDataItems] = useState({})
   const [category,setcategory] = useState('')
