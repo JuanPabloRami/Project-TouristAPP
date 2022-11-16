@@ -27,7 +27,7 @@ export const Coments = () => {
 
   // se visualizan los comentarios
   const showComments =()=>{
-    axios.get(`/api/comentario/?negocio=${negocioId}`)
+    axios.get(`/auth/viewsets/comentario/?negocio=${negocioId}`)
     .then(function (response) {
       console.log(response.data)
       setComments(response.data)
@@ -58,7 +58,7 @@ export const Coments = () => {
   // se crea el comentario
   const createComment = () =>{
     setLoading(true)
-    axios.post('/api/comentario/',
+    axios.post('/auth/viewsets/comentario/',
       data,
       config
       )
@@ -98,8 +98,9 @@ export const Coments = () => {
               <div className="comment__user" key={index}  >
                 <div className="comment__img_user"></div>
                 <div className="comment__letters">
-                  <img src={User} alt='Usuario'/>
-                  <p>{e.comentario} adsadsad</p>
+                  <img src={e.autorImg} alt='Usuario'/>
+                  <p>{e.autorNombre} {e.autorApellido}</p>
+                  <p>{e.comentario}</p>
                 </div>
               </div>
             ))
