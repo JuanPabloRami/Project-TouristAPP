@@ -171,8 +171,6 @@ export const MyProfile = () => {
         ) : null}
         
       </main>
-      <Message text="Comentario enviado" icon={<Confirmed className="icon__message"/>} message={alert}/>
-      <Message text={errorText} icon={<ErrorIcon className="icon__error"/>} message="close"/>
     </>
   );
 };

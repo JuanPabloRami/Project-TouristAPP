@@ -29,6 +29,10 @@ nav.down{
   transition: all .7s;
   padding: 0;
 }
+nav.down .resultSearch{
+  top: 50px;
+  transition: all .7s;
+}
 .logo-touristapp{
   width: 170px;
   transition: all .7s;

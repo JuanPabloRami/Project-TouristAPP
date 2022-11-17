@@ -26,10 +26,13 @@ function App() {
 
   const {idBusiness} = useContext(UsersContext)
 
+  const value = localStorage.getItem('value')
+
   useEffect(()=>{
-    localStorage.getItem('title')
+    localStorage.getItem('title') 
   },[idBusiness])
 
+  console.log(idBusiness);
 
   return (
     <div className="App">
@@ -47,7 +50,7 @@ function App() {
           <MyProfile/>
         </ProtectedRouteCreateBusiness>
         }/>
-        <Route path={`/negocio/${idBusiness}`} element={<ShowsBusiness/>}/>
+        <Route path={`/negocio/${value}`} element={<ShowsBusiness/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/crear-negocio' element={
         <ProtectedRouteCreateBusiness>

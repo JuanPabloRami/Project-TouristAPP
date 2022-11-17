@@ -35,10 +35,11 @@
   overflow: hidden;
   overflow-y: scroll;
   background-color: #fff;
-  top:22px;
+  top:25px;
   display: none;
   padding: 8px;
   border-radius: 0px 10px 10px;
+  transition: all .7s;
 }
 .showValue{
   display: block;
