@@ -83,8 +83,8 @@ export const CardBusiness = () => {
             <SwiperSlide id="slider-business" key={index}>
               {bussines.length > 0 ? 
               <Cards
-                image={element.imgportada}
-                owner={element.imgperfil}
+                image={element.imgperfil}
+                owner={element.imgportada}
                 description={element.descripcion}
                 title={element.nombre}
                 ciudad={element.ciudad.nombre}

@@ -7,6 +7,8 @@ import { UsersContext } from "../../context/Users/UsersContext";
 import { useContext } from "react";
 import { Navigate } from "react-router";
 
+import businessCardDefault from '../../images/Home/businesCardDefault.jpg'
+
 
 
 
@@ -28,11 +30,17 @@ export const Cards = ({image, owner, description, title,ciudad,departamento,cate
 
   return (
     <div className="card">
-      <div className="img__owner__business">
+      {/* <div className="img__owner__business">
         <img src={owner} alt="img" />
-      </div>
+      </div> */}
       <div className="container__img">
-        <img className="img__business" src={image} alt="img" />
+        {
+          image === null ?
+          <img className="img__business" src={businessCardDefault} alt="img" />
+          :
+          <img className="img__business" src={image} alt="img" />
+        }
+        
       </div>
       <div className="card__description">
         <h2>{title}</h2>

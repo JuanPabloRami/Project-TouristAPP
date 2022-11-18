@@ -40,7 +40,7 @@ export const ProfileCreate = () => {
       <div className="profile__img">
       {imageProfile === '' ?
           <img src={Account} alt='perfil'/>
-         :  
+         :
           <img src={imageProfile} alt='perfil'/>
          }
         <div className="input_img_profile">

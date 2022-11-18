@@ -15,7 +15,11 @@ import { BarLoader } from "react-spinners";
 import {AiTwotoneEdit as Edit} from 'react-icons/ai'
 import { Link } from "react-router-dom";
 
-export const MyProfile = () => {
+//imagenes por defecto
+import Defaultportada from '../../images/BussinesCard/portada.png'
+import businessCardDefault from '../../images/Home/businesCardDefault.jpg'
+
+export const  MyProfile = () => {
   const {users,setNegocioId,alert,errorText} = useContext(UsersContext)
   const [dataBusiness,setDataBusiness] = useState({})
   const [dataItems,setDataItems] = useState({})
@@ -27,7 +31,7 @@ export const MyProfile = () => {
   const [loading, setLoading] = useState(false);
 
 
-  const url = "https://touristapp-backend-production.up.railway.app/";
+  const url = "http://10.199.2.22:8000";
 
   useEffect(()=>{
     setLoading(true);
@@ -93,10 +97,20 @@ export const MyProfile = () => {
       ) : null}
       <div className="account__images">
         <div className="front__page">
+        {
+            dataBusiness.imgportada === null ?
+            <img src={Defaultportada} alt="portada" />
+            :
           <img src={url+dataBusiness.imgportada} alt="portada" />
+        }
         </div>
         <div className="profile__img">
+        {
+            dataBusiness.imgperfil === null ?
+            <img src={businessCardDefault} alt="perfil" />
+            :
           <img src={url+dataBusiness.imgperfil} alt="perfil" />
+        }
         </div>
         <div className="content_creating">
           <div className="create_nameBusiness">

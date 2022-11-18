@@ -13,6 +13,10 @@ import { UsersContext } from "../../context/Users/UsersContext";
 //component loading
 import { BarLoader } from "react-spinners";
 
+//imagenes por defecto
+import portada from '../../images/BussinesCard/portada.png'
+import businessCardDefault from '../../images/Home/businesCardDefault.jpg'
+
 export const ShowsBusiness = () => {
   const {users,idBusiness,setNegocioId} = useContext(UsersContext)
   const [data,setData] = useState({})
@@ -79,10 +83,20 @@ export const ShowsBusiness = () => {
       ) : null}
       <div className="account__images">
         <div className="front__page">
-          <img src={data.imgportada} alt="portada" />
+          {
+            data.imgportada === null ?
+            <img src={portada} alt="portada" />
+            :
+            <img src={data.imgportada} alt="portada" />
+          }
         </div>
         <div className="profile__img">
-          <img src={data.imgperfil} alt="perfil" />
+          {
+            data.imgperfil === null ?
+            <img src={businessCardDefault} alt="perfil" />
+            :
+            <img src={data.imgperfil} alt="perfil" />
+          }
         </div>
         <div className="content_creating">
           <div className="create_nameBusiness">
