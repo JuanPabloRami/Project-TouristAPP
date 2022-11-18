@@ -29,7 +29,6 @@ export const Coments = () => {
   const showComments =()=>{
     axios.get(`/auth/viewsets/comentario/?negocio=${negocioId}`)
     .then(function (response) {
-      console.log(response.data)
       setComments(response.data)
     })
     .catch(function (error) {

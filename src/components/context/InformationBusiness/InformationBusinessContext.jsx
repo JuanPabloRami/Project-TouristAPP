@@ -8,8 +8,21 @@ export const InformationBusinessContextProvider = (props) => {
   const [inputDepartment, setInputDepartment] = useState("");
   const [inputCity, setInputCity] = useState("");
   const [social,setSocial] = useState(false)
+  const [socialEdit,setSocialEdit] = useState(false)
   const [buttonInfo,setButtonInfo] = useState(false)
   const body = document.querySelector("body");
+
+   //abre la modal de items
+   const openSocialEdit = () =>{
+    setSocialEdit(true)
+    body.style = "overflow-y:hidden;";
+  }
+  
+  //cierra la modal de items
+  const closeSocialEdit = () =>{
+    setSocialEdit(false)
+    body.style = "overflow-y:scroll;";
+  }
 
   //abre la modal de items
   const openSocial = () =>{
@@ -57,7 +70,10 @@ export const InformationBusinessContextProvider = (props) => {
       openSocial,
       buttonInfo,
       setButtonInfo,
-      inputCity
+      inputCity,
+      openSocialEdit,
+      closeSocialEdit,
+      socialEdit
     }}>
       {props.children}
     </InformationBusinessContext.Provider>

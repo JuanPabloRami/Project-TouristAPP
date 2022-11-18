@@ -90,6 +90,23 @@
   background-color: #288ce9;
   cursor: pointer;
 }
+.btn_edit{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  position: absolute;
+  right: 0;
+  bottom: 50px;
+  margin: 30px;
+  padding: 8px 30px;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  background-color: #6e6e6e;
+  cursor: pointer;
+}
 /*Redes sociales del negocio*/
 .socials__networks__bussines{
   display: flex;

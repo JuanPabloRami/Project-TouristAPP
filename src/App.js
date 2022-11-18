@@ -32,8 +32,6 @@ function App() {
     localStorage.getItem('title') 
   },[idBusiness])
 
-  console.log(idBusiness);
-
   return (
     <div className="App">
       <Navbar/>

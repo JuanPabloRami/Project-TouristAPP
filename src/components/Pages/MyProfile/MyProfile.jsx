@@ -11,13 +11,9 @@ import { MdLocationPin as IconLocation } from "react-icons/md";
 import { BiCategory as Category } from "react-icons/bi";
 import axios from "../../api/axios/axios";
 import { UsersContext } from "../../context/Users/UsersContext";
-// alerts
-import { Message } from "../../UI/Message/Message";
-//iconos exito y error
-import {GiConfirmed as Confirmed} from 'react-icons/gi'
-import {VscError as ErrorIcon} from 'react-icons/vsc' 
-//component loading
 import { BarLoader } from "react-spinners";
+import {AiTwotoneEdit as Edit} from 'react-icons/ai'
+import { Link } from "react-router-dom";
 
 export const MyProfile = () => {
   const {users,setNegocioId,alert,errorText} = useContext(UsersContext)
@@ -31,7 +27,7 @@ export const MyProfile = () => {
   const [loading, setLoading] = useState(false);
 
 
-  const url = "http://10.199.2.22:8000";
+  const url = "https://touristapp-backend-production.up.railway.app/";
 
   useEffect(()=>{
     setLoading(true);
@@ -42,6 +38,7 @@ export const MyProfile = () => {
       },
     })
     .then(function (response){
+      console.log(response.data.negocios[0]);
       if(response.status === 200){
         setDataBusiness(response.data.negocios[0])
         setcategory(response.data.negocios[0].tipo_Negocio.nombre)
@@ -96,10 +93,10 @@ export const MyProfile = () => {
       ) : null}
       <div className="account__images">
         <div className="front__page">
-          <img src={url + dataBusiness.imgportada} alt="portada" />
+          <img src={url+dataBusiness.imgportada} alt="portada" />
         </div>
         <div className="profile__img">
-          <img src={url + dataBusiness.imgperfil} alt="perfil" />
+          <img src={url+dataBusiness.imgperfil} alt="perfil" />
         </div>
         <div className="content_creating">
           <div className="create_nameBusiness">
@@ -140,9 +137,13 @@ export const MyProfile = () => {
           </div>
         </div>
         <button className="btn_like_bussines">
-          {" "}
           <Heart /> 100
         </button>
+        <Link to='/editar-negocio'>
+          <button className="btn_edit">
+            Editar <Edit /> 
+          </button>
+        </Link>
       </div>
       <main>
         <Coments />

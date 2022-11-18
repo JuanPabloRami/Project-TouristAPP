@@ -16,10 +16,12 @@ import { UsersContextProvider } from './components/context/Users/UsersContext';
 import { CategoriesContextProvider } from './components/context/Categories/CategoriesContext';
 import { CatalogueContextProvider } from './components/context/Catalogue/CatalogueContext';
 import { InformationBusinessContextProvider } from './components/context/InformationBusiness/InformationBusinessContext';
+import { EditBusinessContextProvider } from './components/context/EditBusiness/EditBusinessContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <EditBusinessContextProvider>
   <InformationBusinessContextProvider>
     <CreateBussinesContextProvider>
       <CatalogueContextProvider>
@@ -39,5 +41,6 @@ root.render(
       </CatalogueContextProvider>
     </CreateBussinesContextProvider>
   </InformationBusinessContextProvider>
+  </EditBusinessContextProvider>
 );
 reportWebVitals();

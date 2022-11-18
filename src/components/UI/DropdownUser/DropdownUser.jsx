@@ -25,7 +25,6 @@ export const DropdownUser = () => {
       },
     })
     .then(function (response){
-      console.log(response);
       setApi(response.data)
       localStorage.setItem('typeUser', response.data.type_user)
     })
