@@ -7,6 +7,9 @@ import {MdSend as Send} from 'react-icons/md'
 import axios from '../../api/axios/axios'
 import { UsersContext } from '../../context/Users/UsersContext'
 
+import { ModalContext } from '../../context/Modal/ModalContext'
+
+
 
 // token de acceso
 const token = localStorage.getItem('token')
@@ -23,6 +26,9 @@ export const Coments = () => {
 
   //Estado que oculta el componente de carga
   const [loading, setLoading] = useState(false)
+
+  //Uso de contexto
+  const {openLogin} = useContext(ModalContext)
   
 
   // se visualizan los comentarios
@@ -57,32 +63,42 @@ export const Coments = () => {
   // se crea el comentario
   const createComment = () =>{
     setLoading(true)
-    axios.post('/auth/viewsets/comentario/',
-      data,
-      config
-      )
-    .then(function (response){
-      console.log(response);
-      if(response.status === 201){
-        console.log("comentario creado")
-        showComments()
-        setLoading(false);
-        setAlert("open")
-        setErrText("Error al enviar el comentario")
+    console.log(token);
+    if (token === null ){
+      openLogin()
+      return console.log("nulo asdsad")
+    }
+    else if (newComment === ""){
+      
+      return console.log("comentario vacio")
+    }
+    else{
+      axios.post('/auth/viewsets/comentario/',
+        data,
+        config
+        )
+      .then(function (response){
+        console.log(response);
+        if(response.status === 201){
+          showComments()
+          setLoading(false);
+          setAlert("open")
+          // setErrText("Error al enviar el comentario")
+          setTimeout(()=>{
+            setAlert("close")
+          },3500)
+        }
+      })
+      .catch(function (error){
+        console.log(error);
+        setLoading(false)
+        setErrText("error al crear comentario")
+        setErrAlert("open")
         setTimeout(()=>{
-          setAlert("close")
-        },3500)
-      }
-    })
-    .catch(function (error){
-      console.log(error);
-      setLoading(false)
-      setErrText("error al crear comentario")
-      setErrAlert("open")
-      setTimeout(()=>{
-        setErrAlert("close")
-      },1500)
-    });
+          setErrAlert("close")
+        },1500)
+      });
+    }
   }
 
 
@@ -97,8 +113,14 @@ export const Coments = () => {
               <div className="comment__user" key={index}  >
                 <div className="comment__img_user"></div>
                 <div className="comment__letters">
-                  <img src={e.autorImg} alt='Usuario'/>
-                  <p>{e.autorNombre} {e.autorApellido}</p>
+                  {
+                    e.autorImg === null ?
+                    <img src={e.autorImg} alt='Usuario'/>
+                    :
+                    <img src={User} alt='Usuario'/>
+                  }
+                  
+                  <h3>{e.autorNombre} {e.autorApellido}</h3>
                   <p>{e.comentario}</p>
                 </div>
               </div>
@@ -109,14 +131,21 @@ export const Coments = () => {
             </div>
         }
       </div>
+      {
+        token === null ? 
         <div className="comments__write">
-          <input name='comments' type='text' placeholder='Escribe un comentario...' onChange={(e)=>
+          <input name='comments' type='text' placeholder='Inicia sesion para publicar un comentario' disabled />
+        </div>
+        :
+        <div className="comments__write">
+          <input name='comments' type='text' placeholder='Escribe un comentario...'  onChange={(e)=>
             setNewComment(e.target.value)}
             />
           <div className="content__btn__send">
             <Send className='btn__send' onClick={createComment}/>
           </div>
         </div>
+      }  
         
     </div>
   )
