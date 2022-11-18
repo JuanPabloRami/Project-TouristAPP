@@ -12,6 +12,7 @@ import {FaFacebook as IconFacebook,} from "react-icons/fa";
 import {MdEmail as IconEmail} from 'react-icons/md'
 import {MdLocationPin as IconLocation} from "react-icons/md";
 import {BiCategory as Category} from 'react-icons/bi'
+import {AiTwotoneEdit as Edit} from 'react-icons/ai'
 //contextos
 import { CreateBussinesContext } from '../../context/CreateBussines/CreateBussinesContext'
 import { InformationBusinessContext } from '../../context/InformationBusiness/InformationBusinessContext'
@@ -21,6 +22,7 @@ import axios from '../../api/axios/axios'
 import { UsersContext } from '../../context/Users/UsersContext'
 import { TextareaEdit } from '../../UI/TextareaEdit/TextareaEdit'
 import { EditBusinessContext } from '../../context/EditBusiness/EditBusinessContext'
+import { Link } from 'react-router-dom'
 
 export const EditBusiness = () => {
   const {nameBusiness,setNameBusiness,setTextName,textName} = useContext(CreateBussinesContext)
@@ -38,9 +40,9 @@ export const EditBusiness = () => {
   const [loading, setLoading] = useState(false);
   const [showItems,setShowItems] = useState(false)
 
-  const {imageProfile,imagePort,setCategoryBuss,setDepartmentBuss,setCityBuss,editBusiness,setEditBusiness,textDes,textNameBuss,setTextNameBuss,uploadImageProfileEdit,uploadImagePortEdit} = useContext(EditBusinessContext)
+  const {nameCategorie,setIdCity,requestEditBusiness,imageProfile,imagePort,setCategoryBuss,setDepartmentBuss,setCityBuss,setEditBusiness,textDes,textNameBuss,setTextNameBuss,uploadImageProfileEdit,uploadImagePortEdit} = useContext(EditBusinessContext)
 
-  const url = "https://touristapp-backend-production.up.railway.app/";
+  const url = "http://10.199.2.22:8000";
 
   const showName = () =>{
     setNameBusiness(false)
@@ -73,6 +75,7 @@ export const EditBusiness = () => {
         setCity(response.data.negocios[0].ciudad.nombre)
         setDepartment(response.data.negocios[0].ciudad.departamento.nombre)
         setNegocioId(response.data.negocios[0].id)
+        setIdCity(response.data.negocios[0].ciudad.id)
       }
     })
     .catch(function (error){
@@ -106,6 +109,8 @@ export const EditBusiness = () => {
       setNameBusiness(true)
     }
   }
+  
+  const {locationBus,faceBuss,emailBuss,hourEnter,hourClose,inputCity,inputDepartment} = useContext(EditBusinessContext)
 
   return (
     <>
@@ -141,17 +146,17 @@ export const EditBusiness = () => {
         <div className="more_optiones">
           <div className="information_business">
             <div className="location_business">
-              <p><IconLocation className='icon l'/>{dataBusiness.ubicacion} - {city} - {department}</p>
+              <p><IconLocation className='icon l'/>{locationBus === '' ? dataBusiness.ubicacion: locationBus} - {inputCity} - {inputDepartment}</p>
             </div>
             <div className="content_grid">
               <div className="information_import">
-                <p><IconEmail className='icon e'/>{dataBusiness.contactEmail}</p>
-                <p><IconFacebook className='icon f'/>@{dataBusiness.contactFacebook}</p>
-                <p><Category className='icon c'/>{category}</p>
+                <p><IconEmail className='icon e'/>{emailBuss === '' ? dataBusiness.contactEmail: emailBuss}</p>
+                <p><IconFacebook className='icon f'/>@{faceBuss === '' ? dataBusiness.contactFacebook: faceBuss}</p>
+                <p><Category className='icon c'/>{nameCategorie === '' ? category:nameCategorie}</p>
               </div>
                 <div className="schedule">
                   <div className="state"></div>
-                  <p>Abierto: {dataBusiness.horaEntrada} - {dataBusiness.horaSalida}</p>
+                  <p>Abierto: {hourEnter === '' ? dataBusiness.horaEntrada: hourEnter} - {hourClose === '' ? dataBusiness.horaSalida:hourClose}</p>
                   <button onClick={openSocialEdit}>Editar</button>
               </div>
             </div>
@@ -159,6 +164,7 @@ export const EditBusiness = () => {
         </div>
       </div> 
       <button className='btn_like_bussines'> <Heart/> 100</button>
+      <Link to='/minegocio'> <button onClick={requestEditBusiness} className="btn_edit">Actualizar negocio <Edit /></button></Link>
     </div>
     <main>
       <Coments/>

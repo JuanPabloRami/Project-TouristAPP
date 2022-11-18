@@ -21,9 +21,8 @@ export const Search = () => {
     return setSearch(false);
   };
 
-  const getBusiness = async (names) => {
-    await axios
-      .get("api/negocio/?nombre__contains=" + names)
+  const getBusiness = (names) => {
+    axios.get("api/negocio/?nombre__contains=" + names)
       .then((response) => {
         setDataBussiness(response.data)
       })
@@ -43,7 +42,9 @@ export const Search = () => {
   valueResult.classList.add('showValue');
   }
 
-  useEffect(() => getBusiness(), []);
+  useEffect(() => {
+    getBusiness()
+  },[]);
 
   const {getValue,value,idBusiness} = useContext(UsersContext)
 

@@ -57,8 +57,7 @@ export const  MyProfile = () => {
   },[users])
 
   useEffect(() => {
-    axios
-      .get(`/api/item/?negocio__id=${dataBusiness.id}`, {
+    axios.get(`/api/item/?negocio__id=${dataBusiness.id}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,

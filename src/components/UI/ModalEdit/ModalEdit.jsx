@@ -13,10 +13,9 @@ export const ModalEdit = () => {
    const [citys, setCitys] = useState([])
    //Guarda las categorias
    const [categorie,setCategorie] = useState([])
-   //guarda el nombre de la categoria
-   const [nameCategorie,setNameCategorie] = useState('')
 
-   const {locationCity,locationChange,locationState,locationDepartment,inputDepartment,inputCity} = useContext(InformationBusinessContext)
+
+   const {nameCategorie,locationCity,locationState,locationDepartment,inputDepartment,inputCity} = useContext(EditBusinessContext)
  
    //Hace la peticion de los departamentos
    const Department = () =>{
@@ -50,12 +49,11 @@ export const ModalEdit = () => {
    
 
   //Contexto de la modal de informacion del negocio
-  const {setDataInformation,socialEdit,closeSocialEdit} = useContext(InformationBusinessContext)
-  const {setInformationSocial,setIdCategory,setIdCity} = useContext(CreateBussinesContext)
+  const {socialEdit,closeSocialEdit} = useContext(InformationBusinessContext)
+  const {setDataEditBusiness,setIdCategory,setIdCity} = useContext(EditBusinessContext)
   const sendInformationBusiness = (ubicacion,horaEntrada,horaSalida,contactFacebook,contactInstagram,contactWEB,contactEmail) =>{
     const data = {ubicacion,horaEntrada,horaSalida,contactFacebook,contactInstagram,contactWEB,contactEmail,locationState,nameCategorie}
-    setDataInformation(data)
-    setInformationSocial(data)
+    setDataEditBusiness(data)
   }
 
   const categories = () =>{
@@ -72,11 +70,6 @@ export const ModalEdit = () => {
     categories()
   },[])
 
-
-  const nameCategories = (e) =>{
-    const name = e.target.value
-    setNameCategorie(name)
-  }
 
   useEffect(()=>{
     axios.get(`/api/ciudad/?nombre__contains=${inputCity}&departamento__nombre__contains=${inputDepartment}`)
@@ -99,7 +92,25 @@ export const ModalEdit = () => {
     })
   },[nameCategorie])
 
-  const {editBusiness,cityBuss,departmentBuss,categoryBuss} = useContext(EditBusinessContext)
+  const {locationChange,locationBus,faceBuss,emailBuss,hourEnter,editBusiness,hourClose,cityBuss,departmentBuss,categoryBuss} = useContext(EditBusinessContext)
+  const {setlocationBuss,setFaceBuss,setEmailBuss,setHourEnter,setHourClose,nameCategories} = useContext(EditBusinessContext)
+
+  const location = (e) =>{
+    setlocationBuss(e.target.value)
+  }
+  const face = (e) =>{
+    setFaceBuss(e.target.value)
+  }
+  const email = (e) =>{
+    setEmailBuss(e.target.value)
+  }
+  const hourEn = (e) =>{
+    setHourEnter(e.target.value)
+  }
+  const hourClo = (e) =>{
+    setHourClose(e.target.value)
+  }
+
 
   return (
     <Formik
@@ -148,9 +159,11 @@ export const ModalEdit = () => {
             <div className="ContainerInput">
               <Field
                 type="text"
-                id="Localidad"
+                id="Local"
+                defaultValue=''
                 name="ubicacion"
-                value={editBusiness.ubicacion}
+                value={locationBus === '' ? ' ' : locationBus}
+                onChange={location}
                 required
               />
               <label htmlFor="ubicacion">
@@ -163,9 +176,10 @@ export const ModalEdit = () => {
               <Field
                 type="text"
                 defaultValue=''
-                id="Facebook"
+                id="Face"
                 name="contactFacebook"
-                value={editBusiness.contactFacebook}
+                onChange={face}
+                value={faceBuss=== '' ? ' ' : faceBuss}
                 required
               />
               <label htmlFor="contactFacebook">
@@ -178,9 +192,10 @@ export const ModalEdit = () => {
               <Field
                 type="text"
                 defaultValue=''
-                id="emailBusiness"
+                id="emailBusines"
                 name="contactEmail"
-                value={editBusiness.contactEmail}
+                onChange={email}
+                value={emailBuss === '' ? ' ' : emailBuss}
                 required
               />
               <label htmlFor="contactEmail">
@@ -192,9 +207,10 @@ export const ModalEdit = () => {
             <div className="ContainerInput">
               <Field
                 type="time"
-                id="horarios"
+                id="horario"
                 name="horaEntrada"
-                value={editBusiness.horaEntrada}
+                onChange={hourEn}
+                value={hourEnter === '' ? editBusiness.horaEntrada : hourEnter}
                 required
               />
               <label htmlFor="horaEntrada">
@@ -206,9 +222,10 @@ export const ModalEdit = () => {
             <div className="ContainerInput">
               <Field
                 type="time"
-                id="horaSalida"
+                id="horaSalid"
                 name="horaSalida"
-                value={editBusiness.horaSalida}
+                onChange={hourClo}
+                value={hourClose === '' ? editBusiness.horaSalida : hourClose}
                 required
               />
               <label htmlFor="horaSalida">
@@ -219,7 +236,7 @@ export const ModalEdit = () => {
             <div className="select_categorie">
               <label>Categorias:</label>
             <select defaultValue='categorias' name="Categorias" onChange={nameCategories}>
-              <option defaultValue="categorie" selected disabled hidden>{ categoryBuss}</option>
+              <option defaultValue="categorie" selected disabled hidden>{categoryBuss}</option>
               {categorie.map((Element,index)=>(
                 <option key={index}>{Element.nombre}</option>
               ))}

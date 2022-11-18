@@ -29,9 +29,9 @@ export const ProfileCreate = () => {
       <div className="front__page">
         {imagePort === '' ?
           <img src={FrontPage} alt='portada'/>
-         :  
+          :  
           <img src={imagePort} alt='portada'/>
-         }
+          }
         <div className="input_img">
           <label  htmlFor='input_file'><Cam/>Editar foto de portada</label>
           <input onChange={uploadImagePort} id='input_file' type='file'/>
@@ -40,9 +40,9 @@ export const ProfileCreate = () => {
       <div className="profile__img">
       {imageProfile === '' ?
           <img src={Account} alt='perfil'/>
-         :
+          :  
           <img src={imageProfile} alt='perfil'/>
-         }
+          }
         <div className="input_img_profile">
           <label htmlFor='input_file_profile'><Cam className='icon'/></label>
           <input onChange={uploadImageProfile} id='input_file_profile' type='file'/>
@@ -52,9 +52,9 @@ export const ProfileCreate = () => {
       {/* <button className='btn_like_bussines'> <Heart/> 100</button> */}
       {showBtnItem ?
         <button className='btn_like_bussines'> <Heart/> 100</button>
-       :
+        :
         <button onClick={openModal} className='btn_like_bussines'>Crear negocio</button>
-       }
+        }
     </div>
     <main>
       <Coments/>
