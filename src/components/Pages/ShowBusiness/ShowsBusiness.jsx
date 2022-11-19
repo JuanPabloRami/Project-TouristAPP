@@ -18,7 +18,7 @@ import portada from '../../images/BussinesCard/portada.png'
 import businessCardDefault from '../../images/Home/businesCardDefault.jpg'
 
 export const ShowsBusiness = () => {
-  const {users,idBusiness,setNegocioId} = useContext(UsersContext)
+  const {users,idBusiness,setNegocioId,userId} = useContext(UsersContext)
   const [data,setData] = useState({})
   const [dataItems,setDataItems] = useState({})
   const [category,setcategory] = useState('')
@@ -26,9 +26,90 @@ export const ShowsBusiness = () => {
   const [city,setCity] = useState('')
   const [department,setDepartment] = useState('')
   const [loading, setLoading] = useState(false);
+  //estado de los likes
+  const [likes,setLikes] = useState(0)
+  //token de acceso
+  const token = localStorage.getItem('token')
 
-  const url = 'http://10.199.2.22:8000' ;
+  const url = 'http://localhost:8000' ;
 
+
+  //ver los likes
+  useEffect(()=>{
+    setLoading(true)
+    axios.get(`/auth/viewsets/like/?negocio=${data.id}`)
+    .then(function (response){
+      setLikes(response.data.length)
+      setLoading(false)
+    })
+    .catch(function(error){
+      console.log(error);
+    })
+  },[data])
+
+
+  //le paso el token de acceso
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+      },
+  }
+  //le paso el id del negocio a la request
+  const datosPost = {
+    negocio:data.id,
+  }
+
+  //comprobar si el usuario ya dio like a su negocio para o dar like o eliminarlo.
+  const checkLike=()=>{
+    setLoading(true)
+    console.log(userId);
+    axios.get(`/auth/viewsets/like/?negocio=${data.id}&autor=${userId}`)
+    .then(function(response){
+      if (response.data.length >0){
+        addLike()
+      }
+      else if (response.data.length === 0){
+        deleteLike()
+      }
+    })
+    .catch(function(error){
+      console.log(error);
+    })
+  }
+
+  //añadir un like al negocio
+  const addLike = () =>{
+    setLoading(true)
+    axios.post(`/auth/viewsets/like/`,
+      datosPost,
+      config
+    )
+    .then(function(response){
+      setLoading(false)
+      console.log(response)
+
+    })
+    .catch(function(error){
+      setLoading(false)
+      console.log(error)
+    })
+  }
+
+  //eliminar el like realizado
+  const deleteLike=()=>{
+    axios.delete(`/auth/viewsets/like//`,
+    config
+    )
+    .then(function(response){
+      console.log(response)
+    })
+    .catch(function(error){
+      console.log(error)
+    })
+  }
+
+  //carga los datos del negocio
   useEffect(()=>{
     setLoading(true);
     axios.get(`/api/negocio/?id__contains=${localStorage.getItem('value')}`)
@@ -52,7 +133,6 @@ export const ShowsBusiness = () => {
     axios.get(`/api/item/?negocio__id=${data.id}`)
       .then(function (response) {
         if (response.status === 200) {
-          console.log(response);
           setDataItems(response.data);
           setShowItems(true);
           setLoading(false);
@@ -136,9 +216,9 @@ export const ShowsBusiness = () => {
             </div>
           </div>
         </div>
-        <button className="btn_like_bussines">
+        <button className="btn_like_bussines" onClick={checkLike}>
           {" "}
-          <Heart /> 100
+          <Heart />{likes}
         </button>
       </div>
       <main>

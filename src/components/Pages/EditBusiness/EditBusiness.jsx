@@ -42,7 +42,7 @@ export const EditBusiness = () => {
 
   const {nameCategorie,setIdCity,requestEditBusiness,imageProfile,imagePort,setCategoryBuss,setDepartmentBuss,setCityBuss,setEditBusiness,textDes,textNameBuss,setTextNameBuss,uploadImageProfileEdit,uploadImagePortEdit} = useContext(EditBusinessContext)
 
-  const url = "http://10.199.2.22:8000";
+  const url = "http://localhost:8000";
 
   const showName = () =>{
     setNameBusiness(false)

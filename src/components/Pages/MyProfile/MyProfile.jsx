@@ -31,8 +31,12 @@ export const  MyProfile = () => {
   const [loading, setLoading] = useState(false);
 
 
-  const url = "http://10.199.2.22:8000";
+  const url = "http://localhost:8000";
 
+
+  
+
+  //consume el negocio del usuario
   useEffect(()=>{
     setLoading(true);
     axios.get('/api/misnegocios/',{
@@ -150,7 +154,7 @@ export const  MyProfile = () => {
           </div>
         </div>
         <button className="btn_like_bussines">
-          <Heart /> 100
+          <Heart /> 10
         </button>
         <Link to='/editar-negocio'>
           <button className="btn_edit">

@@ -14,6 +14,8 @@ export const UsersContextProvider = (props) => {
   const [idBusiness,setIdBusiness] = useState(0)
   const [value,setValue] = useState(false)
   const [valueId,setValueId] = useState(0)
+  //id del usuario
+  const [userId,setUserId] = useState()
 
   const getValue = (e) =>{
     setIdBusiness(e.target.value)
@@ -50,6 +52,8 @@ export const UsersContextProvider = (props) => {
       setIdProfile,
       setValueCard,
       valueCard,
+      userId,
+      setUserId
     }}>
       {props.children}
     </UsersContext.Provider>
