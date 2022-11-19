@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: 'https://touristapp-backend-production.up.railway.app/'
+  baseURL: 'http://0.0.0.0:8000/'
 })

@@ -21,10 +21,11 @@ export const Search = () => {
     return setSearch(false);
   };
 
-  const getBusiness = (names) => {
-    axios.get("api/negocio/?nombre__contains=" + names)
+  const getBusiness = () => {
+    axios.get("api/negocio/?nombre__contains=")
       .then((response) => {
         setDataBussiness(response.data)
+        console.log("holi",response);
       })
       .catch((error) => {
         console.log(error);
@@ -46,9 +47,10 @@ export const Search = () => {
     getBusiness()
   },[]);
 
-  const {getValue,value,idBusiness} = useContext(UsersContext)
+  const {getValue,value,idBusiness,setValue} = useContext(UsersContext)
 
   if(value){
+    setValue(false);
     return <Navigate to={`/negocio/${idBusiness}`}/>;
   }
   return (
