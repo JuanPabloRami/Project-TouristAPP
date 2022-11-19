@@ -20,7 +20,7 @@ export const UsersContextProvider = (props) => {
   const getValue = (e) =>{
     setIdBusiness(e.target.value)
     localStorage.setItem('value',e.target.value)
-    setValue(true)
+     setValue(true)
   }
 
   const [idProfile, setIdProfile] = useState('')
