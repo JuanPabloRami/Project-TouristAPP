@@ -42,3 +42,19 @@
   color: #0a4a6e21;
   transform: rotate(100deg); 
 }
+
+
+@media (max-width:458px) {
+  #title__ng{
+    font-size: 22px;
+  }
+  #title__pm{
+    font-size: 22px;
+  }
+  #bag{
+    font-size: 3em;
+  }
+  #tag{
+    font-size: 3em;
+  }
+}

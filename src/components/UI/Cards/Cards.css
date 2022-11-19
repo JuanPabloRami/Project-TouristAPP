@@ -79,6 +79,10 @@
 }
 .card__description p{
   text-align: justify;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 
 }
 .card__description button{

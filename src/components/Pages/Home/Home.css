@@ -127,3 +127,32 @@
   color: #fff;
   text-shadow: -2px -2px 3px #0e2d3a;
 }
+
+@media (max-width:458px) {
+  .filterSection{
+    flex-direction: column;
+  }
+  .description-aplication{
+    top: 150px;
+    left: 80px;
+    z-index: 4;
+  }
+  .description-aplication h1{
+    font-size: 28px;
+  
+  }
+  .description-aplication p{
+    font-size: 21px;
+    margin-top: 20px;
+  }
+  .draw{
+    width: 200px;
+    height: 200px;
+    top: 184px;
+    left: 50px;
+
+  }
+  .clouds{
+    top: 136px;
+  }
+}

@@ -1,0 +1,272 @@
+/* -- About As -- */
+
+/*img fija*/
+
+.about{
+    background-image: url('../../images/AboutUs/AboutAs01.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size:cover;
+    background-position-x: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.containerAbout{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1000px;
+}
+
+.containerAbout h1{
+  font-size: 100px;
+  text-align: center;
+  color: #fff;
+  text-shadow: 8px 0 5px black;
+}
+
+.containerParrafo{
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  background-image: url('../../images/AboutUs/fondoParrafo.jpg');
+  background-size: cover;
+  
+  
+}
+
+.containerImg{
+  margin-top: 50px;
+  
+}
+
+.imgAcerca{
+  width: 600px;
+  height: 400px;
+}
+
+.containerImg h3{
+  padding: 10px;
+  color: #0d4a6e;
+  font-size: 40px;
+  font-weight: bold;
+}
+.containerImg p{
+    width: 600px;
+    height: auto;
+    font-size: 20px;
+    text-align: justify;
+    line-height: 25px;
+}
+
+.containerEstadistica{
+  display: flex;
+  justify-content: space-evenly;
+  background-image: url('../../images/AboutUs/aboutEstadistica.jpg');
+  background-size: cover;
+  margin-top: 30px;
+  width: 100%;
+  height: auto;
+}
+
+.containerIcons{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 535px;
+  color: #fff;
+  font-size: 40px;
+  gap: 10px;
+}
+.containerIcons h3{
+  font-size: 22px ;
+}
+
+#num{
+  font-size: 58px;
+  margin-left: 30px;
+}
+
+#iconTags{
+  box-sizing: border-box;
+}
+
+#iconSum{
+  color: red;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.containerVideo{
+  width: 500px;
+  height: 500px;
+}
+
+
+
+/* -- Termina About As -- */
+
+@media (max-width:1200px) {
+  .containerParrafo{
+    flex-direction: row;
+    width: 100vw;
+  }
+  .containerImg p{
+    width: 50vw;
+  }
+   .imgAcerca{
+    width: 500px; 
+    padding: 20px;
+    height: 400px;
+
+  }
+}
+
+@media (max-width: 1024px) {
+  .about{
+    width: 100vw;
+    height: 100vh;
+    
+  }
+  .containerAbout{
+    width: 100%;
+    height: 100%;
+  }
+  .containerAbout h1{
+    font-size: 70px;
+  }
+  .containerParrafo{
+    flex-direction: row;
+    width: 100vw;
+  }
+  .containerImg p{
+    width: 100vw;
+  }
+   .imgAcerca{
+    width: 500px; 
+    padding: 20px;
+    height: 400px;
+
+  } 
+  .containerEstadistica{
+    flex-direction: row;
+  }
+  .containerImg h3{
+    font-size: 30px;
+    text-align: center;
+  }
+  .containerImg p{
+    width: 44vw;
+    padding: 10px;
+    font-size: 20px;
+  }
+  .containerEstadistica{
+    height: 500px;
+    padding: 50px 0px;
+  }
+  .containerIcons{
+    height: auto;
+    
+  }
+}
+
+@media (max-width: 768px) {
+  .about{
+    width: 100vw;
+    height: 100vh;
+    
+  }
+  .containerAbout{
+    width: 100%;
+    height: 100%;
+  }
+  .containerAbout h1{
+    font-size: 70px;
+  }
+  .containerParrafo{
+    flex-direction: column;
+    width: 100vw;
+    background-image: none;
+  }
+  .containerImg p{
+    width: 100vw;
+  }
+  .imgAcerca{
+    width: 100%;
+    padding: 20px;
+  }
+  .containerEstadistica{
+    flex-direction: row;
+  }
+  .containerImg h3{
+    font-size: 30px;
+    text-align: center;
+  }
+  .containerImg p{
+    width: 100vw;
+    padding: 10px;
+  }
+  .containerEstadistica{
+    gap: 20px;
+    padding: 50px 0px;
+  }
+  .containerIcons{
+    font-size: 30px;
+    height: auto;
+  }
+  .containerIcons h3{
+    font-size: 20px;
+  }
+  #num{
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 458px) {
+  .about{
+    width: 100vw;
+    height: 100vh;
+    
+  }
+  .containerAbout{
+    width: 100%;
+    height: 100%;
+  }
+  .containerAbout h1{
+    font-size: 40px;
+  }
+  .containerParrafo{
+    flex-direction: column;
+    width: 100vw;
+    background-image: none;
+  }
+  .containerImg p{
+    width: 100vw;
+  }
+  .imgAcerca{
+    width: 100%;
+    padding: 20px;
+  }
+  .containerEstadistica{
+    flex-direction: column;
+    height: 600px;
+    padding: 16px 0px;
+  }
+  .containerImg h3{
+    font-size: 30px;
+    text-align: center;
+  }
+  .containerImg p{
+    width: 100vw;
+    padding: 10px;
+  }
+  .containerIcons{
+    height: auto;
+    
+  }
+}
+
+
+

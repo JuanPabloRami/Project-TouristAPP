@@ -48,3 +48,24 @@
   margin: 20px;
   width: 90%;
 }
+
+@media (max-width:458px) {
+  .add__business {
+    flex-direction: column;
+  }
+  .add__description{
+    width: 100%;
+  }
+  .img__add {
+    display: none;
+  }
+  .add__description h1{
+    font-size: 22px;
+  }
+  .add__description p{
+    font-size: 15px;
+  }
+  .add__description button{
+    font-size: 10px;
+  }
+}

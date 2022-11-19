@@ -181,4 +181,20 @@ hr{
     left: 20px;
   }
 }
+@media (max-width:458px) {
+  footer{
+    height: auto;
+    
+  }
+  .services{
+    flex-direction: column;
+    margin-top: 150px;
+  }
+  .follow{
+    height: 280px;
+  }
+  hr{
+    display: none;
+  }
+}
   

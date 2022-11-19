@@ -57,9 +57,7 @@ export const ComentsStars = () => {
                 <p>
                   Dasafortunadamente no nos fué bien en el almuerzo, enviaron a
                   la mesa una trucha quemada, olvidaron un plato del pedido, no
-                  trajeron ensaladas, pedidos un patacón y hogao adicionales y
-                  despues de 15 minutos tuvimos que cancelar, adicional querían
-                  cobrar el plato que no llegó.
+                  trajeron ensaladas.
                 </p>
                 <div className="content_btn__like">
                   <Hand className="hand" />

@@ -80,3 +80,18 @@
   box-shadow: 0px 0px 10px #0f3a4d;
   cursor: pointer;
 }
+
+@media (max-width: 458px) {
+  .filter-modal{
+    width: 300px;
+  }
+  .filter-modal button{
+    font-size: 10px;
+  }
+  .filter-modal h2{
+    font-size: 15px;
+  }
+  .follow p{
+    width: 320px;
+  }
+}

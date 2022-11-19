@@ -38,3 +38,8 @@
   width: 100%;
  
 }
+@media (max-width:458px) {
+  .promotions .swiper-slide img{
+    height: 70%;
+  }
+}

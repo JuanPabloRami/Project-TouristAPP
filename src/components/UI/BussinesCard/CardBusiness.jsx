@@ -63,6 +63,27 @@ export const CardBusiness = () => {
       <div className="cardBusiness">
         <div className="header-business"></div>
         <Swiper
+            breakpoints={{
+              1800: {
+                width: 1800,
+                slidesPerView: 3,
+              },
+              // 
+              // when window width is >= 640px
+              1200: {
+                width: 1200,
+                slidesPerView: 2,
+              },
+              // when window width is >= 768px
+              900: {
+                width: 900,
+                slidesPerView: 2,
+              },
+              0: {
+                width: 0,
+                slidesPerView: 1,
+              },
+            }}
           slidesPerView={4}
           spaceBetween={30}
           freeMode={true}
