@@ -42,4 +42,7 @@
   .promotions .swiper-slide img{
     height: 70%;
   }
+  .promotions{
+    padding-bottom: 30px; 
+  }
 }
