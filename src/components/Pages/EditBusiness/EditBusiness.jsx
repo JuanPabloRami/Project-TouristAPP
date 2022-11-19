@@ -45,7 +45,7 @@ export const EditBusiness = () => {
 
   const {setAlertTrash,uploadItemModal,setEditItems,nameCategorie,setIdCity,requestEditBusiness,imageProfile,imagePort,setCategoryBuss,setDepartmentBuss,setCityBuss,setEditBusiness,textDes,textNameBuss,setTextNameBuss,uploadImageProfileEdit,uploadImagePortEdit} = useContext(EditBusinessContext)
 
-  const url = "https://touristapp-backend-production.up.railway.app";
+  const url = "http://0.0.0.0:8000";
 
   const showName = () =>{
     setNameBusiness(false)
@@ -142,6 +142,7 @@ export const EditBusiness = () => {
 
   useEffect(()=>{
       setAlertTrash(false)
+      setDelItem(false)
       axios.delete(`/api/item/${id}/`,
       config
       )
@@ -149,7 +150,6 @@ export const EditBusiness = () => {
         console.log(response);
         if(response.status === 204){
           setUpdateItem(false)
-          setDelItem(false)
         }
       })
       .catch(function (error) {
@@ -239,8 +239,10 @@ export const EditBusiness = () => {
                       <p id="price"> {element.precio} COP</p>
                     </div>
                     <img key={index} src={element.imagen} alt="Item imagen" />
-                    <button id='edit_btn' value={element.id} onChange={itemsEdit} onClick={itemsEdit}><Edit/></button>
-                    <button id='del_btn' name='del' value={element.id} onClick={itemsDel}><Trash name='del'  value={element.id}/></button>
+                    <button id='edit_btn' value={element.id} onChange={itemsEdit} onClick={itemsEdit}><Edit/>Editar</button>
+                    <button id='del_btn' name='del' value={element.id} onClick={itemsDel}>
+                    <Trash name='del'  value={element.id}/>
+                      Eliminar</button>
                   </div>
                 ))}
                  <button className="btn_item" onClick={openItems}>Agregar item</button>
