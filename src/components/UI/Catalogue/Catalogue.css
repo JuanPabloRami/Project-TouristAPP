@@ -68,11 +68,43 @@
 #price{
   font-weight: bold;
 }
-.bussines__items button{
+.btn_item{
   position: absolute;
   top: 0;
   right: 0;
   background-color: #288ce9;
+  padding: 8px 15px;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+#edit_btn{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: none;
+  bottom:10px;
+  left: 10px;
+  background-color: #288ce9;
+  padding: 8px 15px;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+#del_btn{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: none;
+  bottom:10px;
+  right: 10px;
+  background-color: #dd3b3b;
   padding: 8px 15px;
   border: none;
   color: #fff;

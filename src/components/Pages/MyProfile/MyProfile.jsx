@@ -31,7 +31,7 @@ export const  MyProfile = () => {
   const [loading, setLoading] = useState(false);
 
 
-  const url = "http://localhost:8000";
+  const url = "https://touristapp-backend-production.up.railway.app";
 
 
   

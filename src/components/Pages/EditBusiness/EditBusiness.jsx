@@ -13,6 +13,7 @@ import {MdEmail as IconEmail} from 'react-icons/md'
 import {MdLocationPin as IconLocation} from "react-icons/md";
 import {BiCategory as Category} from 'react-icons/bi'
 import {AiTwotoneEdit as Edit} from 'react-icons/ai'
+import {BsTrash as Trash} from 'react-icons/bs'
 //contextos
 import { CreateBussinesContext } from '../../context/CreateBussines/CreateBussinesContext'
 import { InformationBusinessContext } from '../../context/InformationBusiness/InformationBusinessContext'
@@ -23,26 +24,28 @@ import { UsersContext } from '../../context/Users/UsersContext'
 import { TextareaEdit } from '../../UI/TextareaEdit/TextareaEdit'
 import { EditBusinessContext } from '../../context/EditBusiness/EditBusinessContext'
 import { Link } from 'react-router-dom'
+import { ConfirmDel } from '../../UI/ModalConfirmDel/ConfirmDel'
 
 export const EditBusiness = () => {
-  const {nameBusiness,setNameBusiness,setTextName,textName} = useContext(CreateBussinesContext)
+  const {nameBusiness,setNameBusiness,useItem} = useContext(CreateBussinesContext)
   const {openSocialEdit} = useContext(InformationBusinessContext)
   const {description,setDescription} = useContext(CreateBussinesContext)
   const {catalogue } = useContext(CatalogueContext);
-  const { openItems } = useContext(ModalContext);
+  const { openItemsEdit,openItems } = useContext(ModalContext);
 
   const {users,setNegocioId} = useContext(UsersContext)
   const [dataBusiness,setDataBusiness] = useState({})
-  const [dataItems,setDataItems] = useState({})
+  const [itemsData,setItemsData] = useState({})
   const [category,setcategory] = useState('')
   const [city,setCity] = useState('')
   const [department,setDepartment] = useState('')
   const [loading, setLoading] = useState(false);
   const [showItems,setShowItems] = useState(false)
+  const [updateItem,setUpdateItem] = useState(false)
 
-  const {nameCategorie,setIdCity,requestEditBusiness,imageProfile,imagePort,setCategoryBuss,setDepartmentBuss,setCityBuss,setEditBusiness,textDes,textNameBuss,setTextNameBuss,uploadImageProfileEdit,uploadImagePortEdit} = useContext(EditBusinessContext)
+  const {setAlertTrash,uploadItemModal,setEditItems,nameCategorie,setIdCity,requestEditBusiness,imageProfile,imagePort,setCategoryBuss,setDepartmentBuss,setCityBuss,setEditBusiness,textDes,textNameBuss,setTextNameBuss,uploadImageProfileEdit,uploadImagePortEdit} = useContext(EditBusinessContext)
 
-  const url = "http://localhost:8000";
+  const url = "https://touristapp-backend-production.up.railway.app";
 
   const showName = () =>{
     setNameBusiness(false)
@@ -75,6 +78,7 @@ export const EditBusiness = () => {
         setCity(response.data.negocios[0].ciudad.nombre)
         setDepartment(response.data.negocios[0].ciudad.departamento.nombre)
         setNegocioId(response.data.negocios[0].id)
+        localStorage.setItem('idNegocio',response.data.negocios[0].id)
         setIdCity(response.data.negocios[0].ciudad.id)
       }
     })
@@ -92,15 +96,15 @@ export const EditBusiness = () => {
       })
       .then(function (response) {
         if (response.status === 200) {
-          setDataItems(response.data);
+          setItemsData(response.data);
+          setEditItems(response.data)
           setShowItems(true);
           setLoading(false);
   }})
       .catch(function (error) {
         console.log(error);
       });
-  }, [dataBusiness])
-
+  }, [uploadItemModal,useItem,dataBusiness,updateItem])
 
   const getText = (event) =>{
     const text = event.target.value
@@ -111,6 +115,49 @@ export const EditBusiness = () => {
   }
   
   const {locationBus,faceBuss,emailBuss,hourEnter,hourClose,inputCity,inputDepartment} = useContext(EditBusinessContext)
+
+  const itemsEdit = (e) =>{
+    localStorage.setItem('idItems',e.target.value)
+    openItemsEdit()
+  }
+  
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+      },
+  }
+
+  const {delItem,setDelItem} = useContext(EditBusinessContext)
+  const [id,setId] = useState('')
+
+  const itemsDel = (e)=>{
+    setAlertTrash(true)
+    setUpdateItem(true)
+    console.log(e.target.value);
+    setId(e.target.value)
+  }
+
+  console.log(delItem);
+
+  useEffect(()=>{
+      setAlertTrash(false)
+      axios.delete(`/api/item/${id}/`,
+      config
+      )
+      .then(function (response) {
+        console.log(response);
+        if(response.status === 204){
+          setUpdateItem(false)
+          setDelItem(false)
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  },[delItem])
+
+ 
 
   return (
     <>
@@ -164,7 +211,7 @@ export const EditBusiness = () => {
         </div>
       </div> 
       <button className='btn_like_bussines'> <Heart/> 100</button>
-      <Link to='/minegocio'> <button onClick={requestEditBusiness} className="btn_edit">Actualizar negocio <Edit /></button></Link>
+      <button onClick={requestEditBusiness} className="btn_edit">Actualizar negocio <Edit /></button>
     </div>
     <main>
       <Coments/>
@@ -184,7 +231,7 @@ export const EditBusiness = () => {
             <div className="bussines__items">
               <h2>Catalogo</h2>
               <div className="items__img">
-                {dataItems.map((element, index) => (
+                {itemsData.map((element, index) => (
                   <div key={index} className="content__img__items">
                     <div className="text">
                       <h3>{element.nombre}</h3>
@@ -192,8 +239,12 @@ export const EditBusiness = () => {
                       <p id="price"> {element.precio} COP</p>
                     </div>
                     <img key={index} src={element.imagen} alt="Item imagen" />
+                    <button id='edit_btn' value={element.id} onChange={itemsEdit} onClick={itemsEdit}><Edit/></button>
+                    <button id='del_btn' name='del' value={element.id} onClick={itemsDel}><Trash name='del'  value={element.id}/></button>
                   </div>
                 ))}
+                 <button className="btn_item" onClick={openItems}>Agregar item</button>
+                 <ConfirmDel/>
               </div>
             </div>
           </div>

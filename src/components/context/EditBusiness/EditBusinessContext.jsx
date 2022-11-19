@@ -72,11 +72,60 @@ export const EditBusinessContextProvider = (props) => {
       });
     };
 
+  
+  const [apiProfile,setApiProfile] = useState('')
+  const [apiPort,setApiPort] = useState('')
+
+
+  const imageApiProfile = async (e) => {
+    const file = editBusiness.imgperfil;
+    const base64 = await convertImageApiProfilet(file);
+    setApiProfile(base64);
+  };
+
+  const convertImageApiProfilet = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
+     //convertidor de images de perfil
+     const imageApiPort = async (e) => {
+      const file =editBusiness.imgportada;
+      const base64 = await convertImageApiPort(file);
+      setApiPort(base64);
+    };
+  
+    const convertImageApiPort = (file) => {
+      return new Promise((resolve, reject) => {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
+  
+        fileReader.onload = () => {
+          resolve(fileReader.result);
+        };
+  
+        fileReader.onerror = (error) => {
+          reject(error);
+        };
+      });
+    };
+
+
     const data = {
       nombre: textNameBuss === '' ? editBusiness.nombre : textNameBuss,
       descripcion: textDes === '' ? editBusiness.descripcion: textDes,
-      imgperfil:imageProfile === '' ? '': imageProfile,
-      imgportada: imagePort === '' ? '' : imagePort,
+      imgperfil:imageProfile === '' ? apiProfile: imageProfile,
+      imgportada: imagePort === '' ? apiPort : imagePort,
       tipo_Negocio_id: idCategory,
       ciudad_id: idCity,
       ubicacion: locationBus === '' ? editBusiness.ubicacion :locationBus,
@@ -89,6 +138,7 @@ export const EditBusinessContextProvider = (props) => {
     }
 
     const token = localStorage.getItem('token')
+    const id = localStorage.getItem('idNegocio')
 
     const config = {
       headers: {
@@ -98,7 +148,7 @@ export const EditBusinessContextProvider = (props) => {
     }
 
     const requestEditBusiness = () =>{
-      axios.put('/api/negocio/13/',
+      axios.put(`/api/negocio/${id}/`,
         data,config
       ).then(function (response){
         console.log(response);
@@ -129,10 +179,72 @@ export const EditBusinessContextProvider = (props) => {
     const department = event.target.value;
     return setInputDepartment(department);
   }
+
+
+  //Editar items
+  const [editItems,setEditItems] = useState({})
+  const idItems = localStorage.getItem('idItems')
+
+  const [nameItem,setNameItem] = useState('')
+  const [desItem,setDesItem] = useState('')
+  const [priceItem,setPriceItem] = useState('')
+  const [imgItem,setImgItem] = useState('')
+  const [uploadItemModal,setUploadItemModal] = useState(false)
+
+  //convertidor de images de perfil
+    const imgItems = async (e) => {
+      const file = e.target.files[0];
+      const base64 = await convertImgItems(file);
+      setImgItem(base64);
+    };
+  
+    const convertImgItems = (file) => {
+      return new Promise((resolve, reject) => {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
+  
+        fileReader.onload = () => {
+          resolve(fileReader.result);
+        };
+  
+        fileReader.onerror = (error) => {
+          reject(error);
+        };
+      });
+    };
+  
+    const dataItems ={
+      nombre: nameItem === '' ? editItems.nombre : nameItem,
+      descripcion:  desItem === '' ? editItems.nombre : desItem,
+      precio: priceItem === 0 ? editItems.nombre : priceItem,
+      nuevo: true,
+      imagen: imgItem === '' ? editItems.imagen : imgItem,
+      negocio: id
+    }
+
+    const requestEditItems = () =>{
+      setUploadItemModal(true)
+      axios.put(`/api/item/${idItems}/`,
+        dataItems,config
+      ).then(function (response){
+        if(response.status === 200){
+          setUploadItemModal(false)
+        }
+        console.log(response);
+      })
+      .catch(function (error){
+        console.log(error);
+      });
+    }
+
+    const [delItem,setDelItem] = useState(false)
+    const [alertTrash,setAlertTrash] = useState(false)
     
 
   return(
     <EditBusinessContext.Provider value={{
+      setAlertTrash,alertTrash,
+      delItem,setDelItem,
       setEditBusiness,
       editBusiness,
       closeTextarea,
@@ -176,7 +288,17 @@ export const EditBusinessContextProvider = (props) => {
       locationDepartment,
       locationCity,
       nameCategories,
-      nameCategorie
+      nameCategorie,
+      setEditItems,
+      setNameItem,setDesItem,
+      setPriceItem,
+      imgItem,
+      imgItems,
+      nameItem,
+      desItem,
+      priceItem,
+      requestEditItems,
+      uploadItemModal
     }}>
       {props.children}
     </EditBusinessContext.Provider>

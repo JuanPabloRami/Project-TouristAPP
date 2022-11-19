@@ -12,8 +12,20 @@ export const ModalContextProvider = (props) => {
   const [registerUser,setRegisterUser] = useState(false)
   const [items,setItems] = useState(false)
   const [roles,setRoles] = useState(false)
+  const [itemsEdit,setItemsEdit] = useState(false)
   const body = document.querySelector("body");
 
+   //abre la modal de items
+   const openItemsEdit = () =>{
+    setItemsEdit(true)
+    body.style = "overflow-y:hidden;";
+  }
+
+  //cierra la modal de items
+  const closeItemsEdit = () =>{
+    setItemsEdit(false)
+    body.style = "overflow-y:scroll;";
+  }
 
   //abre la modal de items
   const openItems = () =>{
@@ -114,6 +126,10 @@ export const ModalContextProvider = (props) => {
       openItems,
       closeItems,
       items,
+      itemsEdit,
+      openItemsEdit,
+      closeItemsEdit,
+      setItemsEdit,
     }}>
       {props.children}
  

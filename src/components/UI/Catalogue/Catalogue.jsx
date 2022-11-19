@@ -25,7 +25,7 @@ export const Catalogue = () => {
             </div>
         ))}
         </div>
-        <button onClick={openItems}>Agregar item</button>
+        <button className="btn_item" onClick={openItems}>Agregar item</button>
       </div>
     </>
   );

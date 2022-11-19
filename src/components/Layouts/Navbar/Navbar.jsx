@@ -28,6 +28,7 @@ import { TransitionsContext } from "../../context/Transitions/TransitionsContext
 import { ModalSocial } from "../../UI/ModalSocialNetworks/ModalSocial";
 import { ModalConfirm } from "../../UI/ModalOfConfirm/ModalConfirm";
 import { ModalEdit } from "../../UI/ModalEdit/ModalEdit";
+import { EditItems } from "../../UI/ModalEditItems/EditItems";
 
 export const Navbar = () => {
   const [menu,setMenu] = useState("close")
@@ -152,6 +153,7 @@ export const Navbar = () => {
       <ModalSocial/>
       <ModalConfirm/> 
       <ModalEdit/>
+      <EditItems/>
     </>
   );
 };

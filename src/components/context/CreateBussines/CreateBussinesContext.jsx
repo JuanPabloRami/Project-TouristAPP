@@ -151,6 +151,7 @@ const [dataItems,setDataItems] = useState({})
 const [showBtnItem,setShowBtnItem] = useState(false)
 const [idBusiness,setIdBusiness] = useState(0)
 const [hiddenItems,setHiddenItems] = useState(false)
+const [useItem,setUseItem] = useState(false)
 
 
 const dataItem = {
@@ -159,15 +160,20 @@ const dataItem = {
   precio:dataItems.precio,
   nuevo:true,
   imagen:dataItems.itemImage,
-  negocio:idBusiness
+  negocio:localStorage.getItem('idNegocio')
 }
 
   useEffect(()=>{
+    setUseItem(true)
     axios.post('/api/item/',
       dataItem,
       config
     )
     .then(function (response){
+      console.log(response);
+      if(response.status === 201){
+        setUseItem(false)
+      }
     })
     .catch(function (error){
       console.log(error);
@@ -237,8 +243,10 @@ const dataItem = {
       hiddenItems,
       showBtnItem,
       setDataItems,
+      dataItems,
       idBusiness,
-      hiddenBtn
+      hiddenBtn,
+      useItem,
     }}>
       {props.children}
     </CreateBussinesContext.Provider>
