@@ -23,14 +23,13 @@ import axios from '../../api/axios/axios'
 import { UsersContext } from '../../context/Users/UsersContext'
 import { TextareaEdit } from '../../UI/TextareaEdit/TextareaEdit'
 import { EditBusinessContext } from '../../context/EditBusiness/EditBusinessContext'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { ConfirmDel } from '../../UI/ModalConfirmDel/ConfirmDel'
 
 export const EditBusiness = () => {
   const {nameBusiness,setNameBusiness,useItem} = useContext(CreateBussinesContext)
   const {openSocialEdit} = useContext(InformationBusinessContext)
   const {description,setDescription} = useContext(CreateBussinesContext)
-  const {catalogue } = useContext(CatalogueContext);
   const { openItemsEdit,openItems } = useContext(ModalContext);
 
   const {users,setNegocioId} = useContext(UsersContext)
@@ -114,7 +113,7 @@ export const EditBusiness = () => {
     }
   }
   
-  const {locationBus,faceBuss,emailBuss,hourEnter,hourClose,inputCity,inputDepartment} = useContext(EditBusinessContext)
+  const {setChangeButton,delBusiness,setDelBusiness,deleteBusiness,locationBus,faceBuss,emailBuss,hourEnter,hourClose,inputCity,inputDepartment} = useContext(EditBusinessContext)
 
   const itemsEdit = (e) =>{
     localStorage.setItem('idItems',e.target.value)
@@ -138,8 +137,6 @@ export const EditBusiness = () => {
     setId(e.target.value)
   }
 
-  console.log(delItem);
-
   useEffect(()=>{
       setAlertTrash(false)
       setDelItem(false)
@@ -157,8 +154,16 @@ export const EditBusiness = () => {
       });
   },[delItem])
 
- 
 
+  const changeRequest = () =>{
+    setChangeButton(true)
+    openItems()
+  }
+
+ if(delBusiness){
+  setDelBusiness(false)
+  return <Navigate to='/'/>
+ }
   return (
     <>
       <div className="account__images">
@@ -210,7 +215,7 @@ export const EditBusiness = () => {
           </div>
         </div>
       </div> 
-      
+      <button onClick={deleteBusiness} className="btn_del">Eliminar negocio<Edit /></button>
       <button onClick={requestEditBusiness} className="btn_edit">Actualizar negocio <Edit /></button>
     </div>
     <main>
@@ -245,7 +250,7 @@ export const EditBusiness = () => {
                       Eliminar</button>
                   </div>
                 ))}
-                 <button className="btn_item" onClick={openItems}>Agregar item</button>
+                 <button className="btn_item" onClick={changeRequest}>Agregar item</button>
                  <ConfirmDel/>
               </div>
             </div>

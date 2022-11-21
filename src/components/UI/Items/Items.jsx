@@ -6,16 +6,21 @@ import { Field, Formik, Form} from 'formik'
 import { Button } from '../Button/Button'
 import { CatalogueContext } from '../../context/Catalogue/CatalogueContext'
 import { CreateBussinesContext } from '../../context/CreateBussines/CreateBussinesContext'
+import { EditBusinessContext } from '../../context/EditBusiness/EditBusinessContext'
 
 export const Items = () => {
   
   const {items,closeItems} = useContext(ModalContext)
   const {uploadImageItem,uploadImagePromotion,setStateItem,catalogue,itemImage,promotionImage} = useContext(CatalogueContext)
-  const {setDataItems,responseItems} = useContext(CreateBussinesContext)
-
+  const {setDataItems,itemsData} = useContext(CreateBussinesContext)
+  const {changeButton} = useContext(EditBusinessContext)
  const sendItem = (nombre,descripcion,precio,negocio) =>{
   let item = {nombre,descripcion,precio,itemImage,promotionImage,negocio}
-  setDataItems(item)
+  let items = {nombre,descripcion,precio,imagen: itemImage,imgpromocion: promotionImage}
+  if (changeButton) {
+    setDataItems(item)
+  }
+  itemsData.push(items)
   setStateItem(true)
   catalogue.push(item)
   closeItems()

@@ -28,6 +28,7 @@ export const EditBusinessContextProvider = (props) => {
   const [inputDepartment, setInputDepartment] = useState("");
   const [inputCity, setInputCity] = useState("");
   const [nameCategorie,setNameCategorie] = useState('')
+  const [changeButton,setChangeButton] = useState(false)
 
   const uploadImagePortEdit = async (e) => {
     const file = e.target.files[0];
@@ -125,9 +126,6 @@ export const EditBusinessContextProvider = (props) => {
     const data = {
       nombre: textNameBuss === '' ? editBusiness.nombre : textNameBuss,
       descripcion: textDes === '' ? editBusiness.descripcion: textDes,
-      
-      
-      
       tipo_Negocio_id: idCategory,
       ciudad_id: idCity,
       ubicacion: locationBus === '' ? editBusiness.ubicacion :locationBus,
@@ -156,7 +154,22 @@ export const EditBusinessContextProvider = (props) => {
       axios.put(`/api/negocio/${id}/`,
         data,config
       ).then(function (response){
-        console.log(data);
+      })
+      .catch(function (error){
+        console.log(error);
+      });
+    }
+
+    const [delBusiness,setDelBusiness] = useState(false)
+
+    const deleteBusiness = () =>{
+      axios.delete(`/api/negocio/${id}/`,
+        config
+      ).then(function (response){
+        console.log(response);
+        if(response.status===204){
+          setDelBusiness(true)
+        }
       })
       .catch(function (error){
         console.log(error);
@@ -248,6 +261,11 @@ export const EditBusinessContextProvider = (props) => {
 
   return(
     <EditBusinessContext.Provider value={{
+      changeButton,
+      setChangeButton,
+      setDelBusiness,
+      delBusiness,
+      deleteBusiness,
       setAlertTrash,alertTrash,
       delItem,setDelItem,
       setEditBusiness,

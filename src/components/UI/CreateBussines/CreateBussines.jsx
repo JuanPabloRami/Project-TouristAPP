@@ -42,7 +42,6 @@ export const CreateBussines = () => {
           <Plus id='input' className='icon_create' onClick={inputDescription}/>
         </div>
         <>
-          {hiddenItems ? 
             <>
               <div className={`create items ${stateItem ? 'close' : null}`}>
                 {stateItem?
@@ -62,9 +61,6 @@ export const CreateBussines = () => {
                 }
               </>
             </>
-          :
-            null
-          }
         </>
       </div>
     </>

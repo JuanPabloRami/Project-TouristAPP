@@ -28,6 +28,7 @@ export const CreateBussinesContextProvider = (props) => {
   const [alert,setAlert] = useState("close")
   const [errorAlert,setErrAlert] = useState("close")
   const [errorText,setErrText] = useState("Ha ocurrido un error")
+  const [updateDrop,setUpdateDrop] = useState(false)
 
   
   
@@ -117,6 +118,7 @@ const bussinesRequest = () =>{
     console.log(response);
     if(response.status === 201){
       setIdBusiness(response.data.id)
+      setUpdateDrop(true)
       setHiddenItems(true)
       setShowBtnItem(true)
       setHiddenBtn(true)
@@ -153,8 +155,7 @@ const [idBusiness,setIdBusiness] = useState(0)
 const [hiddenItems,setHiddenItems] = useState(false)
 const [useItem,setUseItem] = useState(false)
 
-
-const dataItem = {
+const dataIte = {
   nombre:dataItems.nombre,
   descripcion:dataItems.descripcion,
   precio:dataItems.precio,
@@ -166,7 +167,7 @@ const dataItem = {
   useEffect(()=>{
     setUseItem(true)
     axios.post('/api/item/',
-      dataItem,
+      dataIte,
       config
     )
     .then(function (response){
@@ -179,6 +180,38 @@ const dataItem = {
       console.log(error);
     });
   },[dataItems])
+
+
+let dataItem = {}
+
+const [itemsData,setItemsData] = useState([])
+
+  useEffect(()=>{
+    setUseItem(true)
+    itemsData.map((Element)=>(
+      axios.post('/api/item/',
+        dataItem={
+          nombre:Element.nombre,
+          descripcion:Element.descripcion,
+          precio:Element.precio,
+          nuevo:true,
+          imagen:Element.imagen,
+          imgpromocion: Element.imgpromocion,
+          negocio:idBusiness
+        },
+        config
+      )
+      .then(function (response){
+        console.log(response);
+        if(response.status === 201){
+          setUseItem(false)
+        }
+      })
+      .catch(function (error){
+        console.log(error);
+      })
+    ))
+  },[idBusiness])
 
     //Oculta boton de más de la descripción
   const inputDescription = () =>{
@@ -211,6 +244,10 @@ const dataItem = {
   
   return (
     <CreateBussinesContext.Provider value={{
+      setUpdateDrop,
+      updateDrop,
+      setItemsData,
+      itemsData,
       alert,
       errorAlert,
       errorText,

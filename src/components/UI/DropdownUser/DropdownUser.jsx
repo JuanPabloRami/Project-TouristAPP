@@ -8,6 +8,7 @@ import { SyncLoader } from "react-spinners";
 import {AiOutlineUser as User} from 'react-icons/ai'
 import {MdBusinessCenter as Bussines} from 'react-icons/md'
 import { TransitionsContext } from '../../context/Transitions/TransitionsContext'
+import { CreateBussinesContext } from '../../context/CreateBussines/CreateBussinesContext'
 export const DropdownUser = () => {
   //Estado que me guarda los datos de la persona logueada
   const [api,setApi] = useState({})
@@ -16,6 +17,7 @@ export const DropdownUser = () => {
   const {users,setDataBusiness,setUserId} = useContext(UsersContext)
   //trae el token del usuario
   const token = localStorage.getItem('token')
+  const {updateDrop} = useContext(CreateBussinesContext)
 
   const getUser = () =>{
     axios.get('/api/misnegocios/',{
@@ -57,21 +59,28 @@ export const DropdownUser = () => {
   }
 
 
-  const showProfile = () =>{
-    if(api.type_user === 'Emprendedor' && api.negocios.length <= 0){
-      return (<><li><Link to='/crear-negocio'>Crear mi negocio</Link></li>
-              <li onClick={logout}>Cerrar sesión</li></>)
-    }else if(api.type_user === 'Emprendedor' && api.negocios.length > 0)
-      return (
-        <>
-        <li><Link to='/minegocio'>Ver mi negocio</Link></li>
-        <li onClick={logout}>Cerrar sesión</li>
-        </>)
-  return(
-    <li onClick={logout}>Cerrar sesión</li>
-    )
-  }
   
+    const showProfile = () =>{
+      if(api.type_user === 'Emprendedor' && api.negocios.length <= 0){
+        return (<><li><Link to='/crear-negocio'>Crear mi negocio</Link></li>
+                <li onClick={logout}>Cerrar sesión</li></>)
+      }else if(api.type_user === 'Emprendedor' && api.negocios.length > 0)
+        return (
+          <>
+          <li><Link to='/minegocio'>Ver mi negocio</Link></li>
+          <li onClick={logout}>Cerrar sesión</li>
+          </>)
+    return(
+      <li onClick={logout}>Cerrar sesión</li>
+      )
+    }
+
+
+  // useEffect(()=>{
+  //   console.log("entra");
+  //   showProfile()
+  // },[updateDrop])
+
   //icono dependiente del tipo de usuario
   const typeUser = () =>{
     if (api.type_user === "Turista"){

@@ -12,10 +12,11 @@ import {AiFillLike as Heart} from 'react-icons/ai'
 import {BsCameraFill as Cam} from 'react-icons/bs'
 import { useContext } from 'react'
 import { CreateBussinesContext } from '../../context/CreateBussines/CreateBussinesContext'
+import { Navigate } from 'react-router-dom'
 
 
 export const ProfileCreate = () => {
-  const {uploadImageProfile,uploadImagePort,imageProfile,imagePort,showBtnItem} = useContext(CreateBussinesContext)
+  const {setUpdateDrop,updateDrop,uploadImageProfile,uploadImagePort,imageProfile,imagePort,showBtnItem} = useContext(CreateBussinesContext)
   const {setModalConfirm} = useContext(CreateBussinesContext)
 
 
@@ -23,6 +24,10 @@ export const ProfileCreate = () => {
     setModalConfirm(true)
   }
 
+  if(updateDrop){
+    setUpdateDrop(false)
+    return <Navigate to='/minegocio'/>
+  }
   return (
     <>
     <div className="account__images">

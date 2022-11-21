@@ -62,7 +62,7 @@ export const EditItems = () => {
                   type="text"
                   defaultValue=''
                   value={nameItem === '' ? ' ' : nameItem}
-                  id="nameItem"
+                  id="nameItems"
                   onChange={name}
                   name="nombre"
                   required
@@ -78,7 +78,7 @@ export const EditItems = () => {
                   type="text"
                   defaultValue=''
                   value={desItem === '' ? ' ' : desItem}
-                  id="desItem"
+                  id="desItems"
                   onChange={description}
                   name="descripcion"
                   maxlength="150"
@@ -95,7 +95,7 @@ export const EditItems = () => {
                   type="number"
                   defaultValue=''
                   value={priceItem === '' ? 0 : priceItem}
-                  id="numItem"
+                  id="numItes"
                   onChange={price}
                   name="precio"
                   required
@@ -109,7 +109,7 @@ export const EditItems = () => {
               <div className="ContainerInput">
                 <Field
                   type="file"
-                  id="file"
+                  id="files"
                   name="file"
                   onChange={imgItems}
                   required
