@@ -45,7 +45,7 @@ export const EditBusiness = () => {
 
   const {setAlertTrash,uploadItemModal,setEditItems,nameCategorie,setIdCity,requestEditBusiness,imageProfile,imagePort,setCategoryBuss,setDepartmentBuss,setCityBuss,setEditBusiness,textDes,textNameBuss,setTextNameBuss,uploadImageProfileEdit,uploadImagePortEdit} = useContext(EditBusinessContext)
 
-  const url = "http://0.0.0.0:8000";
+  const url = "https://touristapp-backend-production-c4fa.up.railway.app";
 
   const showName = () =>{
     setNameBusiness(false)
@@ -210,7 +210,7 @@ export const EditBusiness = () => {
           </div>
         </div>
       </div> 
-      <button className='btn_like_bussines'> <Heart/> 100</button>
+      
       <button onClick={requestEditBusiness} className="btn_edit">Actualizar negocio <Edit /></button>
     </div>
     <main>

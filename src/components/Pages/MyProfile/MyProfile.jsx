@@ -29,9 +29,11 @@ export const  MyProfile = () => {
   const [city,setCity] = useState('')
   const [department,setDepartment] = useState('')
   const [loading, setLoading] = useState(false);
+  //estado de los likes
+  const [likes,setLikes] = useState()
 
 
-  const url = "http://0.0.0.0:8000";
+  const url = "https://touristapp-backend-production-c4fa.up.railway.app/";
 
 
   
@@ -78,6 +80,22 @@ export const  MyProfile = () => {
         console.log(error);
       });
   }, [dataBusiness]);
+
+
+  //ver los likes del negocio
+  const watchLikes = () =>{
+    axios.get(`/auth/viewsets/like/?negocio=${dataBusiness.id}`)
+    .then(function (response){
+      setLikes(response.data.length)
+    })
+    .catch(function(error){
+      console.log(error);
+    })
+  }
+
+  useEffect(()=>{
+    watchLikes()
+  },[dataBusiness])
 
   return (
     <>
@@ -154,7 +172,7 @@ export const  MyProfile = () => {
           </div>
         </div>
         <button className="btn_like_bussines">
-          <Heart /> 10
+          <Heart />{likes}
         </button>
         <Link to='/editar-negocio'>
           <button className="btn_edit">
