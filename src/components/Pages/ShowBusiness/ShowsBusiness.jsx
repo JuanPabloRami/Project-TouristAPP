@@ -32,7 +32,7 @@ export const ShowsBusiness = () => {
   const token = localStorage.getItem('token')
   //id del like a eliminar
   // const [delLikeID,setDelLikeID] = useState(0)
-  const url = 'http://localhost:8000/' 
+  const url = 'https://touristapp-backend-production-c4fa.up.railway.app/' 
 
   //estado que visualiza los likes al ser actualizados
   const [updateLike,setUpdateLike] = useState(false)

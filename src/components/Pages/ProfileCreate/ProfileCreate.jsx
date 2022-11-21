@@ -51,7 +51,7 @@ export const ProfileCreate = () => {
       <SocialNetworks/>
       {/* <button className='btn_like_bussines'> <Heart/> 100</button> */}
       {showBtnItem ?
-        <button className='btn_like_bussines'> <Heart/> 100</button>
+        <></>
         :
         <button onClick={openModal} className='btn_like_bussines'>Crear negocio</button>
         }
