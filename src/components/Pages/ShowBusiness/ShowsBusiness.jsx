@@ -27,25 +27,38 @@ export const ShowsBusiness = () => {
   const [department,setDepartment] = useState('')
   const [loading, setLoading] = useState(false);
   //estado de los likes
-  const [likes,setLikes] = useState(0)
+  const [likes,setLikes] = useState()
   //token de acceso
   const token = localStorage.getItem('token')
+  //id del like a eliminar
+  // const [delLikeID,setDelLikeID] = useState(0)
+  const url = 'http://localhost:8000/' 
 
-  const url = 'http://localhost:8000' ;
+  //estado que visualiza los likes al ser actualizados
+  const [updateLike,setUpdateLike] = useState(false)
+
+  //cambiar el estilo del boton likes cuando el usuario da like
+  const [likeStyle,setLikeStyle] = useState(false)
 
 
-  //ver los likes
-  useEffect(()=>{
+  //ver los likes del negocio
+  const watchLikes = () =>{
     setLoading(true)
     axios.get(`/auth/viewsets/like/?negocio=${data.id}`)
     .then(function (response){
       setLikes(response.data.length)
+      
       setLoading(false)
+      setUpdateLike(false)
     })
     .catch(function(error){
       console.log(error);
     })
-  },[data])
+  }
+
+  useEffect(()=>{
+    watchLikes()
+  },[updateLike,data])
 
 
   //le paso el token de acceso
@@ -66,11 +79,16 @@ export const ShowsBusiness = () => {
     console.log(userId);
     axios.get(`/auth/viewsets/like/?negocio=${data.id}&autor=${userId}`)
     .then(function(response){
-      if (response.data.length >0){
+      if (response.data.length  === 0){
         addLike()
+        
+        setUpdateLike(true)
       }
-      else if (response.data.length === 0){
-        deleteLike()
+      else if (response.data.length >0){
+        
+        deleteLike(response.data[0].id)
+        
+        setUpdateLike(true)
       }
     })
     .catch(function(error){
@@ -87,7 +105,7 @@ export const ShowsBusiness = () => {
     )
     .then(function(response){
       setLoading(false)
-      console.log(response)
+      setLikeStyle(true)
 
     })
     .catch(function(error){
@@ -97,12 +115,13 @@ export const ShowsBusiness = () => {
   }
 
   //eliminar el like realizado
-  const deleteLike=()=>{
-    axios.delete(`/auth/viewsets/like//`,
+  const deleteLike=(delLikeID)=>{
+    console.log(delLikeID);
+    axios.delete(`/auth/viewsets/like/${delLikeID}/`,
     config
     )
     .then(function(response){
-      console.log(response)
+      setLikeStyle(false)
     })
     .catch(function(error){
       console.log(error)
@@ -216,7 +235,7 @@ export const ShowsBusiness = () => {
             </div>
           </div>
         </div>
-        <button className="btn_like_bussines" onClick={checkLike}>
+        <button className={likeStyle ? 'btn_liked_bussines' : 'btn_like_bussines'} onClick={checkLike}>
           {" "}
           <Heart />{likes}
         </button>

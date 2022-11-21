@@ -27,8 +27,8 @@ export const DropdownUser = () => {
     .then(function (response){
       setApi(response.data)
       //seteo el id del usuario
-      console.log(response);
-      setUserId("su madre")
+      console.log(response.data.id);
+      setUserId(response.data.id)
       localStorage.setItem('typeUser', response.data.type_user)
     })
     .catch(function (error){
