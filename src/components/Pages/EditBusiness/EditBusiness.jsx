@@ -210,7 +210,7 @@ export const EditBusiness = () => {
           </div>
         </div>
       </div> 
-      <button className='btn_like_bussines'> <Heart/> 100</button>
+      
       <button onClick={requestEditBusiness} className="btn_edit">Actualizar negocio <Edit /></button>
     </div>
     <main>

@@ -120,12 +120,14 @@ export const EditBusinessContextProvider = (props) => {
       });
     };
 
+    
 
     const data = {
       nombre: textNameBuss === '' ? editBusiness.nombre : textNameBuss,
       descripcion: textDes === '' ? editBusiness.descripcion: textDes,
-      imgperfil:imageProfile === '' ? apiProfile: imageProfile,
-      imgportada: imagePort === '' ? apiPort : imagePort,
+      
+      
+      
       tipo_Negocio_id: idCategory,
       ciudad_id: idCity,
       ubicacion: locationBus === '' ? editBusiness.ubicacion :locationBus,
@@ -136,6 +138,9 @@ export const EditBusinessContextProvider = (props) => {
       contactWEB:null,
       contactEmail: emailBuss === '' ? editBusiness.contactEmail : emailBuss,
     }
+
+    imageProfile !== '' ? data.imgperfil = imageProfile : console.log("no cambia imagen")
+    imagePort !== '' ? data.imgportada =  imagePort : console.log("no cambia portada")
 
     const token = localStorage.getItem('token')
     const id = localStorage.getItem('idNegocio')
@@ -151,7 +156,7 @@ export const EditBusinessContextProvider = (props) => {
       axios.put(`/api/negocio/${id}/`,
         data,config
       ).then(function (response){
-        console.log(response);
+        console.log(data);
       })
       .catch(function (error){
         console.log(error);
