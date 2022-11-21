@@ -161,6 +161,7 @@ const dataIte = {
   precio:dataItems.precio,
   nuevo:true,
   imagen:dataItems.itemImage,
+  imgpromocion:dataItems.promotionImage,
   negocio:localStorage.getItem('idNegocio')
 }
 

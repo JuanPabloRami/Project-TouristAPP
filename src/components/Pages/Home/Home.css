@@ -127,6 +127,35 @@
   color: #fff;
   text-shadow: -2px -2px 3px #0e2d3a;
 }
+@media (max-width: 768px) {
+
+  .description-aplication{
+    top: 150px;
+    z-index: 2;
+  }
+  .description-aplication h1{
+    font-size: 38px;
+  }
+  .description-aplication p{
+    font-size: 26px;
+    margin-top: 40px;
+    width: 350px;
+  }
+.draw{
+  width: 250px;
+  height: 250px;
+  top: 135px;
+  right: 50px;
+  z-index: 2;
+
+}
+.clouds{
+  top: 136px;
+  width: 300px;
+  right: 28px;
+
+}
+}
 
 @media (max-width:458px) {
   .filterSection{
@@ -134,7 +163,6 @@
   }
   .description-aplication{
     top: 150px;
-    left: 80px;
     z-index: 2;
   }
   .description-aplication h1{
@@ -144,16 +172,20 @@
   .description-aplication p{
     font-size: 21px;
     margin-top: 20px;
+    width: 331px;
   }
   .draw{
     width: 200px;
     height: 200px;
     top: 184px;
-    left: 50px;
+    left: 150px;
     z-index: 1;
+    display: none;
 
   }
   .clouds{
     top: 136px;
+    width: 270px;
+    display: none;
   }
 }

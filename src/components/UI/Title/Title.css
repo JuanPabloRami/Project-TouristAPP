@@ -43,6 +43,21 @@
   transform: rotate(100deg); 
 }
 
+@media (max-width:768px) {
+  #title__ng{
+    font-size: 38px;
+  }
+  #title__pm{
+    font-size: 38px;
+  }
+  #bag{
+    font-size: 1.8em;
+  }
+  #tag{
+    font-size: 1.8em;
+  }
+}
+
 
 @media (max-width:458px) {
   #title__ng{

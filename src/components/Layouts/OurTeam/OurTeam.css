@@ -63,6 +63,18 @@
   top: 50%;
 }
 
+@media (max-width:768px) {
+  .about-us {
+    gap:50px ;
+  }
+  .our-team h1{
+    font-size: 38px;
+  }
+  .linea{
+    top: 80%;
+  }
+}
+
 @media (max-width:458px) {
   .our-team h1{
     font-size: 22px;

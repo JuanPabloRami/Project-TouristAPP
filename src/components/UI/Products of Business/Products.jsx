@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Products.css";
 
 import Comida from "../../images/Outlet/1.jpg";
@@ -11,8 +11,24 @@ import Seis from "../../images/Outlet/6.jpg";
 //import swiper react components
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper";
+import axios from '../../api/axios/axios'
+import { useState } from "react";
 
 export const Products = () => {
+
+  const [promotions,setPromotions] = useState([])
+
+  useEffect (()=>{
+    axios.get('api/item/')
+    .then(function (response){
+      console.log(response.data);
+      setPromotions(response.data)
+    })
+    .catch(function (error){
+      console.log(error);
+    })
+  },[])
+  
   return (
     <div className="promotions">
       <Swiper
@@ -31,24 +47,11 @@ export const Products = () => {
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
       >
-        <SwiperSlide id="card_promotions">
-          <img class="swiper-img" src={Comida} alt="Imagen1" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img class="swiper-img" src={Ropa} alt="Imagen1" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img class="swiper-img" src={Zapatos} alt="Imagen2" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img class="swiper-img" src={Cuatro} alt="Imagen1" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img class="swiper-img" src={Cinco} alt="Imagen2" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img class="swiper-img" src={Seis} alt="Imagen2" />
-        </SwiperSlide>
+        {promotions.map((Element,index)=>(
+          <SwiperSlide key={index} id="card_promotions">
+            <img class="swiper-img" src={Element.imgpromocion} alt="Imagen1" />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );

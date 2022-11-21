@@ -160,6 +160,72 @@
     right: 5px;
   }
 }
+@media (max-width:768px) {
+  .border__ipad {
+    width: 80%;
+    margin-left: 0;
+    padding: 5px;
+    height: 73%;
+  }
+  .profile_img{
+    width: 90px;
+    height: 90px;
+    
+  }
+  .description_account_ipad{
+    width: 120px;
+    bottom: -45px;
+    padding-left: 80px;
+  }
+  .header__ipad .img__ipad{
+    object-position: 0 -135px ;
+  }
+  .description_account_ipad h2{
+    font-size: 15px;
+  }
+  .content__likes{
+    font-size: 10px;
+  }
+  .coments__ipad{
+    width: 39%;
+    padding: 10px;
+  }
+  .description_ipad{
+    width:20%;
+  }
+
+  .coments__ipad h2{
+    font-size: 22px;
+  }
+  .coments__ipad p{
+    font-size: 13px;
+    padding-top: 15px;
+  }
+  .description_ipad h2{
+    font-size: 22px;
+  }
+  .description_ipad p{
+    font-size: 13px;
+  }
+  .section__ipad{
+    align-items: initial;
+  }
+  .section__ipad .description_ipad {
+    width: 60%;
+    margin-top: 35px;
+    padding: 4px;
+  }
+  .section__ipad .coments__ipad{
+    padding-top: 60px;
+  }
+  .content_btn__like button{
+    font-size: 11px;
+    padding: 5px 20px;
+  }
+  .hand{
+    font-size: 15px;
+  }
+}
 
 @media (max-width: 458px) {
   .border__ipad {

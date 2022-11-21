@@ -49,6 +49,19 @@
   width: 90%;
 }
 
+@media (max-width:768px) {
+  .add__description h1{
+    font-size: 26px;
+  }
+  .add__description p{
+    font-size: 22px;
+    width: 330px;
+  }
+  .add__description button{
+    font-size: 15px;
+  }
+}
+
 @media (max-width:458px) {
   .add__business {
     flex-direction: column;
