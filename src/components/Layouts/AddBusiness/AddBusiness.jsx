@@ -8,6 +8,9 @@ import AddImagen from "../../images/Title/addBusiness.jpg";
 import { useContext } from "react";
 
 export const AddBusiness = () => {
+
+  const token = localStorage.getItem("token")
+
   const { openRoles } = useContext(ModalContext);
   return (
     <>
@@ -21,7 +24,12 @@ export const AddBusiness = () => {
             indicara que tan satisfechos están los usuarios.TouristApp conlleva
             aumentar la popularidad y el comercio de tu negocio.
           </p>
-          <button onClick={openRoles}>Crea tu negocio</button>
+          <button onClick={()=>{
+            token === null ?
+            openRoles()
+            :console.log("ok");
+            }
+          }>Crea tu negocio</button>
         </div>
         <div className="container__addImage">
           <img className="img__add" src={AddImagen} alt="Add" />

@@ -77,7 +77,6 @@ export const DropdownUser = () => {
 
 
   useEffect(()=>{
-    console.log("entra");
     getUser()
   },[updateDrop])
 
