@@ -160,21 +160,6 @@ export const EditBusinessContextProvider = (props) => {
       });
     }
 
-    const [delBusiness,setDelBusiness] = useState(false)
-
-    const deleteBusiness = () =>{
-      axios.delete(`/api/negocio/${id}/`,
-        config
-      ).then(function (response){
-        console.log(response);
-        if(response.status===204){
-          setDelBusiness(true)
-        }
-      })
-      .catch(function (error){
-        console.log(error);
-      });
-    }
 
     const locationChange = () => {
       const location = inputCity + " - " + inputDepartment;
@@ -263,9 +248,6 @@ export const EditBusinessContextProvider = (props) => {
     <EditBusinessContext.Provider value={{
       changeButton,
       setChangeButton,
-      setDelBusiness,
-      delBusiness,
-      deleteBusiness,
       setAlertTrash,alertTrash,
       delItem,setDelItem,
       setEditBusiness,

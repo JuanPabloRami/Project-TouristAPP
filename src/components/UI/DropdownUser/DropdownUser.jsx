@@ -76,10 +76,10 @@ export const DropdownUser = () => {
     }
 
 
-  // useEffect(()=>{
-  //   console.log("entra");
-  //   showProfile()
-  // },[updateDrop])
+  useEffect(()=>{
+    console.log("entra");
+    getUser()
+  },[updateDrop])
 
   //icono dependiente del tipo de usuario
   const typeUser = () =>{

@@ -113,7 +113,8 @@ export const EditBusiness = () => {
     }
   }
   
-  const {setChangeButton,delBusiness,setDelBusiness,deleteBusiness,locationBus,faceBuss,emailBuss,hourEnter,hourClose,inputCity,inputDepartment} = useContext(EditBusinessContext)
+  const {setChangeButton,locationBus,faceBuss,emailBuss,hourEnter,hourClose,inputCity,inputDepartment} = useContext(EditBusinessContext)
+  const {delBusiness,setDelBusiness,deleteBusiness} = useContext(CreateBussinesContext)
 
   const itemsEdit = (e) =>{
     localStorage.setItem('idItems',e.target.value)

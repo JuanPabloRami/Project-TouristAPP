@@ -182,6 +182,23 @@ const dataIte = {
     });
   },[dataItems])
 
+  const [delBusiness,setDelBusiness] = useState(false)
+
+  const deleteBusiness = () =>{
+    axios.delete(`/api/negocio/${idBusiness}/`,
+      config
+    ).then(function (response){
+      console.log(response);
+      if(response.status===204){
+        setDelBusiness(true)
+        setUpdateDrop(true)
+      }
+    })
+    .catch(function (error){
+      console.log(error);
+    });
+  }
+
 
 let dataItem = {}
 
@@ -245,6 +262,9 @@ const [itemsData,setItemsData] = useState([])
   
   return (
     <CreateBussinesContext.Provider value={{
+      delBusiness,
+      setDelBusiness,
+      deleteBusiness,
       setUpdateDrop,
       updateDrop,
       setItemsData,
