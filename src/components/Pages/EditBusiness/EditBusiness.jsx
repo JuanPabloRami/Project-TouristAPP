@@ -26,6 +26,10 @@ import { EditBusinessContext } from '../../context/EditBusiness/EditBusinessCont
 import { Link, Navigate } from 'react-router-dom'
 import { ConfirmDel } from '../../UI/ModalConfirmDel/ConfirmDel'
 
+//imagenes por defecto
+import portada from '../../images/BussinesCard/portada.png'
+import businessCardDefault from '../../images/Home/businesCardDefault.jpg'
+
 export const EditBusiness = () => {
   const {nameBusiness,setNameBusiness,useItem} = useContext(CreateBussinesContext)
   const {openSocialEdit} = useContext(InformationBusinessContext)
@@ -169,14 +173,28 @@ export const EditBusiness = () => {
     <>
       <div className="account__images">
       <div className="front__page">
-        <img src={imagePort === '' ? url+dataBusiness.imgportada: imagePort} alt='portada'/>
+          {
+            dataBusiness.imgportada === null & imagePort === '' ?
+            <img src={portada} alt="portada" />
+            : imagePort === '' ?
+            <img src={url+dataBusiness.imgportada} alt="portada" />
+            :<img src={imagePort} alt="portada" />
+          }
+        
         <div className="input_img">
           <label  htmlFor='input_file'><Cam/>Editar foto de portada</label>
           <input onChange={uploadImagePortEdit} id='input_file' type='file'/>
         </div>
       </div>
       <div className="profile__img">
-        <img src={imageProfile === '' ? url+dataBusiness.imgperfil: imageProfile} alt='perfil'/>
+          {
+            dataBusiness.imgperfil === null & imageProfile === '' ?
+            <img src={businessCardDefault} alt='perfil' />
+            : imageProfile === '' ?
+            <img src={url+dataBusiness.imgperfil} alt='perfil' />
+            :<img src={imageProfile} alt='perfil' />
+          }
+        
         <div className="input_img_profile">
           <label htmlFor='input_file_profile'><Cam className='icon'/></label>
           <input onChange={uploadImageProfileEdit} id='input_file_profile' type='file'/>

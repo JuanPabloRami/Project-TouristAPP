@@ -185,7 +185,7 @@ const dataIte = {
   const [delBusiness,setDelBusiness] = useState(false)
 
   const deleteBusiness = () =>{
-    axios.delete(`/api/negocio/${idBusiness}/`,
+    axios.delete(`/api/negocio/${dataIte.negocio}/`,
       config
     ).then(function (response){
       console.log(response);

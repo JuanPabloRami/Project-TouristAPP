@@ -35,7 +35,7 @@ export const Products = () => {
         slidesPerView={2}
         spaceBetween={30}
         centeredSlides={true}
-        loop={true}
+        loop={false}
         loopFillGroupWithBlank={true}
         autoplay={{
           delay: 2500,
@@ -49,7 +49,10 @@ export const Products = () => {
       >
         {promotions.map((Element,index)=>(
           <SwiperSlide key={index} id="card_promotions">
+            {Element.imgpromocion !== null ?
             <img class="swiper-img" src={Element.imgpromocion} alt="Imagen1" />
+            : <></>
+            }
           </SwiperSlide>
         ))}
       </Swiper>
