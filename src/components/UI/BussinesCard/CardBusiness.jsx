@@ -13,7 +13,7 @@ import { FreeMode, Pagination, Autoplay } from "swiper";
 
 export const CardBusiness = () => {
   const {locationState} = useContext(ModalContext);
-  const {request} = useContext(UsersContext)
+  const {request,delFilter} = useContext(UsersContext)
 
   const [bussines, setBussines] = useState([]);
 
@@ -32,6 +32,21 @@ export const CardBusiness = () => {
   useEffect(() => {
     showBussines();
   }, []);
+
+  const delFilters = () => {
+    axios.get("/api/negocio/")
+      .then(function (response) {
+        setBussines(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    delFilters();
+  }, [delFilter]);
+
 
   //Me separa el departamento y el municipio
   const city = locationState.split(" ")

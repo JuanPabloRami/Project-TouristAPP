@@ -26,9 +26,13 @@ export const UsersContextProvider = (props) => {
   const [idProfile, setIdProfile] = useState('')
   const [valueCard,setValueCard] = useState(false)
 
+  const[delFilter,setDelFilter] = useState(false)
+
 
   return (
     <UsersContext.Provider value={{
+      delFilter,
+      setDelFilter,
       valueId,
       setValueId,
       users,

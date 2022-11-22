@@ -18,6 +18,8 @@ import { CatalogueContextProvider } from './components/context/Catalogue/Catalog
 import { InformationBusinessContextProvider } from './components/context/InformationBusiness/InformationBusinessContext';
 import { EditBusinessContextProvider } from './components/context/EditBusiness/EditBusinessContext';
 
+import ScrollToTop from './components/ScrollToTop';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -31,6 +33,7 @@ root.render(
                 <RolesContextProvider>
                   <ModalContextProvider>
                       <BrowserRouter>
+                        <ScrollToTop/>
                         <App />
                       </BrowserRouter>
                   </ModalContextProvider>
