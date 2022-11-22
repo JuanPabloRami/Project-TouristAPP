@@ -20,8 +20,8 @@ export const AboutUs = () => {
                 <img className="imgAcerca" src={AcercaDe}></img>
             </div>
             <div className="containerImg">
-                <h3>A cerca de nosotros</h3>
-                <p>Negocios a la vista nació con el único propósito de ofrecer
+                <h3>Acerca de nosotros</h3>
+                <p>TouristApp nació con el único propósito de ofrecer
                    a los emprendedores; grandes y pequeños una plataforma para 
                    listar sus negocios en línea para que el mundo conozca sus 
                    productos o servicios.Nos esforzamos por hacer que la plataforma

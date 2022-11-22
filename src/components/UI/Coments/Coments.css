@@ -72,7 +72,7 @@
 }
 .comments__write input[name='comments']{
   width: 100%;
-  padding: 40px 10px;
+  padding: 40px 68px 40px 10px;
   border: none;
   box-shadow: 0px -5px 10px #0000002c;
   font-size: 1.1rem;
