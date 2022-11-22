@@ -25,13 +25,14 @@ import { TextareaEdit } from '../../UI/TextareaEdit/TextareaEdit'
 import { EditBusinessContext } from '../../context/EditBusiness/EditBusinessContext'
 import { Link, Navigate } from 'react-router-dom'
 import { ConfirmDel } from '../../UI/ModalConfirmDel/ConfirmDel'
+import {BounceLoader} from 'react-spinners'
 
 //imagenes por defecto
 import portada from '../../images/BussinesCard/portada.png'
 import businessCardDefault from '../../images/Home/businesCardDefault.jpg'
 
 export const EditBusiness = () => {
-  const {nameBusiness,setNameBusiness,useItem} = useContext(CreateBussinesContext)
+  const {setLoader,loader,nameBusiness,setNameBusiness,useItem} = useContext(CreateBussinesContext)
   const {openSocialEdit} = useContext(InformationBusinessContext)
   const {description,setDescription} = useContext(CreateBussinesContext)
   const { openItemsEdit,openItems } = useContext(ModalContext);
@@ -46,7 +47,7 @@ export const EditBusiness = () => {
   const [showItems,setShowItems] = useState(false)
   const [updateItem,setUpdateItem] = useState(false)
 
-  const {setAlertTrash,uploadItemModal,setEditItems,nameCategorie,setIdCity,requestEditBusiness,imageProfile,imagePort,setCategoryBuss,setDepartmentBuss,setCityBuss,setEditBusiness,textDes,textNameBuss,setTextNameBuss,uploadImageProfileEdit,uploadImagePortEdit} = useContext(EditBusinessContext)
+  const {setAlertTrash,uploadItemModal,setEditItems,nameCategorie,setIdCity,requestEditBusiness,imageProfile,imagePort,setCategoryBuss,setDepartmentBuss,setCityBuss,setEditBusiness,textDes,textNameBuss,setTextNameBuss,uploadImageProfileEdit,uploadImagePortEdit,setUpdateBusiness,updateBusiness} = useContext(EditBusinessContext)
 
   const url = "https://touristapp-backend-production-c4fa.up.railway.app";
 
@@ -91,6 +92,7 @@ export const EditBusiness = () => {
   },[users])
 
   useEffect(() => {
+    setLoader(true)
     axios.get(`/api/item/?negocio__id=${dataBusiness.id}`, {
         headers: {
           "Content-Type": "application/json",
@@ -99,6 +101,7 @@ export const EditBusiness = () => {
       })
       .then(function (response) {
         if (response.status === 200) {
+          setLoader(false)
           setItemsData(response.data);
           setEditItems(response.data)
           setShowItems(true);
@@ -165,10 +168,14 @@ export const EditBusiness = () => {
     openItems()
   }
 
- if(delBusiness){
-  setDelBusiness(false)
-  return <Navigate to='/'/>
- }
+  if(delBusiness){
+    setDelBusiness(false)
+    return <Navigate to='/'/>
+  }
+  if(updateBusiness){
+    setUpdateBusiness(false)
+    return <Navigate to='/minegocio'/>
+  }
   return (
     <>
       <div className="account__images">
@@ -257,6 +264,16 @@ export const EditBusiness = () => {
               <div className="items__img">
                 {itemsData.map((element, index) => (
                   <div key={index} className="content__img__items">
+                    {loader ? 
+                      <BounceLoader
+                      color="#186556"
+                      size={57}
+                      cssOverride={{
+                        margin: 'auto'
+                      }}
+                    />
+                    :
+                    <>
                     <div className="text">
                       <h3>{element.nombre}</h3>
                       <p>{element.descripcion}</p>
@@ -267,10 +284,11 @@ export const EditBusiness = () => {
                     <button id='del_btn' name='del' value={element.id} onClick={itemsDel}>
                     <Trash name='del'  value={element.id}/>
                       Eliminar</button>
+                    </>
+                    }
                   </div>
                 ))}
-                 <button className="btn_item" onClick={changeRequest}>Agregar item</button>
-                 <ConfirmDel/>
+                <button className="btn_item" onClick={changeRequest}>Agregar item</button>
               </div>
             </div>
           </div>

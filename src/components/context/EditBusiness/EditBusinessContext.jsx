@@ -150,10 +150,15 @@ export const EditBusinessContextProvider = (props) => {
         },
     }
 
+    const [updateBusiness,setUpdateBusiness] = useState(false)
+
     const requestEditBusiness = () =>{
       axios.put(`/api/negocio/${id}/`,
         data,config
       ).then(function (response){
+        if (response.status === 200) {
+          setUpdateBusiness(true)
+        }
       })
       .catch(function (error){
         console.log(error);
@@ -246,6 +251,8 @@ export const EditBusinessContextProvider = (props) => {
 
   return(
     <EditBusinessContext.Provider value={{
+      setUpdateBusiness,
+      updateBusiness,
       changeButton,
       setChangeButton,
       setAlertTrash,alertTrash,

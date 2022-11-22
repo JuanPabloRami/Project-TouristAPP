@@ -84,13 +84,13 @@ export const CardBusiness = () => {
             breakpoints={{
               1800: {
                 width: 1800,
-                slidesPerView: 3,
+                slidesPerView: 4,
               },
               // 
               // when window width is >= 640px
               1200: {
                 width: 1200,
-                slidesPerView: 2,
+                slidesPerView: 3,
               },
               // when window width is >= 768px
               900: {

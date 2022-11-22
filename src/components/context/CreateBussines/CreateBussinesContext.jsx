@@ -165,7 +165,10 @@ const dataIte = {
   negocio:localStorage.getItem('idNegocio')
 }
 
+const [loader,setLoader] = useState(false)
+
   useEffect(()=>{
+    setLoader(true)
     setUseItem(true)
     axios.post('/api/item/',
       dataIte,
@@ -185,7 +188,7 @@ const dataIte = {
   const [delBusiness,setDelBusiness] = useState(false)
 
   const deleteBusiness = () =>{
-    axios.delete(`/api/negocio/${dataIte.negocio}/`,
+    axios.delete(`/api/negocio/${localStorage.getItem('idNegocio')}/`,
       config
     ).then(function (response){
       console.log(response);
@@ -262,6 +265,8 @@ const [itemsData,setItemsData] = useState([])
   
   return (
     <CreateBussinesContext.Provider value={{
+      setLoader,
+      loader,
       delBusiness,
       setDelBusiness,
       deleteBusiness,

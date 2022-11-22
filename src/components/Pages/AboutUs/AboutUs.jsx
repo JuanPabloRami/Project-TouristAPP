@@ -21,20 +21,12 @@ export const AboutUs = () => {
             </div>
             <div className="containerImg">
                 <h3>Acerca de nosotros</h3>
-                <p>TouristApp nació con el único propósito de ofrecer
-                   a los emprendedores; grandes y pequeños una plataforma para 
-                   listar sus negocios en línea para que el mundo conozca sus 
-                   productos o servicios.Nos esforzamos por hacer que la plataforma
-                   sea simple y fácil de utilizar tanto para los propietarios de 
-                   negocios como para los clientes o visitantes.
+                <p>
+El objetivo es brindar un mejor servicio y ahorrar tiempo a la hora de implementar este emprendimiento. Ya que el usuario solo al entrar a nuestro sistema por este medio podrá encontrar todos los sitios de negocios, estadía, entretenimiento y mucho más. Sin necesidad de perder muchísimo tiempo y que se ubiquen de la manera correcta para cumplir sus deseos o necesidades.
+
                    <br></br>
                    <br></br>
 
-                   Somos una empresa totalmente legal y registrada en CNR y Ministerio
-                   de Hacienda, todos nuestros clientes reciben una factura digital de
-                   consumidor final en su correo después de todo el proceso. Si necesitas
-                   crédito fiscal avísanos con anticipación antes de mandarte una factura
-                   de consumidor final, documentos legales autorizados por el Ministerio de Hacienda.
                 </p>
             </div>
         </div>
