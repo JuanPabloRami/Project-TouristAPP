@@ -13,7 +13,7 @@ import { FreeMode, Pagination, Autoplay } from "swiper";
 
 export const CardBusiness = () => {
   const {locationState} = useContext(ModalContext);
-  const {request,delFilter} = useContext(UsersContext)
+  const {request,delFilter,setDelFilter} = useContext(UsersContext)
 
   const [bussines, setBussines] = useState([]);
 
@@ -36,6 +36,9 @@ export const CardBusiness = () => {
   const delFilters = () => {
     axios.get("/api/negocio/")
       .then(function (response) {
+        if (response.status === 200){
+          setDelFilter(false)
+        }
         setBussines(response.data);
       })
       .catch(function (error) {
