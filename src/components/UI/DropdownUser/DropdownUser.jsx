@@ -4,6 +4,7 @@ import { UsersContext } from '../../context/Users/UsersContext'
 import { Link } from 'react-router-dom'
 import axios from '../../api/axios/axios'
 import { SyncLoader } from "react-spinners";
+import { Navigate } from 'react-router-dom'
 //icons
 import {AiOutlineUser as User} from 'react-icons/ai'
 import {MdBusinessCenter as Bussines} from 'react-icons/md'
@@ -44,6 +45,7 @@ export const DropdownUser = () => {
       localStorage.removeItem('typeUser');
       setLoading(false)
       setSwitchNav(false)
+      window.location.reload()
     }, 2000);
   }
 
@@ -90,7 +92,10 @@ export const DropdownUser = () => {
   }
   if(loading){
     return(
+      <>
       <SyncLoader cssOverride={{margin: 'auto','justify-content': 'center'}} color="rgba(155, 170, 177, 1)"size={18}/>
+      <Navigate to='/'/>
+      </>
     )
   }
   else{
@@ -103,27 +108,12 @@ export const DropdownUser = () => {
         <ul className='bussines_drop'>
           {
             showProfile()
-            // api.type_user === 'Emprendedor' && api.negocios === [] ?
-            // <li><Link to='/crear-negocio'>Crear mi negocio</Link></li>
-            // :
-            // <>
-            //   <li><Link to='/perfil'>Ver mi negocio</Link></li>
-            //   <li onClick={logout}>Cerrar sesión</li>
-            // </>
-            // api.type_user === 'Turista' ?
-            //   <li onClick={logout}>Cerrar sesión</li>
-            // :
-            // <>
-            //   <li><Link to='/perfil'>Ver mi negocio</Link></li>
-            //   <li onClick={logout}>Cerrar sesión</li>
-            // </>
           } 
         </ul>
       </div>
-       
       : 
-        console.log("No sirvio login")
-       }
+        null
+      }
     </>
   )
 }

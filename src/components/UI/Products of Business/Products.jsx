@@ -1,33 +1,28 @@
 import React, { useEffect } from "react";
 import "./Products.css";
-
-import Comida from "../../images/Outlet/1.jpg";
-import Ropa from "../../images/Outlet/2.jpg";
-import Zapatos from "../../images/Outlet/3.jpg";
-import Cuatro from "../../images/Outlet/4.png";
-import Cinco from "../../images/Outlet/5.jpg";
-import Seis from "../../images/Outlet/6.jpg";
-
 //import swiper react components
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper";
 import axios from '../../api/axios/axios'
 import { useState } from "react";
+import {ScaleLoader} from 'react-spinners'
 
 export const Products = () => {
 
   const [promotions,setPromotions] = useState([])
+  const [nameBusiness,setNameBusiness] = useState(0)
 
   useEffect (()=>{
     axios.get('api/item/')
     .then(function (response){
-      console.log(response.data);
+      console.log(response);
       setPromotions(response.data)
     })
     .catch(function (error){
       console.log(error);
     })
   },[])
+
   
   return (
     <div className="promotions">
@@ -49,9 +44,23 @@ export const Products = () => {
       >
         {promotions.map((Element,index)=>(
           <SwiperSlide key={index} id="card_promotions">
-            {Element.imgpromocion !== null ?
-            <img class="swiper-img" src={Element.imgpromocion} alt="Imagen1" />
-            : <></>
+            {Element.imgpromocion === null ?
+              <ScaleLoader
+              color="#36d7b7"
+              height={50}
+              margin={6}
+              width={13}
+            />
+            :
+            <>
+              <img class="swiper-img" src={Element.imgpromocion} alt="Imagen1" />
+              <div className="name_business_promotions" disabled>
+                <h3>{Element.precio.toLocaleString('es-CO')} COP</h3>
+              </div>
+              <div className="content_name_business">
+                <h3>{Element.negocionombre}</h3>
+              </div>
+            </>
             }
           </SwiperSlide>
         ))}
