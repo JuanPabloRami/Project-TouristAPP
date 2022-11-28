@@ -40,6 +40,9 @@ export const ShowsBusiness = () => {
   //cambiar el estilo del boton likes cuando el usuario da like
   const [likeStyle,setLikeStyle] = useState(false)
 
+  //variable que habilita o deshabilita el boton de dar like cuando la peticion esta en progreso
+  const [disableLike,setDisableLike] = useState(false)
+
 
   //ver los likes del negocio
   const watchLikes = () =>{
@@ -47,17 +50,31 @@ export const ShowsBusiness = () => {
     axios.get(`/auth/viewsets/like/?negocio=${data.id}`)
     .then(function (response){
       setLikes(response.data.length)
-      
       setLoading(false)
       setUpdateLike(false)
     })
     .catch(function(error){
       console.log(error);
     })
+    
+    
+  }
+
+  const setLikeColor = () =>{
+    axios.get(`/auth/viewsets/like/?negocio=${data.id}&autor=${userId}`)
+      .then(function(response){
+        if (response.data.length >0){
+          setLikeStyle(true)
+        }
+      })
+      .catch(function(error){
+        console.log(error);
+      })
   }
 
   useEffect(()=>{
     watchLikes()
+    setLikeColor()
   },[updateLike,data])
 
 
@@ -77,12 +94,14 @@ export const ShowsBusiness = () => {
   const checkLike=()=>{
     setLoading(true)
     console.log(userId);
+    setDisableLike(true)
     axios.get(`/auth/viewsets/like/?negocio=${data.id}&autor=${userId}`)
     .then(function(response){
       if (response.data.length  === 0){
         addLike()
         
         setUpdateLike(true)
+        
       }
       else if (response.data.length >0){
         
@@ -106,11 +125,12 @@ export const ShowsBusiness = () => {
     .then(function(response){
       setLoading(false)
       setLikeStyle(true)
-
+      setDisableLike(false)
     })
     .catch(function(error){
       setLoading(false)
       console.log(error)
+      setDisableLike(false)
     })
   }
 
@@ -122,9 +142,11 @@ export const ShowsBusiness = () => {
     )
     .then(function(response){
       setLikeStyle(false)
+      setDisableLike(false)
     })
     .catch(function(error){
       console.log(error)
+      setDisableLike(false)
     })
   }
 
@@ -235,10 +257,15 @@ export const ShowsBusiness = () => {
             </div>
           </div>
         </div>
-        <button className={likeStyle ? 'btn_liked_bussines' : 'btn_like_bussines'} onClick={checkLike}>
+        {disableLike === true ? <button className={likeStyle ? 'btn_liked_bussines' : 'btn_like_bussines'} disabled>
           {" "}
           <Heart />{likes}
-        </button>
+        </button> 
+        : <button className={likeStyle ? 'btn_liked_bussines' : 'btn_like_bussines'} onClick={checkLike} >
+        {" "}
+        <Heart />{likes}
+      </button>}
+        
       </div>
       <main>
         <Coments />
