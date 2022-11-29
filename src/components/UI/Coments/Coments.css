@@ -98,6 +98,7 @@
   background-color: #007add;
   border-radius:100%;
   cursor: pointer;
+  border:none;
 }
 .btn__send{
   margin: auto;

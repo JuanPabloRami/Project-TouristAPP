@@ -95,7 +95,7 @@ export const Login = () => {
                 setAlert("open")
                 setTimeout(()=>{
                   setAlert("close")
-                  
+                  window.location.reload()
                 },1500)
                 setTimeout(()=>{
                   closeLogin();
@@ -200,7 +200,7 @@ export const Login = () => {
               </Form>
               
             </div>
-            <Message text="Login exitoso" icon={<Confirmed className="icon__message"/>} message={alert}/>
+            <Message text="¡Te has logueado con exito!" icon={<Confirmed className="icon__message"/>} message={alert}/>
             <Message text={errorText} icon={<ErrorIcon className="icon__error"/>} message={errorAlert}/>
           </div>
           

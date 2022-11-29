@@ -65,6 +65,7 @@ export const Search = () => {
             value={searchBusinnes}
             onChange={handleChange}
             onClick={showValues}
+            autocomplete="off"
           />
           <CloseSearch className="icon_close_search" onClick={closeSearching} />
           <Searching className="icon_search" />

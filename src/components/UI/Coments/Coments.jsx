@@ -4,6 +4,7 @@ import './Coments.css'
 import User from '../../images/Profile/owner.jpg'
 //icons
 import {MdSend as Send} from 'react-icons/md'
+import {ScaleLoader} from 'react-spinners'
 import axios from '../../api/axios/axios'
 import { UsersContext } from '../../context/Users/UsersContext'
 
@@ -29,6 +30,9 @@ export const Coments = () => {
 
   //Uso de contexto
   const {openLogin} = useContext(ModalContext)
+
+  //variable que habilita o deshabilita el boton de enviar comentario cuando la peticion esta en progreso
+  const [disableComment,setDisableComment] = useState(false)
   
 
   // se visualizan los comentarios
@@ -60,19 +64,22 @@ export const Coments = () => {
     comentario:newComment,
     negocio:negocioId,
   }
-  // se crea el comentario
+  // aca se crea el comentario
   const createComment = () =>{
-    setLoading(true)
+    
     console.log(token);
+    
     if (token === null ){
       openLogin()
-      return console.log("nulo asdsad")
+      return console.log("TOKEN nulo asdsad")
     }
     else if (newComment === ""){
       
       return console.log("comentario vacio")
     }
     else{
+      setLoading(true)
+      setDisableComment(true)
       axios.post('/auth/viewsets/comentario/',
         data,
         config
@@ -82,6 +89,8 @@ export const Coments = () => {
         if(response.status === 201){
           showComments()
           setLoading(false);
+          setDisableComment(false)
+          setNewComment("")
           setAlert("open")
           // setErrText("Error al enviar el comentario")
           setTimeout(()=>{
@@ -92,6 +101,7 @@ export const Coments = () => {
       .catch(function (error){
         console.log(error);
         setLoading(false)
+        setDisableComment(false)
         setErrText("error al crear comentario")
         setErrAlert("open")
         setTimeout(()=>{
@@ -100,6 +110,53 @@ export const Coments = () => {
       });
     }
   }
+  //valida si el usuario esta logueado para permitirle o no comentar.
+  const validateCommentInput = () =>{
+    if (token === null) {
+    return(
+        <div className="comments__write">
+          <input name='comments' type='text' placeholder='Inicia sesion para publicar un comentario' disabled />
+        </div>
+        )
+      }
+    else{
+      return(
+      <div className="comments__write">
+        {disableComment === true ? 
+        <input name='comments' type='text' placeholder='Escribe un comentario...'   disabled/>
+        : <input name='comments' type='text' placeholder='Escribe un comentario...'  onChange={(e)=>{
+          setNewComment(e.target.value)
+        }} value={newComment} autocomplete="off" />
+      }
+
+
+        {/* <input name='comments' type='text' placeholder='Escribe un comentario...'  onChange={(e)=>
+          setNewComment(e.target.value)}
+          /> */}
+          
+        
+        {disableComment === true ? 
+          <div className="content__btn__send" disabled>
+            <ScaleLoader
+              color="#ffffff"
+              height={18}
+              width={3}
+            />
+          </div>
+          
+          :
+          <button className="content__btn__send" onClick={createComment}>
+            <Send className='btn__send' />
+          </button>
+        }
+        </div>
+      
+      )
+    }
+  }
+  useEffect(()=>{
+    validateCommentInput()
+  },[token])
 
 
 
@@ -132,19 +189,7 @@ export const Coments = () => {
         }
       </div>
       {
-        token === null ? 
-        <div className="comments__write">
-          <input name='comments' type='text' placeholder='Inicia sesion para publicar un comentario' disabled />
-        </div>
-        :
-        <div className="comments__write">
-          <input name='comments' type='text' placeholder='Escribe un comentario...'  onChange={(e)=>
-            setNewComment(e.target.value)}
-            />
-          <div className="content__btn__send">
-            <Send className='btn__send' onClick={createComment}/>
-          </div>
-        </div>
+        validateCommentInput()
       }  
         
     </div>
