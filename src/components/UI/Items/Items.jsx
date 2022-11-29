@@ -97,8 +97,8 @@ export const Items = () => {
               <div className="ContainerInput">
                 <Field
                   type="file"
-                  id="file"
-                  name="file"
+                  id="fil"
+                  name="fil"
                   onChange={uploadImageItem}
                   required
                 />

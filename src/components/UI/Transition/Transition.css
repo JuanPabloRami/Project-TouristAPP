@@ -1,4 +1,7 @@
-
+.transition_content{
+  width: 100%;
+  height: 100vh;
+}
 .left_transition.close{
   position: fixed;
   width: 50%;
@@ -24,6 +27,13 @@
   transition: transform 1s;
   transform: translateY(-90%);
   z-index: 1000000;
+}
+.loading_transition{
+  position: fixed;
+  z-index: 1000000;
+  top: 64%;
+  left: 45.3%;
+  transform: translateY(-90%);
 }
 .left_transition.open{
   position: fixed;

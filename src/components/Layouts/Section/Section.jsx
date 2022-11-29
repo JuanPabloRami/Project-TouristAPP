@@ -14,15 +14,17 @@ import { UsersContext } from '../../context/Users/UsersContext';
 //icons
 import {BiCategoryAlt as Category} from 'react-icons/bi'
 import { BsGeoAlt as Location } from "react-icons/bs";
+import { BusinessFeatured } from '../../UI/BusinessFeatured/BusinessFeatured';
 
 
 
 export const Section = () => {
   
-  const { OpenModal,locationState} = useContext(ModalContext);
-  const {setRequest,setDelFilter} = useContext(UsersContext)
+  const { OpenModal,locationState,setLocationState} = useContext(ModalContext);
+  const {setRequest,setDelFilter,delFilter} = useContext(UsersContext)
 
   const [category , setCategory] = useState([])
+  const [delNameCategory,setDelNameCategory] = useState(false)
   //Hace la peticion de las categorias
   const ListCategories = () =>{
     axios.get('/api/tipo-negocio/')
@@ -42,8 +44,21 @@ export const Section = () => {
   
   const value = locationState.split(' ')
 
+
   const showBussines = () => {
     setDelFilter(true)
+    setLocationState('')
+    setDelNameCategory(true)
+    setDelNameCategory(false)
+    changeSelected()
+  };
+
+  const changeSelected = (e) => {
+    const text = 'Filtrar por categoria';
+    const $select = document.querySelector('#mySelect');
+    const $options = Array.from($select.options);
+    const optionToSelect = $options.find(item => item.text ===text);
+    optionToSelect.selected = true;
   };
 
 
@@ -57,8 +72,8 @@ export const Section = () => {
               <div className="icon">
                 <Category />
               </div>
-              <select  onChange={valueCategory} name="" id="" onClick={ListCategories} >
-                <option defaultValue="ciudad" selected disabled hidden>Filtra por categoria</option>
+              <select  onChange={valueCategory} name="" id="mySelect" onClick={ListCategories} >
+                <option defaultValue="ciudad" selected disabled hidden>Filtrar por categoria</option>
                 {category.map((Element,index)=>(
                     <option key={index} defaultValue={Element.nombre}>{Element.nombre}</option>
                   ))}
@@ -69,6 +84,7 @@ export const Section = () => {
         <CardBusiness/>
         <Title text='Promociones' clas="pm" icon={<Tag id='tag' />}/>
         <Products/>
+        <BusinessFeatured/>
       </div>
       <div className="Add">
         <AddBusiness/>

@@ -102,13 +102,13 @@ export const ModalSocial = () => {
   return (
     <Formik
     initialValues={{
-      ubicacion:"",
-      horaEntrada:"",
-      horaSalida:"",
-      contactFacebook:"",
+      ubicacion:" ",
+      horaEntrada:"00:00",
+      horaSalida:"00:00",
+      contactFacebook:" ",
       contactInstagram:null,
       contactWEB:null,
-      contactEmail:''
+      contactEmail:' '
     }}
 
     validate={()=>{

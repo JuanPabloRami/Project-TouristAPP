@@ -130,6 +130,7 @@ export const ModalContextProvider = (props) => {
       openItemsEdit,
       closeItemsEdit,
       setItemsEdit,
+      setLocationState
     }}>
       {props.children}
  

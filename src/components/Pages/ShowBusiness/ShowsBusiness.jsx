@@ -16,6 +16,8 @@ import { BarLoader } from "react-spinners";
 //imagenes por defecto
 import portada from '../../images/BussinesCard/portada.png'
 import businessCardDefault from '../../images/Home/businesCardDefault.jpg'
+import { Transition } from "../../UI/Transition/Transition";
+import { TransitionsContext } from "../../context/Transitions/TransitionsContext";
 
 export const ShowsBusiness = () => {
   const {users,idBusiness,setNegocioId,userId} = useContext(UsersContext)
@@ -90,6 +92,8 @@ export const ShowsBusiness = () => {
     negocio:data.id,
   }
 
+  const {transition,setTransition} = useContext(TransitionsContext)
+
   //comprobar si el usuario ya dio like a su negocio para o dar like o eliminarlo.
   const checkLike=()=>{
     setLoading(true)
@@ -152,6 +156,7 @@ export const ShowsBusiness = () => {
 
   //carga los datos del negocio
   useEffect(()=>{
+    setTransition(true)
     setLoading(true);
     axios.get(`/api/negocio/?id__contains=${localStorage.getItem('value')}`)
     .then(function (response){
@@ -177,9 +182,11 @@ export const ShowsBusiness = () => {
           setDataItems(response.data);
           setShowItems(true);
           setLoading(false);
+          setTransition(false)
   }})
       .catch(function (error) {
         console.log(error);
+        setTransition(false)
       });
   },[data]);
 
@@ -293,6 +300,7 @@ export const ShowsBusiness = () => {
           </div>
         ) : null}
       </main>
+      <Transition/>
     </>
   );
 };

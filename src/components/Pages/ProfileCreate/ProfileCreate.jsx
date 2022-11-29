@@ -8,7 +8,6 @@ import {Coments} from '../../UI/Coments/Coments'
 import { CreateBussines } from '../../UI/CreateBussines/CreateBussines'
 import { SocialNetworks } from '../../UI/SocialNetworks/SocialNetworks'
 //icons
-import {AiFillLike as Heart} from 'react-icons/ai'
 import {BsCameraFill as Cam} from 'react-icons/bs'
 import { useContext } from 'react'
 import { CreateBussinesContext } from '../../context/CreateBussines/CreateBussinesContext'
@@ -54,7 +53,6 @@ export const ProfileCreate = () => {
         </div>
       </div>
       <SocialNetworks/>
-      {/* <button className='btn_like_bussines'> <Heart/> 100</button> */}
       {showBtnItem ?
         <></>
         :

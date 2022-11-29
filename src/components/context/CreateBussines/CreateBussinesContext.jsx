@@ -109,6 +109,7 @@ const config = {
 }
 
 const bussinesRequest = () =>{
+  
   setLoading(true)
   axios.post('/api/negocio/',
     data,
@@ -306,7 +307,6 @@ const [itemsData,setItemsData] = useState([])
       hiddenItems,
       showBtnItem,
       setDataItems,
-      dataItems,
       idBusiness,
       hiddenBtn,
       useItem,
