@@ -30,6 +30,9 @@ import { UsersContext } from "../../context/Users/UsersContext";
 import { TransitionsContext } from "../../context/Transitions/TransitionsContext";
 import {BsFillCameraFill as Cam} from 'react-icons/bs'
 
+//GoogleAnalytics
+import ReactGA from 'react-ga4';
+
 
 export const Register = () => {
   let [confirm,setConfirm] = useState("");
@@ -120,6 +123,15 @@ export const Register = () => {
       };
     });
   };
+    //GoogleAnalytics
+    const clickRegister = ()=>{
+      ReactGA.event({
+        'category': 'register',
+        'action': 'clickRegister',
+        'label':'label'
+        
+      });
+    }
 
   return (
     <>
@@ -194,6 +206,7 @@ export const Register = () => {
               setAlert("open")
                 setTimeout(()=>{
                   setAlert("close")
+                  clickRegister()
                   
                 },1500)
               setTimeout(() =>{
