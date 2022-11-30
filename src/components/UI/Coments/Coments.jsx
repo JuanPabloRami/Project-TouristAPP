@@ -10,7 +10,8 @@ import { UsersContext } from '../../context/Users/UsersContext'
 
 import { ModalContext } from '../../context/Modal/ModalContext'
 
-
+//url base del backend con guion al final
+const url = "https://touristapp-backend-production-c4fa.up.railway.app/files/"
 
 // token de acceso
 const token = localStorage.getItem('token')
@@ -33,6 +34,8 @@ export const Coments = () => {
 
   //variable que habilita o deshabilita el boton de enviar comentario cuando la peticion esta en progreso
   const [disableComment,setDisableComment] = useState(false)
+
+
   
 
   // se visualizan los comentarios
@@ -164,6 +167,7 @@ export const Coments = () => {
     <div className="comments">
       <h2>Comentarios</h2>
       <div className="comments__bussines">
+        
         {
           comments.length >0  ?
             comments.map((e,index)=>(
@@ -171,12 +175,11 @@ export const Coments = () => {
                 <div className="comment__img_user"></div>
                 <div className="comment__letters">
                   {
-                    e.autorImg === null ?
-                    <img src={e.autorImg} alt='Usuario'/>
+                    e.autorImg !== "" ?
+                    <img src={url +e.autorImg} alt='Usuario'/>
                     :
                     <img src={User} alt='Usuario'/>
                   }
-                  
                   <h3>{e.autorNombre} {e.autorApellido}</h3>
                   <p>{e.comentario}</p>
                 </div>
@@ -188,10 +191,24 @@ export const Coments = () => {
             </div>
         }
       </div>
+      
       {
         validateCommentInput()
       }  
-        
+      {
+        disableComment === true ?
+      <div className="commentLoading">
+          <div>
+            <ScaleLoader
+              color="#ffffff"
+              height={18}
+              width={3}
+            />
+            <p>Cargando</p>
+          </div>
+      </div>
+      :null
+      }
     </div>
   )
 }
