@@ -65,14 +65,17 @@ export const DropdownUser = () => {
   
     const showProfile = () =>{
       if(api.type_user === 'Emprendedor' && api.negocios.length <= 0){
-        return (<><li><Link to='/crear-negocio'>Crear mi negocio</Link></li>
-                <li><Link to='/miperfil'> Mi perfil </Link></li>
-                <li onClick={logout}>Cerrar sesión</li></>)
+        return (
+          <>
+            <Link to='/minegocio'><li>Mi negocio</li></Link>
+            <Link to='/miperfil'><li>Mi perfil</li></Link>
+            <li onClick={logout}>Cerrar sesión</li>
+          </>)
       }else if(api.type_user === 'Emprendedor' && api.negocios.length > 0)
         return (
           <>
-          <li><Link to='/minegocio'>Mi negocio</Link></li>
-          <li><Link to='/miperfil'> Mi perfil </Link></li>
+          <Link to='/minegocio'><li>Mi negocio</li></Link>
+          <Link to='/miperfil'><li>Mi perfil</li></Link>
           <li onClick={logout}>Cerrar sesión</li>
           </>)
     return(

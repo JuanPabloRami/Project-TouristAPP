@@ -43,6 +43,14 @@
   background-color: #0373b4;
   cursor: pointer;
 }
+.bussines_drop > a > li{
+  padding: 15px;
+  position: relative;
+}
+.bussines_drop > a:hover > li{
+  transition: all .4s;
+  background-color: #083864;
+}
 .dropdown_user:hover > ul > li{
   padding: 15px;
   position: relative;
@@ -56,7 +64,7 @@
 }
 .dropdown_user:hover > .bussines_drop{
   display: block;
-  bottom: -15px;
+  bottom: -12px;
   transform: translateY(90%);
   width: 100%;
   overflow:visible;

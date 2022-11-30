@@ -7,10 +7,14 @@ import './MyProfile.css'
 //icons
 import {MdEmail as Email} from 'react-icons/md'
 import {FaUserAlt as User} from 'react-icons/fa'
+import { BsGeoAlt as Location } from "react-icons/bs";
+import {BiCategoryAlt as Category} from 'react-icons/bi'
 //components
 import { Cards } from '../../UI/Cards/Cards';
 //imagen
 import UserImg from '../../images/Profile/owner.jpg'
+import businessCardDefault from '../../images/Home/businesCardDefault.jpg'
+import { Link } from 'react-router-dom';
  
 export const MyProfile = () => {
 
@@ -62,18 +66,21 @@ export const MyProfile = () => {
       </header>
       <main>
         {business.map((element, index) => (
-          <div key={index}>
-            <Cards
-              image={url+element.imgperfil}
-              owner={element.imgperfil}
-              description={element.descripcion}
-              title={element.nombre}
-              id={element.id}
-              ciudad={element.ciudad.nombre}
-              departamento={element.ciudad.departamento.nombre}
-              category={element.tipo_Negocio.nombre}
-            />
-          </div>
+           <div key={index} className="card_business">
+           {
+             element.imgperfil === null ?
+             <img  src={businessCardDefault} alt="img" />
+             :
+             <img src={url+element.imgperfil} alt="img" />
+           }
+             <div className="informacion_business">
+               <h2>{element.nombre}</h2>
+                 <p><Location color="red" />{element.ciudad.nombre} - {element.ciudad.departamento.nombre}</p>
+                 <p className="category_p"> <Category color='#8a9401' />{element.tipo_Negocio.nombre}</p>
+               <p>{element.descripcion}</p>
+               <Link to='/minegocio'><button>Ver más </button></Link>
+             </div>
+           </div>
         ))}
       </main>
     </div>

@@ -51,9 +51,7 @@ function App() {
         </ProtectedRouteCreateBusiness>
         }/>
         <Route path='/miperfil' element={
-        <ProtectedRouteCreateBusiness>
           <MyProfile/>
-        </ProtectedRouteCreateBusiness>
         }/>
         <Route path={`/negocio/${value}`} element={<ShowsBusiness/>}/>
         <Route path='/login' element={<Login/>}/>
