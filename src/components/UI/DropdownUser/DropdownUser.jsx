@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom'
 import axios from '../../api/axios/axios'
 import { SyncLoader } from "react-spinners";
 import { Navigate } from 'react-router-dom'
+import UserImg from '../../images/Profile/owner.jpg'
 //icons
-import {AiOutlineUser as User} from 'react-icons/ai'
-import {MdBusinessCenter as Bussines} from 'react-icons/md'
+import {BiDownArrow as Arrow} from 'react-icons/bi'
 import { TransitionsContext } from '../../context/Transitions/TransitionsContext'
 import { CreateBussinesContext } from '../../context/CreateBussines/CreateBussinesContext'
 export const DropdownUser = () => {
@@ -19,6 +19,8 @@ export const DropdownUser = () => {
   //trae el token del usuario
   const token = localStorage.getItem('token')
   const {updateDrop} = useContext(CreateBussinesContext)
+
+  const url = 'https://touristapp-backend-production-c4fa.up.railway.app' 
 
   const getUser = () =>{
     axios.get('/api/misnegocios/',{
@@ -60,36 +62,31 @@ export const DropdownUser = () => {
      return changeState()
   }
 
-
   
     const showProfile = () =>{
       if(api.type_user === 'Emprendedor' && api.negocios.length <= 0){
         return (<><li><Link to='/crear-negocio'>Crear mi negocio</Link></li>
+                <li><Link to='/miperfil'> Mi perfil </Link></li>
                 <li onClick={logout}>Cerrar sesión</li></>)
       }else if(api.type_user === 'Emprendedor' && api.negocios.length > 0)
         return (
           <>
-          <li><Link to='/minegocio'>Ver mi negocio</Link></li>
+          <li><Link to='/minegocio'>Mi negocio</Link></li>
+          <li><Link to='/miperfil'> Mi perfil </Link></li>
           <li onClick={logout}>Cerrar sesión</li>
           </>)
     return(
-      <li onClick={logout}>Cerrar sesión</li>
+      <>
+        <li><Link to='/miperfil'> Mi perfil </Link></li>
+        <li onClick={logout}>Cerrar sesión</li>
+      </>
       )
     }
-
 
   useEffect(()=>{
     getUser()
   },[updateDrop])
 
-  //icono dependiente del tipo de usuario
-  const typeUser = () =>{
-    if (api.type_user === "Turista"){
-      return <User className='icon'/> 
-    }else{
-      return <Bussines className='icon'/> 
-    }
-  }
   if(loading){
     return(
       <>
@@ -104,7 +101,12 @@ export const DropdownUser = () => {
     {loading&&  <SyncLoader cssOverride={{margin: 'auto','justify-content': 'center'}} color="rgba(155, 170, 177, 1)"size={18}/>}
       {api ?
       <div className="dropdown_user">
-        <span>{typeUser()} {api.first_name} {api.last_name}</span>
+        {api.image === null ?
+          <img className='img_user' src={UserImg} alt='imgUser'/> 
+        :
+          <img className='img_user' src={url+api.image} alt='imgUser'/> 
+        }
+        <span>{api.first_name} {api.last_name} <Arrow className='icon_drop'/></span>
         <ul className='bussines_drop'>
           {
             showProfile()

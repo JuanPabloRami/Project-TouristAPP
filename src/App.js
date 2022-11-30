@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import {Home} from './components/Pages/Home/Home';
 import {Register} from './components/Layouts/Register/Register';
 import {Login} from './components/Layouts/Login/Login';
-import { MyProfile } from './components/Pages/MyProfile/MyProfile';
+import { MyBusiness } from './components/Pages/MyBusiness/MyBusiness';
 import {AboutUs} from './components/Pages/AboutUs/AboutUs';
 import { ProfileCreate } from './components/Pages/ProfileCreate/ProfileCreate';
 import {Categories} from './components/Pages/Categories/Categories';
@@ -13,6 +13,7 @@ import { TermsAndConditions } from './components/Pages/TermsAndConditions/TermsA
 import { PrivacyPolicy } from './components/Pages/TermsAndConditions/PrivacyPolicy';
 import {ShowsBusiness} from './components/Pages/ShowBusiness/ShowsBusiness'
 import {EditBusiness} from './components/Pages/EditBusiness/EditBusiness'
+import { MyProfile } from './components/Pages/MyProfile/MyProfile';
 //componentes
 import {Navbar} from './components/Layouts/Navbar/Navbar';
 import {Footer} from './components/Layouts/Footer/Footer'
@@ -20,6 +21,7 @@ import {Footer} from './components/Layouts/Footer/Footer'
 import {ProtectedRouteCreateBusiness} from './components/ProtectRouter/ProtectedRoute';
 import { useContext, useEffect, useState } from 'react';
 import { UsersContext } from './components/context/Users/UsersContext';
+
 
 /*https://www.youtube.com/watch?v=emiCMV-oVoE*/
 function App() {
@@ -44,6 +46,11 @@ function App() {
         }/>
         <Route path='/register' element={<Register/>} />
         <Route path='/minegocio' element={
+        <ProtectedRouteCreateBusiness>
+          <MyBusiness/>
+        </ProtectedRouteCreateBusiness>
+        }/>
+        <Route path='/miperfil' element={
         <ProtectedRouteCreateBusiness>
           <MyProfile/>
         </ProtectedRouteCreateBusiness>

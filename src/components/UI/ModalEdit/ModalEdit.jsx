@@ -110,6 +110,10 @@ export const ModalEdit = () => {
   const hourClo = (e) =>{
     setHourClose(e.target.value)
   }
+  const closeModal = ()=>{
+    closeSocialEdit()
+    locationChange()
+  }
 
 
   return (
@@ -142,13 +146,13 @@ export const ModalEdit = () => {
               <label>Ubicación:</label>
               <div className="content_select">
                 <select defaultValue='departamento' name="Departamento" onClick={locationDepartment}>
-                  <option defaultValue="depa" selected disabled hidden>{cityBuss}</option>
+                  <option defaultValue="depa" selected disabled hidden>{departmentBuss}</option>
                   {department.map((Element,index)=>(
                     <option key={index} defaultValue={Element.nombre}>{Element.nombre}</option>
                   ))}
                 </select >
                 <select defaultValue='municipios' name="Municipios" onChange={locationCity}>
-                  <option defaultValue="city" selected disabled hidden>{departmentBuss}</option>
+                  <option defaultValue="city" selected disabled hidden>{cityBuss}</option>
                   {citys.map((Element,index)=>(
                     <option key={index} defaultValue={Element.nombre}>{Element.nombre}</option>
                   ))}
@@ -242,7 +246,7 @@ export const ModalEdit = () => {
               ))}
             </select>
             </div>
-            <button className='btn' onClick={locationChange}>Guardar informacion</button>
+            <button className='btn' onClick={closeModal}>Guardar informacion</button>
           </Form>
         </div>
       </div>

@@ -56,6 +56,7 @@ export const CardBusiness = () => {
 
   //Hace el filtado de departamento y municipios para los negocios
   useEffect(()=>{
+    if(request === '' && locationState !== ''){
       axios.get(`/api/negocio/?ciudad__nombre__contains=${city[0]}&ciudad__departamento__nombre__contains=${city[2]}`)
       .then(function (response) {
         setBussines(response.data);
@@ -63,18 +64,35 @@ export const CardBusiness = () => {
       .catch(function (error) {
         console.log(error);
       })
+    }
   },[locationState])
 
+  //hace el filtro por categoria
   useEffect(()=>{
-    axios.get(`api/negocio/?tipo_Negocio__nombre__contains=${localStorage.getItem('categoryFilter')}`)
-    .then(function(response) {
-      console.log(response);
-      setBussines(response.data)
-    })
-    .catch(function(error){
-        console.log(error)
-    })
+    if(request !== '' && locationState === ''){
+      axios.get(`api/negocio/?tipo_Negocio__nombre__contains=${localStorage.getItem('categoryFilter')}`)
+      .then(function(response) {
+        console.log(response);
+        setBussines(response.data)
+      })
+      .catch(function(error){
+          console.log(error)
+      })
+    }
   },[request])
+
+  useEffect(()=>{
+    if(request !== '' && locationState !== ''){
+      axios.get(`api/negocio/?tipo_Negocio__nombre__contains=${localStorage.getItem('categoryFilter')}&ciudad__departamento__nombre__contains=${city[2]}&ciudad__nombre__contains=${city[0]}`)
+      .then(function(response) {
+        console.log(response);
+        setBussines(response.data)
+      })
+      .catch(function(error){
+          console.log(error)
+      })
+    }
+  },[request,locationState])
 
   return (
     <>

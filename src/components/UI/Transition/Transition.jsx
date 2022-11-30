@@ -21,15 +21,15 @@ export const Transition = () => {
       {transition&& 
       <>
         <div className="transition_content">
-          <img className={`logo ${transition ? 'open' : 'close'}`} src={Tourist} alt ="logo_transition"/>
-          <div className={`left_transition ${transition ? 'open' : 'close'}`}></div>
-          <div className={`right_transition ${transition ? 'open' : 'close'}`}></div>          
-          <ScaleLoader className='loading_transition'
-            color="#2180a8"
-            height={37}
-            loading
-            width={7}
-          />
+          <div className="content_logo_loading">
+            <img className='logo' src={Tourist} alt ="logo_transition"/>
+            <ScaleLoader className='loading_transition'
+              color="#2180a8"
+              height={37}
+              loading
+              width={7}
+            />
+          </div>       
         </div>
       </>
       }

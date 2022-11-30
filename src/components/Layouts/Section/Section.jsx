@@ -15,6 +15,7 @@ import { UsersContext } from '../../context/Users/UsersContext';
 import {BiCategoryAlt as Category} from 'react-icons/bi'
 import { BsGeoAlt as Location } from "react-icons/bs";
 import { BusinessFeatured } from '../../UI/BusinessFeatured/BusinessFeatured';
+import { BusinessNews } from '../../UI/BusinessNews/BusinessNews';
 
 
 
@@ -65,23 +66,27 @@ export const Section = () => {
   return (
     <section>
       <div className="content__cards">
-        <Title text={`${value[0] === '' ? 'Negocios': `Negocios de ${value[0]}`}`} clas="ng" icon={<Bag id='bag' />} />
-        <div className="filterSection">
-          <button className='location_filter' onClick={OpenModal}> <Location color="red" className="logo-location"/>{locationState === '' ? 'Filtra por ubicación': locationState }</button>
-            <div className="icon_position">
-              <div className="icon">
-                <Category />
+        <div className="content_business">
+          <Title text={`${value[0] === '' ? 'Negocios': `Negocios de ${value[0]}`}`} clas="ng" icon={<Bag id='bag' />} />
+          <div className="filterSection">
+            <button className='location_filter' onClick={OpenModal}> <Location color="red" className="logo-location"/>{locationState === '' ? 'Filtra por ubicación': locationState }</button>
+              <div className="icon_position">
+                <div className="icon">
+                  <Category />
+                </div>
+                <select  onChange={valueCategory} name="" id="mySelect" onClick={ListCategories} >
+                  <option defaultValue="ciudad" selected disabled hidden>Filtrar por categoria</option>
+                  {category.map((Element,index)=>(
+                      <option key={index} defaultValue={Element.nombre}>{Element.nombre}</option>
+                    ))}
+                </select>
               </div>
-              <select  onChange={valueCategory} name="" id="mySelect" onClick={ListCategories} >
-                <option defaultValue="ciudad" selected disabled hidden>Filtrar por categoria</option>
-                {category.map((Element,index)=>(
-                    <option key={index} defaultValue={Element.nombre}>{Element.nombre}</option>
-                  ))}
-              </select>
-            </div>
-            <button onClick={showBussines} className='button_del'>Eliminar los filtros</button>
+              <button onClick={showBussines} className='button_del'>Eliminar los filtros</button>
+          </div>
+          <CardBusiness/>
         </div>
-        <CardBusiness/>
+        <Title text='Los más nuevos' clas="pm" icon={<Tag id='tag' />}/>
+        <BusinessNews/>
         <Title text='Promociones' clas="pm" icon={<Tag id='tag' />}/>
         <Products/>
         <BusinessFeatured/>

@@ -3,13 +3,27 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50%;
-  background-color: #0373b4;
-  padding: 10px 0px;
+  width: auto;
+  gap: 10px;
+  padding: 5px 20px;
   border-radius: 10px;
   color: #fff;
+  font-size: 1.1rem;
   text-align: center;
   cursor: pointer;
+}
+.dropdown_user > span{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.img_user{
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  margin-left: 5px;
+  object-fit: cover;
 }
 .dropdown_user > ul {
   display: none;
@@ -35,14 +49,14 @@
 }
 .dropdown_user > ul > li:hover{
   transition: all .4s;
-  color: #a7a7a7;
+  background-color: #083864;
 }
 .dropdown_user  .icon{
   font-size: 1.1rem;
 }
 .dropdown_user:hover > .bussines_drop{
   display: block;
-  bottom: -4px;
+  bottom: -15px;
   transform: translateY(90%);
   width: 100%;
   overflow:visible;

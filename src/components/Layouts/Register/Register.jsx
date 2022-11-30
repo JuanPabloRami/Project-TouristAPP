@@ -28,6 +28,7 @@ import { Link } from "react-router-dom";
 import axios from "../../api/axios/axios";
 import { UsersContext } from "../../context/Users/UsersContext";
 import { TransitionsContext } from "../../context/Transitions/TransitionsContext";
+import {BsFillCameraFill as Cam} from 'react-icons/bs'
 
 
 export const Register = () => {
@@ -96,6 +97,29 @@ export const Register = () => {
   const [alert,setAlert] = useState("close")
   const [errorAlert,setErrAlert] = useState("close")
   const [errorText,setErrText] = useState("Ha ocurrido un error")
+  const [fileImage,setFileImage] = useState('')
+
+  //convertidor de imagen de registro
+  const uploadImage = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertImage(file);
+    setFileImage(base64);
+  };
+
+  const convertImage = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
 
   return (
     <>
@@ -160,6 +184,7 @@ export const Register = () => {
           axios.post('/auth/signup/',{
             first_name:name,
             last_name,email,username,password,
+            image: fileImage,
             type_user: typeUser
           })
           .then(function (response){
@@ -322,6 +347,17 @@ export const Register = () => {
                     <ErrorMessage name="confirmPassword" component={() => (<p>{errors.confirmPassword}</p>)} />
                   </div>
                 </div>
+
+                <div  className="content_file">
+                  <label htmlFor="imgFile"><Cam/> Sube tu foto de perfil</label>
+                  <Field
+                    type="file"
+                    id="imgFile"
+                    name='imgFile'
+                    onClick={uploadImage}
+                  />
+                </div>
+
                 <div className="ContainerCheckbox">
                   <div className="checkboxLabel">
                     <Field 

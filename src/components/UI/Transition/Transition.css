@@ -1,62 +1,23 @@
 .transition_content{
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100vh;
-}
-.left_transition.close{
-  position: fixed;
-  width: 50%;
-  height: 100vh;
   background-color: #fff;
-  transition: transform 1s;
-  transform: translateX(-101%);
-  z-index: 1000000
+  z-index: 10000000;
 }
-.right_transition.close{
-  position: fixed;
-  width: 50%;
-  height: 100vh;
-  background-color: #fff;
-  transition: transform 1s;
-  transform: translateX(200%);
-  z-index: 1000000
-}
-.logo.close{
-  position: fixed;
+
+.content_logo_loading{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 200px;
-  height: 200px;
-  transition: transform 1s;
-  transform: translateY(-90%);
-  z-index: 1000000;
+  height: auto;
 }
-.loading_transition{
-  position: fixed;
-  z-index: 1000000;
-  top: 64%;
-  left: 45.3%;
-  transform: translateY(-90%);
-}
-.left_transition.open{
-  position: fixed;
-  width: 50%;
-  height: 100vh;
-  background-color: #fff;
-  transition: transform 1s;
-  transform: translateX(0%);
-}
-.right_transition.open{
-  position: fixed;
-  width: 50%;
-  height: 100vh;
-  background-color: #fff;
-  transition: transform 1s;
-  transform: translateX(100%);
-}
-.logo.open{
-  position: fixed;
-  width: 200px;
-  height: 200px;
-  top: 38%;
-  right: 44%;
-  transition: transform 1s;
-  z-index: 1000000;
+.content_logo_loading > .logo{
+  width: 100%;
+  height: 100%;
 }

@@ -182,11 +182,15 @@ export const ShowsBusiness = () => {
           setDataItems(response.data);
           setShowItems(true);
           setLoading(false);
-          setTransition(false)
+          setTimeout(() => {
+            setTransition(false)
+          }, 1000);
   }})
       .catch(function (error) {
         console.log(error);
-        setTransition(false)
+        setTimeout(() => {
+          setTransition(false)
+        }, 1000);
       });
   },[data]);
 

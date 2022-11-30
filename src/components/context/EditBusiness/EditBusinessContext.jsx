@@ -223,8 +223,8 @@ export const EditBusinessContextProvider = (props) => {
   
     const dataItems ={
       nombre: nameItem === '' ? editItems.nombre : nameItem,
-      descripcion:  desItem === '' ? editItems.nombre : desItem,
-      precio: priceItem === 0 ? editItems.nombre : priceItem,
+      descripcion:  desItem === '' ? editItems.descripcion : desItem,
+      precio: priceItem === 0 ? editItems.precio : priceItem,
       nuevo: true,
       imagen: imgItem === '' ? editItems.imagen : imgItem,
       negocio: id
