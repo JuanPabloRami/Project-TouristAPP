@@ -40,12 +40,15 @@ export const Coments = () => {
 
   // se visualizan los comentarios
   const showComments =()=>{
+    setDisableComment(true)
     axios.get(`/auth/viewsets/comentario/?negocio=${negocioId}`)
     .then(function (response) {
       setComments(response.data)
+      setDisableComment(false)
     })
     .catch(function (error) {
       console.log(error);
+      setDisableComment(false)
     })
   }
   useEffect(()=>{
@@ -105,7 +108,7 @@ export const Coments = () => {
         console.log(error);
         setLoading(false)
         setDisableComment(false)
-        setErrText("error al crear comentario")
+        // setErrText("error al crear comentario")
         setErrAlert("open")
         setTimeout(()=>{
           setErrAlert("close")
