@@ -13,7 +13,7 @@ export const Products = () => {
   const [nameBusiness,setNameBusiness] = useState(0)
 
   useEffect (()=>{
-    axios.get('api/item/')
+    axios.get('api/item/?nuevo=true')
     .then(function (response){
       console.log(response);
       setPromotions(response.data)
@@ -22,7 +22,6 @@ export const Products = () => {
       console.log(error);
     })
   },[])
-
   
   return (
     <div className="promotions">
@@ -35,6 +34,8 @@ export const Products = () => {
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+          waitForTransition: true,
         }}
         pagination={{
           clickable: true,
@@ -44,15 +45,6 @@ export const Products = () => {
       >
         {promotions.map((Element,index)=>(
           <SwiperSlide key={index} id="card_promotions">
-            {Element.imgpromocion === null ?
-              <ScaleLoader
-              color="#36d7b7"
-              height={50}
-              margin={6}
-              width={13}
-            />
-            :
-            <>
               <img class="swiper-img" src={Element.imgpromocion} alt="Imagen1" />
               <div className="name_business_promotions" disabled>
                 <h3>{Element.precio.toLocaleString('es-CO')} COP</h3>
@@ -60,8 +52,6 @@ export const Products = () => {
               <div className="content_name_business">
                 <h3>{Element.negocionombre}</h3>
               </div>
-            </>
-            }
           </SwiperSlide>
         ))}
       </Swiper>

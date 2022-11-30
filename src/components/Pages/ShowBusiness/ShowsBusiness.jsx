@@ -290,7 +290,10 @@ export const ShowsBusiness = () => {
               <h2>Catalogo</h2>
               <div className="items__img">
                 {dataItems.map((element, index) => (
-                  <div key={index} className="content__img__items">
+                  <>
+                    {element.nuevo === true ?
+                    <div key={index} className="content__img__items">
+                    <div className="promotion_item"><p>En promoción</p></div>
                     <div className="text">
                       <h3>{element.nombre}</h3>
                       <p>{element.descripcion}</p>
@@ -298,6 +301,18 @@ export const ShowsBusiness = () => {
                     </div>
                     <img key={index} src={element.imagen} alt="Item imagen" />
                   </div>
+                    :
+                    <div key={index} className="content__img__items">
+                    <div className="text">
+                      <h3>{element.nombre}</h3>
+                      <p>{element.descripcion}</p>
+                      <p id="price"> {element.precio} COP</p>
+                    </div>
+                    <img key={index} src={element.imagen} alt="Item imagen" />
+                  </div>
+                  }
+                  </>
+                  
                 ))}
               </div>
             </div>

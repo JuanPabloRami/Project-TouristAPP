@@ -160,7 +160,7 @@ const dataIte = {
   nombre:dataItems.nombre,
   descripcion:dataItems.descripcion,
   precio:dataItems.precio,
-  nuevo:true,
+  nuevo:dataItems.nuevo,
   imagen:dataItems.itemImage,
   imgpromocion:dataItems.promotionImage,
   negocio:localStorage.getItem('idNegocio')

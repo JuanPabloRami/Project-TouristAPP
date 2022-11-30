@@ -22,7 +22,7 @@
   border-radius: 10px;
   width: 80%;
 }
-.form_items button{
+.form_items > .btn{
   border-radius: 10px;
   background-color: #0373b4;
   box-shadow: 0px 0px 4px #0373b4;
@@ -76,5 +76,23 @@
   position: absolute;
   left: 22px;
   top: -22px;
+  font-size: 1.1rem;
+}
+.promotion_items{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+  margin: 20px 0px 20px 40px;
+}
+.promotion_items > label{
+  font-size: 1.2rem;
+}
+.radio{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
   font-size: 1.1rem;
 }

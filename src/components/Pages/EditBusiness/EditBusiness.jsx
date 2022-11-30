@@ -1,12 +1,7 @@
 import { useContext, useEffect,useState } from 'react'
-//Imagenes
-import Account from '../../images/Profile/profile.jpg'
-import FrontPage from '../../images/Profile/frontPage.jpg'
 //componentes
 import {Coments} from '../../UI/Coments/Coments'
-import { Textarea } from '../../UI/Textarea/Textarea'
 //icons
-import {AiFillLike as Heart} from 'react-icons/ai'
 import {BsCameraFill as Cam} from 'react-icons/bs'
 import {FaFacebook as IconFacebook,} from "react-icons/fa";
 import {MdEmail as IconEmail} from 'react-icons/md'
@@ -17,14 +12,12 @@ import {BsTrash as Trash} from 'react-icons/bs'
 //contextos
 import { CreateBussinesContext } from '../../context/CreateBussines/CreateBussinesContext'
 import { InformationBusinessContext } from '../../context/InformationBusiness/InformationBusinessContext'
-import { CatalogueContext } from '../../context/Catalogue/CatalogueContext'
 import { ModalContext } from '../../context/Modal/ModalContext'
 import axios from '../../api/axios/axios'
 import { UsersContext } from '../../context/Users/UsersContext'
 import { TextareaEdit } from '../../UI/TextareaEdit/TextareaEdit'
 import { EditBusinessContext } from '../../context/EditBusiness/EditBusinessContext'
-import { Link, Navigate } from 'react-router-dom'
-import { ConfirmDel } from '../../UI/ModalConfirmDel/ConfirmDel'
+import { Navigate } from 'react-router-dom'
 import {BounceLoader} from 'react-spinners'
 
 //imagenes por defecto
@@ -176,6 +169,8 @@ export const EditBusiness = () => {
     setUpdateBusiness(false)
     return <Navigate to='/minegocio'/>
   }
+
+  console.log(itemsData);
   return (
     <>
       <div className="account__images">
@@ -263,7 +258,10 @@ export const EditBusiness = () => {
               <h2>Catalogo</h2>
               <div className="items__img">
                 {itemsData.map((element, index) => (
-                  <div key={index} className="content__img__items">
+                  <>
+                  {element.nuevo === true ?
+                    <div key={index} className="content__img__items">
+                      <div className="promotion_item"><p>En promoción</p></div>
                     {loader ? 
                       <BounceLoader
                       color="#186556"
@@ -287,6 +285,33 @@ export const EditBusiness = () => {
                     </>
                     }
                   </div>
+                  :
+                  <div key={index} className="content__img__items">
+                  {loader ? 
+                    <BounceLoader
+                    color="#186556"
+                    size={57}
+                    cssOverride={{
+                      margin: 'auto'
+                    }}
+                  />
+                  :
+                  <>
+                  <div className="text">
+                    <h3>{element.nombre}</h3>
+                    <p>{element.descripcion}</p>
+                    <p id="price"> {element.precio} COP</p>
+                  </div>
+                  <img key={index} src={element.imagen} alt="Item imagen" />
+                  <button id='edit_btn' value={element.id} onChange={itemsEdit} onClick={itemsEdit}><Edit/>Editar</button>
+                  <button id='del_btn' name='del' value={element.id} onClick={itemsDel}>
+                  <Trash name='del'  value={element.id}/>
+                    Eliminar</button>
+                  </>
+                  }
+                </div>
+                  }
+                  </>
                 ))}
                 <button className="btn_item" onClick={changeRequest}>Agregar item</button>
               </div>

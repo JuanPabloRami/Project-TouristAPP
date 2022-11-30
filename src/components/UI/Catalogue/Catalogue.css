@@ -112,3 +112,18 @@
   border-radius: 10px;
   cursor: pointer;
 }
+.promotion_item{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 222px;
+  height: 30px;
+  top: 19px;
+  right: -74px;
+  background-color: red;
+  color: white;
+  z-index: 1000;
+  transform: rotate(40deg);
+}

@@ -1,9 +1,8 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import './Items.css'
 
 import { ModalContext } from '../../context/Modal/ModalContext'
 import { Field, Formik, Form} from 'formik'
-import { Button } from '../Button/Button'
 import { CatalogueContext } from '../../context/Catalogue/CatalogueContext'
 import { CreateBussinesContext } from '../../context/CreateBussines/CreateBussinesContext'
 import { EditBusinessContext } from '../../context/EditBusiness/EditBusinessContext'
@@ -11,20 +10,33 @@ import { EditBusinessContext } from '../../context/EditBusiness/EditBusinessCont
 export const Items = () => {
   
   const {items,closeItems} = useContext(ModalContext)
-  const {uploadImageItem,uploadImagePromotion,setStateItem,catalogue,itemImage,promotionImage} = useContext(CatalogueContext)
+  const {uploadImageItem,setStateItem,catalogue,itemImage,promotionImage} = useContext(CatalogueContext)
   const {setDataItems,itemsData} = useContext(CreateBussinesContext)
   const {changeButton} = useContext(EditBusinessContext)
- const sendItem = (nombre,descripcion,precio,negocio) =>{
-  let item = {nombre,descripcion,precio,itemImage,promotionImage,negocio}
-  let items = {nombre,descripcion,precio,imagen: itemImage,imgpromocion: promotionImage}
+  const [promotion,setPromotion] = useState(false)
+
+  const sendItem = (nombre,descripcion,precio,negocio) =>{
+  let item = {nombre,descripcion,precio,itemImage,promotionImage,negocio,nuevo:promotion}
+  let items = {nombre,descripcion,precio,imagen: itemImage,imgpromocion: '',}
   if (changeButton) {
     setDataItems(item)
+    setPromotion(false)
   }
   itemsData.push(items)
   setStateItem(true)
   catalogue.push(item)
   closeItems()
- }
+  }
+
+  const promotionYes = () =>{
+    console.log('si');
+    setPromotion(true)
+  }
+
+  const promotionNot = () =>{
+    console.log('no');
+    setPromotion(false)
+  }
 
   return (
     <>
@@ -44,7 +56,7 @@ export const Items = () => {
         }}
         
         onSubmit={({nombre,descripcion,precio,negocio})=>{
-         sendItem(nombre,descripcion,precio,negocio)
+          sendItem(nombre,descripcion,precio,negocio)
         }}
       >
         <div className={`modal-login${items ? " open" : " close"}`}>
@@ -86,6 +98,7 @@ export const Items = () => {
                   type="number"
                   id="numItem"
                   name="precio"
+                  maxlength='9'
                   required
                 />
                 <label htmlFor="numItem">
@@ -103,19 +116,28 @@ export const Items = () => {
                   required
                 />
                 <label className='name_file'>Imagen del producto</label>
-                <div className="errorMsg"></div>
               </div>
 
-              <div className="ContainerInput">
-                <Field
-                  type="file"
-                  id="files"
-                  name="files"
-                  onChange={uploadImagePromotion}
-                  required
-                />
-                <label className='name_file'>Imagen de promoción</label>
-                <div className="errorMsg"></div>
+              <div className='promotion_items'>
+                <label>¿Desea hacer este producto una promoción?</label>
+                <div className='radio'>
+                  <label htmlFor='Si'>Si</label>
+                  <Field
+                  type='radio'
+                  name='yes'
+                  id='Si'
+                  onClick={promotionYes}
+                  />
+                </div>
+                <div className='radio'>
+                  <label htmlFor='No' >No</label>
+                  <Field
+                  type='radio'
+                  name='yes'
+                  id='No'
+                  onClick={promotionNot}
+                  />
+                </div>
               </div>
               <button className='btn' >Crear item</button>
             </Form>
