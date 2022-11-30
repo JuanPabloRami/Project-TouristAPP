@@ -35,14 +35,14 @@ export const Navbar = () => {
   //Uso de contexto
   const { OpenModal,locationState, openLogin,openRoles} = useContext(ModalContext);
 
-  window.addEventListener("scroll", () => {
-    const icon = document.querySelector(".logo-touristapp");
-    const nav = document.querySelector(".nav");
-    const services = document.querySelector("#services");
-    nav.classList.toggle("down", window.scrollY > 0);
-    services.classList.toggle("down", window.scrollY > 0);
-    icon.classList.toggle("down", window.scrollY > 0);
-  });
+  // window.addEventListener("scroll", () => {
+  //   const icon = document.querySelector(".logo-touristapp");
+  //   const nav = document.querySelector(".nav");
+  //   const services = document.querySelector("#services");
+  //   nav.classList.toggle("down", window.scrollY > 0);
+  //   services.classList.toggle("down", window.scrollY > 0);
+  //   icon.classList.toggle("down", window.scrollY > 0);
+  // });
   const {switchNav} = useContext(TransitionsContext)
 
   const newFuction = () =>{
@@ -67,9 +67,9 @@ export const Navbar = () => {
   }, [switchNav])
   return (
     <>
-      <nav className="nav" id="navbar">
+      <nav className="nav down" id="navbar">
         <Link to='/' >
-          <img className="logo-touristapp" src={Logo} alt="touristApp" />
+          <img className="logo-touristapp down" src={Logo} alt="touristApp" />
         </Link>
         <div id="services">
           <div className="links">

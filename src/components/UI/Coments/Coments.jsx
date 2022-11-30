@@ -9,6 +9,7 @@ import axios from '../../api/axios/axios'
 import { UsersContext } from '../../context/Users/UsersContext'
 
 import { ModalContext } from '../../context/Modal/ModalContext'
+import { TransitionsContext } from '../../context/Transitions/TransitionsContext'
 
 //url base del backend con guion al final
 const url = "https://touristapp-backend-production-c4fa.up.railway.app/files/"
@@ -36,7 +37,8 @@ export const Coments = () => {
   const [disableComment,setDisableComment] = useState(false)
 
 
-  
+  //estado de componente de carga global
+  const {transition,setTransition} = useContext(TransitionsContext)
 
   // se visualizan los comentarios
   const showComments =()=>{

@@ -6,7 +6,7 @@
   height: 80px;
   position: fixed;
   transition: all .7s;
-  background-color: transparent;
+  background-color:#0f151c8d ;
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -23,7 +23,7 @@ nav.down{
   position: fixed;
   top: 0;
   z-index: 3;
-  background-color: #0f151cf5;
+  background-color: #0f151cd8;
   font-weight: bold;
   box-shadow: 0px -1px 10px #000d13;
   transition: all .7s;

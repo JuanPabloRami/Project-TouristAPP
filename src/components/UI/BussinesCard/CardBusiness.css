@@ -16,3 +16,25 @@
   width: 100%;
   height: 100%;
 }
+
+
+/*COMPONENTE DE CARGA EN LOS NEGOCIOS*/
+.BusinessLoading{
+  position: absolute;
+  text-align: center;
+  height:100%;
+  width:100%;
+  z-index: 1;
+}
+
+.BusinessLoading div {
+  position: relative;
+  top:40%;
+  bottom:0;
+  left:0;
+  right:50;
+
+}
+.BusinessLoading div h3 {
+  font-weight: bolder;
+}

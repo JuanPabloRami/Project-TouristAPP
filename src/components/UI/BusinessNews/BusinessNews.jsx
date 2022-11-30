@@ -1,22 +1,33 @@
-import { useState,useEffect } from "react";
+import { useState,useEffect,useContext } from "react";
 import "./BusinessNews.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination, Autoplay } from "swiper";
 import axios from "../../api/axios/axios";
 import { Cards } from "../Cards/Cards";
+//componente de carga
+import { Transition } from "../Transition/Transition";
+import { Transition2 } from "../Transition/Transition2";
+import { TransitionsContext } from "../../context/Transitions/TransitionsContext";
 
 export const BusinessNews = () => {
   const [bussines, setBussines] = useState([]);
   const [bussiness, setBussiness] = useState([]);
 
+  //estado de componente de carga global
+  const {transition,setTransition} = useContext(TransitionsContext)
+
+
   const showBussines = () => {
+    setTransition(true)
     axios.get("/api/negocio/")
       .then(function (response) {
         setBussines(response.data);
         setBussiness(response.data.reverse())
+        setTransition(false)
       })
       .catch(function (error) {
         console.log(error);
+        setTransition(false)
       });
   };
 
@@ -83,6 +94,10 @@ export const BusinessNews = () => {
             </SwiperSlide>
           ))}
       </Swiper>
+        { transition === true ?
+          <Transition2/>
+          : <></>
+        }
     </>
   );
 };

@@ -3,6 +3,9 @@ import "./CardBusiness.css";
 import {ModalContext} from '../../context/Modal/ModalContext'
 import { UsersContext } from "../../context/Users/UsersContext";
 
+
+
+
 //cards de negocio
 import { Cards } from "../Cards/Cards";
 import axios from "../../api/axios/axios";
@@ -11,21 +14,38 @@ import axios from "../../api/axios/axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination, Autoplay } from "swiper";
 
+//componente de carga
+import { Transition } from "../Transition/Transition";
+import { Transition2 } from "../Transition/Transition2";
+import { TransitionsContext } from "../../context/Transitions/TransitionsContext";
+
+
+
+import {ScaleLoader} from 'react-spinners'
+
+
 export const CardBusiness = () => {
   const {locationState} = useContext(ModalContext);
   const {request,delFilter,setDelFilter} = useContext(UsersContext)
+
+  //estado de componente de carga global
+  const {transition,setTransition} = useContext(TransitionsContext)
 
   const [bussines, setBussines] = useState([]);
 
 
   //Peticion que me trae todos los negocios
   const showBussines = () => {
+    setTransition(true)
     axios.get("/api/negocio/")
+    
       .then(function (response) {
         setBussines(response.data);
+        setTransition(false)
       })
       .catch(function (error) {
         console.log(error);
+        setTransition(false)
       });
   };
 
@@ -97,7 +117,7 @@ export const CardBusiness = () => {
   return (
     <>
       <div className="cardBusiness">
-        <div className="header-business"></div>
+        
         <Swiper
             breakpoints={{
               1800: {
@@ -155,7 +175,12 @@ export const CardBusiness = () => {
             </SwiperSlide>
           ))}
         </Swiper>
+        { transition === true ?
+          <Transition2/>
+          : <></>
+        }
       </div>
+      
     </>
   );
 };
