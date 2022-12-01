@@ -14,7 +14,7 @@ export const BusinessNews = () => {
   const [bussiness, setBussiness] = useState([]);
 
   //estado de componente de carga global
-  const {transition,setTransition} = useContext(TransitionsContext)
+  const [transition,setTransition] = useState(false)
 
 
   const showBussines = () => {
@@ -37,6 +37,7 @@ export const BusinessNews = () => {
 
   return (
     <>
+      <div className="cardBusiness">
       <Swiper
         breakpoints={{
           1800: {
@@ -98,6 +99,7 @@ export const BusinessNews = () => {
           <Transition2/>
           : <></>
         }
+        </div>
     </>
   );
 };

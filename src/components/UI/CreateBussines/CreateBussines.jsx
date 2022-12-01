@@ -1,7 +1,7 @@
 import './CreateBussines.css'
 //icons
 import {BsPlusSquareFill as Plus} from 'react-icons/bs'
-import { useContext } from 'react'
+import { useContext,useState } from 'react'
 //components
 import { Textarea } from '../Textarea/Textarea'
 import { CreateBussinesContext } from '../../context/CreateBussines/CreateBussinesContext'
@@ -11,10 +11,15 @@ import { CatalogueContext } from '../../context/Catalogue/CatalogueContext'
 import { Catalogue } from '../Catalogue/Catalogue'
 
 
+
+
 export const CreateBussines = () => {
   const {openItems} = useContext(ModalContext)
   const {inputDescription,textarea,description,del,hiddenItems} = useContext(CreateBussinesContext)
   const {stateItem} = useContext(CatalogueContext)
+
+  //estado de componente de carga global
+  const [transition,setTransition] = useState(false)
 
   return (
     <>

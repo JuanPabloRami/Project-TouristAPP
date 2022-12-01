@@ -54,8 +54,10 @@ export const CardBusiness = () => {
   }, []);
 
   const delFilters = () => {
+    setTransition(true)
     axios.get("/api/negocio/")
       .then(function (response) {
+        setTransition(false)
         if (response.status === 200){
           setDelFilter(false)
         }
@@ -63,6 +65,7 @@ export const CardBusiness = () => {
       })
       .catch(function (error) {
         console.log(error);
+        setTransition(false)
       });
   };
 
