@@ -124,6 +124,6 @@
   right: -74px;
   background-color: red;
   color: white;
-  z-index: 1000;
+  z-index: 1;
   transform: rotate(40deg);
 }
