@@ -194,6 +194,33 @@ export const ShowsBusiness = () => {
       });
   },[data]);
 
+  const time = new Date()
+  const horaActual = time.toLocaleTimeString('es-ES')
+
+  const stateBusiness = ()=>{
+    if(horaActual >= data.horaEntrada && horaActual <= data.horaSalida){
+      return (
+        <div className="schedule">
+          <div className="state"></div>
+            <p>
+              Abierto: {data.horaEntrada} - {' '}
+              {data.horaSalida}
+            </p>
+        </div>
+      )
+    }else{
+      return (
+        <div className="schedule">
+          <div className="stated"></div>
+            <p>
+              Cerrado: {data.horaEntrada} - {' '}
+              {data.horaSalida}
+            </p>
+        </div>
+      )
+    }
+  }
+
   return (
     <>
       {loading ? (
@@ -257,24 +284,18 @@ export const ShowsBusiness = () => {
                     {category}
                   </p>
                 </div>
-                <div className="schedule">
-                  <div className="state"></div>
-                  <p>
-                    Abierto: {data.horaEntrada} -{" "}
-                    {data.horaSalida}
-                  </p>
-                </div>
+                  {stateBusiness()}
               </div>
             </div>
           </div>
         </div>
         {disableLike === true ? <button className={likeStyle ? 'btn_liked_bussines' : 'btn_like_bussines'} disabled>
           {" "}
-          <Heart />{likes}
+          <Heart />{likes} Me gusta
         </button> 
         : <button className={likeStyle ? 'btn_liked_bussines' : 'btn_like_bussines'} onClick={checkLike} >
         {" "}
-        <Heart />{likes}
+        <Heart />{likes} Me gusta
       </button>}
         
       </div>

@@ -48,7 +48,6 @@ export const  MyBusiness = () => {
       },
     })
     .then(function (response){
-      console.log(response.data.negocios[0]);
       if(response.status === 200){
         setDataBusiness(response.data.negocios[0])
         setcategory(response.data.negocios[0].tipo_Negocio.nombre)
@@ -71,7 +70,6 @@ export const  MyBusiness = () => {
       })
       .then(function (response) {
         if (response.status === 200) {
-          console.log(response);
           setDataItems(response.data);
           setShowItems(true);
           setLoading(false);
@@ -96,6 +94,35 @@ export const  MyBusiness = () => {
   useEffect(()=>{
     watchLikes()
   },[dataBusiness])
+
+
+
+  const time = new Date()
+  const horaActual = time.toLocaleTimeString('es-ES')
+
+  const stateBusiness = ()=>{
+    if(horaActual >= dataBusiness.horaEntrada && horaActual <= dataBusiness.horaSalida){
+      return (
+        <div className="schedule">
+          <div className="state"></div>
+            <p>
+              Abierto: {dataBusiness.horaEntrada} - {' '}
+              {dataBusiness.horaSalida}
+            </p>
+        </div>
+      )
+    }else{
+      return (
+        <div className="schedule">
+          <div className="stated"></div>
+            <p>
+              Cerrado: {dataBusiness.horaEntrada} - {' '}
+              {dataBusiness.horaSalida}
+            </p>
+        </div>
+      )
+    }
+  }
 
   return (
     <>
@@ -160,19 +187,13 @@ export const  MyBusiness = () => {
                     {category}
                   </p>
                 </div>
-                <div className="schedule">
-                  <div className="state"></div>
-                  <p>
-                    Abierto: {dataBusiness.horaEntrada} -{" "}
-                    {dataBusiness.horaSalida}
-                  </p>
-                </div>
+                {stateBusiness()}
               </div>
             </div>
           </div>
         </div>
         <button className="btn_like_bussines">
-          <Heart />{likes}
+          <Heart />{likes} Me gusta
         </button>
         <Link to='/editar-negocio'>
           <button className="btn_edit">

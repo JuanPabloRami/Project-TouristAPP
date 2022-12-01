@@ -87,8 +87,43 @@
   border-radius: 5px;
   border: none;
   color: #fff;
-  background-color: #288ce9;
+  background-color: #708aa1;
   cursor: pointer;
+  transition: all .6s;
+}
+
+.btn_like_bussines:active{
+  animation: icon .3s;
+  transition: all .6s;
+}
+.btn_liked_bussines{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  position: absolute;
+  right: 0;
+  margin: 30px;
+  padding: 8px 30px;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  background-color: #084e8b;
+  cursor: pointer;
+  transition: all .6s;
+}
+.btn_liked_bussines:active{
+  animation: icon .3s;
+  transition: all .3s;
+}
+@keyframes icon{
+  0%{
+    transform: rotate(-20deg);
+  }
+  25%{
+    transform: rotate(-20deg);
+  }
 }
 .btn_del{
   display: flex;
@@ -106,24 +141,6 @@
   background-color: #e92828;
   cursor: pointer;
 }
-
-.btn_liked_bussines{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-  position: absolute;
-  right: 0;
-  margin: 30px;
-  padding: 8px 30px;
-  font-size: 1.1rem;
-  border-radius: 5px;
-  border: none;
-  color: #fff;
-  background-color: #00fb00;
-  cursor: pointer;
-}
-
 .btn_edit{
   display: flex;
   justify-content: center;
@@ -201,6 +218,20 @@
   }
   50%{
     background-color: #00c700;
+  }
+}
+.stated{
+  width: 12px;
+  height: 12px;
+  border-radius: 100%;
+  animation: stated 1s infinite ease;
+}
+@keyframes stated {
+  0%,100%{
+    background-color: #ee3030;
+  }
+  50%{
+    background-color: #b41616;
   }
 }
 main{

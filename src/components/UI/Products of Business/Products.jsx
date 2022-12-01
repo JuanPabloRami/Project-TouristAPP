@@ -5,12 +5,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper";
 import axios from '../../api/axios/axios'
 import { useState } from "react";
-import {ScaleLoader} from 'react-spinners'
 
 export const Products = () => {
 
   const [promotions,setPromotions] = useState([])
-  const [nameBusiness,setNameBusiness] = useState(0)
 
   useEffect (()=>{
     axios.get('api/item/?nuevo=true')
@@ -22,6 +20,8 @@ export const Products = () => {
       console.log(error);
     })
   },[])
+
+  console.log(promotions);
   
   return (
     <div className="promotions">
@@ -45,12 +45,12 @@ export const Products = () => {
       >
         {promotions.map((Element,index)=>(
           <SwiperSlide key={index} id="card_promotions">
-              <img class="swiper-img" src={Element.imgpromocion} alt="Imagen1" />
+              <img class="swiper-img" src={Element.imagen} alt="Imagen1" />
               <div className="name_business_promotions" disabled>
                 <h3>{Element.precio.toLocaleString('es-CO')} COP</h3>
               </div>
               <div className="content_name_business">
-                <h3>{Element.negocionombre}</h3>
+                <p>{Element.descripcion}</p>
               </div>
           </SwiperSlide>
         ))}
