@@ -109,7 +109,6 @@ export const Register = () => {
     setFileImage(base64);
   };
 
-
   const convertImage = (file) => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
