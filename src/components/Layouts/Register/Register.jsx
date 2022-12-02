@@ -28,7 +28,7 @@ import { Link } from "react-router-dom";
 import axios from "../../api/axios/axios";
 import { UsersContext } from "../../context/Users/UsersContext";
 import { TransitionsContext } from "../../context/Transitions/TransitionsContext";
-import {BsFillCameraFill as Cam} from 'react-icons/bs'
+import UserImg from '../../images/Profile/owner.jpg'
 
 
 export const Register = () => {
@@ -99,7 +99,6 @@ export const Register = () => {
   const [errorText,setErrText] = useState("Ha ocurrido un error")
   const [fileImage,setFileImage] = useState('')
 
-  console.log(fileImage);
   //convertidor de imagen de registro
   const uploadImage = async (e) => {
     const file = e.target.files[0];
@@ -128,7 +127,6 @@ export const Register = () => {
         initialValues={{
           name: '',
           last_name: '',
-          username: '',
           email: '',
           password: '',
           confirmPassword: ''
@@ -149,14 +147,7 @@ export const Register = () => {
           }else if(!regularExpressions.name.test(values.last_name)){
             errors.last_name = 'El apellido solo puede contener letras y espacios'
           }
-
-          //validacion para el username
-          if(!values.username){
-            errors.username = 'Por favor ingresa un nombre de usuario'
-          }else if(!regularExpressions.username.test(values.username)){
-            errors.username = 'El nombre de usuario tiene que ser de 4 a 16 digitos y solo puede contener numeros,letras y guion bajo.'
-          }
-
+          
            //validacion para el email
           if(!values.email){
             errors.email = 'Por favor ingresa un correo electronico'
@@ -180,11 +171,12 @@ export const Register = () => {
           
           return errors;
         }}
-        onSubmit={({name,last_name,email,username,password}) => {
+        onSubmit={({name,last_name,email,password}) => {
+          console.log("AAAA");
           setLoading(true);
           axios.post('/auth/signup/',{
             first_name:name,
-            last_name,email,username,password,
+            last_name,email,password,
             image: fileImage,
             type_user: typeUser
           })
@@ -251,6 +243,24 @@ export const Register = () => {
 
               <Form method="POST" className="form">
                 <h2>REGISTRO</h2>
+
+                <div  className="content_file">
+                  <label htmlFor="imgFile">
+                    <p>Sube una foto de perfil</p>
+                  </label>
+                  {fileImage === '' ?
+                    <img src={UserImg} alt="ImgUser" />  
+                    :
+                    <img src={fileImage} alt="ImgUser" /> 
+                  }
+                  <Field
+                    type="file"
+                    id="imgFile"
+                    name='imgFile'
+                    onChange={uploadImage}
+                  />
+                </div>
+
                 <div className="ContainerInput">
                   <Field
                     type="text"
@@ -279,21 +289,6 @@ export const Register = () => {
                   <div className="errorMsg">
                     <ErrorMessage name="last_name" component={() => (<p>{errors.last_name}</p>)} />
                   </div> 
-                </div>
-
-                <div className="ContainerInput">
-                  <Field 
-                    type="text"
-                    id="username" 
-                    name="username"
-                    required
-                  />
-                  <label htmlFor="username">
-                    <span className="text-name">Nombre de usuario</span>
-                  </label>
-                  <div className="errorMsg">
-                    <ErrorMessage name="username" component={() => (<p>{errors.username}</p>)} />
-                  </div>
                 </div>
 
                 <div className="ContainerInput">
@@ -347,16 +342,6 @@ export const Register = () => {
                   <div className="errorMsg">
                     <ErrorMessage name="confirmPassword" component={() => (<p>{errors.confirmPassword}</p>)} />
                   </div>
-                </div>
-
-                <div  className="content_file">
-                  <label htmlFor="imgFile"><Cam/> Sube tu foto de perfil</label>
-                  <Field
-                    type="file"
-                    id="imgFile"
-                    name='imgFile'
-                    onChange={uploadImage}
-                  />
                 </div>
 
                 <div className="ContainerCheckbox">

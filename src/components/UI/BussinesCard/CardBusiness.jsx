@@ -29,7 +29,7 @@ export const CardBusiness = () => {
   const {request,delFilter,setDelFilter} = useContext(UsersContext)
 
   //estado de componente de carga global
-  const {transition,setTransition} = useContext(TransitionsContext)
+  const [transition,setTransition] = useState(false)
 
   const [bussines, setBussines] = useState([]);
 
