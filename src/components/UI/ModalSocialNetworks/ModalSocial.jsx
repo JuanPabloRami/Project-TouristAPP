@@ -190,7 +190,7 @@ export const ModalSocial = () => {
                 defaultValue=''
                 id="horarios"
                 name="horaEntrada"
-                min="09:00" max="18:00"
+                min="00:00" max="24:00"
                 required
               />
               <label htmlFor="horaEntrada">
@@ -205,7 +205,7 @@ export const ModalSocial = () => {
                 defaultValue=''
                 id="horaSalida"
                 name="horaSalida"
-                min="09:00" max="18:00"
+                min="00:00" max="24:00"
                 required
               />
               <label htmlFor="horaSalida">
