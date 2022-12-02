@@ -172,11 +172,10 @@ export const Register = () => {
           return errors;
         }}
         onSubmit={({name,last_name,email,password}) => {
-          console.log("AAAA");
           setLoading(true);
           axios.post('/auth/signup/',{
             first_name:name,
-            last_name,email,password,
+            last_name,email,password,username:email,
             image: fileImage,
             type_user: typeUser
           })

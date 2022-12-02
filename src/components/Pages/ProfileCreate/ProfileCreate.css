@@ -92,7 +92,7 @@
   transition: all .6s;
 }
 
-.btn_like_bussines:active{
+.btn_like_bussines:active > .icon{
   animation: icon .3s;
   transition: all .6s;
 }
