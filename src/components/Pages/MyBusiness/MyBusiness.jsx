@@ -193,7 +193,7 @@ export const  MyBusiness = () => {
           </div>
         </div>
         <button className="btn_like_bussines">
-          <Heart />{likes} Me gusta
+          <Heart className="icon" />{likes} Me gusta
         </button>
         <Link to='/editar-negocio'>
           <button className="btn_edit">

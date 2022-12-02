@@ -64,7 +64,7 @@ export const ModalConfirm = () => {
           message={errorAlert}
         />
         <Message
-          text="Creado con exitoso"
+          text="Creado con exito"
           icon={<Confirmed className="icon__message" />}
           message={alert}
         />
