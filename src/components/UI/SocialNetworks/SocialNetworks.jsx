@@ -32,8 +32,6 @@ export const SocialNetworks = () => {
     setNameBusiness(false)
   }
 
-  console.log(dataInformation);
-
   return (
     <>
       <div className="content_creating">
