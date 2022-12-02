@@ -48,7 +48,7 @@ export const DropdownUser = () => {
       setLoading(false)
       setSwitchNav(false)
       window.location.reload()
-    }, 2000);
+    }, 500);
   }
 
   //llama la funcion que hace la petición
@@ -67,7 +67,7 @@ export const DropdownUser = () => {
       if(api.type_user === 'Emprendedor' && api.negocios.length <= 0){
         return (
           <>
-            <Link to='/minegocio'><li>Mi negocio</li></Link>
+            <Link to='/crear-negocio'><li>Crear negocio</li></Link>
             <Link to='/miperfil'><li>Mi perfil</li></Link>
             <li onClick={logout}>Cerrar sesión</li>
           </>)
@@ -93,7 +93,6 @@ export const DropdownUser = () => {
   if(loading){
     return(
       <>
-      <SyncLoader cssOverride={{margin: 'auto','justify-content': 'center'}} color="rgba(155, 170, 177, 1)"size={18}/>
       <Navigate to='/'/>
       </>
     )

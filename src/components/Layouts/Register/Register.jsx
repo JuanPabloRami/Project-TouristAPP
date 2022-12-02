@@ -102,6 +102,7 @@ export const Register = () => {
   const [errorText,setErrText] = useState("Ha ocurrido un error")
   const [fileImage,setFileImage] = useState('')
 
+  console.log(fileImage);
   //convertidor de imagen de registro
   const uploadImage = async (e) => {
     const file = e.target.files[0];
@@ -367,7 +368,7 @@ export const Register = () => {
                     type="file"
                     id="imgFile"
                     name='imgFile'
-                    onClick={uploadImage}
+                    onChange={uploadImage}
                   />
                 </div>
 

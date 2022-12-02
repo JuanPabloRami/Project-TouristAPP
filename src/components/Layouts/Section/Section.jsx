@@ -89,7 +89,6 @@ export const Section = () => {
         <BusinessNews/>
         <Title text='Promociones' clas="pm" icon={<Tag id='tag' />}/>
         <Products/>
-        <BusinessFeatured/>
       </div>
       <div className="Add">
         <AddBusiness/>
