@@ -49,6 +49,7 @@ export const Section = () => {
   const showBussines = () => {
     setDelFilter(true)
     setLocationState('')
+    setRequest('')
     setDelNameCategory(true)
     setDelNameCategory(false)
     changeSelected()
