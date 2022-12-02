@@ -28,7 +28,7 @@ import { Link } from "react-router-dom";
 import axios from "../../api/axios/axios";
 import { UsersContext } from "../../context/Users/UsersContext";
 import { TransitionsContext } from "../../context/Transitions/TransitionsContext";
-import {BsFillCameraFill as Cam} from 'react-icons/bs'
+import UserImg from '../../images/Profile/owner.jpg'
 
 
 export const Register = () => {
@@ -251,6 +251,24 @@ export const Register = () => {
 
               <Form method="POST" className="form">
                 <h2>REGISTRO</h2>
+
+                <div  className="content_file">
+                  <label htmlFor="imgFile">
+                    <p>Sube una foto de perfil</p>
+                  </label>
+                  {fileImage === '' ?
+                    <img src={UserImg} alt="ImgUser" />  
+                    :
+                    <img src={fileImage} alt="ImgUser" /> 
+                  }
+                  <Field
+                    type="file"
+                    id="imgFile"
+                    name='imgFile'
+                    onChange={uploadImage}
+                  />
+                </div>
+
                 <div className="ContainerInput">
                   <Field
                     type="text"
@@ -279,21 +297,6 @@ export const Register = () => {
                   <div className="errorMsg">
                     <ErrorMessage name="last_name" component={() => (<p>{errors.last_name}</p>)} />
                   </div> 
-                </div>
-
-                <div className="ContainerInput">
-                  <Field 
-                    type="text"
-                    id="username" 
-                    name="username"
-                    required
-                  />
-                  <label htmlFor="username">
-                    <span className="text-name">Nombre de usuario</span>
-                  </label>
-                  <div className="errorMsg">
-                    <ErrorMessage name="username" component={() => (<p>{errors.username}</p>)} />
-                  </div>
                 </div>
 
                 <div className="ContainerInput">
@@ -347,16 +350,6 @@ export const Register = () => {
                   <div className="errorMsg">
                     <ErrorMessage name="confirmPassword" component={() => (<p>{errors.confirmPassword}</p>)} />
                   </div>
-                </div>
-
-                <div  className="content_file">
-                  <label htmlFor="imgFile"><Cam/> Sube tu foto de perfil</label>
-                  <Field
-                    type="file"
-                    id="imgFile"
-                    name='imgFile'
-                    onChange={uploadImage}
-                  />
                 </div>
 
                 <div className="ContainerCheckbox">
