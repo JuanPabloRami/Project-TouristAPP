@@ -108,6 +108,7 @@ export const Register = () => {
     const base64 = await convertImage(file);
     setFileImage(base64);
   };
+  
 
   const convertImage = (file) => {
     return new Promise((resolve, reject) => {
