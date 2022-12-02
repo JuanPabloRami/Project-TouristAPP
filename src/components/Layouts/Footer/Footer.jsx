@@ -110,5 +110,6 @@ export const Footer = () => {
         </p>
       </div>
     </footer>
+    
   );
 };
