@@ -9,12 +9,14 @@ export const EditItems = () => {
   
   const {itemsEdit,closeItemsEdit} = useContext(ModalContext)
   const {itemImage,promotionImage} = useContext(CatalogueContext)
+  const [promotion,setPromotion] = useState(false)
+
 
 
   const {requestEditItems,nameItem,desItem,priceItem,imgItems,setEditItems,setNameItem,setDesItem,setPriceItem} = useContext(EditBusinessContext)
 
   const sendItem = (nombre,descripcion,precio,negocio) =>{
-    let item = {nombre,descripcion,precio,itemImage,promotionImage,negocio}
+    let item = {nombre,descripcion,precio,itemImage,promotionImage,negocio,nuevo: promotion}
     setEditItems(item)
     closeItemsEdit()
   }
@@ -27,6 +29,16 @@ export const EditItems = () => {
   }
   const price = (e) =>{
     setPriceItem(e.target.value)
+  }
+
+  const promotionYes = () =>{
+    console.log('si');
+    setPromotion(true)
+  }
+
+  const promotionNot = () =>{
+    console.log('no');
+    setPromotion(false)
   }
 
   return (
@@ -52,7 +64,7 @@ export const EditItems = () => {
       >
         <div className={`modal-login${itemsEdit ? " open" : " close"}`}>
           <div className="conten_itemsCreate">
-            <h1>Crear items edit</h1>
+            <h1>Editar items</h1>
             <button className="btn-close" onClick={closeItemsEdit}>
               X
             </button>
@@ -117,7 +129,28 @@ export const EditItems = () => {
                 <label className='name_file'>Imagen del producto</label>
                 <div className="errorMsg"></div>
               </div>
-              <button onClick={requestEditItems} className='btn' >Crear item</button>
+              <div className='promotion_items'>
+                <label>¿Desea hacer este producto una promoción?</label>
+                <div className='radio'>
+                  <label htmlFor='Si'>Si</label>
+                  <Field
+                  type='radio'
+                  name='yes'
+                  id='Si'
+                  onClick={promotionYes}
+                  />
+                </div>
+                <div className='radio'>
+                  <label htmlFor='No' >No</label>
+                  <Field
+                  type='radio'
+                  name='yes'
+                  id='No'
+                  onClick={promotionNot}
+                  />
+                </div>
+              </div>
+              <button onClick={requestEditItems} className='btn' >Editar item</button>
             </Form>
           </div>
         </div>

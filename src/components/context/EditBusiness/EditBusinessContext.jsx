@@ -121,13 +121,14 @@ export const EditBusinessContextProvider = (props) => {
       });
     };
 
-    
+    console.log(dataEditBusiness);
+
 
     const data = {
       nombre: textNameBuss === '' ? editBusiness.nombre : textNameBuss,
       descripcion: textDes === '' ? editBusiness.descripcion: textDes,
-      tipo_Negocio_id: idCategory,
-      ciudad_id: idCity,
+      tipo_Negocio_id: idCategory !== dataEditBusiness.idCategoryPut ? dataEditBusiness.idCategoryPut:idCategory,
+      ciudad_id: idCity !== dataEditBusiness.idDeparmentPut ? dataEditBusiness.idDeparmentPut : idCity,
       ubicacion: locationBus === '' ? editBusiness.ubicacion :locationBus,
       horaEntrada: hourEnter === '' ? editBusiness.horaEntrada : hourEnter,
       horaSalida: hourClose === '' ? editBusiness.horaSalida : hourClose,
@@ -135,6 +136,7 @@ export const EditBusinessContextProvider = (props) => {
       contactInstagram:null,
       contactWEB:null,
       contactEmail: emailBuss === '' ? editBusiness.contactEmail : emailBuss,
+      nuevo: editBusiness.nuevo
     }
 
     imageProfile !== '' ? data.imgperfil = imageProfile : console.log("no cambia imagen")

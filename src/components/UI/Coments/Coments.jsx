@@ -217,7 +217,7 @@ export const Coments = () => {
       <div className="commentLoading">
           <div>
             <ScaleLoader
-              color="#ffffff"
+              color="#000000"
               height={18}
               width={3}
             />

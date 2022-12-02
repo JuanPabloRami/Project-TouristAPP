@@ -113,7 +113,7 @@
   cursor: pointer;
   transition: all .6s;
 }
-.btn_liked_bussines:active{
+.btn_liked_bussines:active > .icon{
   animation: icon .3s;
   transition: all .3s;
 }
