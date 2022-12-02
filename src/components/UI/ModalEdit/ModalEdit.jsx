@@ -50,11 +50,14 @@ export const ModalEdit = () => {
 
   //Contexto de la modal de informacion del negocio
   const {socialEdit,closeSocialEdit} = useContext(InformationBusinessContext)
-  const {setDataEditBusiness,setIdCategory,setIdCity} = useContext(EditBusinessContext)
+  const {setDataEditBusiness} = useContext(EditBusinessContext)
   const sendInformationBusiness = (ubicacion,horaEntrada,horaSalida,contactFacebook,contactInstagram,contactWEB,contactEmail) =>{
-    const data = {ubicacion,horaEntrada,horaSalida,contactFacebook,contactInstagram,contactWEB,contactEmail,locationState,nameCategorie}
+    const data = {idCategoryPut,idDeparmentPut,ubicacion,horaEntrada,horaSalida,contactFacebook,contactInstagram,contactWEB,contactEmail,locationState,nameCategorie}
     setDataEditBusiness(data)
   }
+
+  const [idCategoryPut,setIdCategoryPut] = useState(0)
+  const [idDeparmentPut,setIdDeparmentPut] = useState(0)
 
   const categories = () =>{
     axios.get('/api/tipo-negocio/')
@@ -74,7 +77,7 @@ export const ModalEdit = () => {
   useEffect(()=>{
     axios.get(`/api/ciudad/?nombre__contains=${inputCity}&departamento__nombre__contains=${inputDepartment}`)
     .then(function (response) {
-      setIdCity(response.data[0].id);
+      setIdDeparmentPut(response.data[0].id);
     })
     .catch(function (error) {
       console.log(error);
@@ -85,7 +88,7 @@ export const ModalEdit = () => {
   useEffect(()=>{
     axios.get(`api/tipo-negocio/?nombre=${nameCategorie}`)
     .then(function(response) {
-      setIdCategory(response.data[0].id)
+      setIdCategoryPut(response.data[0].id)
     })
     .catch(function(error){
       console.log(error)

@@ -25,7 +25,6 @@ export const Search = () => {
     axios.get(`api/negocio/?nombre__contains=${names}`)
       .then((response) => {
         setDataBussiness(response.data)
-        console.log("holi",response);
       })
       .catch((error) => {
         console.log(error);

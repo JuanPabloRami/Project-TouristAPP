@@ -22,7 +22,6 @@ export const Products = () => {
     axios.get('api/item/?nuevo=true')
     .then(function (response){
       setTransition(false)
-      console.log(response);
       setPromotions(response.data)
     })
     .catch(function (error){
@@ -30,8 +29,6 @@ export const Products = () => {
       setTransition(false)
     })
   },[])
-
-  console.log(promotions);
   
   return (
     <div >
