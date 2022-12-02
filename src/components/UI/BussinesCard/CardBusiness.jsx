@@ -161,19 +161,19 @@ export const CardBusiness = () => {
         >
           {bussines.map((element, index) => (
             <SwiperSlide id="slider-business" key={index}>
-              {bussines.length > 0 ? 
-              <Cards
-                image={element.imgperfil}
-                owner={element.imgportada}
-                description={element.descripcion}
-                title={element.nombre}
-                ciudad={element.ciudad.nombre}
-                departamento={element.ciudad.departamento.nombre}
-                category={element.tipo_Negocio.nombre}
-                id={element.id}
-              />
+              {bussines.length === 0 ? 
+                <h2>No hay negocios en esta ubicación</h2>
               :
-              <h2>No hay negocios en esta ubicación</h2>
+              <Cards
+              image={element.imgperfil}
+              owner={element.imgportada}
+              description={element.descripcion}
+              title={element.nombre}
+              ciudad={element.ciudad.nombre}
+              departamento={element.ciudad.departamento.nombre}
+              category={element.tipo_Negocio.nombre}
+              id={element.id}
+            />
               }
             </SwiperSlide>
           ))}

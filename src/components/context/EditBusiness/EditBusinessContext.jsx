@@ -135,6 +135,7 @@ export const EditBusinessContextProvider = (props) => {
       contactInstagram:null,
       contactWEB:null,
       contactEmail: emailBuss === '' ? editBusiness.contactEmail : emailBuss,
+      nuevo: editBusiness.nuevo
     }
 
     imageProfile !== '' ? data.imgperfil = imageProfile : console.log("no cambia imagen")

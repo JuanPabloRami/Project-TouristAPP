@@ -213,6 +213,7 @@ export const ModalEdit = () => {
                 type="time"
                 id="horario"
                 name="horaEntrada"
+                min="00:00" max="24:00"
                 onChange={hourEn}
                 value={hourEnter === '' ? editBusiness.horaEntrada : hourEnter}
                 required
@@ -228,6 +229,7 @@ export const ModalEdit = () => {
                 type="time"
                 id="horaSalid"
                 name="horaSalida"
+                min="00:00" max="24:00"
                 onChange={hourClo}
                 value={hourClose === '' ? editBusiness.horaSalida : hourClose}
                 required
