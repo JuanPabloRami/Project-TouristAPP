@@ -59,7 +59,6 @@ export const MyProfile = () => {
           }
           <h2>{dataUser.first_name} {dataUser.last_name}</h2>
           <div className="information_personal">
-            <p><User className='icon_user'/>@{dataUser.username}</p>
             <p><Email className='icon_email'/>{dataUser.email}</p>
           </div>
         </div>

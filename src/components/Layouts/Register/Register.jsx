@@ -99,7 +99,6 @@ export const Register = () => {
   const [errorText,setErrText] = useState("Ha ocurrido un error")
   const [fileImage,setFileImage] = useState('')
 
-  console.log(fileImage);
   //convertidor de imagen de registro
   const uploadImage = async (e) => {
     const file = e.target.files[0];
@@ -128,7 +127,6 @@ export const Register = () => {
         initialValues={{
           name: '',
           last_name: '',
-          username: '',
           email: '',
           password: '',
           confirmPassword: ''
@@ -149,14 +147,7 @@ export const Register = () => {
           }else if(!regularExpressions.name.test(values.last_name)){
             errors.last_name = 'El apellido solo puede contener letras y espacios'
           }
-
-          //validacion para el username
-          if(!values.username){
-            errors.username = 'Por favor ingresa un nombre de usuario'
-          }else if(!regularExpressions.username.test(values.username)){
-            errors.username = 'El nombre de usuario tiene que ser de 4 a 16 digitos y solo puede contener numeros,letras y guion bajo.'
-          }
-
+          
            //validacion para el email
           if(!values.email){
             errors.email = 'Por favor ingresa un correo electronico'
@@ -180,11 +171,12 @@ export const Register = () => {
           
           return errors;
         }}
-        onSubmit={({name,last_name,email,username,password}) => {
+        onSubmit={({name,last_name,email,password}) => {
+          console.log("AAAA");
           setLoading(true);
           axios.post('/auth/signup/',{
             first_name:name,
-            last_name,email,username,password,
+            last_name,email,password,
             image: fileImage,
             type_user: typeUser
           })
