@@ -17,6 +17,7 @@ import { DropdownUser } from "../../UI/DropdownUser/DropdownUser";
 import { Dropdown } from "../../UI/DropdownCategory/Dropdown";
 import { Roles } from "../../UI/Roles/Roles"
 import {Items} from '../../UI/Items/Items'
+import { SelectLanguage } from "../../UI/SelectLanguage/SelectLanguage";
 
 //Contextos
 import {ModalContext} from '../../context/Modal/ModalContext'
@@ -134,6 +135,8 @@ export const Navbar = () => {
           </div>
         </div>
       </nav>
+      <SelectLanguage/>
+
 
       <Modal/>
       <Login/>

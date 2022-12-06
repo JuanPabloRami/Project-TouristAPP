@@ -1,5 +1,9 @@
 import React, { useState,useEffect ,useContext} from 'react'
 import './Coments.css'
+
+//GoogleAnalytics
+import ReactGA  from 'react-ga4'
+
 //Imagenes
 import User from '../../images/Profile/owner.jpg'
 //icons
@@ -13,6 +17,8 @@ import { TransitionsContext } from '../../context/Transitions/TransitionsContext
 
 //url base del backend con guion al final
 const url = "https://touristapp-backend-production-c4fa.up.railway.app/files/"
+
+
 
 // token de acceso
 const token = localStorage.getItem('token')
@@ -118,6 +124,15 @@ export const Coments = () => {
       });
     }
   }
+  const clickComent = () => {
+    ReactGA.event({
+      'category':'event_coment',
+      'action':'clickComent',
+      'label': 'label'
+    });
+    createComment();
+  }
+
   //valida si el usuario esta logueado para permitirle o no comentar.
   const validateCommentInput = () =>{
 
@@ -140,7 +155,7 @@ export const Coments = () => {
           </div>
           
           :
-          <button className="content__btn__send" onClick={createComment}>
+          <button className="content__btn__send" onClick={clickComent}>
             <Send className='btn__send' />
           </button>
         }

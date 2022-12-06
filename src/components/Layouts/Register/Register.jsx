@@ -29,7 +29,8 @@ import axios from "../../api/axios/axios";
 import { UsersContext } from "../../context/Users/UsersContext";
 import { TransitionsContext } from "../../context/Transitions/TransitionsContext";
 import UserImg from '../../images/Profile/owner.jpg'
-
+//GoogleAnalytics
+import ReactGA from 'react-ga4';
 
 export const Register = () => {
   let [confirm,setConfirm] = useState("");
@@ -120,6 +121,15 @@ export const Register = () => {
       };
     });
   };
+      //GoogleAnalytics
+      const clickRegister = ()=>{
+        ReactGA.event({
+          'category': 'register',
+          'action': 'clickRegister',
+          'label':'label'
+  
+        });
+      }
 
   return (
     <>
@@ -186,6 +196,7 @@ export const Register = () => {
               setAlert("open")
                 setTimeout(()=>{
                   setAlert("close")
+                  clickRegister()
                   
                 },1500)
               setTimeout(() =>{

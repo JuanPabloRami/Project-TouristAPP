@@ -32,8 +32,8 @@ import i18next from "i18next";
 
 //importaciones de archivos de texto de traducciones
 
-import home_es from "./translations/es/Pages/Home/Home.json"
-import home_en from "./translations/en/Pages/Home/Home.json"
+import global_es from "./translations/es/global.json"
+import global_en from "./translations/en/global.json"
 
 const browserLanguage = navigator.language || navigator.userLanguage;
 
@@ -42,10 +42,10 @@ i18next.init({
   lng:browserLanguage,
   resources:{
     es:{
-      home:home_es
+      global:global_es
     },
     en:{
-      home:home_en
+      global:global_en
     }
   }
 });

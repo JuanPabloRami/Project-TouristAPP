@@ -21,7 +21,9 @@ import {Footer} from './components/Layouts/Footer/Footer'
 import {ProtectedRouteCreateBusiness} from './components/ProtectRouter/ProtectedRoute';
 import { useContext, useEffect, useState } from 'react';
 import { UsersContext } from './components/context/Users/UsersContext';
+import ReactGA from 'react-ga4';
 
+ReactGA.initialize('G-6D92XZEZWK');
 
 /*https://www.youtube.com/watch?v=emiCMV-oVoE*/
 function App() {
