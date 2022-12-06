@@ -11,20 +11,23 @@ import Draw from '../../images/Home/business.webp'
 import Clouds from '../../images/Home/clouds.png'
 
 //traducciones
-import { useTranslation } from "react-i18next"
+import { useContext } from "react";
+import { TranslationContext } from "../../context/Translation/TranslationContext";
+import { useTranslation } from "react-i18next";
+
 
 export const Home = () => {
 
-  const [t,i18n] = useTranslation("home")
+  
+  const [t] = useTranslation("global")
+  // const {t} = useContext(TranslationContext)
   
   return (
     <>
       <div className="welcome">
         <div className="description-aplication">
-          <h1>{t("welcome")}</h1>
-          <h1>{t("welcome")}</h1>
-          <button onClick={()=>i18n.changeLanguage("es")}>ES</button>
-          <button onClick={()=>i18n.changeLanguage("en")}>EN</button>
+          <h1>¡Bienvenido!</h1>
+          <h1>¡Bienvenido!</h1>
           <p>
             TouristApp ayuda a identificar de manera rápida los establecimientos de una ciudad
             , pueblo o destino turístico en específico.Los turistas podran guiarse de manera 

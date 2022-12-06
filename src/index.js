@@ -22,6 +22,7 @@ import { CategoriesContextProvider } from './components/context/Categories/Categ
 import { CatalogueContextProvider } from './components/context/Catalogue/CatalogueContext';
 import { InformationBusinessContextProvider } from './components/context/InformationBusiness/InformationBusinessContext';
 import { EditBusinessContextProvider } from './components/context/EditBusiness/EditBusinessContext';
+import { TranslationContextProvider } from './components/context/Translation/TranslationContext';
 
 import ScrollToTop from './components/ScrollToTop';
 
@@ -61,13 +62,14 @@ root.render(
             <TransitionsContextProvider>
                 <RolesContextProvider>
                   <ModalContextProvider>
+                    <TranslationContextProvider>
                     <BrowserRouter>
                       <ScrollToTop/>
                       <I18nextProvider i18n={i18next}>
                           <App />
                       </I18nextProvider>
                     </BrowserRouter>
-                      
+                    </TranslationContextProvider>
                   </ModalContextProvider>
                 </RolesContextProvider>
             </TransitionsContextProvider>
