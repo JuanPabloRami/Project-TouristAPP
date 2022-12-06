@@ -120,15 +120,14 @@ export const EditBusinessContextProvider = (props) => {
         };
       });
     };
-
+    
     console.log(dataEditBusiness);
-
 
     const data = {
       nombre: textNameBuss === '' ? editBusiness.nombre : textNameBuss,
       descripcion: textDes === '' ? editBusiness.descripcion: textDes,
-      tipo_Negocio_id: idCategory !== dataEditBusiness.idCategoryPut ? dataEditBusiness.idCategoryPut:idCategory,
-      ciudad_id: idCity !== dataEditBusiness.idDeparmentPut ? dataEditBusiness.idDeparmentPut : idCity,
+      tipo_Negocio_id: dataEditBusiness.idCategoryPut !== editBusiness.tipo_Negocio_id ? dataEditBusiness.idCategoryPut: editBusiness.tipo_Negocio_id,
+      ciudad_id: dataEditBusiness.idDeparmentPut !== editBusiness.ciudad_id ?  dataEditBusiness.idDeparmentPut : editBusiness.ciudad_id ,
       ubicacion: locationBus === '' ? editBusiness.ubicacion :locationBus,
       horaEntrada: hourEnter === '' ? editBusiness.horaEntrada : hourEnter,
       horaSalida: hourClose === '' ? editBusiness.horaSalida : hourClose,
@@ -138,6 +137,8 @@ export const EditBusinessContextProvider = (props) => {
       contactEmail: emailBuss === '' ? editBusiness.contactEmail : emailBuss,
       nuevo: editBusiness.nuevo
     }
+
+    console.log(data);
 
     imageProfile !== '' ? data.imgperfil = imageProfile : console.log("no cambia imagen")
     imagePort !== '' ? data.imgportada =  imagePort : console.log("no cambia portada")

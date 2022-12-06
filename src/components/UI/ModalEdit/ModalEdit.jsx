@@ -88,6 +88,7 @@ export const ModalEdit = () => {
   useEffect(()=>{
     axios.get(`api/tipo-negocio/?nombre=${nameCategorie}`)
     .then(function(response) {
+      console.log(response);
       setIdCategoryPut(response.data[0].id)
     })
     .catch(function(error){
