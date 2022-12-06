@@ -19,7 +19,9 @@ export const Home = () => {
           <h1>¡Bienvenidos!</h1>
           <h1>¡Bienvenidos!</h1>
           <p>
-            TouristApp ayuda a identificar de manera rápida los establecimientos de una ciudad , pueblo o destino turístico en específico.Los turistas podran guiarse de manera rápida acerca de lugares a visitar
+            TouristApp ayuda a identificar de manera rápida los establecimientos de una ciudad
+            , pueblo o destino turístico en específico.Los turistas podran guiarse de manera 
+            rápida acerca de lugares a visitar.
           </p>
         </div>
         <img className="draw" src={Draw} alt='imagencita'/>
@@ -27,7 +29,6 @@ export const Home = () => {
       </div>
       <Wave/>
       <Section/>
-      <OurTeam/>
     </>
   );
 };

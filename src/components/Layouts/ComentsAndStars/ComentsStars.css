@@ -215,9 +215,6 @@
     margin-top: 35px;
     padding: 4px;
   }
-  .section__ipad .coments__ipad{
-    padding-top: 60px;
-  }
   .content_btn__like button{
     font-size: 11px;
     padding: 5px 20px;
@@ -288,4 +285,37 @@
   .hand{
     font-size: 15px;
   }
+}
+
+@media (max-width:320px) {
+  .border__ipad {
+    width: 80%;
+    margin-left: 0;
+    padding: 5px;
+    height: 71%;
+  }
+
+  .description_account_ipad{
+    width: 120px;
+    bottom: -7px;
+    padding-left: 80px;
+  }
+
+  .description_account_ipad h2{
+    font-size: 13px;
+  }
+
+  .coments__ipad h2{
+    font-size: 14px;
+  }
+  .coments__ipad p{
+    font-size: 10px;
+  }
+  .description_ipad h2{
+    font-size: 14px;
+  }
+  .section__ipad .coments__ipad{
+    width: 50%;
+  }
+
 }
