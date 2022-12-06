@@ -59,7 +59,6 @@ export const ShowsBusiness = () => {
       console.log(error);
     })
     
-    
   }
 
   const setLikeColor = () =>{
