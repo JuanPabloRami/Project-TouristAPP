@@ -160,3 +160,66 @@
     right: 7%;
   }
 }
+@media (max-width: 320px){
+  .account__images{
+    margin-bottom: 220px;
+  }
+  .content_creating{
+    top: 89%;
+    right: 1%;
+    width: 96%;
+  }
+  .create_nameBusiness  h1{
+    font-size: 1.7rem;
+    text-align: center;
+  }
+  .content_grid{
+    grid-template-columns: repeat(1,1fr);
+    grid-template-rows: repeat(2,1fr);
+  }
+  .information_business p{
+    font-size: 1.1rem;
+    text-align: center;
+  }
+  .information_import p{
+    text-align: center;
+  }
+}
+@media (max-width: 480px){
+  .account__images{
+    margin-bottom: 220px;
+  }
+  .content_creating{
+    top: 89%;
+    right: 1%;
+    width: 96%;
+  }
+  .create_nameBusiness  h1{
+    font-size: 1.7rem;
+    text-align: center;
+  }
+  .content_grid{
+    grid-template-columns: repeat(1,1fr);
+    grid-template-rows: repeat(2,1fr);
+  }
+  .information_business p{
+    font-size: 1.1rem;
+    text-align: center;
+  }
+  .information_import p{
+    text-align: center;
+  }
+}
+@media (max-width: 480px){
+  .create_nameBusiness  {
+    justify-content: center;
+  }
+  .create_nameBusiness  h1{
+    font-size: 2rem;
+    text-align: center;
+  }
+  .information_business p{
+    font-size: 1.3rem;
+    text-align:left;
+  }
+}

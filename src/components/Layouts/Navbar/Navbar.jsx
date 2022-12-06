@@ -70,6 +70,17 @@ export const Navbar = () => {
   useEffect(()=>{
     newFuction()
   }, [switchNav])
+
+  const [openNavbar,setOpenNavbar] = useState(false)
+
+  const openNav = () =>{
+    setOpenNavbar(true)
+  }
+
+  const closeNav = () =>{
+    setOpenNavbar(false)
+  }
+
   return (
     <>
       <nav className="nav down" id="navbar">
@@ -103,9 +114,10 @@ export const Navbar = () => {
         <div className="location">
           <p ><Location color="red" className="logo-location"/>{`${ locationState ?  locationState:'Ubicación'}`}</p>
         </div>
-        <Arrow className="icon"/>
-        <div className="navigator">
+        <Arrow className="icon"  onClick={openNav}/>
+        <div className={`navigator ${openNavbar ?  'open':'close'}`}>
           <div id="services">
+            <h2 onClick={closeNav} className="close_navbar">X</h2>
             <div className="links">
               <ul className="login_and_register">
               <Link to='/' ><li className="list">Inicio</li></Link>

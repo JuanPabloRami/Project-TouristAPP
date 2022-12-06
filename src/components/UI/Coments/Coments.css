@@ -130,3 +130,27 @@
 .commentLoadingDisabled{
   display:none;
 }
+@media (max-width: 320px){
+  .comments{
+    width: 100%;
+  }
+  .comments__bussines{
+    padding: 10px;
+  }
+}
+@media (max-width: 480px){
+  .comments{
+    width: 100%;
+  }
+  .comments__bussines{
+    padding: 10px;
+  }
+}
+@media (max-width: 768px){
+  .comments{
+    width: 100%;
+  }
+  .comments__bussines{
+    padding: 10px;
+  }
+}

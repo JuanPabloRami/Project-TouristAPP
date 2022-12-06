@@ -328,3 +328,48 @@ main{
     margin-left: 0;
   }
 }
+@media (max-width: 768px){
+  .profile__img{
+    bottom: 50px;
+    left: -74px;
+    width: 270px;
+    height: 270px;
+  }
+  .btn_like_bussines{
+    bottom: -15%;
+  }
+  main{
+    flex-direction: column-reverse;
+  }
+}
+@media (max-width: 480px){
+  .profile__img{
+    bottom: 49px;
+    left: 22px;
+    width: 250px;
+    height: 250px;
+  }
+  .btn_like_bussines{
+    bottom: -41%;
+    left: 0%;
+  }
+  main{
+    flex-direction: column-reverse;
+  }
+}
+@media (max-width: 320px){
+  .profile__img{
+    bottom: 51px;
+    left: -64px;
+    width: 250px;
+    height: 250px;
+  }
+  .btn_like_bussines{
+    bottom: -44%;
+    left: 0%;
+  }
+  main{
+    flex-direction: column-reverse;
+  }
+  
+}
