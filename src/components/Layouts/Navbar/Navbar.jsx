@@ -1,14 +1,11 @@
 import React, { useContext, useState ,useEffect} from "react";
 import "./Navbar.css";
-
 import { Link } from "react-router-dom";
-
-
 //Imagenes
 import Logo from "../../images/Logos TouristApp/logo7.png";
 //Iconos
 import { BsGeoAlt as Location } from "react-icons/bs";
-import {FaHome as Home} from 'react-icons/fa'
+import {BiDownArrow as Arrow} from 'react-icons/bi'
 //Componentes
 import {Modal} from '../Modal/Modal'
 import {Login} from '../Login/Login'
@@ -20,6 +17,7 @@ import { DropdownUser } from "../../UI/DropdownUser/DropdownUser";
 import { Dropdown } from "../../UI/DropdownCategory/Dropdown";
 import { Roles } from "../../UI/Roles/Roles"
 import {Items} from '../../UI/Items/Items'
+import { SelectLanguage } from "../../UI/SelectLanguage/SelectLanguage";
 
 //Contextos
 import {ModalContext} from '../../context/Modal/ModalContext'
@@ -33,16 +31,7 @@ import { ConfirmDel } from "../../UI/ModalConfirmDel/ConfirmDel";
 export const Navbar = () => {
 
   //Uso de contexto
-  const { OpenModal,locationState, openLogin,openRoles} = useContext(ModalContext);
-
-  // window.addEventListener("scroll", () => {
-  //   const icon = document.querySelector(".logo-touristapp");
-  //   const nav = document.querySelector(".nav");
-  //   const services = document.querySelector("#services");
-  //   nav.classList.toggle("down", window.scrollY > 0);
-  //   services.classList.toggle("down", window.scrollY > 0);
-  //   icon.classList.toggle("down", window.scrollY > 0);
-  // });
+  const {locationState, openLogin,openRoles} = useContext(ModalContext);
   const {switchNav} = useContext(TransitionsContext)
 
   const newFuction = () =>{
@@ -62,9 +51,37 @@ export const Navbar = () => {
     </ul>
     )}
 
+    const newFuctionResponsive = () =>{
+      return(
+        localStorage.getItem('token')  ?
+          <DropdownUser/>
+        :
+        localStorage.getItem('categories') ?
+          <>
+            <li><span onClick={openRoles}><Button text="Registrate"/></span></li>
+            <li><span onClick={openLogin}><Button text="Iniciar sesión"/></span></li>
+          </>
+        :
+        <>
+        <li><span onClick={openRoles}><Button text="Registrate"/></span></li>
+        <li><span onClick={openLogin}><Button text="Iniciar sesión"/></span></li>
+      </>
+      )}
+
   useEffect(()=>{
     newFuction()
   }, [switchNav])
+
+  const [openNavbar,setOpenNavbar] = useState(false)
+
+  const openNav = () =>{
+    setOpenNavbar(true)
+  }
+
+  const closeNav = () =>{
+    setOpenNavbar(false)
+  }
+
   return (
     <>
       <nav className="nav down" id="navbar">
@@ -90,6 +107,36 @@ export const Navbar = () => {
           </div>
         </div>
       </nav>
+
+      <nav className="navbar_responsive">
+        <Link to='/' >
+          <img className="logo-touristapp down" src={Logo} alt="touristApp" />
+        </Link>
+        <div className="location">
+          <p ><Location color="red" className="logo-location"/>{`${ locationState ?  locationState:'Ubicación'}`}</p>
+        </div>
+        <Arrow className="icon"  onClick={openNav}/>
+        <div className={`navigator ${openNavbar ?  'open':'close'}`}>
+          <div id="services">
+            <h2 onClick={closeNav} className="close_navbar">X</h2>
+            <div className="links">
+              <ul className="login_and_register">
+              <Link to='/' ><li className="list">Inicio</li></Link>
+                <Search/>
+                <div className="containerDrop">
+                <li  className="listcategories" id="categories">Categorias</li>
+                  <Dropdown/>
+                </div>
+              </ul>
+            </div>
+            <div className="links">
+              {newFuction()}
+            </div>
+          </div>
+        </div>
+      </nav>
+      <SelectLanguage/>
+
 
       <Modal/>
       <Login/>

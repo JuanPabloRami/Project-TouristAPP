@@ -1,0 +1,16 @@
+{
+    "home":{
+        "welcome-h1":"Welcome!",
+        "welcome-p":"TouristApp helps you identify in a quick way the business establishments of an specific city, village, or a touristic destiny. Tourists can be guided in a quick way about which places to visit."
+    },
+
+    "section":{
+        "filterByCategory":"Filter by category",
+        "business":"Business",
+        "businessFrom":"Business from ",
+        "filterByLocation":"Filter by location",
+        "deleteFilters":"Delete all filters",
+        "latestBusinessTitle":"Latest business",
+        "promotions":"Promotions"
+    }
+}

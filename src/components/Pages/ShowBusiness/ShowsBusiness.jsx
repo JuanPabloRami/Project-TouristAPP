@@ -92,7 +92,7 @@ export const ShowsBusiness = () => {
     negocio:data.id,
   }
 
-  const {transition,setTransition} = useContext(TransitionsContext)
+  const {setTransition} = useContext(TransitionsContext)
 
   //comprobar si el usuario ya dio like a su negocio para o dar like o eliminarlo.
   const checkLike=()=>{

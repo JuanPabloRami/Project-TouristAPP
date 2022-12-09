@@ -12,6 +12,7 @@ import {BsCameraFill as Cam} from 'react-icons/bs'
 import { useContext } from 'react'
 import { CreateBussinesContext } from '../../context/CreateBussines/CreateBussinesContext'
 import { Navigate } from 'react-router-dom'
+import { ComentsEmpty } from '../../UI/Coments/ComentsEmpty'
 
 
 export const ProfileCreate = () => {
@@ -60,7 +61,7 @@ export const ProfileCreate = () => {
         }
     </div>
     <main>
-      <Coments/>
+      <ComentsEmpty/>
       <CreateBussines/>
     </main>
     </>

@@ -1,0 +1,18 @@
+{
+    "home":{
+        "welcome-h1":"¡Bienvenidos!",
+        "welcome-p":"TouristApp ayuda a identificar de manera rápida los establecimientos de una ciudad, pueblo o destino turístico en específico.Los turistas podran guiarse de manera rápida acerca de lugares a visitar."
+    },
+
+    "section":{
+        "filterByCategory":"Filtrar por categoria",
+        "business":"Negocios",
+        "businessFrom":"Negocios de ",
+        "filterByLocation":"Filtra por ubicación",
+        "deleteFilters":"Eliminar los filtros",
+        "latestBusinessTitle":"Los más nuevos",
+        "promotions":"Promociones"
+
+
+    }
+}

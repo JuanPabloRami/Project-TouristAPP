@@ -1,4 +1,4 @@
-import React , { useState, useContext }from 'react'
+import React , { useState, useContext, useEffect }from 'react'
 import "./Section.css"
 import axios from '../../api/axios/axios'
 //Componentes
@@ -16,10 +16,21 @@ import {BiCategoryAlt as Category} from 'react-icons/bi'
 import { BsGeoAlt as Location } from "react-icons/bs";
 import { BusinessFeatured } from '../../UI/BusinessFeatured/BusinessFeatured';
 import { BusinessNews } from '../../UI/BusinessNews/BusinessNews';
+import { TranslationContext } from '../../context/Translation/TranslationContext';
+import { useTranslation } from 'react-i18next';
 
 
 
 export const Section = () => {
+
+  //traduccion multiidioma
+  const localLang = localStorage.getItem("lang")
+  const {language} = useContext(TranslationContext)
+  const [t,i18n] = useTranslation("global")
+  useEffect(() => {
+    i18n.changeLanguage(localLang);
+  }, [language])
+  //fin traduccion
   
   const { OpenModal,locationState,setLocationState} = useContext(ModalContext);
   const {setRequest,setDelFilter,delFilter} = useContext(UsersContext)
@@ -56,7 +67,7 @@ export const Section = () => {
   };
 
   const changeSelected = (e) => {
-    const text = 'Filtrar por categoria';
+    const text = t("section.filterByCategory");
     const $select = document.querySelector('#mySelect');
     const $options = Array.from($select.options);
     const optionToSelect = $options.find(item => item.text ===text);
@@ -68,27 +79,27 @@ export const Section = () => {
     <section>
       <div className="content__cards">
         <div className="content_business">
-          <Title text={`${value[0] === '' ? 'Negocios': `Negocios de ${value[0]}`}`} clas="ng" icon={<Bag id='bag' />} />
+          <Title text={`${value[0] === '' ? t("section.business"): `${t("section.businessFrom")} ${value[0]}`}`} clas="ng" icon={<Bag id='bag' />} />
           <div className="filterSection">
-            <button className='location_filter' onClick={OpenModal}> <Location color="red" className="logo-location"/>{locationState === '' ? 'Filtra por ubicación': locationState }</button>
+            <button className='location_filter' onClick={OpenModal}> <Location color="red" className="logo-location"/>{locationState === '' ? t("section.filterByLocation"): locationState }</button>
               <div className="icon_position">
                 <div className="icon">
                   <Category />
                 </div>
                 <select  onChange={valueCategory} name="" id="mySelect" onClick={ListCategories} >
-                  <option defaultValue="ciudad" selected disabled hidden>Filtrar por categoria</option>
+                  <option defaultValue="ciudad" selected disabled hidden>{t("section.filterByCategory")}</option>
                   {category.map((Element,index)=>(
                       <option key={index} defaultValue={Element.nombre}>{Element.nombre}</option>
                     ))}
                 </select>
               </div>
-              <button onClick={showBussines} className='button_del'>Eliminar los filtros</button>
+              <button onClick={showBussines} className='button_del'>{t("section.deleteFilters")}</button>
           </div>
           <CardBusiness/>
         </div>
-        <Title text='Los más nuevos' clas="pm" icon={<Tag id='tag' />}/>
+        <Title text={t("section.latestBusinessTitle")} clas="pm" icon={<Tag id='tag' />}/>
         <BusinessNews/>
-        <Title text='Promociones' clas="pm" icon={<Tag id='tag' />}/>
+        <Title text={t("section.promotions")} clas="pm" icon={<Tag id='tag' />}/>
         <Products/>
       </div>
       <div className="Add">

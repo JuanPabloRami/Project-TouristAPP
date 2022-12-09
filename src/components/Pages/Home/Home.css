@@ -10,7 +10,26 @@
 }
 
 .custom-shape-divider-bottom-1664733204 svg {
-  position: relative;
+  position: relative;@media (max-width:458px) {
+    .add__business {
+      flex-direction: column;
+    }
+    .add__description{
+      width: 100%;
+    }
+    .img__add {
+      display: none;
+    }
+    .add__description h1{
+      font-size: 22px;
+    }
+    .add__description p{
+      font-size: 15px;
+    }
+    .add__description button{
+      font-size: 10px;
+    }
+  }
   display: block;
   width: calc(188% + 1.3px);
   height: 251px;
@@ -173,6 +192,40 @@
     font-size: 21px;
     margin-top: 20px;
     width: 331px;
+  }
+  .draw{
+    width: 200px;
+    height: 200px;
+    top: 184px;
+    left: 150px;
+    z-index: 1;
+    display: none;
+
+  }
+  .clouds{
+    top: 136px;
+    width: 270px;
+    display: none;
+  }
+}
+
+
+@media (max-width:320px) {
+  .filterSection{
+    flex-direction: column;
+  }
+  .description-aplication{
+    top: 150px;
+    z-index: 2;
+  }
+  .description-aplication h1{
+    font-size: 28px;
+  
+  }
+  .description-aplication p{
+    font-size: 16px;
+    margin-top: 20px;
+    width: 210px;
   }
   .draw{
     width: 200px;

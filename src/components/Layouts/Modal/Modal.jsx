@@ -54,7 +54,7 @@ export const Modal = () => {
               {department.map((Element,index)=>(
                 <option key={index} defaultValue={Element.nombre}>{Element.nombre}</option>
               ))}
-            </select >
+            </select>
             <select defaultValue='municipios' name="Municipios" onChange={locationCity}>
               <option defaultValue="city" selected disabled hidden>Municipios...</option>
               {citys.map((Element,index)=>(

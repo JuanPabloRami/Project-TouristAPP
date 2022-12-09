@@ -1,0 +1,20 @@
+.content_select_lenguage{
+  position: fixed;
+  bottom:  0px;
+  right: 0px;
+  z-index: 10;
+  padding: 20px 40px;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.select_lenguage{
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  border: none;
+  color: white;
+  background-color: #0f151cd8;
+  box-shadow:0px 0px 4px #cdcdcd;
+  border-radius: 5px;
+}

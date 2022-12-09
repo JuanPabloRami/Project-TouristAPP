@@ -4,7 +4,7 @@ import './Footer.css'
 
 //Imagenes
 import Logo from '../../images/Logos TouristApp/logo5.png'
-
+import ReactGA from "react-ga4";
 //Iconos
 import {
   FaFacebook as IconFacebook,
@@ -25,6 +25,34 @@ import {
 
 
 export const Footer = () => {
+  const click = () => {
+    ReactGA.event({
+      category: "about-us",
+      action: "click",
+      label: "label",
+    });
+  };
+  const clickTerm = () => {
+    ReactGA.event({
+      category: "terms",
+      action: "click",
+      label: "label",
+    });
+  };
+  const clickPrivacy = () => {
+    ReactGA.event({
+      category: "private",
+      action: "click",
+      label: "label",
+    });
+  };
+  const clickHelp = () => {
+    ReactGA.event({
+      category: "help",
+      action: "click",
+      label: "label",
+    });
+  };
   return (
     <footer>
       <div className="services">
@@ -32,16 +60,16 @@ export const Footer = () => {
           <img src={Logo} alt="Logo" />
           <h2>Tourist<span className='app'>App</span></h2>
         </div>
-            <Link to='/AboutUs'>
+            <Link to='/AboutUs' onClick={click}>
               <p> <AboutUs size='10%'/> Sobre Nosotros</p>
             </Link>
-            <Link  to='/terminosycondiciones'>
+            <Link  to='/terminosycondiciones' onClick={clickTerm}>
               <p> <Terms size='10%'/>Terminos y condiciones</p>
             </Link>
-            <Link to='/privacidad'>
+            <Link to='/privacidad' onClick={clickPrivacy}>
               <p> <Privacy size='10%'/>Politica de privacidad</p>
             </Link>
-            <Link  to='/'>
+            <Link  to='/' onClick={clickHelp}>
               <p> <Help size='10%'/>Centro de ayuda</p>
             </Link>
       </div>

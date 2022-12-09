@@ -54,7 +54,7 @@ export const CreateBussines = () => {
                 :
                 <>
                   <h2>Catalogo</h2>
-                  <Plus className='icon_create' onClick={openItems}/>
+                  <Plus id='catalogue_icon' className='icon_create' onClick={openItems}/>
                 </>
                 }
               </div>

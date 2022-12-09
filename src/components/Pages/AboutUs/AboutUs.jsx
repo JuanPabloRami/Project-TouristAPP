@@ -4,6 +4,7 @@ import AcercaDe from '../../images/AboutUs/AcercaDe.jpg'
 import { BsFillTagsFill,BsPeopleFill } from 'react-icons/bs'
 import { FaThList } from 'react-icons/fa'
 import { AiTwotoneEyeInvisible, AiOutlinePlus } from 'react-icons/ai'
+import { OurTeam } from '../../Layouts/OurTeam/OurTeam'
 
 
 
@@ -15,6 +16,7 @@ export const AboutUs = () => {
                 <h1>SOBRE NOSOTROS</h1>
             </div>
         </section>
+        <OurTeam/>
         <div className="containerParrafo">
             <div className="containerImg">
                 <img className="imgAcerca" src={AcercaDe}></img>
@@ -22,7 +24,11 @@ export const AboutUs = () => {
             <div className="containerImg">
                 <h3>Acerca de nosotros</h3>
                 <p>
-El objetivo es brindar un mejor servicio y ahorrar tiempo a la hora de implementar este emprendimiento. Ya que el usuario solo al entrar a nuestro sistema por este medio podrá encontrar todos los sitios de negocios, estadía, entretenimiento y mucho más. Sin necesidad de perder muchísimo tiempo y que se ubiquen de la manera correcta para cumplir sus deseos o necesidades.
+                El objetivo es brindar un mejor servicio y ahorrar tiempo a la hora de implementar 
+                este emprendimiento. Ya que el usuario solo al entrar a nuestro sistema por este medio 
+                podrá encontrar todos los sitios de negocios, estadía, entretenimiento y mucho más. 
+                Sin necesidad de perder muchísimo tiempo y que se ubiquen de la manera correcta para 
+                cumplir sus deseos o necesidades.
 
                    <br></br>
                    <br></br>

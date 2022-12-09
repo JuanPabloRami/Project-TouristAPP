@@ -127,3 +127,19 @@
   z-index: 1;
   transform: rotate(40deg);
 }
+@media (max-width: 320px) {
+  .items__img {
+    grid-template-columns: repeat(1,1fr);
+  }
+}
+@media (max-width: 480px) {
+  .items__img {
+    grid-template-columns: repeat(1,1fr);
+  }
+}
+@media (max-width: 768px) {
+  .items__img {
+    grid-template-columns: repeat(1,1fr);
+    grid-auto-rows: minmax(280px,200px)
+  }
+}

@@ -1,5 +1,9 @@
 import React, { useState,useEffect ,useContext} from 'react'
 import './Coments.css'
+
+//GoogleAnalytics
+import ReactGA  from 'react-ga4'
+
 //Imagenes
 import User from '../../images/Profile/owner.jpg'
 //icons
@@ -13,6 +17,8 @@ import { TransitionsContext } from '../../context/Transitions/TransitionsContext
 
 //url base del backend con guion al final
 const url = "https://touristapp-backend-production-c4fa.up.railway.app/files/"
+
+
 
 // token de acceso
 const token = localStorage.getItem('token')
@@ -118,16 +124,19 @@ export const Coments = () => {
       });
     }
   }
+  const clickComent = () => {
+    ReactGA.event({
+      'category':'event_coment',
+      'action':'clickComent',
+      'label': 'label'
+    });
+    createComment();
+  }
+
   //valida si el usuario esta logueado para permitirle o no comentar.
   const validateCommentInput = () =>{
-    if (token === null) {
-    return(
-        <div className="comments__write">
-          <input name='comments' type='text' placeholder='Inicia sesion para publicar un comentario' disabled />
-        </div>
-        )
-      }
-    else{
+
+    if (token !== null){
       return(
       <div className="comments__write">
         {disableComment === true ? 
@@ -135,14 +144,7 @@ export const Coments = () => {
         : <input name='comments' type='text' placeholder='Escribe un comentario...'  onChange={(e)=>{
           setNewComment(e.target.value)
         }} value={newComment} autocomplete="off" />
-      }
-
-
-        {/* <input name='comments' type='text' placeholder='Escribe un comentario...'  onChange={(e)=>
-          setNewComment(e.target.value)}
-          /> */}
-          
-        
+        }
         {disableComment === true ? 
           <div className="content__btn__send" disabled>
             <ScaleLoader
@@ -153,7 +155,7 @@ export const Coments = () => {
           </div>
           
           :
-          <button className="content__btn__send" onClick={createComment}>
+          <button className="content__btn__send" onClick={clickComent}>
             <Send className='btn__send' />
           </button>
         }
@@ -161,6 +163,14 @@ export const Coments = () => {
       
       )
     }
+    else {
+    return(
+        <div className="comments__write">
+          <input name='comments' type='text' placeholder='Inicia sesion para publicar un comentario' disabled />
+        </div>
+      )
+    }
+    
   }
   useEffect(()=>{
     validateCommentInput()

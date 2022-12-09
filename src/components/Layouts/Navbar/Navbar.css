@@ -122,6 +122,9 @@ li{
   }
 }
 @media (min-width: 1000px) {
+  .navbar_responsive{
+    display: none;
+  }
   .logo-touristapp{
     margin: 0px 0px;
     width: 200px;
@@ -190,29 +193,113 @@ li{
     animation: none;
     transition: all .5s;
   }
-  .menu{
-    display: none;
-  }
-  .menu-active{
-    display: none;
-  }
-  .services-menu{
+  .navbar_responsive{
     display: none;
   }
 }
 @media (max-width: 999px){
+  #services{
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    height: 100%;
+    margin-right: 10px;
+  }
+  .links{
+    position: relative;
+    width: 35%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .login_and_register{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .location{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: none;
+    font-size: .9rem;
+    color: #fff;
+  }
+  .navbar_responsive{
+    display: none;
+  }
+}
+@media (max-width: 850px) {
+  .close_navbar{
+    color: #fff;
+  }
+
   .nav.down{
     display: none;
   }
-  .nav{
-    display: none;
-  }
-  .content_responsive{
+  .navbar_responsive{
     position: fixed;
-    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
     height: 80px;
-    background-color: red;
+    background-color: #0f151cd8;
     z-index: 10;
   }
+  .open{
+    display: flex;
+  }
+  .navbar_responsive > .icon{
+    font-size: 2rem;
+    color: white;
+    margin-right: 30px;
+  }
+  .close{
+    display: none;
+  }
+  .navigator{
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    bottom: -150px;
+    width: 100%;
+    height: 150px;
+    background-color: #0f151cd8;
+  }
+  #services{
+    width: 100%;
+    padding: 0px 10px;
+    justify-content: center;
+  }
+  .links{
+    width: 50%;
+  }
+}
+@media (max-width: 535px){
+  #services{
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+}
+@media (max-width: 535px){
+  #services{
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+  }
+  
 }
