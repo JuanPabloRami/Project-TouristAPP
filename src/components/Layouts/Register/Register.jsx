@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Register.css";
 import { BarLoader } from "react-spinners";
 //Icons
@@ -31,17 +31,29 @@ import { TransitionsContext } from "../../context/Transitions/TransitionsContext
 import UserImg from '../../images/Profile/owner.jpg'
 //GoogleAnalytics
 import ReactGA from 'react-ga4';
+import { TranslationContext } from "../../context/Translation/TranslationContext";
+import { useTranslation } from "react-i18next";
 
 export const Register = () => {
+
+  //traduccion multiidioma
+  const localLang = localStorage.getItem("lang")
+  const {language} = useContext(TranslationContext)
+  const [t,i18n] = useTranslation("global")
+  useEffect(() => {
+    i18n.changeLanguage(localLang);
+  }, [language])
+  //fin traduccion
+
   let [confirm,setConfirm] = useState("");
   const [loading, setLoading] = useState(false);
 
   const messageResponse = () =>{
     if(confirm === "confirmed"){
-      return <Message text="Registro exitoso" icon={<Confirmed className="icon__message"/>} message="open"/>
+      return <Message text={t("layouts.register.signupSuccess")} icon={<Confirmed className="icon__message"/>} message="open"/>
 
     }else if (confirm === "error"){
-      return <Message text="Campos incorrectos" icon={<Error className="icon__message"/>} message="open"/>
+      return <Message text={t("layouts.register.incorrectFields")} icon={<Error className="icon__message"/>} message="open"/>
     }
   }
 
@@ -97,7 +109,7 @@ export const Register = () => {
   //estado del alert de exito o error
   const [alert,setAlert] = useState("close")
   const [errorAlert,setErrAlert] = useState("close")
-  const [errorText,setErrText] = useState("Ha ocurrido un error")
+  const [errorText,setErrText] = useState(t("layouts.register.erroroccurred"))
   const [fileImage,setFileImage] = useState('')
 
   //convertidor de imagen de registro
@@ -146,30 +158,30 @@ export const Register = () => {
 
           //validacion para el nombre
           if(!values.name){
-            errors.name = 'Por favor ingresa un nombre'
+            errors.name = t("layouts.register.errorsname1")
           }else if(!regularExpressions.name.test(values.name)){
-            errors.name = 'El nombre solo puede contener letras y espacios'
+            errors.name = t("layouts.register.errorsname2")
           }
 
           //validacion para el apellido
           if(!values.last_name){
-            errors.last_name = 'Por favor ingresa un apellido'
+            errors.last_name = t("layouts.register.errorslastname1")
           }else if(!regularExpressions.name.test(values.last_name)){
-            errors.last_name = 'El apellido solo puede contener letras y espacios'
+            errors.last_name = t("layouts.register.errorslastname2")
           }
           
            //validacion para el email
           if(!values.email){
-            errors.email = 'Por favor ingresa un correo electronico'
+            errors.email = t("layouts.register.errorsemail1")
           }else if(!regularExpressions.email.test(values.email)){
-            errors.email = 'El correo electronico no es valido'
+            errors.email = t("layouts.register.errorsemail2")
           }
 
            //validacion para el password
           if(!values.password){
-            errors.password = 'Por favor ingresa una contraseña'
+            errors.password = t("layouts.register.errorspw1")
           }else if(!regularExpressions.password.test(values.password)){
-            errors.password = 'La constraseña tiene que ser de 8 a 12 digitos'
+            errors.password = t("layouts.register.errorspw2")
           }
 
            //validacion para el confirmPassword
@@ -247,16 +259,16 @@ export const Register = () => {
               </button>
               <div className="content__login">
                  {<img src={imglogin} alt="login"/>} 
-                 <h1>¿ Ya tienes cuenta ?</h1>
-                <button onClick={loginRegister}>Iniciar sesión</button>
+                 <h1>{t("layouts.register.alreadyHaveAccountH1")}</h1>
+                <button onClick={loginRegister}>{t("layouts.register.login")}</button>
               </div>
 
               <Form method="POST" className="form">
-                <h2>REGISTRO</h2>
+                <h2>{t("layouts.register.register")}</h2>
 
                 <div  className="content_file">
                   <label htmlFor="imgFile">
-                    <p>Sube una foto de perfil</p>
+                    <p>{t("layouts.register.uploadpic")}</p>
                   </label>
                   {fileImage === '' ?
                     <img src={UserImg} alt="ImgUser" />  
@@ -279,7 +291,7 @@ export const Register = () => {
                     required 
                   />
                   <label htmlFor="name">
-                    <span className="text-name">Nombres</span>
+                    <span className="text-name">{t("layouts.register.name")}</span>
                   </label>
                   <div className="errorMsg">
                     <ErrorMessage name="name" component={() => (<p>{errors.name}</p>)} />
@@ -294,7 +306,7 @@ export const Register = () => {
                     required 
                   />
                   <label htmlFor="last_name">
-                    <span className="text-name">Apellidos</span>
+                    <span className="text-name">{t("layouts.register.lastname")}</span>
                   </label>
                   <div className="errorMsg">
                     <ErrorMessage name="last_name" component={() => (<p>{errors.last_name}</p>)} />
@@ -309,7 +321,7 @@ export const Register = () => {
                     required
                   />
                   <label htmlFor="email">
-                    <span className="text-name">Email</span>
+                    <span className="text-name">{t("layouts.register.email")}</span>
                   </label>
                   <div className="errorMsg">
                     <ErrorMessage name="email" component={() => (<p>{errors.email}</p>)} />
@@ -325,7 +337,7 @@ export const Register = () => {
                   />
                   
                   <label htmlFor="password">
-                    <span className="text-name">Contraseña</span>
+                    <span className="text-name">{t("layouts.register.pw")}</span>
                   </label>
                   <div className="icon_input" onClick={()=>{
                     showPassword()
@@ -346,9 +358,8 @@ export const Register = () => {
                     required 
                   />
                   <label htmlFor="confirmPassword">
-                    <span className="text-name">Confirmar Contraseña</span>
+                    <span className="text-name">{t("layouts.register.pwconfirm")}</span>
                   </label>
-                  {/* <Eye className="icon_input" onClick={showPassword("pwConfirm")}/> */}
                   <div className="errorMsg">
                     <ErrorMessage name="confirmPassword" component={() => (<p>{errors.confirmPassword}</p>)} />
                   </div>
@@ -364,14 +375,14 @@ export const Register = () => {
                     />
 
                     <label htmlFor="checkbox">
-                      <span className="">Acepto los <Link to='/terminosycondiciones' >Terminos y condiciones</Link> y la <Link to='/privacidad' >politica de privacidad</Link></span>
+                      <span className="">{t("layouts.register.iAcceptthe")} <Link to='/terminosycondiciones' >{t("layouts.register.termsandconditions")}</Link> {t("layouts.register.andthe")} <Link to='/privacidad' >{t("layouts.register.privacypolicy")}</Link></span>
                     </label>
                   </div>
                 </div>
-                <Button text='Registrarse'/>
+                <Button text={t("layouts.register.registerbutton")}/>
               </Form>
             </div>
-            <Message text="Te has registrado correctamente!" icon={<ConfirmedIcon className="icon__message"/>} message={alert}/>
+            <Message text={t("layouts.register.signupSuccess")} icon={<ConfirmedIcon className="icon__message"/>} message={alert}/>
             <Message text={errorText} icon={<ErrorIcon className="icon__error"/>} message={errorAlert}/>
           </div>
         )}

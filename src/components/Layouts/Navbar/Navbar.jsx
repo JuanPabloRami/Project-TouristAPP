@@ -27,12 +27,23 @@ import { ModalConfirm } from "../../UI/ModalOfConfirm/ModalConfirm";
 import { ModalEdit } from "../../UI/ModalEdit/ModalEdit";
 import { EditItems } from "../../UI/ModalEditItems/EditItems";
 import { ConfirmDel } from "../../UI/ModalConfirmDel/ConfirmDel";
+import { TranslationContext } from "../../context/Translation/TranslationContext";
+import { useTranslation } from "react-i18next";
 
 export const Navbar = () => {
 
   //Uso de contexto
   const {locationState, openLogin,openRoles} = useContext(ModalContext);
   const {switchNav} = useContext(TransitionsContext)
+
+  //traduccion multiidioma
+  const localLang = localStorage.getItem("lang")
+  const {language} = useContext(TranslationContext)
+  const [t,i18n] = useTranslation("global")
+  useEffect(() => {
+    i18n.changeLanguage(localLang);
+  }, [language])
+  //fin traduccion
 
   const newFuction = () =>{
     return(
@@ -41,13 +52,13 @@ export const Navbar = () => {
       :
       localStorage.getItem('categories') ?
         <ul className="login_and_register">
-          <li><span onClick={openRoles}><Button text="Registrate"/></span></li>
-          <li><span onClick={openLogin}><Button text="Iniciar sesión"/></span></li>
+          <li><span onClick={openRoles}><Button text={t("layouts.navbar.register")}/></span></li>
+          <li><span onClick={openLogin}><Button text={t("layouts.navbar.login")}/></span></li>
         </ul>
       :
       <ul className="login_and_register">
-      <li><span onClick={openRoles}><Button text="Registrate"/></span></li>
-      <li><span onClick={openLogin}><Button text="Iniciar sesión"/></span></li>
+      <li><span onClick={openRoles}><Button text={t("layouts.navbar.register")}/></span></li>
+      <li><span onClick={openLogin}><Button text={t("layouts.navbar.login")}/></span></li>
     </ul>
     )}
 
@@ -58,13 +69,13 @@ export const Navbar = () => {
         :
         localStorage.getItem('categories') ?
           <>
-            <li><span onClick={openRoles}><Button text="Registrate"/></span></li>
-            <li><span onClick={openLogin}><Button text="Iniciar sesión"/></span></li>
+            <li><span onClick={openRoles}><Button text={t("layouts.navbar.register")}/></span></li>
+            <li><span onClick={openLogin}><Button text={t("layouts.navbar.login")}/></span></li>
           </>
         :
         <>
-        <li><span onClick={openRoles}><Button text="Registrate"/></span></li>
-        <li><span onClick={openLogin}><Button text="Iniciar sesión"/></span></li>
+        <li><span onClick={openRoles}><Button text={t("layouts.navbar.register")}/></span></li>
+        <li><span onClick={openLogin}><Button text={t("layouts.navbar.login")}/></span></li>
       </>
       )}
 
@@ -91,16 +102,16 @@ export const Navbar = () => {
         <div id="services">
           <div className="links">
             <ul className="login_and_register">
-            <Link to='/' ><li className="list">Inicio</li></Link>
+            <Link to='/' ><li className="list">{t("layouts.navbar.home")}</li></Link>
               <Search/>
               <div className="containerDrop">
-              <li  className="listcategories" id="categories">Categorias</li>
+              <li  className="listcategories" id="categories">{t("layouts.navbar.categories")}</li>
                 <Dropdown/>
               </div>
             </ul>
           </div>
           <div className="location">
-            <p ><Location color="red" className="logo-location"/>{`${ locationState ?  locationState:'Ubicación'}`}</p>
+            <p ><Location color="red" className="logo-location"/>{`${ locationState ?  locationState:t("layouts.navbar.location")}`}</p>
           </div>
           <div className="links">
             {newFuction()}
@@ -113,7 +124,7 @@ export const Navbar = () => {
           <img className="logo-touristapp down" src={Logo} alt="touristApp" />
         </Link>
         <div className="location">
-          <p ><Location color="red" className="logo-location"/>{`${ locationState ?  locationState:'Ubicación'}`}</p>
+          <p ><Location color="red" className="logo-location"/>{`${ locationState ?  locationState:t("layouts.navbar.location")}`}</p>
         </div>
         <Arrow className="icon"  onClick={openNav}/>
         <div className={`navigator ${openNavbar ?  'open':'close'}`}>
@@ -121,10 +132,10 @@ export const Navbar = () => {
             <h2 onClick={closeNav} className="close_navbar">X</h2>
             <div className="links">
               <ul className="login_and_register">
-              <Link to='/' ><li className="list">Inicio</li></Link>
+              <Link to='/' ><li className="list">{t("layouts.navbar.home")}</li></Link>
                 <Search/>
                 <div className="containerDrop">
-                <li  className="listcategories" id="categories">Categorias</li>
+                <li  className="listcategories" id="categories">{t("layouts.navbar.categories")}</li>
                   <Dropdown/>
                 </div>
               </ul>

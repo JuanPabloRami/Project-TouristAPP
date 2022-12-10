@@ -16,7 +16,7 @@ export const AboutUs = () => {
                 <h1>SOBRE NOSOTROS</h1>
             </div>
         </section>
-        <OurTeam/>
+        
         <div className="containerParrafo">
             <div className="containerImg">
                 <img className="imgAcerca" src={AcercaDe}></img>
@@ -36,6 +36,7 @@ export const AboutUs = () => {
                 </p>
             </div>
         </div>
+        <OurTeam/>
         <div className="containerEstadistica">
             <div className="containerIcons">
                 <p><BsFillTagsFill id="iconTags" /></p>
@@ -58,6 +59,7 @@ export const AboutUs = () => {
                 <h3>Visitantes</h3>
             </div>
         </div>
+        
     </div>
   )
 }

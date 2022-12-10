@@ -1,18 +1,110 @@
 {
-    "home":{
-        "welcome-h1":"¡Bienvenidos!",
-        "welcome-p":"TouristApp ayuda a identificar de manera rápida los establecimientos de una ciudad, pueblo o destino turístico en específico.Los turistas podran guiarse de manera rápida acerca de lugares a visitar."
+    "pages":{
+        "home":{
+            "welcome-h1":"¡Bienvenidos!",
+            "welcome-p":"TouristApp ayuda a identificar de manera rápida los establecimientos de una ciudad, pueblo o destino turístico en específico.Los turistas podran guiarse de manera rápida acerca de lugares a visitar."
+        }
     },
 
-    "section":{
-        "filterByCategory":"Filtrar por categoria",
-        "business":"Negocios",
-        "businessFrom":"Negocios de ",
-        "filterByLocation":"Filtra por ubicación",
-        "deleteFilters":"Eliminar los filtros",
-        "latestBusinessTitle":"Los más nuevos",
-        "promotions":"Promociones"
+    "layouts":{
+        "navbar":{
+            "register":"Registrate",
+            "login":"Iniciar sesión",
+            "home":"Inicio",
+            "categories":"Categorías",
+            "location":"Ubicación"
+        },
+        "footer":{
+            "aboutus":" Sobre Nosotros",
+            "termsandconditions":"Terminos y condiciones",
+            "privacypolicy":"Politica de privacidad",
+            "helpcenter":"Centro de ayuda"
+        },
+        "section":{
+            "filterByCategory":"Filtrar por Categoría",
+            "business":"Negocios",
+            "businessFrom":"Negocios de ",
+            "filterByLocation":"Filtra por ubicación",
+            "deleteFilters":"Eliminar los filtros",
+            "latestBusinessTitle":"Los más nuevos",
+            "promotions":"Promociones"
+        },
+        "addBusiness":{
+            "addYourBusinessH1":"Agrega tu negocio",
+            "addYourBusinessP":"Crear tu negocio en TouristApp, te ayudara a que miles de personas conozcan tu emprendimiento, te visiten y compartan su experiencia con tus servicios, obtendrás un posicionamiento que indicara que tan satisfechos están los usuarios. TouristApp conlleva aumentar la popularidad y el comercio de tu negocio.",
+            "createBusinessButton":"Crea tu negocio"
+        },
+        "commentsAndStars":{
+            "commentsH2":"Comentarios",
+            "commentsP":"El Valle es hermoso, lo primero que tienes que hacer es llegar temprano, tipo 7.30am así evitas la cantidad de personas que visitan el lugar. Puedes ir carro y parquear en el último lugar del camino que es gratuito o en los parqueaderos de la entrada que igual son económicos de 2USD a 3USD todo el día.",
+            "catalogH2":"Catalogo",
+            "catalogP":"Desafortunadamente no nos fué bien en el almuerzo, enviaron a la mesa una trucha quemada, olvidaron un plato del pedido, no trajeron ensaladas.",
+            "likeButton":"Me gusta"
+        },
+        "register":{
+            "signupSuccess":"Te has registrado correctamente!",
+            "incorrectFields":"Campos incorrectos",
+            "erroroccurred":"Ha ocurrido un error",
+
+            "errorsname1":"Por favor ingresa un nombre",
+            "errorsname2":"El nombre solo puede contener letras y espacios",
+            "errorslastname1":"Por favor ingresa un apellido",
+            "errorslastname2":"El apellido solo puede contener letras y espacios",
+            "errorsemail1":"Por favor ingresa un correo electronico",
+            "errorsemail2":"El correo electronico no es valido",
+            "errorspw1":"Por favor ingresa una contraseña",
+            "errorspw2":"La constraseña tiene que ser de 8 a 12 digitos",
+            "errorsconfirmpw1":"Por favor ingresa una contraseña",
+            "errorsconfirmpw2":"Las contraseñas no coinciden",
+
+            "alreadyHaveAccountH1":"¿ Ya tienes cuenta ?",
+            "login":"Iniciar sesión",
+            "register":"REGISTRO",
+            "uploadpic":"Sube una foto de perfil",
+            "name":"Nombres",
+            "lastname":"Apellidos",
+            "email":"Correo",
+            "pw":"Contraseña",
+            "pwconfirm":"Confirmar Contraseña",
+            "iAcceptthe":"Acepto los ",
+            "termsandconditions":"Terminos y condiciones",
+            "andthe":" y la ",
+            "privacypolicy":"politica de privacidad",
+            "registerbutton":"Registrarse"
 
 
+
+        },
+        "login":{
+            "errorsemail1":"Por favor ingresa un correo electronico",
+            "errorsemail2":"El correo electronico no es valido",
+            "errorspw1":"Por favor ingresa una contraseña",
+            "errorspw2":"La constraseña tiene que ser de 8 a 12 digitos",
+            "donthaveaccyet":"¿Aun no tienes cuenta?",
+            "register":"Registrarse",
+            "login":"INICIA SESIÓN",
+            "email":"Correo Electronico",
+            "pw":"Contraseña",
+            "loginbtn":"Ingresar",
+            "loginSuccess":"¡Te has logueado con exito!",
+            "errorocurred":"Ha ocurrido un error"
+        }
+    },
+    "ui":{
+        "search":{
+            "searchInput":"Busca en TouristApp",
+            "search":"Buscar"
+        },
+        "selectLanguage":{
+            "language":"Español"
+        },
+        "cards":{
+            "watchmore":"Ver más"
+        },
+        "roles":{
+            "typeuserH1":"Seleccione el tipo de usuario",
+            "user":"Usuario",
+            "entrepreneur":"Emprendedor"
+        }
     }
 }

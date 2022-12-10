@@ -7,8 +7,21 @@ import axios from "../../api/axios/axios";
 import { useEffect } from "react";
 import { UsersContext } from "../../context/Users/UsersContext";
 import { Navigate } from "react-router";
+import { TranslationContext } from "../../context/Translation/TranslationContext";
+import { useTranslation } from "react-i18next";
 
 export const Search = () => {
+
+  //traduccion multiidioma
+  const localLang = localStorage.getItem("lang")
+  const {language} = useContext(TranslationContext)
+  const [t,i18n] = useTranslation("global")
+  useEffect(() => {
+    i18n.changeLanguage(localLang);
+  }, [language])
+  //fin traduccion
+
+
   const [search, setSearch] = useState(false);
   const [searchBusinnes, setSearchBusinnes] = useState("");
   const [dataBussiness, setDataBussiness] = useState({})
@@ -60,7 +73,7 @@ export const Search = () => {
             className="search_input"
             type="text"
             name="search"
-            placeholder="Busca en TouristApp"
+            placeholder={t("ui.search.searchInput")}
             value={searchBusinnes}
             onChange={handleChange}
             onClick={showValues}
@@ -83,7 +96,7 @@ export const Search = () => {
         </>
       )}
       <li id="search" className="list" onClick={searching}>
-        Buscar
+        {t("ui.search.search")}
       </li>
     </>
   );

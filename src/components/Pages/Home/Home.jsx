@@ -16,10 +16,10 @@ import { useTranslation } from "react-i18next";
 
 export const Home = () => {
 
+  //traduccion multiidioma
   const localLang = localStorage.getItem("lang")
   const {language} = useContext(TranslationContext)
   const [t,i18n] = useTranslation("global")
-  
   useEffect(() => {
     i18n.changeLanguage(localLang);
   }, [language])
@@ -29,10 +29,10 @@ export const Home = () => {
     <>
       <div className="welcome">
         <div className="description-aplication">
-          <h1>{t("home.welcome-h1")}</h1>
-          <h1>{t("home.welcome-h1")}</h1>
+          <h1>{t("pages.home.welcome-h1")}</h1>
+          <h1>{t("pages.home.welcome-h1")}</h1>
           <p>
-            {t("home.welcome-p")}
+            {t("pages.home.welcome-p")}
           </p>
         </div>
         <img className="draw" src={Draw} alt='imagencita'/>

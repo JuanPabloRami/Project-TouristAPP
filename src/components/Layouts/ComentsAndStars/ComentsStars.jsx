@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import "./ComentsStars.css";
 
 //imagenes
@@ -11,8 +11,20 @@ import Menu from "../../images/Home/imgIpad.jpg";
 import { BiLike as Like } from "react-icons/bi";
 import { BsHandIndexThumb as Hand } from "react-icons/bs";
 import { useState } from "react";
+import { TranslationContext } from "../../context/Translation/TranslationContext";
+import { useTranslation } from "react-i18next";
 
 export const ComentsStars = () => {
+
+  //traduccion multiidioma
+  const localLang = localStorage.getItem("lang")
+  const {language} = useContext(TranslationContext)
+  const [t,i18n] = useTranslation("global")
+  useEffect(() => {
+    i18n.changeLanguage(localLang);
+  }, [language])
+  //fin traduccion
+
   const [like, setlike] = useState(10);
 
   const incrementLikes = () => {
@@ -42,26 +54,20 @@ export const ComentsStars = () => {
             </div>
             <div className="section__ipad">
               <div className="coments__ipad">
-                <h2>Comentarios</h2>
+                <h2>{t("layouts.commentsAndStars.commentsH2")}</h2>
                 <p>
-                  El Valle es hermoso, lo primero que tienes que hacer es llegar
-                  temprano, tipo 7.30am así evitas la cantidad de personas que
-                  visitan el lugar. Puedes ir carro y parquear en el último
-                  lugar del camino que es gratuito o en los parqueaderos de la
-                  entrada que igual son económicos de 2USD a 3USD todo el día.
+                  {t("layouts.commentsAndStars.commentsP")}
                 </p>
               </div>
               <div className="description_ipad">
-                <h2>Catalogo</h2>
+                <h2>{t("layouts.commentsAndStars.catalogH2")}</h2>
                 <img className="img__menu" src={Menu} alt="menu" />
                 <p>
-                  Dasafortunadamente no nos fué bien en el almuerzo, enviaron a
-                  la mesa una trucha quemada, olvidaron un plato del pedido, no
-                  trajeron ensaladas.
+                  {t("layouts.commentsAndStars.catalogP")}
                 </p>
                 <div className="content_btn__like">
                   <Hand className="hand" />
-                  <button onClick={incrementLikes}>Like</button>
+                  <button onClick={incrementLikes}>{t("layouts.commentsAndStars.likeButton")}</button>
                 </div>
               </div>
             </div>

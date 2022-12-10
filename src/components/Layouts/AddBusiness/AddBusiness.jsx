@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./AddBusiness.css";
 
 //Componentes
@@ -7,29 +7,38 @@ import { ModalContext } from "../../context/Modal/ModalContext";
 import AddImagen from "../../images/Title/addBusiness.jpg";
 import { useContext } from "react";
 
+import { TranslationContext } from "../../context/Translation/TranslationContext";
+import { useTranslation } from "react-i18next";
+
 export const AddBusiness = () => {
 
   const token = localStorage.getItem("token")
 
   const { openRoles } = useContext(ModalContext);
+
+  //traduccion multiidioma
+  const localLang = localStorage.getItem("lang")
+  const {language} = useContext(TranslationContext)
+  const [t,i18n] = useTranslation("global")
+  useEffect(() => {
+    i18n.changeLanguage(localLang);
+  }, [language])
+  //fin traduccion
+
   return (
     <>
       <div className="add__business">
         <div className="add__description">
-          <h1>Agrega tu negocio</h1>
+          <h1>{t("layouts.addBusiness.addYourBusinessH1")}</h1>
           <p>
-            Crear tu negocio en TouristApp, te ayudara a que miles de personas
-            conozcan tu emprendimiento, te visiten y compartan su experiencia
-            con tus servicios, obtendrás un posicionamiento que
-            indicara que tan satisfechos están los usuarios.TouristApp conlleva
-            aumentar la popularidad y el comercio de tu negocio.
+            {t("layouts.addBusiness.addYourBusinessP")}
           </p>
           <button onClick={()=>{
             token === null ?
             openRoles()
             :console.log("ok");
             }
-          }>Crea tu negocio</button>
+          }>{t("layouts.addBusiness.createBusinessButton")}</button>
         </div>
         <div className="container__addImage">
           <img className="img__add" src={AddImagen} alt="Add" />

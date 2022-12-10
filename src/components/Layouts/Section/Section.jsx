@@ -67,7 +67,7 @@ export const Section = () => {
   };
 
   const changeSelected = (e) => {
-    const text = t("section.filterByCategory");
+    const text = t("layouts.section.filterByCategory");
     const $select = document.querySelector('#mySelect');
     const $options = Array.from($select.options);
     const optionToSelect = $options.find(item => item.text ===text);
@@ -79,27 +79,27 @@ export const Section = () => {
     <section>
       <div className="content__cards">
         <div className="content_business">
-          <Title text={`${value[0] === '' ? t("section.business"): `${t("section.businessFrom")} ${value[0]}`}`} clas="ng" icon={<Bag id='bag' />} />
+          <Title text={`${value[0] === '' ? t("layouts.section.business"): `${t("layouts.section.businessFrom")} ${value[0]}`}`} clas="ng" icon={<Bag id='bag' />} />
           <div className="filterSection">
-            <button className='location_filter' onClick={OpenModal}> <Location color="red" className="logo-location"/>{locationState === '' ? t("section.filterByLocation"): locationState }</button>
+            <button className='location_filter' onClick={OpenModal}> <Location color="red" className="logo-location"/>{locationState === '' ? t("layouts.section.filterByLocation"): locationState }</button>
               <div className="icon_position">
                 <div className="icon">
                   <Category />
                 </div>
                 <select  onChange={valueCategory} name="" id="mySelect" onClick={ListCategories} >
-                  <option defaultValue="ciudad" selected disabled hidden>{t("section.filterByCategory")}</option>
+                  <option defaultValue="ciudad" selected disabled hidden>{t("layouts.section.filterByCategory")}</option>
                   {category.map((Element,index)=>(
                       <option key={index} defaultValue={Element.nombre}>{Element.nombre}</option>
                     ))}
                 </select>
               </div>
-              <button onClick={showBussines} className='button_del'>{t("section.deleteFilters")}</button>
+              <button onClick={showBussines} className='button_del'>{t("layouts.section.deleteFilters")}</button>
           </div>
           <CardBusiness/>
         </div>
-        <Title text={t("section.latestBusinessTitle")} clas="pm" icon={<Tag id='tag' />}/>
+        <Title text={t("layouts.section.latestBusinessTitle")} clas="pm" icon={<Tag id='tag' />}/>
         <BusinessNews/>
-        <Title text={t("section.promotions")} clas="pm" icon={<Tag id='tag' />}/>
+        <Title text={t("layouts.section.promotions")} clas="pm" icon={<Tag id='tag' />}/>
         <Products/>
       </div>
       <div className="Add">

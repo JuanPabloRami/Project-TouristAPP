@@ -2,11 +2,22 @@ import './Cards.css'
 import { BsGeoAlt as Location } from "react-icons/bs";
 import {BiCategoryAlt as Category} from 'react-icons/bi'
 import { UsersContext } from "../../context/Users/UsersContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Navigate } from "react-router";
 import businessCardDefault from '../../images/Home/businesCardDefault.jpg'
+import { TranslationContext } from '../../context/Translation/TranslationContext';
+import { useTranslation } from 'react-i18next';
 
 export const Cards = ({image, description, title,ciudad,departamento,category, id}) => {
+
+  //traduccion multiidioma
+  const localLang = localStorage.getItem("lang")
+  const {language} = useContext(TranslationContext)
+  const [t,i18n] = useTranslation("global")
+  useEffect(() => {
+    i18n.changeLanguage(localLang);
+  }, [language])
+  //fin traduccion
 
   const {getValue,value,setValue} = useContext(UsersContext)
   const idValue = localStorage.getItem('value');
@@ -33,7 +44,7 @@ export const Cards = ({image, description, title,ciudad,departamento,category, i
           <p className="category_p"> <Category color='#8a9401' />{category}</p>
         <p>{description}</p>
         
-        <button value={id} onClick={getValue}>Ver más </button>
+        <button value={id} onClick={getValue}>{t("ui.cards.watchmore")}</button>
       </div>
     </div>
   );

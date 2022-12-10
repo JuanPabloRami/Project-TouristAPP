@@ -1,16 +1,111 @@
 {
-    "home":{
-        "welcome-h1":"Welcome!",
-        "welcome-p":"TouristApp helps you identify in a quick way the business establishments of an specific city, village, or a touristic destiny. Tourists can be guided in a quick way about which places to visit."
+    "pages":{
+        "home":{
+            "welcome-h1":"Welcome!",
+            "welcome-p":"TouristApp helps you identify in a quick way the business establishments of an specific city, village, or a touristic destiny. Tourists can be guided in a quick way about which places to visit."
+        }
     },
 
-    "section":{
-        "filterByCategory":"Filter by category",
-        "business":"Business",
-        "businessFrom":"Business from ",
-        "filterByLocation":"Filter by location",
-        "deleteFilters":"Delete all filters",
-        "latestBusinessTitle":"Latest business",
-        "promotions":"Promotions"
+    "layouts":{
+        "navbar":{
+            "register":"Sign up",
+            "login":"Log in",
+            "home":"Home",
+            "categories":"Categories",
+            "location":"Location"
+        },
+        "footer":{
+            "aboutus":" About us",
+            "termsandconditions":"Terms and conditions",
+            "privacypolicy":"Privacy policy",
+            "helpcenter":"Help center"
+        },
+        "section":{
+            "filterByCategory":"Filter by category",
+            "business":"Business",
+            "businessFrom":"Business from ",
+            "filterByLocation":"Filter by location",
+            "deleteFilters":"Delete all filters",
+            "latestBusinessTitle":"Latest business",
+            "promotions":"Promotions"
+        },
+        "addBusiness":{
+            "addYourBusinessH1":"Share your business",
+            "addYourBusinessP":"Creating your business in TouristApp, will help you to get many people to meet your entrepreneurship, visit and share their experience about your services, you will get a ranking that will tell you how satisfied are your users. TouristApp means raising the popularity and the customers of your business.",
+            "createBusinessButton":"Create your business"
+        },
+        "commentsAndStars":{
+            "commentsH2":"Comments",
+            "commentsP":"The valley is pretty, first thing you need to do is come in early, like 7 AM or so... That way you avoid the large ammount of people who visit the place. You can come in your car and park in the free but far parking lot or you can park at the ones at the entrance which are 3 USD all day.",
+            "catalogH2":"Catalog",
+            "catalogP":"Unfortunately we didn't do well at lunch, they sent a burnt trout, they forgot one of the requested meals, and they didn't bring salad.",
+            "likeButton":"Like"
+        },
+        "register":{
+            "signupSuccess":"You signed up succesfully!",
+            "incorrectFields":"There are incorrect fields",
+            "erroroccurred":"An error has ocurred",
+
+            "errorsname1":"Please insert a name",
+            "errorsname2":"Name should only contain letters and spaces",
+            "errorslastname1":"Please insert your last name",
+            "errorslastname2":"Last name should only contain letters and spaces",
+            "errorsemail1":"Please insert your email",
+            "errorsemail2":"This email is not valid",
+            "errorspw1":"Please insert a password",
+            "errorspw2":"The password must have from 8 to 12 digits",
+            "errorsconfirmpw1":"Please insert a password",
+            "errorsconfirmpw2":"The passwords don't match",
+
+            "alreadyHaveAccountH1":"¿ Already have an account ?",
+            "login":"Log in",
+            "register":"SIGN UP",
+            "uploadpic":"Upload a profile photo",
+            "name":"First Name",
+            "lastname":"Last name",
+            "email":"Email",
+            "pw":"Password",
+            "pwconfirm":"Confirm password",
+            "iAcceptthe":"I accept the ",
+            "termsandconditions":"Terms and conditions",
+            "andthe":" and the ",
+            "privacypolicy":"privacy policy",
+            "registerbutton":"Sign up"
+        },
+        "login":{
+            "errorsemail1":"Please insert your email",
+            "errorsemail2":"El correo electronico no es valido",
+            "errorspw1":"This email is not valid",
+            "errorspw2":"The password must have 8 to 12 digits",
+            "donthaveaccyet":"¿Don't have an account yet?",
+            "register":"Sign up",
+            "login":"LOG IN",
+            "email":"Email",
+            "pw":"Password",
+            "loginbtn":"Log in",
+            "loginSuccess":"¡You have succesfully logged in!",
+            "errorocurred":"An error has ocurred"
+        }
+    },
+    "ui":{
+        "search":{
+            "searchInput":"Search in TouristApp",
+            "search":"Search"
+        },
+        "selectLanguage":{
+            "language":"English"
+        },
+        "cards":{
+            "watchmore":"Watch more"
+        },
+        "roles":{
+            "typeuserH1":"Select the type of user",
+            "user":"User",
+            "entrepreneur":"Entrepreneur"
+        }
+
     }
+
+
+    
 }
