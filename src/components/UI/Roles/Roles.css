@@ -96,3 +96,28 @@
   text-align: justify;
   color: #004152;
 }
+@media (max-width: 768px){
+  .content_roles{
+    width: 80%;
+    height:90%;
+  }
+  .content_roles h1{
+    font-size: 2rem;
+    text-align: center;
+  }
+  .role_user > .user {
+    width: 210px;
+    height: 210px;
+  }
+  .role_user > .user::after{
+    width: 210px;
+    height: 210px;
+  }
+  .role_user > h2{
+    font-size: 2rem;
+  }
+  .roles{
+    grid-template-columns: repeat(1,1fr);
+    grid-template-rows: repeat(2,1fr);
+  }
+}

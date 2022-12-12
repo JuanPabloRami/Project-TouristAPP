@@ -175,6 +175,14 @@
 
 }
 }
+@media (max-width:600px){
+  .draw{
+    display: none;
+  }
+  .clouds{
+    display: none;
+  }
+}
 
 @media (max-width:458px) {
   .filterSection{
@@ -193,19 +201,17 @@
     margin-top: 20px;
     width: 331px;
   }
-  .draw{
-    width: 200px;
-    height: 200px;
-    top: 184px;
-    left: 150px;
-    z-index: 1;
-    display: none;
-
+}
+@media (max-width:400px){
+  .description-aplication{
+    width: 75%;
+    flex-direction: row;
   }
-  .clouds{
-    top: 136px;
-    width: 270px;
-    display: none;
+  .description-aplication h1{
+    font-size: 2rem;
+  }
+  .description-aplication p{
+    font-size: 1.3rem;
   }
 }
 

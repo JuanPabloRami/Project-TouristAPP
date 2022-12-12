@@ -79,8 +79,11 @@ section{
   color: #fff;
 }
 @media (max-width: 768px) {
+  .filterSection{
+    gap: 20px;
+  }
   .filterSection button{
-    font-size: 15px;
+    font-size: 1rem;
   }
   .filterSection select{
     font-size: 15px;

@@ -156,3 +156,19 @@ z-index: 10;
   color: #d30505;
   font-size: .75rem;
 }
+@media (max-width: 768px){
+  .content__login{
+    display: none;
+  }
+  .form-register form{
+    width: 100%;
+  }
+  .form-register{
+    height: 85%;
+  }
+}
+@media (max-width: 320px){
+  .form-register{
+    width: 85%;
+  }
+}

@@ -61,7 +61,11 @@
     font-size: 15px;
   }
 }
-
+@media (max-width:480px){
+  .container__addImage{
+    display: none;
+  }
+}
 @media (max-width:458px) {
   .add__business {
     flex-direction: column;
