@@ -76,3 +76,18 @@
   font-weight: none;
   color: gray;
 }
+@media (max-width:999px){
+  .search_input{
+    width: 100%;
+  }
+  .icon_search{
+    left: 5px;
+  }
+  .icon_close_search{
+    right: 6px;
+  }
+  .resultSearch{
+    top: 90px;
+    width: 100%;
+  }
+}

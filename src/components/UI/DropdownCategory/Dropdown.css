@@ -93,3 +93,16 @@
   color: white;
   padding: 10px;
 }
+@media (max-width:999px){
+  .drop__down{
+    width: 100%;
+    bottom: -82px;
+    left: 92%;
+    top: -36px;
+  }
+  .drop__down::after{
+    top: 49px;
+    right: 97%;
+    rotate: 270deg;
+  }
+}

@@ -338,6 +338,9 @@ main{
   .btn_like_bussines{
     bottom: -15%;
   }
+  .btn_liked_bussines{
+    bottom: -15%;
+  }
   main{
     flex-direction: column-reverse;
   }
@@ -353,6 +356,10 @@ main{
     bottom: -41%;
     left: 0%;
   }
+  .btn_liked_bussines{
+    bottom: -41%;
+    left: 0%;
+  }
   main{
     flex-direction: column-reverse;
   }
@@ -365,6 +372,10 @@ main{
     height: 250px;
   }
   .btn_like_bussines{
+    bottom: -44%;
+    left: 0%;
+  }
+  .btn_liked_bussines{
     bottom: -44%;
     left: 0%;
   }

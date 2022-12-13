@@ -6,6 +6,7 @@ import Logo from "../../images/Logos TouristApp/logo7.png";
 //Iconos
 import { BsGeoAlt as Location } from "react-icons/bs";
 import {BiDownArrow as Arrow} from 'react-icons/bi'
+import {AiOutlineClose as Close} from 'react-icons/ai'
 //Componentes
 import {Modal} from '../Modal/Modal'
 import {Login} from '../Login/Login'
@@ -85,6 +86,18 @@ export const Navbar = () => {
 
   const [openNavbar,setOpenNavbar] = useState(false)
 
+  const changeIcons = () =>{
+    if(!openNavbar){
+      return (
+        <Arrow className="icon"  onClick={openNav}/>
+      )
+    }else{
+      return(
+        <Close className="icon_close"  onClick={closeNav}/>
+      )
+    }
+  }
+
   const openNav = () =>{
     setOpenNavbar(true)
   }
@@ -126,10 +139,10 @@ export const Navbar = () => {
         <div className="location">
           <p ><Location color="red" className="logo-location"/>{`${ locationState ?  locationState:t("layouts.navbar.location")}`}</p>
         </div>
-        <Arrow className="icon"  onClick={openNav}/>
-        <div className={`navigator ${openNavbar ?  'open':'close'}`}>
+        {changeIcons()}
+      </nav>
+      <div className={`navigator ${openNavbar ?  'open':'close'}`}>
           <div id="services">
-            <h2 onClick={closeNav} className="close_navbar">X</h2>
             <div className="links">
               <ul className="login_and_register">
               <Link to='/' ><li className="list">{t("layouts.navbar.home")}</li></Link>
@@ -145,10 +158,8 @@ export const Navbar = () => {
             </div>
           </div>
         </div>
-      </nav>
+
       <SelectLanguage/>
-
-
       <Modal/>
       <Login/>
       <Register/>

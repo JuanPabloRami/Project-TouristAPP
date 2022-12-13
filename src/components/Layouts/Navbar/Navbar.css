@@ -207,15 +207,17 @@ li{
   }
   .links{
     position: relative;
-    width: 35%;
+    width: 100%;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
   }
   .login_and_register{
+    gap: 40px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     width: 100%;
   }
@@ -231,8 +233,6 @@ li{
   .navbar_responsive{
     display: none;
   }
-}
-@media (max-width: 850px) {
   .close_navbar{
     color: #fff;
   }
@@ -258,39 +258,36 @@ li{
     color: white;
     margin-right: 30px;
   }
+  .navbar_responsive > .icon_close{
+    font-size: 2rem;
+    color: #fff;
+    margin-right: 30px;
+  }
   .close{
     display: none;
   }
   .navigator{
-    position: absolute;
+    position: fixed;
     justify-content: center;
     align-items: center;
-    bottom: -150px;
-    width: 100%;
-    height: 150px;
+    top: 80px;
+    width: 40%;
+    height: 100vh;
     background-color: #0f151cd8;
   }
   #services{
     width: 100%;
+    height: 100%;
     padding: 0px 10px;
-    justify-content: center;
-  }
-  .links{
-    width: 50%;
-  }
-}
-@media (max-width: 535px){
-  #services{
-    flex-direction: column-reverse;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    width: 100%;
+    flex-direction: column;
   }
+
 }
 @media (max-width: 535px){
   #services{
-    flex-direction: column-reverse;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 100%;
   }
@@ -301,5 +298,4 @@ li{
     width: 100%;
     padding: 10px;
   }
-  
 }
